@@ -5,6 +5,8 @@ extends Node2D
 ## Solo anima: las reglas del juego viven en el dominio.
 
 const SHADOW_COLOR := Color(0.2, 0.12, 0.05, 0.24)
+const HIT_AREA := Rect2(-100.0, -295.0, 200.0, 305.0)
+const SQUEAK_SOUND := preload("res://assets/audio/sfx/sfx_quwi_squeak.ogg")
 
 @onready var _hop: Node2D = $Hop
 @onready var _torso: Node2D = $Hop/Rig/Torso
@@ -22,6 +24,7 @@ const SHADOW_COLOR := Color(0.2, 0.12, 0.05, 0.24)
 @onready var _mouth_smile: Node2D = $Hop/Rig/Torso/Head/Mouth/MouthSmile
 @onready var _mouth_open: Node2D = $Hop/Rig/Torso/Head/Mouth/MouthOpen
 @onready var _mouth_o: Node2D = $Hop/Rig/Torso/Head/Mouth/MouthO
+@onready var _voice: SfxPlayer = $Voice
 
 ## Valores que animan los gestos; _process los combina con la respiración.
 var squash := Vector2.ONE
@@ -41,6 +44,7 @@ var _ear_wait := 3.0
 var _brows_base: Vector2
 var _eyes_base: Vector2
 var _gesture: Tween
+var _reaction := 0
 
 
 func _ready() -> void:
@@ -121,6 +125,31 @@ func hop(height: float = 38.0) -> void:
 	tween.tween_property(_hop, "position:y", 0.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "squash", Vector2(1.14, 0.84), 0.07)
 	tween.tween_property(self, "squash", Vector2.ONE, 0.32).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+
+
+## El «wiik, wiik» de un cuy contento.
+func squeak() -> void:
+	_voice.play(SQUEAK_SOUND, randf_range(0.95, 1.12))
+
+
+## ¿El punto (en coordenadas globales) toca a Quwi?
+func contains_point(global_point: Vector2) -> bool:
+	return HIT_AREA.has_point(to_local(global_point))
+
+
+## Reacción al tocarlo: alterna entre festejar, saludar y sorprenderse.
+func react_to_tap() -> void:
+	squeak()
+	match _reaction % 3:
+		0:
+			set_mood(&"cheer")
+			hop(46.0)
+		1:
+			set_mood(&"joy")
+			wave()
+		_:
+			set_mood(&"surprise")
+	_reaction += 1
 
 
 ## Saluda con la mano derecha, delante de la cara.

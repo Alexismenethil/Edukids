@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/characters/hummingbird/hummingbird.gd" id="1_bird"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/hummingbird/char_hummingbird_body.svg" id="2_body"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/hummingbird/char_hummingbird_wing.svg" id="3_wing"]
+
+[node name="Hummingbird" type="Node2D"]
+script = ExtResource("1_bird")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_body")
+
+[node name="Wing" type="Sprite2D" parent="."]
+position = Vector2(-14, -4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_wing")
+centered = false
+offset = Vector2(-20, -80)

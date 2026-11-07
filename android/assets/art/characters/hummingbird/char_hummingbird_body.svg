@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="56" viewBox="0 0 96 56">
+  <!-- Picaflor andino: cuerpo mirando a la derecha, pico largo, garganta iridiscente. -->
+  <path d="M8,30 L2,40 L14,36 L10,46 L22,36 Z" fill="#1E5B3A" stroke="#123824" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M14,32 C14,22 26,16 40,18 C50,19.5 58,24 60,30 C61,36 54,41 42,42 C28,43 14,40 14,32 Z" fill="#2E9E5B" stroke="#1B5E37" stroke-width="2.5"/>
+  <path d="M22,27 C28,21 40,20 48,23 C40,23 30,25 24,30 Z" fill="#7BC67B" opacity="0.9"/>
+  <path d="M42,30 C48,29 54,31 57,34 C52,38 45,39 40,37 C40,34 40,32 42,30 Z" fill="#E8EFE0"/>
+  <path d="M46,24 C52,23 58,25 61,29 C58,33 52,34 47,32 C45,30 45,26 46,24 Z" fill="#C2185B" stroke="#7A0F3A" stroke-width="1.5"/>
+  <path d="M51,25.5 C54,25.5 57,27 58.5,29" stroke="#F06292" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M60,26.5 L94,22.5 L60,29.5 Z" fill="#2A2220" stroke="#2A2220" stroke-width="1.4" stroke-linejoin="round"/>
+  <circle cx="53" cy="22" r="4" fill="#1B1210"/>
+  <circle cx="54.3" cy="20.8" r="1.4" fill="#FFFFFF"/>
+</svg>

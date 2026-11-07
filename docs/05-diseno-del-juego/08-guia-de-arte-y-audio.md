@@ -63,6 +63,18 @@ Tamaños en la resolución base: títulos de 40 a 56 px, preguntas de 28 px, lec
 
 ## Personajes
 
+### Avatar base (Sprint 3)
+
+| Rasgo | Opciones |
+| --- | --- |
+| Cuerpo | Niña (falda y medias) o niño (pantalón) |
+| Tono de piel | 6, de claro a oscuro |
+| Peinado | Corto, rulos, erizo, trenzas con pompones, cola y melena; cualquier peinado sirve para niña o niño |
+| Cabello | 5 colores, del negro al castaño claro |
+| Chompa, pantalón o falda | 8 colores textiles de la Sierra; la chompa lleva siempre una franja tejida con rombos |
+
+Quien todavía no creó su personaje aparece como una silueta celeste con un signo de pregunta.
+
 - Cada personaje tiene una hoja de modelo: vista de frente, de perfil y de tres cuartos, con sus colores.
 - **Animación por piezas (cut-out):** cabeza, ojos, bocas intercambiables, torso, brazos, piernas y cola o alas, armadas con `Skeleton2D` y animadas con `AnimationPlayer`.
 - Expresiones mínimas: alegría, ánimo, pensar, sorpresa y tristeza leve.
@@ -106,6 +118,7 @@ Tamaños en la resolución base: títulos de 40 a 56 px, preguntas de 28 px, lec
 - Los SVG evitan filtros (desenfoques y sombras de SVG) porque el rasterizador de Godot no los admite; las luces y sombras se dibujan con formas, degradados y recortes (`clipPath`).
 - El rig de Quwi usa nodos `Node2D` con pivotes y sus gestos (respirar, parpadear, hablar, saltar, saludar) se animan por código con interpolaciones. Para las animaciones largas del Sprint 6 se usará `AnimationPlayer`.
 - La paleta de cada pieza sale de las tablas de esta guía; los contornos usan el marrón cálido `#5A2E16` y el logotipo `#4A2618`.
+- El avatar del estudiante usa el mismo rig por piezas, pero la piel, el cabello y la ropa se dibujan en gris (`#EDEDED` base, `#FFFFFF` luz, `#C9C9C9` y `#AEAEAE` sombras, `#595959` contorno) y el juego los tiñe con la paleta elegida. Así, el contorno de cada pieza queda del color de su propia sombra. Los ojos, la boca, los zapatos, la franja tejida de la chompa, las medias y los lazos tienen color propio.
 
 ## Audio
 

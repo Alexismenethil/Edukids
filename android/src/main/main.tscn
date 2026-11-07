@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://src/main/navigator.gd" id="1_navigator"]
+[ext_resource type="PackedScene" path="res://scenes/ui/components/diagnostics_overlay.tscn" id="2_diagnostics"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_navigator")
@@ -17,4 +18,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.3647059, 0.6784314, 0.8745098, 1)
+color = Color(0.30980393, 0.65882355, 0.8666667, 1)
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="Diagnostics" parent="Overlay" instance=ExtResource("2_diagnostics")]

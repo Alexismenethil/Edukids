@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" path="res://assets/art/ui/ui_icon_play.svg" id="15_play"]
 [ext_resource type="Texture2D" path="res://assets/art/ui/ui_icon_teacher.svg" id="16_teacher"]
 [ext_resource type="PackedScene" path="res://scenes/ui/components/speech_bubble.tscn" id="17_bubble"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/ui_icon_sound_on.svg" id="18_sound"]
+[ext_resource type="Script" path="res://scenes/ui/components/sfx_player.gd" id="19_sfx"]
+[ext_resource type="PackedScene" path="res://scenes/characters/hummingbird/hummingbird.tscn" id="20_bird"]
 
 [sub_resource type="Gradient" id="Gradient_sky"]
 offsets = PackedFloat32Array(0, 0.42, 0.7, 1)
@@ -50,6 +53,11 @@ height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_confetti"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
+colors = PackedColorArray(0.9098039, 0.5137255, 0.22745098, 1, 0.23137255, 0.49019608, 0.84705883, 1, 0.24705882, 0.6392157, 0.3019608, 1, 0.7607843, 0.09411765, 0.35686275, 1, 0.9490196, 0.75686276, 0.30588236, 1)
 
 [sub_resource type="Gradient" id="Gradient_pollen_life"]
 offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
@@ -170,6 +178,12 @@ mouse_filter = 2
 texture = ExtResource("10_near")
 expand_mode = 1
 
+[node name="Hummingbird" parent="World/NearLayer" instance=ExtResource("20_bird")]
+position = Vector2(-140, -60)
+scale = Vector2(0.68, 0.68)
+flowers = Array[Vector2]([Vector2(520, 96), Vector2(498, 104), Vector2(562, 118), Vector2(540, 128), Vector2(410, 129), Vector2(449, 137)])
+outside = Vector2(-140, -60)
+
 [node name="Quwi" parent="World" instance=ExtResource("11_quwi")]
 position = Vector2(1336, 904)
 scale = Vector2(0.8, 0.8)
@@ -260,6 +274,17 @@ theme_type_variation = &"GhostButton"
 text = "Docente"
 icon = ExtResource("16_teacher")
 
+[node name="SoundButton" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 172.0
+offset_bottom = 80.0
+theme_type_variation = &"GhostButton"
+text = "Sonido"
+icon = ExtResource("18_sound")
+
 [node name="VersionLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -270,8 +295,28 @@ offset_top = -48.0
 offset_right = 420.0
 offset_bottom = -16.0
 grow_vertical = 0
+mouse_filter = 0
 theme_type_variation = &"VersionLabel"
 text = "Versión 0.1.0"
+
+[node name="Confetti" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 44
+lifetime = 1.4
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 980)
+initial_velocity_min = 360.0
+initial_velocity_max = 640.0
+angular_velocity_min = -540.0
+angular_velocity_max = 540.0
+damping_min = 40.0
+damping_max = 80.0
+scale_amount_min = 7.0
+scale_amount_max = 12.0
+color_initial_ramp = SubResource("Gradient_confetti")
 
 [node name="SpeechBubble" parent="." instance=ExtResource("17_bubble")]
 layout_mode = 0
@@ -294,3 +339,7 @@ layout_mode = 2
 theme_type_variation = &"ToastLabel"
 text = "El modo docente llegará muy pronto."
 horizontal_alignment = 1
+
+[node name="Sfx" type="Node" parent="."]
+script = ExtResource("19_sfx")
+voices = 8

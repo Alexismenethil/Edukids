@@ -11,6 +11,7 @@ extends SceneTree
 ##
 ## La escena generada no se edita a mano; la animación vive en el script del personaje.
 
+## Ancho del atlas si el .rig.json no indica "atlas_width". El alto nunca debe pasar de 2048 px.
 const ATLAS_WIDTH := 1024
 const PADDING := 2
 const GAP := 4
@@ -30,6 +31,7 @@ func _build(rig_path: String) -> int:
 	var master_svg := FileAccess.get_file_as_string(rig["master"])
 	var scale: float = rig["scale"]
 	var nodes: Array = rig["nodes"]
+	var atlas_width: int = int(rig.get("atlas_width", ATLAS_WIDTH))
 
 	var part_names: Array[String] = []
 	for node: Dictionary in nodes:
@@ -59,7 +61,7 @@ func _build(rig_path: String) -> int:
 	var shelf_height := 0
 	for part in order:
 		var size: Vector2i = pieces[part]["image"].get_size()
-		if cursor.x + size.x + GAP > ATLAS_WIDTH:
+		if cursor.x + size.x + GAP > atlas_width:
 			cursor = Vector2i(GAP, cursor.y + shelf_height + GAP)
 			shelf_height = 0
 		pieces[part]["region"] = Rect2i(cursor, size)
@@ -67,7 +69,7 @@ func _build(rig_path: String) -> int:
 		shelf_height = maxi(shelf_height, size.y)
 	var atlas_height := cursor.y + shelf_height + GAP
 	atlas_height += (4 - atlas_height % 4) % 4
-	var atlas := Image.create_empty(ATLAS_WIDTH, atlas_height, false, Image.FORMAT_RGBA8)
+	var atlas := Image.create_empty(atlas_width, atlas_height, false, Image.FORMAT_RGBA8)
 	for part in order:
 		var piece_image: Image = pieces[part]["image"]
 		atlas.blit_rect(piece_image, Rect2i(Vector2i.ZERO, piece_image.get_size()), pieces[part]["region"].position)
@@ -80,7 +82,7 @@ func _build(rig_path: String) -> int:
 	var file := FileAccess.open(rig["scene"], FileAccess.WRITE)
 	file.store_string(scene_text)
 	file.close()
-	print("Rig listo: %d piezas en un atlas de %dx%d px -> %s" % [part_names.size(), ATLAS_WIDTH, atlas_height, rig["scene"]])
+	print("Rig listo: %d piezas en un atlas de %dx%d px -> %s" % [part_names.size(), atlas_width, atlas_height, rig["scene"]])
 	return 0
 
 

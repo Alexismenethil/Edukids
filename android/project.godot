@@ -15,8 +15,8 @@ config/description="El quipu de los saberes: aventura educativa para 6.° grado 
 config/version="0.1.0"
 run/main_scene="res://src/main/main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-boot_splash/bg_color=Color(0.3647059, 0.6784314, 0.8745098, 1)
-boot_splash/show_image=false
+boot_splash/bg_color=Color(0.30980393, 0.65882355, 0.8666667, 1)
+boot_splash/image="res://assets/art/ui/ui_boot_splash.png"
 config/icon="res://icon.svg"
 
 [audio]
@@ -49,4 +49,4 @@ common/snap_controls_to_pixels=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.3647059, 0.6784314, 0.8745098, 1)
+environment/defaults/default_clear_color=Color(0.30980393, 0.65882355, 0.8666667, 1)

@@ -85,17 +85,22 @@ func _show_line(index: int) -> void:
 	var is_last := index == _dialogue.lines.size() - 1
 	_name.text = line.speaker_name
 	_text.text = line.text
-	_text.visible_ratio = 0.0
+	_text.visible_characters = 0
 	_next.text = _dialogue.close_label if is_last else _dialogue.next_label
 	_layout.call_deferred()
 	line_started.emit(index, line)
 	_typing = create_tween()
-	_typing.tween_property(_text, "visible_ratio", 1.0, maxf(0.4, line.text.length() / CHARS_PER_SECOND))
+	_typing.tween_method(_reveal, 0, line.text.length(), maxf(0.4, line.text.length() / CHARS_PER_SECOND))
 	_typing.tween_callback(func() -> void: line_shown.emit(index))
 	if index > 0:
 		var bounce := create_tween()
 		bounce.tween_property(_panel, "scale", Vector2(1.03, 0.97), 0.08)
 		bounce.tween_property(_panel, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+
+
+## Muestra las letras hasta la posición indicada.
+func _reveal(count: int) -> void:
+	_text.visible_characters = count
 
 
 ## El panel queda a la izquierda de la punta y la colita sale de su borde derecho.
