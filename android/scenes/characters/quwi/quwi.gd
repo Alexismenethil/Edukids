@@ -6,7 +6,6 @@ extends Node2D
 
 const SHADOW_COLOR := Color(0.2, 0.12, 0.05, 0.24)
 const HIT_AREA := Rect2(-100.0, -295.0, 200.0, 305.0)
-const HOP_SOUND := preload("res://assets/audio/sfx/sfx_quwi_hop.ogg")
 const SQUEAK_SOUND := preload("res://assets/audio/sfx/sfx_quwi_squeak.ogg")
 
 @onready var _hop: Node2D = $Hop
@@ -119,7 +118,6 @@ func talk(active: bool) -> void:
 
 ## Salto con anticipación, estiramiento y aterrizaje.
 func hop(height: float = 38.0) -> void:
-	_voice.play(HOP_SOUND, randf_range(0.94, 1.08) * (1.0 + (38.0 - height) / 160.0), -5.0)
 	var tween := create_tween()
 	tween.tween_property(self, "squash", Vector2(1.12, 0.86), 0.08)
 	tween.tween_property(self, "squash", Vector2(0.92, 1.1), 0.1)

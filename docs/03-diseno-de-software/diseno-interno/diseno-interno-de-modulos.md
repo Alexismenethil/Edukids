@@ -6,12 +6,12 @@ Componentes del juego con sus casos de uso, sus puertos y las reglas del dominio
 
 | Componente | Casos de uso | Reglas del dominio | Puertos |
 | --- | --- | --- | --- |
-| Aula e identidad | `ConfigureInstitution`, `RegisterStudent`, `UpdateStudent`, `DeactivateStudent`, `LoginWithPin`, `ResetStudentPin` | `Pin`, `TeacherCode`, bloqueo tras 5 fallos | `InstitutionRepository`, `StudentRepository`, `PinHasher`, `Clock` |
+| Aula e identidad | `ConfigureInstitution`, `GetClassroom`, `UnlockTeacherMode`, `RegisterStudent`, `UpdateStudent`, `SetStudentActive`, `ResetStudentPin`, `LoginStudent`, `ListStudents`, `GetStudentProfile`, `CustomizeAvatar`, `SuggestPin`, `SuggestAvatar` | `Pin`, `PinLockout` (bloqueo tras 5 fallos), `PersonName`, `TeacherCode`, `Avatar` | `InstitutionRepository`, `StudentRepository`, `PinHasher`, `Clock`, `IdGenerator`, `RandomSource` |
 | Paquetes | `FetchCatalog`, `DownloadPackage`, `InstallPackage`, `ImportPackageFile`, `ReleasePackage`, `EnablePackage` | Validación del manifiesto y del contenido | `CatalogGateway`, `PackageDownloader`, `PackageArchive`, `PackageRepository`, `FileImporter` |
 | Contenidos | `GetStopContent`, `OpenTheory`, `OpenReading` | `UnlockRule` (RN-18) | `PackageStore`, `ProgressRepository` |
 | Juego | `StartLevel`, `SubmitAnswer`, `RequestHint`, `FinishLevel` | `LevelSession`, `DangerMeter`, evaluadores, `StarRule` | `PackageStore`, `AttemptRepository`, `LevelSessionStore`, `Clock`, `IdGenerator` |
 | Desafío final | `StartFinalChallenge`, `AnswerFinalItem`, `SubmitFinalChallenge`, `AuthorizeExtraAttempt` | `FinalChallenge`, `CnebGradeScale`, límite de intentos | `AttemptRepository`, `SettingsRepository`, `Clock` |
-| Recompensas | `GrantRewards`, `CustomizeAvatar`, `GetCollection` | Umbrales de accesorios, condiciones de insignias | `RewardRepository`, `StudentRepository` |
+| Recompensas | `GrantRewards`, `GetCollection` (los accesorios de RF-32 amplían `CustomizeAvatar`) | Umbrales de accesorios, condiciones de insignias | `RewardRepository`, `StudentRepository` |
 | Reportes | `GetSectionReport`, `ExportReportCsv` | Agregados por estudiante, área y módulo | `AttemptRepository`, `ReportExporter` |
 | Ajustes | `UpdateEvaluationSettings`, `UpdateAudioSettings` | Rangos válidos de la escala | `SettingsRepository` |
 

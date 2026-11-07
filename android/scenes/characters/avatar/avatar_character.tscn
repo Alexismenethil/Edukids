@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/characters/avatar/avatar_character.gd" id="1_avatar"]
+
+[node name="AvatarCharacter" type="Node2D"]
+script = ExtResource("1_avatar")

@@ -134,7 +134,9 @@ Tablas adicionales: `teacher` (nombre, `pin_hash`, `pin_salt`, intentos fallidos
 - Cada respuesta se guarda en su propia transacción, con SQLite en modo WAL (RNF-06).
 - Los identificadores de intentos y respuestas son UUID generados en la tablet.
 - Las fechas se guardan en formato ISO 8601.
-- El PIN se guarda como hash con sal; nunca en texto claro (RNF-08).
+- El PIN se guarda como hash con sal; nunca en texto claro (RNF-08). El hash usa PBKDF2-HMAC-SHA256 y guarda el algoritmo y las iteraciones (`pbkdf2-sha256$4000$…`), así se pueden subir las iteraciones sin invalidar los PIN guardados. La sal son 16 bytes aleatorios en hexadecimal.
+- `failed_attempts` y `locked_until` llevan el bloqueo temporal: con 5 fallos seguidos, el acceso se bloquea 5 minutos.
+- `student.avatar_json` guarda los índices de los catálogos del avatar: `{"body": "girl", "skin": 2, "hair_style": 3, "hair_color": 0, "top_color": 1, "bottom_color": 4}`. Un `{}` significa que el estudiante todavía no creó su personaje. Los colores no se guardan: los decide la paleta del juego.
 - Un estudiante con resultados se desactiva, no se elimina (RN-07).
 
 ## Nube (PostgreSQL)

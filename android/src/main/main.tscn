@@ -8,9 +8,6 @@ script = ExtResource("1_navigator")
 
 [node name="Screens" type="Node" parent="."]
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
-
 [node name="Curtain" type="CanvasLayer" parent="."]
 layer = 10
 

@@ -1,7 +1,7 @@
 class_name TitleScreen
 extends Control
 ## Pantalla de inicio (vista humilde): pinta el amanecer en la Sierra, anima la entrada,
-## hace sonar cada gesto y reenvía los toques a su presentador. No conoce casos de uso ni datos.
+## reproduce los sonidos de Quwi y el quipu, y reenvía los toques a su presentador.
 
 signal play_requested
 signal teacher_requested
@@ -15,11 +15,6 @@ const SHINE_EVERY := 6.5
 const SHINE_SHADER := preload("res://assets/shaders/logo_shine.gdshader")
 const SOUND_ON_ICON := preload("res://assets/art/ui/ui_icon_sound_on.svg")
 const SOUND_OFF_ICON := preload("res://assets/art/ui/ui_icon_sound_off.svg")
-const TAP_SOUND := preload("res://assets/audio/sfx/sfx_ui_tap.ogg")
-const LETTER_SOUND := preload("res://assets/audio/sfx/sfx_letter_land.ogg")
-const RIBBON_SOUND := preload("res://assets/audio/sfx/sfx_ribbon.ogg")
-const SHINE_SOUND := preload("res://assets/audio/sfx/sfx_logo_shine.ogg")
-const SCATTER_SOUND := preload("res://assets/audio/sfx/sfx_knots_scatter.ogg")
 const RETURN_SOUND := preload("res://assets/audio/sfx/sfx_knots_return.ogg")
 
 @onready var _halo: Control = $Halo
@@ -50,7 +45,6 @@ var _pulse: Tween
 var _toast_tween: Tween
 var _shine := ShaderMaterial.new()
 var _shine_wait := 1.2
-var _shines := 0
 var _version_taps: Array[int] = []
 var _layer_base: Array[Vector2] = []
 var _letter_base: Array[Vector2] = []
@@ -154,9 +148,6 @@ func _play_intro() -> void:
 		var letter := _letters.get_child(i) as Node2D
 		var delay := 0.5 + i * 0.08
 		tween.tween_property(letter, "position:y", _letter_base[i].y, 0.6).set_delay(delay).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		# Cada letra suena un poco más aguda al caer, como una escala.
-		tween.tween_callback(_sfx.play.bind(LETTER_SOUND, 0.9 + i * 0.075, -3.0)).set_delay(delay + 0.3)
-	tween.tween_callback(_sfx.play.bind(RIBBON_SOUND, 1.0, 0.0)).set_delay(1.12)
 	tween.tween_property(_ribbon, "scale:x", 1.0, 0.5).set_delay(1.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(_subtitle, "modulate:a", 1.0, 0.35).set_delay(1.45)
 	tween.tween_property(_quipu, "reveal", 1.0, 1.0).set_delay(1.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -191,16 +182,12 @@ func _sweep_shine() -> void:
 	var finish := last.global_position.x - last.global_position.y * 0.4 + 140.0
 	var tween := create_tween()
 	tween.tween_method(func(x: float) -> void: _shine.set_shader_parameter("shine_x", x), start, finish, 0.9).set_trans(Tween.TRANS_SINE)
-	if _shines == 0:
-		_sfx.play(SHINE_SOUND, 1.0, -4.0)
-	_shines += 1
 
 
 func _on_play_pressed() -> void:
 	if _in_dialogue or _presenter == null:
 		return
 	_in_dialogue = true
-	_sfx.play(TAP_SOUND, 1.0, -2.0)
 	if _pulse:
 		_pulse.kill()
 	_confetti.global_position = _play.global_position + _play.size * 0.5
@@ -210,6 +197,14 @@ func _on_play_pressed() -> void:
 	tween.tween_property(_play, "scale", Vector2(1.15, 0.88), 0.08)
 	tween.tween_property(_play, "scale", Vector2.ZERO, 0.26).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	_quwi.hop()
+	# Quwi cuenta su adelanto solo la primera vez; después, Jugar lleva directo a los perfiles.
+	if not _presenter.should_tell_teaser():
+		var go := create_tween()
+		go.tween_interval(0.5)
+		go.tween_callback(func() -> void:
+			_restore_play()
+			play_requested.emit())
+		return
 	# El confeti y el salto de Quwi se lucen antes de que aparezca el globo.
 	var dialogue := _presenter.prologue_teaser()
 	var later := create_tween()
@@ -237,7 +232,7 @@ func _on_line_started(_index: int, line: DialogueLineViewModel) -> void:
 	_quwi.talk(true)
 	match line.cue:
 		&"knots_scatter":
-			_sfx.play(SCATTER_SOUND, 1.0, -3.0)
+			_sfx.play(RETURN_SOUND)
 			_quipu.scatter_knots(KNOT_TARGETS)
 		&"knots_return":
 			_sfx.play(RETURN_SOUND)
@@ -255,20 +250,31 @@ func _on_dialogue_finished() -> void:
 	if _quipu.has_loose_knots():
 		_sfx.play(RETURN_SOUND)
 		_quipu.return_knots()
+	_presenter.mark_teaser_told()
 	var tween := create_tween()
-	tween.tween_interval(0.4)
+	tween.tween_interval(1.1)
+	tween.tween_callback(func() -> void:
+		_restore_play()
+		play_requested.emit())
+
+
+## Vuelve a mostrar el botón Jugar (por ejemplo, si la tablet aún no está configurada).
+func _restore_play() -> void:
+	var tween := create_tween()
 	tween.tween_property(_play, "scale", Vector2.ONE, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(func() -> void:
 		_in_dialogue = false
 		_start_pulse())
-	play_requested.emit()
+
+
+## La tablet todavía no está configurada: Quwi lo avisa.
+func show_not_configured() -> void:
+	_quwi.react_to_tap()
+	_show_toast(_presenter.not_configured_notice())
 
 
 func _on_teacher_pressed() -> void:
-	_sfx.play(TAP_SOUND)
 	teacher_requested.emit()
-	if _presenter:
-		_show_toast(_presenter.teacher_notice())
 
 
 func _on_sound_pressed() -> void:
@@ -276,8 +282,6 @@ func _on_sound_pressed() -> void:
 		return
 	var sound := _presenter.toggle_sound()
 	_show_sound(sound)
-	if sound.sound_on:
-		_sfx.play(TAP_SOUND)
 	if not sound.notice.is_empty():
 		_show_toast(sound.notice)
 

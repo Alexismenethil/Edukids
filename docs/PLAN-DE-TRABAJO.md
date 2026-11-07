@@ -30,9 +30,28 @@ El proyecto avanza por sprints, cada uno con un entregable que se puede verifica
 | APK de prueba firmado en modo depuración, probado en un emulador Android 17 | Hecho (59 MB, 110 MB de memoria) |
 | Base local SQLite (godot-sqlite 4.9, SQLite 3.51) con migraciones, modo WAL y pruebas; probada en Android arm64 | Hecho |
 | Primer uso de SQLite: ajustes de sonido (RF-36) que persisten al reiniciar | Hecho |
-| Música andina original, efectos de sonido y pulido visual (picaflor, destello del logo, reacciones de Quwi) | Hecho |
+| Pulido visual (picaflor, destello del logo, reacciones de Quwi) | Hecho |
+| Audio de la introducción | Pendiente elegir música; se conservan los sonidos de Quwi y de los nudos al desprenderse y regresar |
 | Panel de medición oculto (tres toques sobre la versión) | Hecho |
 | Medición del APK en la tablet real del piloto | Pendiente: requiere la tablet. godot-sqlite no trae binario para Android de 32 bits (armeabi-v7a): si la tablet es de 32 bits, el juego funciona sin guardar y hay que compilar el plugin |
+
+## Avance del Sprint 3
+
+| Entregable | Estado |
+| --- | --- |
+| Configuración inicial (RF-01, CU-01): asistente de tres pasos (institución, secciones y acceso), con validación por campo y un quipu que marca el avance | Hecho |
+| PIN docente (RF-03) de 4 a 6 números, sin series fáciles, con bloqueo de 5 minutos tras 5 fallos (RNF-08) | Hecho |
+| Modo docente: estudiantes por sección; registrar, editar, cambiar de sección, desactivar y reactivar (RF-04, RN-06, RN-07) | Hecho |
+| Restablecer el PIN de un estudiante (RF-17) y PIN sugerido al azar | Hecho |
+| El modo docente se cierra solo tras 5 minutos sin uso | Hecho |
+| Ingreso del estudiante (RF-05, CU-03): perfiles por sección con su personaje y PIN de 4 números que se ata como nudos de un quipu; bloqueo tras 5 fallos | Hecho |
+| Avatar base (RF-31): niña o niño, 6 tonos de piel, 6 peinados, 5 colores de cabello y 8 de ropa; editor «¡Crea tu personaje!» con «Sorpréndeme» | Hecho |
+| PIN guardado con PBKDF2-HMAC-SHA256 y sal aleatoria; nunca en texto claro | Hecho |
+| Repositorios SQLite de institución, secciones, docente y estudiantes, con respaldo en memoria | Hecho |
+| Modo demostración con aula ficticia en una base aparte, para grabar y probar | Hecho |
+| Pruebas: 151 (70 nuevas) y verificación de dependencias | Hecho |
+| Prueba en Android (emulador de tablet 2560 × 1600): teclado en pantalla, validación, PIN docente y de estudiante, avatar y datos que siguen ahí al cerrar la app | Hecho; falta repetirla en la tablet real del piloto |
+| Habilitación de paquetes por sección (RF-09) | Pasa al Sprint 7, cuando existan paquetes |
 
 ## Épicas
 
