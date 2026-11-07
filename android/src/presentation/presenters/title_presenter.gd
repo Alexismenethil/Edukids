@@ -14,11 +14,15 @@ const SPEAKER_NAMES := {
 }
 
 var _get_story_scene: GetStoryScene
+var _get_audio_settings: GetAudioSettings
+var _toggle_sound: ToggleSound
 var _version: String
 
 
-func _init(get_story_scene: GetStoryScene, version: String) -> void:
+func _init(get_story_scene: GetStoryScene, get_audio_settings: GetAudioSettings, toggle_sound: ToggleSound, version: String) -> void:
 	_get_story_scene = get_story_scene
+	_get_audio_settings = get_audio_settings
+	_toggle_sound = toggle_sound
 	_version = version
 
 
@@ -28,6 +32,7 @@ func title() -> TitleViewModel:
 	view_model.play_label = "Jugar"
 	view_model.teacher_label = "Docente"
 	view_model.version_label = "Versión %s" % _version
+	view_model.sound = _sound_view_model(_get_audio_settings.execute())
 	return view_model
 
 
@@ -46,9 +51,21 @@ func prologue_teaser() -> DialogueViewModel:
 	return view_model
 
 
+func toggle_sound() -> SoundToggleViewModel:
+	return _sound_view_model(_toggle_sound.execute())
+
+
 func teacher_notice() -> String:
 	return "El modo docente llegará muy pronto."
 
 
 static func speaker_name(speaker_id: String) -> String:
 	return SPEAKER_NAMES.get(speaker_id, speaker_id.capitalize())
+
+
+func _sound_view_model(response: AudioSettingsResponse) -> SoundToggleViewModel:
+	var view_model := SoundToggleViewModel.new()
+	view_model.sound_on = not response.muted
+	view_model.label = "Sonido"
+	view_model.notice = "" if response.persisted else "No se pudo guardar el ajuste de sonido."
+	return view_model

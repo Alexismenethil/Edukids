@@ -9,6 +9,11 @@ signal line_shown(index: int)
 signal finished
 
 const CHARS_PER_SECOND := 36.0
+const APPEAR_SOUND := preload("res://assets/audio/sfx/sfx_ui_bubble.ogg")
+const TYPE_SOUND := preload("res://assets/audio/sfx/sfx_ui_type.ogg")
+const TAP_SOUND := preload("res://assets/audio/sfx/sfx_ui_tap.ogg")
+## Cada cuántas letras suena el tecleo.
+const TYPE_EVERY := 3
 const FILL := Color("#FFF8EC")
 const OUTLINE := Color("#5A2E16")
 
@@ -18,12 +23,14 @@ const OUTLINE := Color("#5A2E16")
 @onready var _skip: Button = $Panel/Box/Footer/SkipButton
 @onready var _name_tag: PanelContainer = $NameTag
 @onready var _name: Label = $NameTag/NameLabel
+@onready var _sfx: SfxPlayer = $Sfx
 
 var _dialogue: DialogueViewModel
 var _index := -1
 var _typing: Tween
 var _tail_a := Vector2.ZERO
 var _tail_b := Vector2.ZERO
+var _last_tick := 0
 
 
 func _ready() -> void:
@@ -41,6 +48,7 @@ func is_open() -> bool:
 func play(dialogue: DialogueViewModel) -> void:
 	_dialogue = dialogue
 	_skip.text = dialogue.skip_label
+	_sfx.play(APPEAR_SOUND, 1.0, -2.0)
 	visible = true
 	scale = Vector2(0.3, 0.3)
 	modulate.a = 0.0
@@ -54,6 +62,7 @@ func play(dialogue: DialogueViewModel) -> void:
 func advance() -> void:
 	if _dialogue == null:
 		return
+	_sfx.play(TAP_SOUND, randf_range(0.96, 1.06), -6.0)
 	if _typing and _typing.is_running():
 		_typing.kill()
 		_text.visible_ratio = 1.0
@@ -85,17 +94,26 @@ func _show_line(index: int) -> void:
 	var is_last := index == _dialogue.lines.size() - 1
 	_name.text = line.speaker_name
 	_text.text = line.text
-	_text.visible_ratio = 0.0
+	_text.visible_characters = 0
+	_last_tick = 0
 	_next.text = _dialogue.close_label if is_last else _dialogue.next_label
 	_layout.call_deferred()
 	line_started.emit(index, line)
 	_typing = create_tween()
-	_typing.tween_property(_text, "visible_ratio", 1.0, maxf(0.4, line.text.length() / CHARS_PER_SECOND))
+	_typing.tween_method(_reveal, 0, line.text.length(), maxf(0.4, line.text.length() / CHARS_PER_SECOND))
 	_typing.tween_callback(func() -> void: line_shown.emit(index))
 	if index > 0:
 		var bounce := create_tween()
 		bounce.tween_property(_panel, "scale", Vector2(1.03, 0.97), 0.08)
 		bounce.tween_property(_panel, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+
+
+## Muestra las letras hasta la posición indicada y suena un tecleo suave cada pocas letras.
+func _reveal(count: int) -> void:
+	_text.visible_characters = count
+	if count - _last_tick >= TYPE_EVERY and count <= _text.text.length() and _text.text[count - 1] != " ":
+		_last_tick = count
+		_sfx.play(TYPE_SOUND, randf_range(0.9, 1.15), -4.0)
 
 
 ## El panel queda a la izquierda de la punta y la colita sale de su borde derecho.

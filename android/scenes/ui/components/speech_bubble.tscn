@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/components/speech_bubble.gd" id="1_bubble"]
 [ext_resource type="Script" path="res://scenes/ui/components/bubble_tail.gd" id="2_tail"]
 [ext_resource type="Texture2D" path="res://assets/art/ui/ui_icon_next.svg" id="3_next"]
+[ext_resource type="Script" path="res://scenes/ui/components/sfx_player.gd" id="4_sfx"]
 
 [node name="SpeechBubble" type="Control"]
 layout_mode = 3
@@ -65,3 +66,7 @@ theme_type_variation = &"NameTag"
 layout_mode = 2
 theme_type_variation = &"NameLabel"
 text = "Quwi"
+
+[node name="Sfx" type="Node" parent="."]
+script = ExtResource("4_sfx")
+voices = 4

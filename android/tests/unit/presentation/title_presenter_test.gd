@@ -11,8 +11,19 @@ class FakeStoryRepository extends StoryRepository:
 		return Result.fail(&"scene_not_found")
 
 
+var _settings: FakeSettingsRepository
+var _mixer: FakeAudioMixer
+
+
+func before_test() -> void:
+	_settings = FakeSettingsRepository.new()
+	_mixer = FakeAudioMixer.new()
+
+
 func _presenter(repository: StoryRepository) -> TitlePresenter:
-	return TitlePresenter.new(GetStoryScene.new(repository), "0.1.0")
+	return TitlePresenter.new(
+		GetStoryScene.new(repository), GetAudioSettings.new(_settings), ToggleSound.new(_settings, _mixer), "0.1.0"
+	)
 
 
 func test_title_texts() -> void:
@@ -20,6 +31,7 @@ func test_title_texts() -> void:
 	assert_str(view_model.play_label).is_equal("Jugar")
 	assert_str(view_model.subtitle).is_equal("El quipu de los saberes")
 	assert_str(view_model.version_label).is_equal("Versión 0.1.0")
+	assert_bool(view_model.sound.sound_on).is_true()
 
 
 func test_teaser_uses_display_names_and_keeps_cues() -> void:
@@ -40,3 +52,17 @@ func test_teaser_falls_back_to_a_greeting() -> void:
 	var dialogue := _presenter(FakeStoryRepository.new()).prologue_teaser()
 	assert_int(dialogue.lines.size()).is_equal(1)
 	assert_str(dialogue.lines[0].speaker_name).is_equal("Quwi")
+
+
+func test_sound_button_toggles_and_remembers() -> void:
+	var presenter := _presenter(FakeStoryRepository.new())
+	assert_bool(presenter.toggle_sound().sound_on).is_false()
+	assert_bool(presenter.title().sound.sound_on).is_false()
+	assert_bool(presenter.toggle_sound().sound_on).is_true()
+
+
+func test_sound_button_warns_when_it_cannot_save() -> void:
+	_settings.fail_saves = true
+	var view_model := _presenter(FakeStoryRepository.new()).toggle_sound()
+	assert_bool(view_model.sound_on).is_false()
+	assert_str(view_model.notice).is_not_empty()

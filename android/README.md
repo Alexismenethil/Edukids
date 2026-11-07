@@ -129,10 +129,15 @@ Cada grupo `part_*` del SVG maestro es una pieza; el archivo `.rig.json` define 
 
 Falta medir en la tablet real del piloto: arranque, fps y memoria.
 
+## Panel de medición
+
+En la pantalla de inicio, tres toques seguidos sobre el texto de la versión abren un panel con el modelo, Android, la arquitectura, la GPU, la memoria, los cuadros por segundo, el tiempo de arranque y el estado de SQLite. Una captura de ese panel en la tablet real cierra la medición del Sprint 2. También se abre con `godot --path android -- --diagnostics`.
+
 ## Licencias de terceros
 
 | Recurso | Licencia |
 | --- | --- |
 | Fredoka y Andika (`assets/fonts/`) | SIL Open Font License 1.1 (incluida en la carpeta) |
 | GdUnit4 (`addons/gdUnit4/`) | MIT (incluida en la carpeta) |
+| godot-sqlite 4.9 (`addons/godot-sqlite/`) | MIT (incluida en la carpeta) |
 | Godot Engine | MIT |

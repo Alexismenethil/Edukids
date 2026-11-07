@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/components/diagnostics_overlay.gd" id="1_overlay"]
+
+[node name="Diagnostics" type="PanelContainer"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 744.0
+offset_bottom = 480.0
+theme_type_variation = &"ToastPanel"
+script = ExtResource("1_overlay")
+
+[node name="Box" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Box"]
+layout_mode = 2
+theme_type_variation = &"ToastLabel"
+theme_override_font_sizes/font_size = 24
+text = "Medición del APK"
+
+[node name="Text" type="Label" parent="Box"]
+layout_mode = 2
+theme_type_variation = &"ToastLabel"
+theme_override_font_sizes/font_size = 20
+text = "Midiendo…"
+
+[node name="CloseButton" type="Button" parent="Box"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"GhostButton"
+text = "Cerrar"

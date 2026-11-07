@@ -1,15 +1,26 @@
 class_name TitleScreen
 extends Control
-## Pantalla de inicio (vista humilde): pinta el amanecer en la Sierra, anima la entrada
-## y reenvía los toques a su presentador. No conoce casos de uso ni datos.
+## Pantalla de inicio (vista humilde): pinta el amanecer en la Sierra, anima la entrada,
+## hace sonar cada gesto y reenvía los toques a su presentador. No conoce casos de uso ni datos.
 
 signal play_requested
 signal teacher_requested
+signal diagnostics_requested
 
 ## Hacia dónde vuelan los nudos del quipu: la Sierra, la Selva y la Costa.
 const KNOT_TARGETS: Array[Vector2] = [Vector2(-900.0, 560.0), Vector2(-80.0, 760.0), Vector2(900.0, 520.0)]
 const LETTER_TILTS: Array[float] = [-0.06, 0.04, -0.03, 0.05, -0.05, 0.03, -0.04]
 const BUBBLE_OFFSET := Vector2(-64.0, -112.0)
+const SHINE_EVERY := 6.5
+const SHINE_SHADER := preload("res://assets/shaders/logo_shine.gdshader")
+const SOUND_ON_ICON := preload("res://assets/art/ui/ui_icon_sound_on.svg")
+const SOUND_OFF_ICON := preload("res://assets/art/ui/ui_icon_sound_off.svg")
+const TAP_SOUND := preload("res://assets/audio/sfx/sfx_ui_tap.ogg")
+const LETTER_SOUND := preload("res://assets/audio/sfx/sfx_letter_land.ogg")
+const RIBBON_SOUND := preload("res://assets/audio/sfx/sfx_ribbon.ogg")
+const SHINE_SOUND := preload("res://assets/audio/sfx/sfx_logo_shine.ogg")
+const SCATTER_SOUND := preload("res://assets/audio/sfx/sfx_knots_scatter.ogg")
+const RETURN_SOUND := preload("res://assets/audio/sfx/sfx_knots_return.ogg")
 
 @onready var _halo: Control = $Halo
 @onready var _glow: Sprite2D = $Halo/SunGlow
@@ -22,11 +33,14 @@ const BUBBLE_OFFSET := Vector2(-64.0, -112.0)
 @onready var _subtitle: Label = $Logo/Subtitle
 @onready var _quipu: QuipuCords = $Logo/Quipu
 @onready var _play: Button = $PlayButton
+@onready var _confetti: CPUParticles2D = $Confetti
 @onready var _teacher: Button = $TeacherButton
+@onready var _sound: Button = $SoundButton
 @onready var _version: Label = $VersionLabel
 @onready var _bubble: SpeechBubble = $SpeechBubble
 @onready var _toast: PanelContainer = $Toast
 @onready var _toast_label: Label = $Toast/ToastLabel
+@onready var _sfx: SfxPlayer = $Sfx
 
 var _presenter: TitlePresenter
 var _time := 0.0
@@ -34,6 +48,10 @@ var _letters_alive := false
 var _in_dialogue := false
 var _pulse: Tween
 var _toast_tween: Tween
+var _shine := ShaderMaterial.new()
+var _shine_wait := 1.2
+var _shines := 0
+var _version_taps: Array[int] = []
 var _layer_base: Array[Vector2] = []
 var _letter_base: Array[Vector2] = []
 
@@ -50,17 +68,22 @@ func _ready() -> void:
 		_play.text = view_model.play_label
 		_teacher.text = view_model.teacher_label
 		_version.text = view_model.version_label
+		_show_sound(view_model.sound)
 	_play.pressed.connect(_on_play_pressed)
 	_teacher.pressed.connect(_on_teacher_pressed)
+	_sound.pressed.connect(_on_sound_pressed)
+	_version.gui_input.connect(_on_version_input)
 	_bubble.line_started.connect(_on_line_started)
 	_bubble.line_shown.connect(_on_line_shown)
 	_bubble.finished.connect(_on_dialogue_finished)
 	_toast.modulate.a = 0.0
+	_shine.shader = SHINE_SHADER
 	for layer in [_far, _mid, _near]:
 		_layer_base.append(layer.position)
 	for i in _letters.get_child_count():
 		var letter := _letters.get_child(i) as Node2D
 		letter.rotation = LETTER_TILTS[i % LETTER_TILTS.size()]
+		letter.material = _shine
 		_letter_base.append(letter.position)
 	_play_intro()
 
@@ -72,11 +95,38 @@ func _process(delta: float) -> void:
 	_mid.position.x = _layer_base[1].x + 11.0 * sin(_time * 0.17)
 	_near.position.x = _layer_base[2].x + 16.0 * sin(_time * 0.17)
 	_glow.scale = Vector2.ONE * (3.4 + 0.12 * sin(_time * 0.9))
-	if _letters_alive:
-		for i in _letters.get_child_count():
-			var letter := _letters.get_child(i) as Node2D
-			letter.position.y = _letter_base[i].y + 4.0 * sin(_time * 2.2 + i * 0.65)
-			letter.rotation = LETTER_TILTS[i] + 0.02 * sin(_time * 1.6 + i)
+	if not _letters_alive:
+		return
+	for i in _letters.get_child_count():
+		var letter := _letters.get_child(i) as Node2D
+		letter.position.y = _letter_base[i].y + 4.0 * sin(_time * 2.2 + i * 0.65)
+		letter.rotation = LETTER_TILTS[i] + 0.02 * sin(_time * 1.6 + i)
+	_shine_wait -= delta
+	if _shine_wait <= 0.0:
+		_shine_wait = SHINE_EVERY
+		_sweep_shine()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if _quwi.visible and _quwi.contains_point(event.global_position):
+			_on_quwi_tapped()
+			accept_event()
+
+
+## Equivale a tocar Jugar (lo usa también el modo demostración).
+func press_play() -> void:
+	_on_play_pressed()
+
+
+## Equivale a tocar el globo de diálogo.
+func advance_dialogue() -> void:
+	_bubble.advance()
+
+
+## Equivale a tocar a Quwi.
+func tap_quwi() -> void:
+	_on_quwi_tapped()
 
 
 func _play_intro() -> void:
@@ -91,8 +141,8 @@ func _play_intro() -> void:
 	_subtitle.modulate.a = 0.0
 	_quipu.reveal = 0.0
 	_play.scale = Vector2.ZERO
-	_teacher.modulate.a = 0.0
-	_version.modulate.a = 0.0
+	for button: Control in [_teacher, _sound, _version]:
+		button.modulate.a = 0.0
 	_quwi.visible = false
 
 	var tween := create_tween().set_parallel(true)
@@ -102,14 +152,18 @@ func _play_intro() -> void:
 	tween.tween_property(_halo, "modulate:a", 1.0, 1.4).set_delay(0.2)
 	for i in _letters.get_child_count():
 		var letter := _letters.get_child(i) as Node2D
-		tween.tween_property(letter, "position:y", _letter_base[i].y, 0.6).set_delay(0.5 + i * 0.08).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		var delay := 0.5 + i * 0.08
+		tween.tween_property(letter, "position:y", _letter_base[i].y, 0.6).set_delay(delay).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		# Cada letra suena un poco más aguda al caer, como una escala.
+		tween.tween_callback(_sfx.play.bind(LETTER_SOUND, 0.9 + i * 0.075, -3.0)).set_delay(delay + 0.3)
+	tween.tween_callback(_sfx.play.bind(RIBBON_SOUND, 1.0, 0.0)).set_delay(1.12)
 	tween.tween_property(_ribbon, "scale:x", 1.0, 0.5).set_delay(1.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(_subtitle, "modulate:a", 1.0, 0.35).set_delay(1.45)
 	tween.tween_property(_quipu, "reveal", 1.0, 1.0).set_delay(1.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(_quwi_enters).set_delay(1.1)
 	tween.tween_property(_play, "scale", Vector2.ONE, 0.55).set_delay(2.6).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(_teacher, "modulate:a", 1.0, 0.4).set_delay(2.8)
-	tween.tween_property(_version, "modulate:a", 1.0, 0.4).set_delay(2.8)
+	for button: Control in [_teacher, _sound, _version]:
+		tween.tween_property(button, "modulate:a", 1.0, 0.4).set_delay(2.8)
 	tween.chain().tween_callback(func() -> void:
 		_letters_alive = true
 		_start_pulse())
@@ -129,29 +183,53 @@ func _start_pulse() -> void:
 	_pulse.tween_property(_play, "scale", Vector2.ONE, 0.7).set_trans(Tween.TRANS_SINE)
 
 
-## Equivale a tocar Jugar (lo usa también el modo demostración).
-func press_play() -> void:
-	_on_play_pressed()
-
-
-## Equivale a tocar el globo de diálogo.
-func advance_dialogue() -> void:
-	_bubble.advance()
+## Un destello diagonal recorre las letras de izquierda a derecha.
+func _sweep_shine() -> void:
+	var first := _letters.get_child(0) as Node2D
+	var last := _letters.get_child(_letters.get_child_count() - 1) as Node2D
+	var start := first.global_position.x - first.global_position.y * 0.4 - 140.0
+	var finish := last.global_position.x - last.global_position.y * 0.4 + 140.0
+	var tween := create_tween()
+	tween.tween_method(func(x: float) -> void: _shine.set_shader_parameter("shine_x", x), start, finish, 0.9).set_trans(Tween.TRANS_SINE)
+	if _shines == 0:
+		_sfx.play(SHINE_SOUND, 1.0, -4.0)
+	_shines += 1
 
 
 func _on_play_pressed() -> void:
 	if _in_dialogue or _presenter == null:
 		return
 	_in_dialogue = true
+	_sfx.play(TAP_SOUND, 1.0, -2.0)
 	if _pulse:
 		_pulse.kill()
+	_confetti.global_position = _play.global_position + _play.size * 0.5
+	_confetti.restart()
 	_play.pivot_offset = _play.size * 0.5
 	var tween := create_tween()
 	tween.tween_property(_play, "scale", Vector2(1.15, 0.88), 0.08)
 	tween.tween_property(_play, "scale", Vector2.ZERO, 0.26).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	_quwi.hop()
-	_bubble.position = _quwi.global_position - global_position + BUBBLE_OFFSET
-	_bubble.play(_presenter.prologue_teaser())
+	# El confeti y el salto de Quwi se lucen antes de que aparezca el globo.
+	var dialogue := _presenter.prologue_teaser()
+	var later := create_tween()
+	later.tween_interval(0.55)
+	later.tween_callback(func() -> void:
+		_bubble.position = _quwi.global_position - global_position + BUBBLE_OFFSET
+		_bubble.play(dialogue))
+
+
+func _on_quwi_tapped() -> void:
+	if _in_dialogue:
+		_quwi.squeak()
+		_quwi.hop(22.0)
+		return
+	_quwi.react_to_tap()
+	var later := create_tween()
+	later.tween_interval(1.6)
+	later.tween_callback(func() -> void:
+		if not _in_dialogue:
+			_quwi.set_mood(&"joy"))
 
 
 func _on_line_started(_index: int, line: DialogueLineViewModel) -> void:
@@ -159,8 +237,10 @@ func _on_line_started(_index: int, line: DialogueLineViewModel) -> void:
 	_quwi.talk(true)
 	match line.cue:
 		&"knots_scatter":
+			_sfx.play(SCATTER_SOUND, 1.0, -3.0)
 			_quipu.scatter_knots(KNOT_TARGETS)
 		&"knots_return":
+			_sfx.play(RETURN_SOUND)
 			_quipu.return_knots()
 
 
@@ -171,7 +251,9 @@ func _on_line_shown(_index: int) -> void:
 func _on_dialogue_finished() -> void:
 	_quwi.talk(false)
 	_quwi.celebrate()
+	_quwi.squeak()
 	if _quipu.has_loose_knots():
+		_sfx.play(RETURN_SOUND)
 		_quipu.return_knots()
 	var tween := create_tween()
 	tween.tween_interval(0.4)
@@ -183,10 +265,42 @@ func _on_dialogue_finished() -> void:
 
 
 func _on_teacher_pressed() -> void:
+	_sfx.play(TAP_SOUND)
 	teacher_requested.emit()
+	if _presenter:
+		_show_toast(_presenter.teacher_notice())
+
+
+func _on_sound_pressed() -> void:
 	if _presenter == null:
 		return
-	_toast_label.text = _presenter.teacher_notice()
+	var sound := _presenter.toggle_sound()
+	_show_sound(sound)
+	if sound.sound_on:
+		_sfx.play(TAP_SOUND)
+	if not sound.notice.is_empty():
+		_show_toast(sound.notice)
+
+
+func _show_sound(sound: SoundToggleViewModel) -> void:
+	_sound.text = sound.label
+	_sound.icon = SOUND_ON_ICON if sound.sound_on else SOUND_OFF_ICON
+
+
+## Tres toques seguidos sobre la versión abren el panel de medición.
+func _on_version_input(event: InputEvent) -> void:
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	var now := Time.get_ticks_msec()
+	_version_taps.append(now)
+	_version_taps = _version_taps.filter(func(tap: int) -> bool: return now - tap < 1200)
+	if _version_taps.size() >= 3:
+		_version_taps.clear()
+		diagnostics_requested.emit()
+
+
+func _show_toast(message: String) -> void:
+	_toast_label.text = message
 	if _toast_tween:
 		_toast_tween.kill()
 	_toast_tween = create_tween()

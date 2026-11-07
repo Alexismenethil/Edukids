@@ -28,8 +28,11 @@ El proyecto avanza por sprints, cada uno con un entregable que se puede verifica
 | GdUnit4 con 50 pruebas, verificación de dependencias y CI en GitHub Actions | Hecho |
 | Identidad visual: tema de la interfaz, logotipo, Quwi por piezas, Sierra en capas y pantalla de inicio animada | Hecho (primera versión; se pule en cada sprint) |
 | APK de prueba firmado en modo depuración, probado en un emulador Android 17 | Hecho (59 MB, 110 MB de memoria) |
-| Base local SQLite con godot-sqlite, migraciones y prueba de integración | Pendiente |
-| Medición del APK en la tablet real del piloto | Pendiente: requiere la tablet |
+| Base local SQLite (godot-sqlite 4.9, SQLite 3.51) con migraciones, modo WAL y pruebas; probada en Android arm64 | Hecho |
+| Primer uso de SQLite: ajustes de sonido (RF-36) que persisten al reiniciar | Hecho |
+| Música andina original, efectos de sonido y pulido visual (picaflor, destello del logo, reacciones de Quwi) | Hecho |
+| Panel de medición oculto (tres toques sobre la versión) | Hecho |
+| Medición del APK en la tablet real del piloto | Pendiente: requiere la tablet. godot-sqlite no trae binario para Android de 32 bits (armeabi-v7a): si la tablet es de 32 bits, el juego funciona sin guardar y hay que compilar el plugin |
 
 ## Épicas
 
