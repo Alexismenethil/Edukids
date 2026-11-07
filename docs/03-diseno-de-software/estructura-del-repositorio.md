@@ -8,6 +8,7 @@ Edukids/
 ├── android/           Juego en Godot 4.7 (desde el Sprint 2)
 ├── backend/           API de contenidos en Node.js y TypeScript (Sprint 8)
 ├── web/               Panel docente en React y TypeScript (Sprint 8)
+├── .github/workflows/ CI del juego: verificación de capas y pruebas
 ├── README.md
 ├── CONTRIBUTING.md
 ├── .gitignore
@@ -38,7 +39,8 @@ android/
 │   │   │   ├── final_challenge/  StartFinalChallenge, AnswerFinalItem, SubmitFinalChallenge
 │   │   │   ├── packages/         FetchCatalog, DownloadPackage, InstallPackage, ImportPackageFile, ReleasePackage
 │   │   │   ├── rewards/          GrantRewards, CustomizeAvatar
-│   │   │   └── reports/          GetSectionReport, ExportReportCsv
+│   │   │   ├── reports/          GetSectionReport, ExportReportCsv
+│   │   │   └── story/            GetStoryScene (escenas narrativas)
 │   │   ├── ports/                Clases base abstractas: repositorios, gateways, Clock, IdGenerator, RandomSource
 │   │   └── dto/                  Objetos de petición y respuesta
 │   ├── infrastructure/           3. Adaptadores de salida
@@ -46,28 +48,32 @@ android/
 │   │   ├── packages/             Lectura de ZIP, validación e instalación
 │   │   ├── network/              Cliente del catálogo y descarga por rangos
 │   │   ├── security/             Hash del PIN
+│   │   ├── content/              Escenas narrativas del juego base en JSON
 │   │   └── system/               Reloj, identificadores, archivos y exportación CSV
 │   ├── presentation/             3. Adaptadores de entrada
 │   │   ├── presenters/           Un presentador por pantalla
 │   │   └── view_models/
 │   └── main/                     Raíz de composición y navegador
 ├── scenes/                       4. Vistas (escenas de Godot)
-│   ├── ui/                       Perfiles, PIN, modo docente, reportes y ajustes
+│   ├── ui/                       Inicio, componentes (globo de diálogo), perfiles, PIN, modo docente, reportes y ajustes
 │   ├── map/                      Mapa general y mapas de capítulo
 │   ├── level/                    Nivel, HUD, resultados y game over
 │   ├── mechanics/                Persecución, puente y clásica
 │   ├── activities/               Un componente visual por tipo de ítem
-│   └── characters/               Avatar, guías, Atoq y Mama Sisa
+│   └── characters/               Avatar, guías, Atoq, Mama Sisa y fauna (cóndor); el rig de cada personaje se genera
 ├── assets/
 │   ├── art/                      Personajes, fondos, interfaz e iconos
 │   ├── audio/                    music/ y sfx/
 │   ├── fonts/
 │   └── themes/                   Tema de la interfaz
-├── content/                      Paquete de demostración para pruebas
+├── content/                      Escenas narrativas del juego base y paquete de demostración
+├── art-src/                      Fuentes del arte (SVG maestros, rigs); tiene .gdignore y no se exporta
+├── tools/art/                    Herramientas del flujo de arte (generar rigs por piezas)
+├── builds/                       APK y videos generados (ignorado por Git)
 └── tests/
-    ├── unit/                     Dominio y casos de uso, sin escenas
-    ├── integration/              SQLite y paquetes
-    └── architecture/             Verificación de dependencias
+    ├── unit/                     Dominio, casos de uso y presentadores, sin escenas
+    ├── integration/              JSON, SQLite, paquetes y adaptadores del sistema
+    └── architecture/             Verificación de dependencias (check_dependencies.sh)
 ```
 
 ## Backend: `backend/`

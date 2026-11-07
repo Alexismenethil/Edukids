@@ -93,6 +93,20 @@ Tamaños en la resolución base: títulos de 40 a 56 px, preguntas de 28 px, lec
 | Memoria de texturas | 64 MB o menos por escena |
 | Nombres | `char_`, `bg_`, `ui_`, `icon_`, `fx_`, `mus_` y `sfx_`, en `snake_case`; por ejemplo `char_quwi_idle.png` |
 
+## Flujo de producción
+
+| Recurso | Fuente | Llega al juego como |
+| --- | --- | --- |
+| Fondos por capas | SVG en `android/assets/art/backgrounds/` dibujados sobre un mundo de 1920 × 960 | Textura importada por Godot a 1,5× |
+| Interfaz, iconos y letras del logotipo | SVG en `android/assets/art/ui/` | Textura importada a 2× |
+| Personajes por piezas | SVG maestro en `android/art-src/characters/` con un grupo `part_*` por pieza y un `.rig.json` con jerarquía y pivotes | Atlas PNG a 2× y escena del rig generados por `tools/art/build_cutout_rig.gd` |
+| Ícono de la app | `android/icon.svg` | PNG de 192 px y capas adaptativas de 432 px |
+
+- El mundo de los fondos mide 1920 × 960; la pantalla base de 1280 × 800 ocupa su parte central e inferior, así las proporciones 16:9, 20:9 y 4:3 nunca dejan bordes vacíos.
+- Los SVG evitan filtros (desenfoques y sombras de SVG) porque el rasterizador de Godot no los admite; las luces y sombras se dibujan con formas, degradados y recortes (`clipPath`).
+- El rig de Quwi usa nodos `Node2D` con pivotes y sus gestos (respirar, parpadear, hablar, saltar, saludar) se animan por código con interpolaciones. Para las animaciones largas del Sprint 6 se usará `AnimationPlayer`.
+- La paleta de cada pieza sale de las tablas de esta guía; los contornos usan el marrón cálido `#5A2E16` y el logotipo `#4A2618`.
+
 ## Audio
 
 **Sin voces ni narración** ([ADR-015](../01-analisis-de-sistema/decisiones/ADR-015-arte-2d-y-audio-sin-voces.md)).

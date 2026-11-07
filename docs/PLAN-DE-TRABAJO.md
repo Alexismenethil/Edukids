@@ -17,6 +17,20 @@ El proyecto avanza por sprints, cada uno con un entregable que se puede verifica
 | 9 | Contenido del MVP | MAT-01, COM-01 y CYT-01 producidos y validados por docentes | E9 |
 | 10 | Reportes y piloto | Reportes y exportación CSV; pruebas con estudiantes; correcciones y guía de réplica | E10, E11 |
 
+## Avance del Sprint 2
+
+| Entregable | Estado |
+| --- | --- |
+| Proyecto Godot 4.7.2 en `android/` con la estructura Clean | Hecho |
+| Raíz de composición (autoload) y navegador que inyecta presentadores | Hecho |
+| Dominio base con pruebas: medidor de peligro (RN-13), estrellas (RN-11), escala AD/A/B/C (RN-12), escenas narrativas y `Result` | Hecho |
+| Puertos `Clock`, `IdGenerator` y `RandomSource` con sus adaptadores del sistema | Hecho |
+| GdUnit4 con 50 pruebas, verificación de dependencias y CI en GitHub Actions | Hecho |
+| Identidad visual: tema de la interfaz, logotipo, Quwi por piezas, Sierra en capas y pantalla de inicio animada | Hecho (primera versión; se pule en cada sprint) |
+| APK de prueba firmado en modo depuración, probado en un emulador Android 17 | Hecho (59 MB, 110 MB de memoria) |
+| Base local SQLite con godot-sqlite, migraciones y prueba de integración | Pendiente |
+| Medición del APK en la tablet real del piloto | Pendiente: requiere la tablet |
+
 ## Épicas
 
 | Código | Épica | Resultado | Depende de |
@@ -55,7 +69,7 @@ El MVP está terminado cuando:
 
 ## Pendientes antes del Sprint 2
 
-- [ ] Ficha técnica de la tablet: modelo, versión de Android, RAM, almacenamiento libre y GPU.
+- [ ] Ficha técnica de la tablet: modelo, versión de Android, RAM, almacenamiento libre y GPU (necesaria para cerrar el Sprint 2).
 - [ ] Número de tablets y si serán individuales o compartidas.
 - [ ] Velocidad de la conexión de la Dirección.
 - [ ] Validación de los temarios con los docentes de 6.° grado.

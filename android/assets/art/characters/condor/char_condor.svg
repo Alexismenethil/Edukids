@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="72" viewBox="0 0 200 72">
+  <!-- Cóndor andino planeando: alas extendidas con plumas primarias abiertas y parches blancos. -->
+  <path d="M96,36 C80,28 52,22 24,24 L8,28 L20,31 L6,35 L20,37 L8,42 L24,41 L14,47 L32,44 C54,44 78,46 96,48 Z" fill="#26262D"/>
+  <path d="M104,36 C120,28 148,22 176,24 L192,28 L180,31 L194,35 L180,37 L192,42 L176,41 L186,47 L168,44 C146,44 122,46 104,48 Z" fill="#26262D"/>
+  <path d="M94,41 C78,39 56,37 38,39 C56,43 78,45 94,46 Z M106,41 C122,39 144,37 162,39 C144,43 122,45 106,46 Z" fill="#E8E8EE"/>
+  <ellipse cx="100" cy="44" rx="14" ry="7" fill="#26262D"/>
+  <path d="M92,48 L100,60 L108,48 Z" fill="#26262D"/>
+  <ellipse cx="100" cy="37.5" rx="7.5" ry="4" fill="#F4F4F6"/>
+  <circle cx="100" cy="33" r="4.6" fill="#B98F8C"/>
+  <path d="M100,36.5 L98.6,39.5 L101.4,39.5 Z" fill="#E5D3B3"/>
+</svg>

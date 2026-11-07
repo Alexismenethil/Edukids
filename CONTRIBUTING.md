@@ -57,6 +57,8 @@ fix(paquetes): rechaza rutas fuera del paquete
 - Seguir la guía de estilo oficial de GDScript: tabulaciones; `snake_case` para archivos, funciones y variables; `PascalCase` para `class_name`; `CONSTANT_CASE` para constantes.
 - Tipado estático en variables, parámetros y retornos.
 - Las escenas no acceden a la base de datos, a los archivos ni a la red: usan su presentador.
+- Las pruebas usan GdUnit4 y se nombran `<clase>_test.gd`. Los comandos para ejecutarlas y para verificar las capas están en [android/README.md](android/README.md#pruebas).
+- La escena del rig de un personaje se genera con `tools/art/build_cutout_rig.gd`; no se edita a mano.
 
 ### TypeScript (`backend/` y `web/`)
 

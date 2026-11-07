@@ -1,0 +1,60 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/ui/logo/ui_logo_letter_0_e.svg" id="1_letter"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/logo/ui_logo_letter_1_d.svg" id="2_letter"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/logo/ui_logo_letter_2_u.svg" id="3_letter"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/logo/ui_logo_letter_3_k.svg" id="4_letter"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/logo/ui_logo_letter_4_i.svg" id="5_letter"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/logo/ui_logo_letter_5_d.svg" id="6_letter"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/logo/ui_logo_letter_6_s.svg" id="7_letter"]
+
+[node name="LogoWord" type="Node2D"]
+
+[node name="Letter0" type="Sprite2D" parent="."]
+position = Vector2(-234.01, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_letter")
+centered = false
+offset = Vector2(-113.39, -267.24)
+
+[node name="Letter1" type="Sprite2D" parent="."]
+position = Vector2(-144.76, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_letter")
+centered = false
+offset = Vector2(-106.25, -267.24)
+
+[node name="Letter2" type="Sprite2D" parent="."]
+position = Vector2(-53.89, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_letter")
+centered = false
+offset = Vector2(-106.08, -267.24)
+
+[node name="Letter3" type="Sprite2D" parent="."]
+position = Vector2(40.60, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_letter")
+centered = false
+offset = Vector2(-110.10, -267.24)
+
+[node name="Letter4" type="Sprite2D" parent="."]
+position = Vector2(105.66, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_letter")
+centered = false
+offset = Vector2(-50.49, -267.24)
+
+[node name="Letter5" type="Sprite2D" parent="."]
+position = Vector2(167.03, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_letter")
+centered = false
+offset = Vector2(-106.25, -267.24)
+
+[node name="Letter6" type="Sprite2D" parent="."]
+position = Vector2(248.46, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_letter")
+centered = false
+offset = Vector2(-92.31, -267.24)

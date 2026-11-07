@@ -1,0 +1,31 @@
+{
+  "name": "QuwiRig",
+  "master": "res://art-src/characters/quwi.svg",
+  "scale": 2.0,
+  "origin": [150, 292],
+  "atlas": "res://assets/art/characters/quwi/char_quwi_atlas.png",
+  "scene": "res://scenes/characters/quwi/quwi_rig.tscn",
+  "nodes": [
+    {"name": "FootL", "parent": "", "part": "foot_l", "pivot": [114, 287]},
+    {"name": "FootR", "parent": "", "part": "foot_r", "pivot": [186, 287]},
+    {"name": "Torso", "parent": "", "pivot": [150, 292]},
+    {"name": "BodyArt", "parent": "Torso", "part": "body", "pivot": [150, 292]},
+    {"name": "ArmL", "parent": "Torso", "part": "arm_l", "pivot": [98, 206]},
+    {"name": "ArmR", "parent": "Torso", "part": "arm_r", "pivot": [202, 206]},
+    {"name": "Scarf", "parent": "Torso", "part": "scarf", "pivot": [150, 200]},
+    {"name": "ScarfTail", "parent": "Torso", "part": "scarf_tail", "pivot": [100, 209]},
+    {"name": "Head", "parent": "Torso", "pivot": [150, 186]},
+    {"name": "EarL", "parent": "Torso/Head", "part": "ear_l", "pivot": [97, 51]},
+    {"name": "EarR", "parent": "Torso/Head", "part": "ear_r", "pivot": [203, 51]},
+    {"name": "HeadArt", "parent": "Torso/Head", "part": "head", "pivot": [150, 108]},
+    {"name": "Brows", "parent": "Torso/Head", "part": "brows", "pivot": [150, 76]},
+    {"name": "Eyes", "parent": "Torso/Head", "pivot": [150, 104]},
+    {"name": "EyesOpen", "parent": "Torso/Head/Eyes", "part": "eyes_open", "pivot": [150, 104]},
+    {"name": "EyesClosed", "parent": "Torso/Head/Eyes", "part": "eyes_closed", "pivot": [150, 104], "visible": false},
+    {"name": "EyesHappy", "parent": "Torso/Head/Eyes", "part": "eyes_happy", "pivot": [150, 104], "visible": false},
+    {"name": "Mouth", "parent": "Torso/Head", "pivot": [150, 145]},
+    {"name": "MouthSmile", "parent": "Torso/Head/Mouth", "part": "mouth_smile", "pivot": [150, 145]},
+    {"name": "MouthOpen", "parent": "Torso/Head/Mouth", "part": "mouth_open", "pivot": [150, 145], "visible": false},
+    {"name": "MouthO", "parent": "Torso/Head/Mouth", "part": "mouth_o", "pivot": [150, 145], "visible": false}
+  ]
+}

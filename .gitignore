@@ -38,6 +38,8 @@ desktop.ini
 *.idsig
 /builds/
 /android/builds/
+# Reportes de GdUnit4 (se regeneran en cada corrida)
+/android/reports/
 
 # ─── Node.js y TypeScript (backend/ y web/) ──────────────────
 node_modules/

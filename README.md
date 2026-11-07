@@ -8,7 +8,7 @@ Videojuego educativo 2D para tablets Android que refuerza **Matemática**, **Com
 | Institución piloto | I.E. N.° 38984-22 Alfredo Mendoza Salazar, Mollepata II, Ayacucho |
 | Autor | Alexis Huamani Rivera |
 | Versión de la documentación | 3.0 (noviembre de 2026) |
-| Estado | Entregable 1: documentación. Todavía no hay código. |
+| Estado | Sprint 2 en curso: proyecto base del juego en Godot, pantalla de inicio y APK de prueba. |
 
 ## Cómo funciona
 
@@ -21,10 +21,11 @@ Videojuego educativo 2D para tablets Android que refuerza **Matemática**, **Com
 
 ```text
 Edukids/
-├── docs/              Documentación del proyecto (este entregable)
-├── android/           (próximo) Juego en Godot que se exporta como APK
+├── docs/              Documentación del proyecto
+├── android/           Juego en Godot 4.7 que se exporta como APK (desde el Sprint 2)
 ├── backend/           (próximo) API de contenidos con Clean Architecture
 ├── web/               (próximo) Panel docente web
+├── .github/workflows/ Integración continua del juego
 ├── README.md
 ├── CONTRIBUTING.md    Ramas, commits y estilo de código
 ├── .gitignore
@@ -32,7 +33,7 @@ Edukids/
 └── .editorconfig
 ```
 
-La organización interna de `android/`, `backend/` y `web/` está definida en [estructura del repositorio](docs/03-diseno-de-software/estructura-del-repositorio.md).
+La organización interna de `android/`, `backend/` y `web/` está definida en [estructura del repositorio](docs/03-diseno-de-software/estructura-del-repositorio.md). Para abrir, probar y exportar el juego, consulta [android/README.md](android/README.md).
 
 ## Documentación
 
@@ -55,7 +56,7 @@ La organización interna de `android/`, `backend/` y `web/` está definida en [e
 | Arquitectura | Clean Architecture en el juego, el backend y el panel | Aceptada ([ADR-010](docs/01-analisis-de-sistema/decisiones/ADR-010-clean-architecture.md)) |
 | Datos locales | SQLite con el plugin godot-sqlite | Aceptada ([ADR-007](docs/01-analisis-de-sistema/decisiones/ADR-007-sqlite-base-local.md)) |
 | Paquetes de contenido | ZIP con manifiesto JSON y SHA-256, solo datos | Aceptada ([ADR-013](docs/01-analisis-de-sistema/decisiones/ADR-013-paquetes-solo-datos-y-pdf-a-imagenes.md)) |
-| Pruebas del juego | GdUnit4 | Propuesta |
+| Pruebas del juego | GdUnit4 6.2 y verificación de capas en GitHub Actions | En uso desde el Sprint 2 |
 | Backend | Node.js, TypeScript, Fastify, Prisma, PostgreSQL y almacenamiento compatible con S3 | Propuesta ([ADR-017](docs/01-analisis-de-sistema/decisiones/ADR-017-stack-backend-y-panel.md)) |
 | Panel docente | React, TypeScript y Vite | Propuesta ([ADR-017](docs/01-analisis-de-sistema/decisiones/ADR-017-stack-backend-y-panel.md)) |
 
@@ -75,6 +76,7 @@ La organización interna de `android/`, `backend/` y `web/` está definida en [e
 | 1.0 | 09/10/2026 | Aplicación con sincronización a un servidor central. |
 | 2.0 | 10/10/2026 | Modelo 100 % offline con módulos descargables y revisión del avance en cada tablet. |
 | 3.0 | 06/11/2026 | Videojuego en Godot, Clean Architecture, tres áreas con enfoque PISA, panel docente y catálogo público. |
+| 3.1 | 06/11/2026 | Sprint 2: proyecto base del juego con Clean Architecture, pruebas, CI, identidad visual, pantalla de inicio y APK de prueba. |
 
 ## Contribuir
 

@@ -1,0 +1,28 @@
+{
+  "format_version": "1.0",
+  "id": "prologue_teaser",
+  "lines": [
+    {
+      "speaker": "quwi",
+      "mood": "joy",
+      "text": "¡Hola! Soy Quwi, tu guía en la Sierra de Ayacucho."
+    },
+    {
+      "speaker": "quwi",
+      "mood": "surprise",
+      "cue": "knots_scatter",
+      "text": "¡Atoq jaló el quipu de Mama Sisa y sus nudos volaron por la Sierra, la Selva y la Costa!"
+    },
+    {
+      "speaker": "quwi",
+      "mood": "think",
+      "text": "Sin esos nudos, la gente olvida cómo contar, leer y cuidar la naturaleza."
+    },
+    {
+      "speaker": "quwi",
+      "mood": "cheer",
+      "cue": "knots_return",
+      "text": "¿Me ayudas a recuperarlos? ¡Nuestra aventura empieza muy pronto!"
+    }
+  ]
+}

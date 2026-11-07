@@ -1,0 +1,296 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/title/title_screen.gd" id="1_title"]
+[ext_resource type="Script" path="res://scenes/ui/title/sun_rays.gd" id="2_rays"]
+[ext_resource type="Script" path="res://scenes/ui/title/sky_drifter.gd" id="3_drifter"]
+[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_cloud_a.svg" id="4_cloud_a"]
+[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_cloud_b.svg" id="5_cloud_b"]
+[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_sierra_far.svg" id="6_far"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/condor/char_condor.svg" id="7_condor"]
+[ext_resource type="Script" path="res://scenes/characters/condor/condor_flight.gd" id="8_condor"]
+[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_sierra_mid.svg" id="9_mid"]
+[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_sierra_near.svg" id="10_near"]
+[ext_resource type="PackedScene" path="res://scenes/characters/quwi/quwi.tscn" id="11_quwi"]
+[ext_resource type="Script" path="res://scenes/ui/title/quipu_cords.gd" id="12_quipu"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/ui_ribbon_subtitle.svg" id="13_ribbon"]
+[ext_resource type="PackedScene" path="res://scenes/ui/title/logo_word.tscn" id="14_logo"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/ui_icon_play.svg" id="15_play"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/ui_icon_teacher.svg" id="16_teacher"]
+[ext_resource type="PackedScene" path="res://scenes/ui/components/speech_bubble.tscn" id="17_bubble"]
+
+[sub_resource type="Gradient" id="Gradient_sky"]
+offsets = PackedFloat32Array(0, 0.42, 0.7, 1)
+colors = PackedColorArray(0.30980393, 0.65882355, 0.8666667, 1, 0.62352943, 0.84705883, 0.9490196, 1, 1, 0.9137255, 0.76862746, 1, 1, 0.8862745, 0.70980394, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sky"]
+gradient = SubResource("Gradient_sky")
+width = 4
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_glow"]
+offsets = PackedFloat32Array(0, 0.3, 1)
+colors = PackedColorArray(1, 0.98039216, 0.8784314, 0.95, 1, 0.95686275, 0.78431374, 0.5, 1, 0.9411765, 0.7529412, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glow"]
+gradient = SubResource("Gradient_glow")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_dot"]
+colors = PackedColorArray(1, 1, 0.92156863, 1, 1, 1, 0.92156863, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dot"]
+gradient = SubResource("Gradient_dot")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_pollen_life"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.85, 1, 1, 1, 0.85, 1, 1, 1, 0)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_title")
+
+[node name="Sky" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_sky")
+expand_mode = 1
+
+[node name="Halo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="SunGlow" type="Sprite2D" parent="Halo"]
+position = Vector2(0, 118)
+scale = Vector2(3.4, 3.4)
+texture = SubResource("GradientTexture2D_glow")
+
+[node name="SunRays" type="Node2D" parent="Halo"]
+position = Vector2(0, 118)
+script = ExtResource("2_rays")
+
+[node name="World" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="CloudFar" type="Sprite2D" parent="World"]
+modulate = Color(1, 1, 1, 0.85)
+position = Vector2(250, 330)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_cloud_b")
+script = ExtResource("3_drifter")
+speed = 6.0
+
+[node name="CloudA" type="Sprite2D" parent="World"]
+position = Vector2(620, 420)
+scale = Vector2(0.6667, 0.6667)
+texture = ExtResource("4_cloud_a")
+script = ExtResource("3_drifter")
+speed = 9.0
+
+[node name="CloudB" type="Sprite2D" parent="World"]
+position = Vector2(1520, 360)
+scale = Vector2(0.6667, 0.6667)
+texture = ExtResource("5_cloud_b")
+script = ExtResource("3_drifter")
+speed = 13.0
+
+[node name="CloudSmall" type="Sprite2D" parent="World"]
+modulate = Color(1, 1, 1, 0.9)
+position = Vector2(1180, 470)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("4_cloud_a")
+flip_h = true
+script = ExtResource("3_drifter")
+speed = 7.5
+
+[node name="FarLayer" type="TextureRect" parent="World"]
+layout_mode = 0
+offset_top = 330.0
+offset_right = 1920.0
+offset_bottom = 760.0
+mouse_filter = 2
+texture = ExtResource("6_far")
+expand_mode = 1
+
+[node name="Condor" type="Sprite2D" parent="World"]
+position = Vector2(2080, 470)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("7_condor")
+script = ExtResource("8_condor")
+
+[node name="MidLayer" type="TextureRect" parent="World"]
+layout_mode = 0
+offset_top = 580.0
+offset_right = 1920.0
+offset_bottom = 920.0
+mouse_filter = 2
+texture = ExtResource("9_mid")
+expand_mode = 1
+
+[node name="NearLayer" type="TextureRect" parent="World"]
+layout_mode = 0
+offset_top = 760.0
+offset_right = 1920.0
+offset_bottom = 970.0
+mouse_filter = 2
+texture = ExtResource("10_near")
+expand_mode = 1
+
+[node name="Quwi" parent="World" instance=ExtResource("11_quwi")]
+position = Vector2(1336, 904)
+scale = Vector2(0.8, 0.8)
+
+[node name="Pollen" type="CPUParticles2D" parent="World"]
+position = Vector2(960, 640)
+amount = 26
+lifetime = 10.0
+preprocess = 10.0
+texture = SubResource("GradientTexture2D_dot")
+emission_shape = 3
+emission_rect_extents = Vector2(980, 320)
+direction = Vector2(1, -0.35)
+spread = 30.0
+gravity = Vector2(0, -3)
+initial_velocity_min = 8.0
+initial_velocity_max = 24.0
+scale_amount_min = 0.12
+scale_amount_max = 0.32
+color_ramp = SubResource("Gradient_pollen_life")
+
+[node name="Logo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Quipu" type="Node2D" parent="Logo"]
+position = Vector2(0, 250)
+script = ExtResource("12_quipu")
+
+[node name="Ribbon" type="TextureRect" parent="Logo"]
+layout_mode = 0
+offset_left = -280.0
+offset_top = 168.0
+offset_right = 281.0
+offset_bottom = 256.0
+mouse_filter = 2
+texture = ExtResource("13_ribbon")
+expand_mode = 1
+
+[node name="Subtitle" type="Label" parent="Logo"]
+layout_mode = 0
+offset_left = -250.0
+offset_top = 186.0
+offset_right = 250.0
+offset_bottom = 238.0
+theme_type_variation = &"SubtitleLabel"
+text = "El quipu de los saberes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LogoWord" parent="Logo" instance=ExtResource("14_logo")]
+position = Vector2(0, 160)
+
+[node name="PlayButton" type="Button" parent="."]
+custom_minimum_size = Vector2(320, 96)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -156.0
+offset_right = 160.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "Jugar"
+icon = ExtResource("15_play")
+
+[node name="TeacherButton" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -206.0
+offset_top = 22.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_type_variation = &"GhostButton"
+text = "Docente"
+icon = ExtResource("16_teacher")
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -48.0
+offset_right = 420.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_type_variation = &"VersionLabel"
+text = "Versión 0.1.0"
+
+[node name="SpeechBubble" parent="." instance=ExtResource("17_bubble")]
+layout_mode = 0
+
+[node name="Toast" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -480.0
+offset_top = 94.0
+offset_right = -24.0
+offset_bottom = 140.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_type_variation = &"ToastPanel"
+
+[node name="ToastLabel" type="Label" parent="Toast"]
+layout_mode = 2
+theme_type_variation = &"ToastLabel"
+text = "El modo docente llegará muy pronto."
+horizontal_alignment = 1

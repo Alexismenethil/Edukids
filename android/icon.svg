@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FA8DD"/><stop offset="1" stop-color="#BFE6F7"/></linearGradient>
+    
+    <clipPath id="clip_body">
+      <path d="M150,128 C206,128 240,170 242,218 C244,266 206,294 150,294 C94,294 56,266 58,218 C60,170 94,128 150,128 Z"/>
+    </clipPath>
+    <clipPath id="clip_head">
+      <ellipse cx="150" cy="108" rx="96" ry="82"/>
+    </clipPath>
+  
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#sky)"/>
+  <rect y="205" width="256" height="51" fill="#C2185B"/>
+  <rect y="205" width="256" height="9.0" fill="#F28C28"/>
+  <rect y="243" width="256" height="7.7" fill="#1FA2A6"/>
+  <g transform="translate(128.0 142.0) scale(1.05) translate(-150 -108)">
+<g id="part_ear_l">
+    <path d="M100,42 C80,30 46,34 38,54 C32,70 48,82 68,79 C80,77 90,70 98,60 Z" fill="#94512B" stroke="#5A2E16" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M93,46 C76,38 54,42 48,56 C45,65 54,72 67,70 C77,68 85,62 90,55 Z" fill="#F09A92"/>
+    <path d="M58,62 Q70,58 84,60" stroke="#D8786F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  </g>
+<g id="part_ear_r">
+    <path d="M200,42 C220,30 254,34 262,54 C268,70 252,82 232,79 C220,77 210,70 202,60 Z" fill="#94512B" stroke="#5A2E16" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M207,46 C224,38 246,42 252,56 C255,65 246,72 233,70 C223,68 215,62 210,55 Z" fill="#F09A92"/>
+    <path d="M242,62 Q230,58 216,60" stroke="#D8786F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  </g>
+<g id="part_head">
+    <ellipse cx="150" cy="108" rx="96" ry="82" fill="#B8703F"/>
+    <g clip-path="url(#clip_head)">
+      <ellipse cx="252" cy="128" rx="62" ry="92" fill="#8E4F28" opacity="0.42"/>
+      <path d="M150,42 C132,42 124,58 116,72 C98,74 80,90 78,114 C76,148 104,178 150,182 C196,178 224,148 222,114 C220,90 202,74 184,72 C176,58 168,42 150,42 Z" fill="#FFF4E4"/>
+      <path d="M150,150 C182,150 206,140 220,122 C222,150 196,178 150,182 C104,178 78,150 80,122 C94,140 118,150 150,150 Z" fill="#F1DFC8" opacity="0.7"/>
+      <path d="M72,98 C74,72 100,60 122,68 C142,76 146,102 136,122 C124,144 92,142 80,128 C74,120 72,110 72,98 Z" fill="#94512B"/>
+      <ellipse cx="112" cy="50" rx="36" ry="13" fill="#D59360" opacity="0.85" transform="rotate(-18 112 50)"/>
+      <ellipse cx="94" cy="146" rx="17" ry="10" fill="#F59C8C" opacity="0.6"/>
+      <ellipse cx="206" cy="146" rx="17" ry="10" fill="#F59C8C" opacity="0.6"/>
+    </g>
+    <ellipse cx="150" cy="108" rx="96" ry="82" fill="none" stroke="#5A2E16" stroke-width="4.5"/>
+    <g stroke="#8E5A3C" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.8">
+      <path d="M90,136 Q70,130 50,130"/>
+      <path d="M90,144 Q70,146 50,152"/>
+      <path d="M210,136 Q230,130 250,130"/>
+      <path d="M210,144 Q230,146 250,152"/>
+    </g>
+    <path d="M140,125 C140,118 160,118 160,125 C160,131 154,136 150,136 C146,136 140,131 140,125 Z" fill="#E0736F" stroke="#5A2E16" stroke-width="2.6"/>
+    <ellipse cx="145.5" cy="123" rx="3.4" ry="2.1" fill="#FFFFFF" opacity="0.85"/>
+  </g>
+<g id="part_brows">
+    <path d="M97,79 Q111,70 126,77" stroke="#3E1E0E" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M174,77 Q189,70 203,79" stroke="#5A2E16" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+<g id="part_eyes_open">
+    <ellipse cx="112" cy="104" rx="16" ry="19" fill="#2B1A12" stroke="#FFF4E4" stroke-width="2.4"/>
+    <circle cx="106.5" cy="96.5" r="6" fill="#FFFFFF"/>
+    <circle cx="117.5" cy="111.5" r="2.8" fill="#FFFFFF" opacity="0.9"/>
+    <ellipse cx="188" cy="104" rx="16" ry="19" fill="#2B1A12"/>
+    <circle cx="182.5" cy="96.5" r="6" fill="#FFFFFF"/>
+    <circle cx="193.5" cy="111.5" r="2.8" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+<g id="part_mouth_smile">
+    <path d="M150,136 L150,141" stroke="#5A2E16" stroke-width="3" stroke-linecap="round"/>
+    <path d="M135,140 Q142.5,150 150,141 Q157.5,150 165,140" stroke="#5A2E16" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="144.2" y="143.5" width="5.8" height="8.5" rx="1.6" fill="#FFFFFF" stroke="#5A2E16" stroke-width="1.7"/>
+    <rect x="150" y="143.5" width="5.8" height="8.5" rx="1.6" fill="#FFFFFF" stroke="#5A2E16" stroke-width="1.7"/>
+  </g>
+  </g>
+</svg>

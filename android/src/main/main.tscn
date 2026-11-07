@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/main/navigator.gd" id="1_navigator"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_navigator")
+
+[node name="Screens" type="Node" parent="."]
+
+[node name="Curtain" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Fade" type="ColorRect" parent="Curtain"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3647059, 0.6784314, 0.8745098, 1)

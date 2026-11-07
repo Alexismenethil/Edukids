@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/characters/quwi/quwi.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/characters/quwi/quwi_rig.tscn" id="2_rig"]
+
+[node name="Quwi" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Hop" type="Node2D" parent="."]
+
+[node name="Rig" parent="Hop" instance=ExtResource("2_rig")]
