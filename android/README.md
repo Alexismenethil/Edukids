@@ -36,6 +36,9 @@ Para grabar videos o probar los recorridos sin tocar la pantalla. Solo funciona 
 | `--demo-editor` | Un estudiante sin personaje lo crea (con `--demo-data`) |
 | `--demo-teacher` | PIN docente, lista de estudiantes y formulario para agregar uno (con `--demo-data`) |
 | `--demo-setup` | Configuración inicial completa (con `--demo-empty`) |
+| `--demo-home` | Inicio del estudiante con los niveles para practicar (con `--demo-data`) |
+| `--demo-level` | Juega solo el nivel de Matemática: falla una pregunta, pide una pista, repasa y llega a los resultados (con `--demo-data`) |
+| `--demo-level-language`, `--demo-level-science` | Lo mismo con los niveles de Comunicación (lectura) y de Ciencia y Tecnología (tabla) |
 
 ```bash
 godot --path android -- --demo-data --demo-profiles
@@ -65,13 +68,35 @@ bash tests/architecture/check_dependencies.sh
 
 | Carpeta | Qué prueba |
 | --- | --- |
-| `tests/unit/domain` | Medidor de peligro (RN-13), estrellas (RN-11), escala AD/A/B/C (RN-12) y escenas narrativas |
-| `tests/unit/application` | Casos de uso con repositorios falsos |
+| `tests/unit/domain` | Medidor de peligro (RN-13), estrellas (RN-11), escala AD/A/B/C (RN-12), escenas narrativas, PIN, avatar, evaluadores de cada tipo de ítem, respuestas escritas y numéricas, y la sesión del nivel |
+| `tests/unit/application` | Casos de uso con repositorios falsos: aula, niveles, respuestas, pistas y continuar un nivel |
 | `tests/unit/presentation` | Presentadores y modelos de vista |
-| `tests/integration` | Lectura de JSON, reloj, aleatoriedad e identificadores |
+| `tests/integration` | JSON, módulos 0 incluidos, SQLite (aula, intentos y respuestas), hash del PIN, reloj, aleatoriedad e identificadores |
 | `tests/architecture` | Regla de dependencias entre capas (RNF-15, CA-20) |
 
 El CI ([`.github/workflows/android.yml`](../.github/workflows/android.yml)) ejecuta la verificación de capas y las pruebas en cada cambio dentro de `android/`. Los reportes de GdUnit4 se guardan en `reports/` (ignorado por Git).
+
+## Motor de actividades
+
+Los niveles se leen de paquetes con el [formato v1](../docs/03-diseno-de-software/formato-de-paquete.md). El juego trae tres módulos de práctica en `content/packages/` (`mod-math-6-00`, `mod-language-6-00` y `mod-science-6-00`), que aparecen en el inicio del estudiante mientras llega el mapa.
+
+| Tipo de ítem | Evaluador (dominio) | Actividad (vista) |
+| --- | --- | --- |
+| `multiple_choice`, `multi_select` | `MultipleChoiceEvaluator`, `MultiSelectEvaluator` | `ChoiceActivity`: tarjetas con letra o casilla |
+| `true_false` | `TrueFalseEvaluator` | `TrueFalseActivity`: Verdadero o Falso en cada afirmación |
+| `ordering` | `OrderingEvaluator` | `OrderingActivity`: arrastrar, o tocar dos tarjetas para intercambiarlas |
+| `matching` | `MatchingEvaluator` | `MatchingActivity`: cuerdas tejidas entre dos columnas |
+| `classification` | `ClassificationEvaluator` | `ClassificationActivity`: canastas tejidas |
+| `fill_blank` | `FillBlankEvaluator` | `FillBlankActivity`: espacios en el texto y banco de palabras |
+| `numeric` | `NumericEvaluator` | `NumericActivity`: pizarra y teclado del juego |
+| `reading_unit` | `ReadingUnitEvaluator` | `ReadingPanel` a la izquierda y cada pregunta a la derecha |
+
+Para agregar un tipo de ítem:
+
+1. Crea su evaluador en `src/domain/evaluators/` (hereda de `ItemEvaluator`) y regístralo en `EvaluatorRegistry.standard()`.
+2. Prepara sus datos de pantalla en `StepBuilder` (`src/application/use_cases/play/`), sin incluir la respuesta correcta.
+3. Crea su actividad en `scenes/activities/` (hereda de `ActivityView`) y agrégala a `ActivityFactory`.
+4. Escribe sus pruebas en `tests/unit/domain/evaluators_test.gd`.
 
 ## Exportar el APK de prueba
 

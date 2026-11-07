@@ -1,10 +1,11 @@
 class_name StudentHomeScreen
 extends Control
-## Inicio del estudiante: su personaje saluda junto a Quwi. Mientras el mapa de la aventura
-## llega (Sprint 5), un letrero lo anuncia. Vista humilde.
+## Inicio del estudiante: su personaje saluda junto a Quwi y, al lado, los niveles para practicar
+## con sus estrellas. El mapa de la aventura los reemplazará en el Sprint 5.
 
 signal edit_avatar_requested
 signal exit_requested
+signal level_requested
 
 const AVATAR := preload("res://scenes/characters/avatar/avatar_character.tscn")
 const QUWI := preload("res://scenes/characters/quwi/quwi.tscn")
@@ -14,7 +15,7 @@ var _avatar: AvatarCharacter
 var _quwi: QuwiCharacter
 var _rug: WovenRug
 var _stage: Control
-var _sign: Control
+var _levels: VBoxContainer
 
 
 func setup(presenter: StudentHomePresenter) -> void:
@@ -71,8 +72,8 @@ func _ready() -> void:
 	_quwi = QUWI.instantiate()
 	_quwi.scale = Vector2(0.78, 0.78)
 	_stage.add_child(_quwi)
-	_sign = _make_sign(view_model.sign_title, view_model.sign_text)
-	_stage.add_child(_sign)
+	_levels = _make_levels(view_model)
+	add_child(_levels)
 	_stage.resized.connect(_layout_stage)
 	_layout_stage.call_deferred()
 	var later := create_tween()
@@ -84,44 +85,26 @@ func _ready() -> void:
 
 
 func _layout_stage() -> void:
-	var middle := _stage.size.x * 0.5
-	var ground := _stage.size.y - 96
-	_rug.position = Vector2(middle - 150, ground)
-	_avatar.position = Vector2(middle - 150, ground)
-	_quwi.position = Vector2(middle + 70, ground + 6)
-	_sign.position = Vector2(middle + 230, ground - 300)
+	var left := minf(_stage.size.x * 0.24, 330.0)
+	var ground := _stage.size.y - 92
+	_rug.position = Vector2(left, ground)
+	_avatar.position = Vector2(left, ground)
+	_quwi.position = Vector2(left + 190, ground + 6)
+	_levels.reset_size()
+	_levels.position = Vector2(_stage.size.x - _levels.size.x - 40, maxf(214.0, (_stage.size.y - _levels.size.y) * 0.5 + 60.0))
 
 
-func _make_sign(title: String, text: String) -> Control:
-	var sign := Control.new()
-	sign.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var post := ColorRect.new()
-	post.color = Color("#7A4A2A")
-	post.position = Vector2(118, 120)
-	post.size = Vector2(22, 190)
-	sign.add_child(post)
-	var board := PanelContainer.new()
-	var wood := StyleBoxFlat.new()
-	wood.bg_color = Color("#B07A4C")
-	wood.border_color = Color("#5A2E16")
-	wood.set_border_width_all(5)
-	wood.border_width_bottom = 10
-	wood.set_corner_radius_all(18)
-	wood.content_margin_left = 26
-	wood.content_margin_right = 26
-	wood.content_margin_top = 14
-	wood.content_margin_bottom = 18
-	wood.shadow_color = Color(0.16, 0.13, 0.12, 0.3)
-	wood.shadow_size = 10
-	wood.shadow_offset = Vector2(0, 6)
-	board.add_theme_stylebox_override("panel", wood)
-	board.rotation = -0.04
-	var heading := Ui.label(title, &"HeadingLabel", HORIZONTAL_ALIGNMENT_CENTER)
-	heading.add_theme_color_override("font_color", Color("#FFF4E4"))
-	heading.add_theme_font_size_override("font_size", 28)
-	var soon := Ui.label(text, &"BannerLabel", HORIZONTAL_ALIGNMENT_CENTER)
-	soon.add_theme_font_size_override("font_size", 34)
-	board.add_child(Ui.vbox(2, [heading, soon]))
-	board.position = Vector2(0, 40)
-	sign.add_child(board)
-	return sign
+func _make_levels(view_model: StudentHomeViewModel) -> VBoxContainer:
+	var column := Ui.vbox(14)
+	var title := Ui.label(view_model.levels_title, &"HeadingLabel")
+	title.add_theme_font_size_override("font_size", 30)
+	column.add_child(title)
+	for index in view_model.levels.size():
+		var model := view_model.levels[index]
+		var card := LevelCard.new(model)
+		card.tapped.connect(func() -> void:
+			_presenter.choose(model)
+			level_requested.emit())
+		column.add_child(card)
+		Ui.pop_in(card, 0.25 + 0.1 * index)
+	return column

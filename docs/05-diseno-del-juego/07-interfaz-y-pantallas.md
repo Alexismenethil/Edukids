@@ -58,6 +58,8 @@ flowchart LR
 ```
 
 - Arriba a la izquierda: vidas. Al centro: medidor de peligro. A la derecha: avance y pausa.
+- El avance es un quipu con un nudo por pregunta: verde si acertó, coral si volverá al final, dorado si la corrigió en el repaso y gris si no salió; la pregunta actual brilla con el color del área.
+- Al comprobar, cada parte respondida se marca con ✓ o ✗ y la retroalimentación sube desde abajo con el botón Seguir. El guía da la pista en un globo.
 - La pregunta ocupa la mitad inferior; la escena, la superior.
 - En las unidades de lectura, el texto ocupa la mitad izquierda y las preguntas la derecha.
 

@@ -1,0 +1,27 @@
+{
+  "format_version": "1.0",
+  "id": "mod-math-6-00",
+  "kind": "module",
+  "title": "Módulo 0 · Calentamiento en la feria",
+  "area": "math",
+  "grade": 6,
+  "number": 0,
+  "chapter": "sierra",
+  "stop": "huamanga",
+  "version": "1.0.0",
+  "min_app_version": "0.1.0",
+  "author": { "type": "official" },
+  "created_at": "2026-11-07T00:00:00Z",
+  "competencies": ["MAT.CANTIDAD", "MAT.REGULARIDAD"],
+  "levels": [
+    {
+      "id": "L01",
+      "kind": "regular",
+      "mechanic": "classic",
+      "file": "levels/l01.json",
+      "estimated_minutes": 10,
+      "lives": 3,
+      "danger": { "start": 2, "max": 4 }
+    }
+  ]
+}

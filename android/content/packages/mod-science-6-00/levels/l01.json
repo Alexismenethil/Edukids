@@ -1,0 +1,234 @@
+{
+  "id": "L01",
+  "title": "Exploramos la naturaleza",
+  "guide_intro": [
+    "¡Rimaykullayki! Hoy seremos científicos: observaremos, compararemos y explicaremos.",
+    "Al final te espera un experimento de Killa con datos en una tabla."
+  ],
+  "items": [
+    {
+      "id": "CYT00-L01-01",
+      "type": "classification",
+      "prompt": "¿Recurso renovable o no renovable? Pon cada uno en su canasta.",
+      "groups": [
+        { "id": "renewable", "label": "Renovable" },
+        { "id": "non_renewable", "label": "No renovable" }
+      ],
+      "elements": [
+        { "id": "sun", "text": "Energía del sol", "group": "renewable" },
+        { "id": "wind", "text": "Viento", "group": "renewable" },
+        { "id": "wood", "text": "Madera de un bosque cuidado", "group": "renewable" },
+        { "id": "oil", "text": "Petróleo", "group": "non_renewable" },
+        { "id": "copper", "text": "Cobre", "group": "non_renewable" },
+        { "id": "gas", "text": "Gas natural", "group": "non_renewable" }
+      ],
+      "feedback": {
+        "correct": "¡Bien! Los renovables se recuperan pronto; el petróleo, el cobre y el gas tardan millones de años.",
+        "incorrect": "Pregúntate: ¿la naturaleza lo vuelve a producir en poco tiempo?"
+      },
+      "hint": "Un recurso renovable se recupera de forma natural en poco tiempo.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Comprende y usa conocimientos sobre los seres vivos, materia y energía",
+        "pisa": { "category": "explain", "process": "explain" },
+        "difficulty": 1,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "CYT00-L01-02",
+      "type": "multi_select",
+      "prompt": "¿Qué alimentos son ricos en hierro? Marca todos los que correspondan.",
+      "options": [
+        { "id": "blood", "text": "Sangrecita", "correct": true },
+        { "id": "liver", "text": "Hígado", "correct": true },
+        { "id": "lentils", "text": "Lentejas", "correct": true },
+        { "id": "soda", "text": "Gaseosa", "feedback": "La gaseosa tiene mucho azúcar y casi no tiene nutrientes." },
+        { "id": "crackers", "text": "Galletas de soda", "feedback": "Las galletas de soda tienen muy poco hierro." },
+        { "id": "rice", "text": "Arroz blanco", "feedback": "El arroz blanco aporta energía, pero muy poco hierro." }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! El hierro ayuda a prevenir la anemia.",
+        "incorrect": "El hierro abunda en vísceras, sangrecita y menestras."
+      },
+      "hint": "Piensa en carnes rojas, vísceras y menestras.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Comprende y usa conocimientos sobre los seres vivos, materia y energía",
+        "pisa": { "category": "explain", "process": "explain" },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT00-L01-03",
+      "type": "matching",
+      "prompt": "Une cada órgano con su función.",
+      "left": [
+        { "id": "heart", "text": "Corazón" },
+        { "id": "lungs", "text": "Pulmones" },
+        { "id": "stomach", "text": "Estómago" },
+        { "id": "kidneys", "text": "Riñones" }
+      ],
+      "right": [
+        { "id": "pump", "text": "Bombea la sangre" },
+        { "id": "breathe", "text": "Toman oxígeno y sacan dióxido de carbono" },
+        { "id": "digest", "text": "Digiere los alimentos" },
+        { "id": "filter", "text": "Filtran la sangre y forman la orina" },
+        { "id": "voice", "text": "Produce la voz" }
+      ],
+      "pairs": [["heart", "pump"], ["lungs", "breathe"], ["stomach", "digest"], ["kidneys", "filter"]],
+      "feedback": {
+        "correct": "¡Muy bien! Cada órgano cumple una función para mantenernos vivos.",
+        "incorrect": "Piensa en el sistema al que pertenece cada órgano: circulatorio, respiratorio, digestivo o excretor."
+      },
+      "hint": "El corazón pertenece al sistema circulatorio.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Comprende y usa conocimientos sobre los seres vivos, materia y energía",
+        "pisa": { "category": "explain", "process": "explain" },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT00-L01-04",
+      "type": "ordering",
+      "prompt": "Ordena el ciclo de vida de una planta de maíz.",
+      "elements": [
+        { "id": "seed", "text": "La semilla germina bajo la tierra." },
+        { "id": "sprout", "text": "Crece una plántula con sus primeras hojas." },
+        { "id": "flower", "text": "La planta adulta florece." },
+        { "id": "cob", "text": "Se forma la mazorca con nuevas semillas." }
+      ],
+      "correct_order": ["seed", "sprout", "flower", "cob"],
+      "feedback": {
+        "correct": "¡Bien! Y las nuevas semillas pueden empezar otro ciclo.",
+        "incorrect": "Empieza por lo que pasa bajo la tierra y termina con las nuevas semillas."
+      },
+      "hint": "Todo empieza con una semilla.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Comprende y usa conocimientos sobre los seres vivos, materia y energía",
+        "pisa": { "category": "explain", "process": "explain" },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "CYT00-L01-05",
+      "type": "true_false",
+      "prompt": "Los estados del agua: ¿verdadero o falso?",
+      "statements": [
+        { "id": "s1", "text": "El hielo es agua en estado sólido.", "answer": true },
+        { "id": "s2", "text": "El vapor de agua es un líquido.", "answer": false, "feedback": "El vapor es agua en estado gaseoso." },
+        { "id": "s3", "text": "En Huamanga, a 2 700 metros de altura, el agua hierve antes de llegar a 100 °C.", "answer": true }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! En las alturas hay menos presión del aire y el agua hierve a menos temperatura.",
+        "incorrect": "Recuerda los tres estados: sólido, líquido y gaseoso."
+      },
+      "hint": "El agua hierve a 100 °C solo a nivel del mar.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Comprende y usa conocimientos sobre los seres vivos, materia y energía",
+        "pisa": { "category": "explain", "process": "explain" },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT00-L01-U1",
+      "type": "reading_unit",
+      "prompt": "Observa los datos del experimento y responde.",
+      "stimulus": {
+        "type": "table",
+        "title": "El experimento de Killa: ¿dónde se seca más rápido la ropa?",
+        "content": {
+          "columns": ["Lugar", "Sol", "Viento", "Tiempo en secarse"],
+          "rows": [
+            ["Patio con sol", "Sí", "Sí", "2 horas"],
+            ["Patio con sombra", "No", "Sí", "4 horas"],
+            ["Dentro de la casa", "No", "No", "7 horas"]
+          ]
+        },
+        "note": "Killa mojó tres polos iguales con la misma cantidad de agua y los colgó a la misma hora."
+      },
+      "items": [
+        {
+          "id": "CYT00-L01-06",
+          "type": "multiple_choice",
+          "prompt": "¿En qué lugar se secó más rápido el polo?",
+          "options": [
+            { "id": "a", "text": "Patio con sol", "correct": true },
+            { "id": "b", "text": "Patio con sombra", "feedback": "Ahí tardó 4 horas: el doble que con sol." },
+            { "id": "c", "text": "Dentro de la casa", "feedback": "Ahí tardó más que en ningún otro lugar." }
+          ],
+          "feedback": {
+            "correct": "¡Bien leído! Con sol y viento tardó solo 2 horas.",
+            "incorrect": "Compara la última columna: busca el menor tiempo."
+          },
+          "hint": "Mira la columna «Tiempo en secarse».",
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Analiza datos e información",
+            "pisa": { "category": "design_interpret", "process": "design_interpret" },
+            "difficulty": 1,
+            "estimated_seconds": 40
+          }
+        },
+        {
+          "id": "CYT00-L01-07",
+          "type": "numeric",
+          "prompt": "¿Cuántas horas más tardó el polo de dentro de la casa que el del patio con sol?",
+          "answer": 5,
+          "tolerance": 0,
+          "unit": "horas",
+          "accepted_formats": ["decimal"],
+          "feedback": {
+            "correct": "¡Exacto! 7 − 2 = 5 horas más.",
+            "incorrect": "Resta los dos tiempos: el de la casa menos el del patio con sol."
+          },
+          "hint": "Busca los dos tiempos en la tabla y réstalos.",
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Analiza datos e información",
+            "pisa": { "category": "design_interpret", "process": "design_interpret" },
+            "difficulty": 1,
+            "estimated_seconds": 45
+          }
+        },
+        {
+          "id": "CYT00-L01-08",
+          "type": "multiple_choice",
+          "prompt": "¿Por qué Killa usó polos iguales, mojados con la misma cantidad de agua?",
+          "options": [
+            { "id": "a", "text": "Para que la prueba sea justa: solo cambia el lugar.", "correct": true },
+            { "id": "b", "text": "Porque no tenía otros polos.", "feedback": "Fue una decisión del experimento, no un problema de ropa." },
+            { "id": "c", "text": "Para que se sequen más rápido.", "feedback": "Usar polos iguales no cambia la rapidez: permite comparar." },
+            { "id": "d", "text": "Porque el color del polo no importa.", "feedback": "Justamente cuidó que todo fuera igual, incluso el polo." }
+          ],
+          "feedback": {
+            "correct": "¡Pensaste como científico! Si cambiara más de una cosa, no sabríamos qué causó la diferencia.",
+            "incorrect": "En un buen experimento solo cambia una cosa a la vez."
+          },
+          "hint": "¿Qué pasaría si un polo fuera más grueso que los otros?",
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Diseña estrategias para hacer indagación",
+            "pisa": { "category": "design_interpret", "process": "design_interpret" },
+            "difficulty": 2,
+            "estimated_seconds": 50
+          }
+        }
+      ],
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Analiza datos e información",
+        "pisa": { "category": "design_interpret", "process": "design_interpret" },
+        "difficulty": 2,
+        "estimated_seconds": 150
+      }
+    }
+  ]
+}

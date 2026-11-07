@@ -122,14 +122,14 @@ Cada nivel tiene un saludo del guía y una lista de ítems. Todos los ítems com
 | `multi_select` | `options`, con `correct: true` en cada opción correcta |
 | `true_false` | `statements`: `id`, `text` y `answer` (`true` o `false`) |
 | `ordering` | `elements` (`id` y `text`) y `correct_order` (lista de `id`) |
-| `matching` | `left`, `right` y `pairs` (pares de `id`) |
+| `matching` | `left` (2 a 6), `right` (puede tener uno o dos distractores) y `pairs`: cada par como lista `["izquierda", "derecha"]` u objeto `{"left": …, "right": …}`; cada elemento de la izquierda va con uno distinto de la derecha |
 | `classification` | `groups` (`id` y `label`) y `elements` (`id`, `text` y `group`) |
-| `fill_blank` | `text` con marcadores `{{1}}`, `{{2}}` y `blanks` (`id`, `options` o `accepted`) |
-| `numeric` | `answer`, `tolerance`, `unit` opcional y `accepted_formats` (`decimal`, `fraction`) |
+| `fill_blank` | `text` con marcadores `{{1}}`, `{{2}}` (hasta 5) y `blanks`: `id`, `accepted` (respuestas válidas, obligatorio) y `options` si se elige de una lista; las opciones de todos los espacios forman un solo banco de palabras. Sin `options`, el espacio se escribe |
+| `numeric` | `answer`, `tolerance` (por defecto 0), `unit` opcional y `accepted_formats` (`decimal`, `fraction`; por defecto solo `decimal`). Se acepta coma o punto decimal; con `fraction`, también fracciones y números mixtos. `S/` se escribe antes del número; las demás unidades, después |
 | `short_text` | `accepted`: lista de respuestas válidas |
 | `hotspot` | `image` y `zones` (`id`, rectángulo `x`, `y`, `w`, `h` y `correct`) |
 | `sentence_check` | `sentence` y `makes_sense` |
-| `reading_unit` | `stimulus` (`type`: `text`, `image` o `table`; `title`; `content` o `file`) e `items` (lista de ítems de los tipos anteriores) |
+| `reading_unit` | `stimulus` e `items` (1 a 8 ítems de los tipos anteriores, sin otra unidad dentro). El estímulo tiene `type` y `title`; si es `text`, `content` es una lista de párrafos (o un texto con párrafos separados por una línea en blanco); si es `table`, `content` tiene `columns` y `rows`, y puede llevar `note`; si es `image`, `file` es la ruta de la imagen |
 
 ```json
 {
@@ -187,6 +187,13 @@ Cada nivel tiene un saludo del guía y una lista de ítems. Todos los ítems com
 }
 ```
 
+## Cómo se juega cada ítem
+
+- Las preguntas de una unidad de lectura se presentan una por una, con el estímulo a la vista; cada una cuenta como una pregunta del nivel.
+- Las respuestas escritas se comparan sin mayúsculas, sin tildes y sin signos de puntuación.
+- Las opciones de `ordering`, `matching` (columna derecha), `classification` y el banco de palabras se desordenan al mostrarse; la secuencia de `ordering` nunca aparece ya resuelta.
+- El `feedback` propio de una opción, afirmación o distractor se muestra cuando el estudiante elige esa parte; si no tiene, se usa el `incorrect` del ítem.
+
 ## Códigos de competencia
 
 | Área | Códigos |
@@ -200,6 +207,10 @@ Valores de `pisa.category` y `pisa.process`:
 - **Matemática:** categorías `quantity`, `change_relationships`, `space_shape`, `uncertainty_data`; procesos `formulate`, `employ`, `interpret`, `reason`.
 - **Lectura:** procesos `locate`, `understand`, `evaluate_reflect`.
 - **Ciencias:** competencias `explain`, `design_interpret`, `research_decide`.
+
+## Paquetes incluidos en el juego
+
+El juego trae tres módulos de práctica en `android/content/packages/`, con el mismo formato: `mod-math-6-00`, `mod-language-6-00` y `mod-science-6-00` (número 0, «calentamiento»). Cada uno tiene un nivel de 8 preguntas que usa los tipos de ítem P1 y se registra en la base local al iniciar el juego. No llevan `checksums.sha256` porque viajan dentro del APK firmado. Su contenido es original y debe revisarlo un docente de 6.° grado antes del piloto.
 
 ## Integridad y validación
 

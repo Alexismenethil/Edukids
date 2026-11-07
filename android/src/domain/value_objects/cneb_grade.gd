@@ -2,23 +2,23 @@ class_name CnebGrade
 extends RefCounted
 ## Calificación referencial de la escala del CNEB: AD, A, B o C (RN-12).
 
-enum Level { C, B, A, AD }
+enum Achievement { C, B, A, AD }
 
 const CODES := {
-	Level.AD: "AD",
-	Level.A: "A",
-	Level.B: "B",
-	Level.C: "C",
+	Achievement.AD: "AD",
+	Achievement.A: "A",
+	Achievement.B: "B",
+	Achievement.C: "C",
 }
 
 const DESCRIPTIONS := {
-	Level.AD: "Logro destacado",
-	Level.A: "Logro esperado",
-	Level.B: "En proceso",
-	Level.C: "En inicio",
+	Achievement.AD: "Logro destacado",
+	Achievement.A: "Logro esperado",
+	Achievement.B: "En proceso",
+	Achievement.C: "En inicio",
 }
 
-var level: Level:
+var level: Achievement:
 	get:
 		return _level
 
@@ -27,11 +27,11 @@ var percent: float:
 	get:
 		return _percent
 
-var _level: Level
+var _level: Achievement
 var _percent: float
 
 
-func _init(grade_level: Level, grade_percent: float) -> void:
+func _init(grade_level: Achievement, grade_percent: float) -> void:
 	_level = grade_level
 	_percent = clampf(grade_percent, 0.0, 100.0)
 

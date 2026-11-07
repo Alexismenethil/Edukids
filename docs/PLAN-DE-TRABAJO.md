@@ -53,6 +53,23 @@ El proyecto avanza por sprints, cada uno con un entregable que se puede verifica
 | Prueba en Android (emulador de tablet 2560 × 1600): teclado en pantalla, validación, PIN docente y de estudiante, avatar y datos que siguen ahí al cerrar la app | Hecho; falta repetirla en la tablet real del piloto |
 | Habilitación de paquetes por sección (RF-09) | Pasa al Sprint 7, cuando existan paquetes |
 
+## Avance del Sprint 4
+
+| Entregable | Estado |
+| --- | --- |
+| Tipos de ítem P1 con su evaluador: opción múltiple, selección múltiple, verdadero o falso, ordenar, emparejar, clasificar, completar, respuesta numérica y unidad de lectura (RF-12) | Hecho |
+| Respuestas escritas sin distinguir mayúsculas ni tildes; números con coma o punto, fracciones y números mixtos equivalentes (0,5 = 1/2) | Hecho |
+| Sesión del nivel: retroalimentación por opción, pregunta fallada que vuelve una vez al final (RF-29), pista que no suma acierto válido (RN-11) y pista ofrecida por el guía tras dos errores seguidos (RF-26) | Hecho |
+| Unidades de lectura con el texto, la tabla o la imagen siempre a la vista (RF-28, RN-17) | Hecho |
+| Guardado de intentos: cada respuesta en el momento (RNF-06), cierre con aciertos, porcentaje, pistas y estrellas (RF-14, RF-25); el nivel continúa donde se quedó al reabrir la aplicación | Hecho |
+| Lectura y validación del manifiesto y de los niveles del formato de paquete v1 | Hecho (la instalación de paquetes descargados queda para el Sprint 7) |
+| Módulos 0 de práctica de las tres áreas, con contenido original ambientado en Ayacucho y los 9 tipos de ítem | Hecho; falta la revisión de los docentes de 6.° grado |
+| Pantalla del nivel con la mecánica clásica, quipu de avance, retroalimentación, pistas de Quwi y resultados con estrellas; los niveles aparecen en el inicio del estudiante | Hecho |
+| Pruebas: 228 (77 nuevas) y verificación de dependencias | Hecho |
+| Prueba en Android (emulador de tablet 2560 × 1600): tocar opciones, teclado del juego, arrastrar tarjetas, tender cuerdas, llenar canastas y continuar el nivel después de cerrar la aplicación | Hecho; falta repetirla en la tablet real del piloto |
+| Tipos P2 (respuesta breve, tocar en la imagen y ¿tiene sentido?) | Pendientes: el registro de evaluadores ya permite agregarlos sin tocar la sesión |
+| Vidas, medidor de peligro, Atoq y game over (RN-13, RN-14) | Sprint 5, con las mecánicas |
+
 ## Épicas
 
 | Código | Épica | Resultado | Depende de |

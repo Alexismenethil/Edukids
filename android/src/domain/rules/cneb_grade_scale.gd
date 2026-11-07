@@ -42,13 +42,13 @@ static func create(ad_from: int, a_from: int, b_from: int) -> Result:
 ## Califica un desafío con sus aciertos. Compara con enteros para no depender de redondeos.
 func grade(correct: int, total: int) -> CnebGrade:
 	if total <= 0:
-		return CnebGrade.new(CnebGrade.Level.C, 0.0)
+		return CnebGrade.new(CnebGrade.Achievement.C, 0.0)
 	var hits := clampi(correct, 0, total)
 	var percent := 100.0 * hits / total
 	if hits * 100 >= _min_ad * total:
-		return CnebGrade.new(CnebGrade.Level.AD, percent)
+		return CnebGrade.new(CnebGrade.Achievement.AD, percent)
 	if hits * 100 >= _min_a * total:
-		return CnebGrade.new(CnebGrade.Level.A, percent)
+		return CnebGrade.new(CnebGrade.Achievement.A, percent)
 	if hits * 100 >= _min_b * total:
-		return CnebGrade.new(CnebGrade.Level.B, percent)
-	return CnebGrade.new(CnebGrade.Level.C, percent)
+		return CnebGrade.new(CnebGrade.Achievement.B, percent)
+	return CnebGrade.new(CnebGrade.Achievement.C, percent)

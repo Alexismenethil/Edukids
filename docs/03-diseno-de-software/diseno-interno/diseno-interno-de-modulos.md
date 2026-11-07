@@ -9,7 +9,7 @@ Componentes del juego con sus casos de uso, sus puertos y las reglas del dominio
 | Aula e identidad | `ConfigureInstitution`, `GetClassroom`, `UnlockTeacherMode`, `RegisterStudent`, `UpdateStudent`, `SetStudentActive`, `ResetStudentPin`, `LoginStudent`, `ListStudents`, `GetStudentProfile`, `CustomizeAvatar`, `SuggestPin`, `SuggestAvatar` | `Pin`, `PinLockout` (bloqueo tras 5 fallos), `PersonName`, `TeacherCode`, `Avatar` | `InstitutionRepository`, `StudentRepository`, `PinHasher`, `Clock`, `IdGenerator`, `RandomSource` |
 | Paquetes | `FetchCatalog`, `DownloadPackage`, `InstallPackage`, `ImportPackageFile`, `ReleasePackage`, `EnablePackage` | Validación del manifiesto y del contenido | `CatalogGateway`, `PackageDownloader`, `PackageArchive`, `PackageRepository`, `FileImporter` |
 | Contenidos | `GetStopContent`, `OpenTheory`, `OpenReading` | `UnlockRule` (RN-18) | `PackageStore`, `ProgressRepository` |
-| Juego | `StartLevel`, `SubmitAnswer`, `RequestHint`, `FinishLevel` | `LevelSession`, `DangerMeter`, evaluadores, `StarRule` | `PackageStore`, `AttemptRepository`, `LevelSessionStore`, `Clock`, `IdGenerator` |
+| Juego | `ListLevels`, `StartLevel`, `SubmitAnswer`, `RequestHint`, `ContinueLevel`, `FinishLevel`, `RegisterBundledPackages` | `LevelSession`, `EvaluatorRegistry` y un evaluador por tipo, `StarRule`; desde el Sprint 5, `DangerMeter` | `PackageStore`, `PackageRepository`, `AttemptRepository`, `LevelSessionStore`, `Clock`, `IdGenerator`, `RandomSource` |
 | Desafío final | `StartFinalChallenge`, `AnswerFinalItem`, `SubmitFinalChallenge`, `AuthorizeExtraAttempt` | `FinalChallenge`, `CnebGradeScale`, límite de intentos | `AttemptRepository`, `SettingsRepository`, `Clock` |
 | Recompensas | `GrantRewards`, `GetCollection` (los accesorios de RF-32 amplían `CustomizeAvatar`) | Umbrales de accesorios, condiciones de insignias | `RewardRepository`, `StudentRepository` |
 | Reportes | `GetSectionReport`, `ExportReportCsv` | Agregados por estudiante, área y módulo | `AttemptRepository`, `ReportExporter` |
@@ -31,7 +31,16 @@ stateDiagram-v2
     Completado --> [*]: FinishLevel calcula las estrellas
 ```
 
-Resultado de cada respuesta (`AnswerOutcome`): si fue correcta, la retroalimentación, el nuevo valor del medidor, las vidas restantes, si Atoq alcanzó al avatar y si el nivel terminó.
+Resultado de cada respuesta (`AnswerOutcome`): si fue correcta, la retroalimentación, si la pregunta volverá al final, si el guía ofrece una pista para la siguiente, la solución cuando ya no queda otra oportunidad y si el nivel terminó. Con las mecánicas del Sprint 5 se suman el valor del medidor, las vidas restantes y si Atoq alcanzó al avatar.
+
+Reglas que aplica hoy la sesión (Sprint 4):
+
+- Las preguntas de una unidad de lectura se presentan una por una, con el estímulo a la vista.
+- Una respuesta incompleta no cuenta: la pregunta sigue abierta.
+- Una pregunta fallada vuelve una sola vez al final del nivel (RF-29); la segunda respuesta se guarda, pero no suma estrellas.
+- Una pista no quita nada, pero esa pregunta deja de contar como acierto válido (RN-11).
+- Tras dos errores seguidos, el guía ofrece la pista de la siguiente pregunta, si la tiene (RF-26).
+- Si la aplicación se cierra, `StartLevel` rehace la sesión con las respuestas guardadas y el nivel continúa donde se quedó (RF-14). Si el paquete cambió de versión, empieza un intento nuevo (RN-05).
 
 ## Ciclo de vida de un paquete
 
@@ -52,7 +61,7 @@ Al archivar un paquete se borran sus archivos, pero se conservan sus intentos y 
 
 ## Motor de actividades
 
-Cada tipo de ítem tiene un evaluador que implementa la misma interfaz (`ItemEvaluator`). `EvaluatorRegistry` elige el evaluador según el campo `type` del ítem. Agregar un tipo nuevo significa crear un evaluador y su componente visual, sin tocar `LevelSession`.
+Cada tipo de ítem tiene un evaluador que implementa la misma interfaz (`ItemEvaluator`): valida los campos propios del tipo (`parse_spec`), corrige una respuesta (`evaluate`) y describe la solución (`solution_text`). `EvaluatorRegistry` elige el evaluador según el campo `type` del ítem. Agregar un tipo nuevo significa crear un evaluador, registrarlo, preparar sus datos de pantalla en `StepBuilder` y crear su componente visual en `scenes/activities/`, sin tocar `LevelSession`. Los evaluadores de prioridad P2 (`ShortTextEvaluator`, `HotspotEvaluator` y `SentenceCheckEvaluator`) todavía no están implementados.
 
 | Evaluador | Tipo de ítem | Regla |
 | --- | --- | --- |

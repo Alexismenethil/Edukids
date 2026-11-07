@@ -12,6 +12,9 @@ const CHARS_PER_SECOND := 36.0
 const FILL := Color("#FFF8EC")
 const OUTLINE := Color("#5A2E16")
 
+## Con true, el globo crece hacia la derecha de la punta (guía a la izquierda de la pantalla).
+@export var flipped := false
+
 @onready var _panel: PanelContainer = $Panel
 @onready var _text: Label = $Panel/Box/Text
 @onready var _next: Button = $Panel/Box/Footer/NextButton
@@ -41,6 +44,7 @@ func is_open() -> bool:
 func play(dialogue: DialogueViewModel) -> void:
 	_dialogue = dialogue
 	_skip.text = dialogue.skip_label
+	_skip.visible = not dialogue.skip_label.is_empty()
 	visible = true
 	scale = Vector2(0.3, 0.3)
 	modulate.a = 0.0
@@ -103,16 +107,21 @@ func _reveal(count: int) -> void:
 	_text.visible_characters = count
 
 
-## El panel queda a la izquierda de la punta y la colita sale de su borde derecho.
+## El panel queda a la izquierda de la punta y la colita sale de su borde derecho
+## (o al revés, si `flipped`).
 func _layout() -> void:
 	var size_now := _panel.get_combined_minimum_size()
 	_panel.size = size_now
-	_panel.position = Vector2(-size_now.x - 46.0, -size_now.y * 0.6)
-	_panel.pivot_offset = Vector2(size_now.x, size_now.y * 0.6)
+	if flipped:
+		_panel.position = Vector2(46.0, -size_now.y * 0.6)
+		_panel.pivot_offset = Vector2(0.0, size_now.y * 0.6)
+	else:
+		_panel.position = Vector2(-size_now.x - 46.0, -size_now.y * 0.6)
+		_panel.pivot_offset = Vector2(size_now.x, size_now.y * 0.6)
 	_name_tag.position = _panel.position + Vector2(28.0, -24.0)
-	var right := _panel.position.x + size_now.x - 5.0
-	_tail_a = Vector2(right, -34.0)
-	_tail_b = Vector2(right, 6.0)
+	var edge := _panel.position.x + 5.0 if flipped else _panel.position.x + size_now.x - 5.0
+	_tail_a = Vector2(edge, -34.0)
+	_tail_b = Vector2(edge, 6.0)
 
 
 func _on_panel_input(event: InputEvent) -> void:

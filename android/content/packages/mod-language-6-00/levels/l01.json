@@ -1,0 +1,233 @@
+{
+  "id": "L01",
+  "title": "Killa y la faena del agua",
+  "guide_intro": [
+    "¡Rimaykullayki! Hoy leeremos la historia de Killa y su comunidad.",
+    "El texto se queda a tu lado mientras respondes: vuelve a leerlo cuando quieras."
+  ],
+  "items": [
+    {
+      "id": "COM00-L01-U1",
+      "type": "reading_unit",
+      "prompt": "Lee el cuento y responde las preguntas.",
+      "stimulus": {
+        "type": "text",
+        "title": "Killa y la faena del agua",
+        "content": [
+          "Una mañana de agosto, Killa despertó con el sonido de la tinya. Era el día de la faena: toda la comunidad limpiaría la acequia que lleva el agua desde el manantial hasta las chacras.",
+          "Su abuelo le entregó una pala pequeña. —Cada familia limpia un tramo —le explicó—. Si alguien no ayuda, el agua se queda atrapada entre las piedras y no llega a todos.",
+          "Killa sacó hojas secas, ramas y barro. Al mediodía estaba cansada, pero vio que su vecino Amaru todavía tenía mucho trabajo. Sin que nadie se lo pidiera, fue a ayudarlo. —Hoy por ti, mañana por mí —le dijo Amaru, sonriendo.",
+          "Por la tarde abrieron la compuerta del manantial. El agua corrió limpia por la acequia y llegó hasta la última chacra. Todos aplaudieron y compartieron papas, habas y queso sobre una manta. Killa entendió que el agua llega a todos cuando todos ayudan."
+        ]
+      },
+      "items": [
+        {
+          "id": "COM00-L01-01",
+          "type": "multiple_choice",
+          "prompt": "¿Para qué limpiaba la comunidad la acequia?",
+          "options": [
+            { "id": "a", "text": "Para que el agua llegue a todas las chacras.", "correct": true },
+            { "id": "b", "text": "Para buscar piedras bonitas.", "feedback": "Las piedras eran un problema: atrapaban el agua." },
+            { "id": "c", "text": "Para que Killa aprenda a usar la pala.", "feedback": "Killa aprendió mucho, pero no era el propósito de la faena." },
+            { "id": "d", "text": "Para preparar la comida del mediodía.", "feedback": "La comida se compartió al final, cuando terminaron." }
+          ],
+          "feedback": {
+            "correct": "¡Bien! El primer párrafo dice que la acequia lleva el agua hasta las chacras.",
+            "incorrect": "Relee el primer párrafo: ¿qué lleva la acequia y hasta dónde?"
+          },
+          "hint": "La respuesta está en el primer párrafo.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Obtiene información del texto escrito",
+            "pisa": { "category": "", "process": "locate" },
+            "difficulty": 1,
+            "estimated_seconds": 40
+          }
+        },
+        {
+          "id": "COM00-L01-02",
+          "type": "ordering",
+          "prompt": "Ordena lo que pasó en el cuento.",
+          "elements": [
+            { "id": "e1", "text": "Killa despierta con el sonido de la tinya." },
+            { "id": "e2", "text": "El abuelo le entrega una pala pequeña." },
+            { "id": "e3", "text": "Killa ayuda a su vecino Amaru." },
+            { "id": "e4", "text": "Abren la compuerta y el agua corre." },
+            { "id": "e5", "text": "Todos comparten papas, habas y queso." }
+          ],
+          "correct_order": ["e1", "e2", "e3", "e4", "e5"],
+          "feedback": {
+            "correct": "¡Muy bien! Seguiste la secuencia de la mañana a la tarde.",
+            "incorrect": "Usa las pistas de tiempo del texto: una mañana, al mediodía, por la tarde."
+          },
+          "hint": "Busca las palabras «mañana», «mediodía» y «tarde».",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": { "category": "", "process": "understand" },
+            "difficulty": 1,
+            "estimated_seconds": 60
+          }
+        },
+        {
+          "id": "COM00-L01-03",
+          "type": "true_false",
+          "prompt": "Según el cuento, ¿verdadero o falso?",
+          "statements": [
+            { "id": "s1", "text": "La faena se hizo en agosto.", "answer": true },
+            { "id": "s2", "text": "Amaru le pidió ayuda a Killa.", "answer": false, "feedback": "Killa lo ayudó sin que nadie se lo pidiera." },
+            { "id": "s3", "text": "El agua llegó hasta la última chacra.", "answer": true }
+          ],
+          "feedback": {
+            "correct": "¡Excelente lectura!",
+            "incorrect": "Vuelve al texto y busca cada dato antes de decidir."
+          },
+          "hint": "Lee con atención el tercer párrafo.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Obtiene información del texto escrito",
+            "pisa": { "category": "", "process": "locate" },
+            "difficulty": 1,
+            "estimated_seconds": 50
+          }
+        },
+        {
+          "id": "COM00-L01-04",
+          "type": "multiple_choice",
+          "prompt": "¿Qué quiere decir Amaru con «Hoy por ti, mañana por mí»?",
+          "options": [
+            { "id": "a", "text": "Que él también la ayudará cuando ella lo necesite.", "correct": true },
+            { "id": "b", "text": "Que mañana Killa tendrá que trabajar sola.", "feedback": "La frase habla de ayudarse, no de trabajar solos." },
+            { "id": "c", "text": "Que Killa debe limpiar su tramo otra vez.", "feedback": "Amaru le está agradeciendo, no pidiéndole más trabajo." },
+            { "id": "d", "text": "Que el agua llegará recién mañana.", "feedback": "El agua llegó esa misma tarde." }
+          ],
+          "feedback": {
+            "correct": "¡Así es! Es la ayuda mutua, el ayni de nuestras comunidades.",
+            "incorrect": "Piensa en lo que acaba de hacer Killa por Amaru."
+          },
+          "hint": "Amaru dice la frase justo después de recibir ayuda.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": { "category": "", "process": "understand" },
+            "difficulty": 2,
+            "estimated_seconds": 50
+          }
+        },
+        {
+          "id": "COM00-L01-05",
+          "type": "multiple_choice",
+          "prompt": "¿Cuál es la enseñanza principal del cuento?",
+          "options": [
+            { "id": "a", "text": "Cuando todos colaboran, todos se benefician.", "correct": true },
+            { "id": "b", "text": "Es mejor trabajar solo para terminar rápido.", "feedback": "En el cuento, el trabajo de todos hizo que el agua llegara." },
+            { "id": "c", "text": "Las palas pequeñas sirven más que las grandes.", "feedback": "La pala es un detalle, no la idea principal." },
+            { "id": "d", "text": "La comida es lo más importante de la faena.", "feedback": "La comida fue el final feliz, pero no la enseñanza." }
+          ],
+          "feedback": {
+            "correct": "¡Bien! La última oración lo resume: el agua llega a todos cuando todos ayudan.",
+            "incorrect": "Relee la última oración del cuento."
+          },
+          "hint": "La última oración del texto te ayudará.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Reflexiona y evalúa la forma, el contenido y el contexto del texto",
+            "pisa": { "category": "", "process": "evaluate_reflect" },
+            "difficulty": 2,
+            "estimated_seconds": 50
+          }
+        }
+      ],
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos",
+        "pisa": { "category": "", "process": "understand" },
+        "difficulty": 2,
+        "estimated_seconds": 300
+      }
+    },
+    {
+      "id": "COM00-L01-06",
+      "type": "fill_blank",
+      "prompt": "Completa con el conector adecuado.",
+      "text": "Killa estaba cansada, {{1}} siguió ayudando. La acequia quedó limpia {{2}} todos trabajaron juntos.",
+      "blanks": [
+        { "id": "1", "accepted": ["pero"], "options": ["pero", "porque", "y"] },
+        { "id": "2", "accepted": ["porque"], "options": ["pero", "porque", "y"] }
+      ],
+      "feedback": {
+        "correct": "¡Bien! «Pero» une ideas que se oponen y «porque» explica una causa.",
+        "incorrect": "«Pero» muestra oposición; «porque» explica por qué pasó algo."
+      },
+      "hint": "¿La segunda parte se opone a la primera o explica la causa?",
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Utiliza convenciones del lenguaje escrito de forma pertinente",
+        "pisa": { "category": "", "process": "understand" },
+        "difficulty": 2,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "COM00-L01-07",
+      "type": "matching",
+      "prompt": "Une cada palabra con su significado en el cuento.",
+      "left": [
+        { "id": "acequia", "text": "acequia" },
+        { "id": "compuerta", "text": "compuerta" },
+        { "id": "faena", "text": "faena" },
+        { "id": "chacra", "text": "chacra" }
+      ],
+      "right": [
+        { "id": "canal", "text": "canal que lleva el agua" },
+        { "id": "puerta", "text": "puerta que deja pasar o detiene el agua" },
+        { "id": "trabajo", "text": "trabajo que hace toda la comunidad" },
+        { "id": "terreno", "text": "terreno donde se siembra" },
+        { "id": "fiesta", "text": "fiesta con música y danzas" }
+      ],
+      "pairs": [["acequia", "canal"], ["compuerta", "puerta"], ["faena", "trabajo"], ["chacra", "terreno"]],
+      "feedback": {
+        "correct": "¡Muy bien! Entendiste las palabras por su contexto.",
+        "incorrect": "Busca cada palabra en el cuento y lee lo que dice alrededor."
+      },
+      "hint": "El contexto ayuda: «la acequia que lleva el agua desde el manantial…»",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Infiere e interpreta información del texto",
+        "pisa": { "category": "", "process": "understand" },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "COM00-L01-08",
+      "type": "classification",
+      "prompt": "Clasifica estas palabras del cuento.",
+      "groups": [
+        { "id": "noun", "label": "Sustantivos" },
+        { "id": "verb", "label": "Verbos" },
+        { "id": "adjective", "label": "Adjetivos" }
+      ],
+      "elements": [
+        { "id": "abuelo", "text": "abuelo", "group": "noun" },
+        { "id": "manantial", "text": "manantial", "group": "noun" },
+        { "id": "desperto", "text": "despertó", "group": "verb" },
+        { "id": "aplaudieron", "text": "aplaudieron", "group": "verb" },
+        { "id": "pequena", "text": "pequeña", "group": "adjective" },
+        { "id": "contenta", "text": "contenta", "group": "adjective" }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! Nombran, indican acciones y describen.",
+        "incorrect": "Los sustantivos nombran, los verbos dicen acciones y los adjetivos describen."
+      },
+      "hint": "Pregúntate: ¿nombra algo, es una acción o dice cómo es algo?",
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Utiliza convenciones del lenguaje escrito de forma pertinente",
+        "pisa": { "category": "", "process": "understand" },
+        "difficulty": 1,
+        "estimated_seconds": 70
+      }
+    }
+  ]
+}
