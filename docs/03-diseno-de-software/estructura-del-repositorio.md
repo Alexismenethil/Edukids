@@ -1,0 +1,115 @@
+# Estructura del repositorio
+
+## Vista general
+
+```text
+Edukids/
+├── docs/              Documentación (Sprint 1)
+├── android/           Juego en Godot 4.7 (desde el Sprint 2)
+├── backend/           API de contenidos en Node.js y TypeScript (Sprint 8)
+├── web/               Panel docente en React y TypeScript (Sprint 8)
+├── README.md
+├── CONTRIBUTING.md
+├── .gitignore
+├── .gitattributes
+└── .editorconfig
+```
+
+Las carpetas `android/`, `backend/` y `web/` se crean en sus sprints. Cada una tendrá su propio README con instrucciones de instalación, pruebas y ejecución. Los números de capa corresponden a [Clean Architecture](../02-arquitectura-software/clean-architecture.md).
+
+## Juego: `android/`
+
+```text
+android/
+├── project.godot
+├── export_presets.cfg            Ajustes de exportación (sin credenciales)
+├── addons/                       Plugins con versión fijada: godot-sqlite y GdUnit4
+├── src/
+│   ├── domain/                   1. Dominio: sin nodos, sin archivos y sin red
+│   │   ├── entities/             Student, Section, Package, Level, Item, Attempt, Answer
+│   │   ├── value_objects/        Pin, TeacherCode, Stars, CnebGrade, PackageVersion
+│   │   ├── rules/                LevelSession, DangerMeter, StarRule, CnebGradeScale, UnlockRule
+│   │   ├── evaluators/           Un evaluador por tipo de ítem
+│   │   └── errors/
+│   ├── application/              2. Aplicación
+│   │   ├── use_cases/
+│   │   │   ├── classroom/        ConfigureInstitution, RegisterStudent, LoginWithPin, EnablePackage
+│   │   │   ├── play/             StartLevel, SubmitAnswer, RequestHint, FinishLevel
+│   │   │   ├── final_challenge/  StartFinalChallenge, AnswerFinalItem, SubmitFinalChallenge
+│   │   │   ├── packages/         FetchCatalog, DownloadPackage, InstallPackage, ImportPackageFile, ReleasePackage
+│   │   │   ├── rewards/          GrantRewards, CustomizeAvatar
+│   │   │   └── reports/          GetSectionReport, ExportReportCsv
+│   │   ├── ports/                Clases base abstractas: repositorios, gateways, Clock, IdGenerator, RandomSource
+│   │   └── dto/                  Objetos de petición y respuesta
+│   ├── infrastructure/           3. Adaptadores de salida
+│   │   ├── sqlite/               Repositorios y migraciones
+│   │   ├── packages/             Lectura de ZIP, validación e instalación
+│   │   ├── network/              Cliente del catálogo y descarga por rangos
+│   │   ├── security/             Hash del PIN
+│   │   └── system/               Reloj, identificadores, archivos y exportación CSV
+│   ├── presentation/             3. Adaptadores de entrada
+│   │   ├── presenters/           Un presentador por pantalla
+│   │   └── view_models/
+│   └── main/                     Raíz de composición y navegador
+├── scenes/                       4. Vistas (escenas de Godot)
+│   ├── ui/                       Perfiles, PIN, modo docente, reportes y ajustes
+│   ├── map/                      Mapa general y mapas de capítulo
+│   ├── level/                    Nivel, HUD, resultados y game over
+│   ├── mechanics/                Persecución, puente y clásica
+│   ├── activities/               Un componente visual por tipo de ítem
+│   └── characters/               Avatar, guías, Atoq y Mama Sisa
+├── assets/
+│   ├── art/                      Personajes, fondos, interfaz e iconos
+│   ├── audio/                    music/ y sfx/
+│   ├── fonts/
+│   └── themes/                   Tema de la interfaz
+├── content/                      Paquete de demostración para pruebas
+└── tests/
+    ├── unit/                     Dominio y casos de uso, sin escenas
+    ├── integration/              SQLite y paquetes
+    └── architecture/             Verificación de dependencias
+```
+
+## Backend: `backend/`
+
+```text
+backend/
+├── src/
+│   ├── domain/                   1. Teacher, TeacherCode, Challenge, ChallengeItem, Package y reglas del formato
+│   ├── application/              2. Aplicación
+│   │   ├── use_cases/            ListCatalog, GetPackageDownload, RegisterTeacher, Login,
+│   │   │                         CreateChallenge, PublishChallenge, PublishOfficialModule
+│   │   └── ports/                Repositorios, PackageStorage, PackageBuilder, PasswordHasher, TokenService, Clock
+│   ├── infrastructure/           3. Prisma, almacenamiento S3, ZIP y SHA-256, hash de contraseñas y tokens
+│   ├── interfaces/http/          3. Rutas de Fastify, esquemas Zod y presentadores
+│   └── main/                     Raíz de composición y servidor
+├── prisma/                       Esquema y migraciones
+├── tests/                        unit/ e integration/
+├── .env.example
+└── package.json
+```
+
+## Panel docente: `web/`
+
+```text
+web/
+├── src/
+│   ├── domain/                   Modelo del reto y validaciones
+│   ├── application/              Casos de uso del panel
+│   ├── infrastructure/           Cliente de la API y pdf.js
+│   └── ui/                       Páginas y componentes React
+├── tests/
+├── .env.example
+└── package.json
+```
+
+## Convenciones de nombres
+
+| Elemento | Convención | Ejemplo |
+| --- | --- | --- |
+| Archivos GDScript | `snake_case` | `submit_answer.gd` |
+| Clases GDScript | `PascalCase` con `class_name` | `SubmitAnswer` |
+| Escenas | `snake_case` | `level_chase.tscn` |
+| Archivos TypeScript | `kebab-case` | `publish-challenge.ts` |
+| Recursos de arte | `tipo_nombre_variante` | `char_quwi_idle.png`, `bg_sierra_huamanga_l1.webp` |
+| Paquetes | Ver [formato de paquete](formato-de-paquete.md) | `mod-math-6-01-1.0.0.zip` |

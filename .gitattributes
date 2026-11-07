@@ -1,0 +1,34 @@
+# Normaliza los finales de línea a LF en todos los archivos de texto
+* text=auto eol=lf
+
+# Archivos de Godot
+*.gd      text eol=lf
+*.tscn    text eol=lf
+*.tres    text eol=lf
+*.godot   text eol=lf
+*.import  text eol=lf
+*.cfg     text eol=lf
+
+# Gráficos vectoriales (texto)
+*.svg     text eol=lf
+
+# Binarios: Git no debe intentar combinarlos ni cambiar sus finales de línea
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.webp    binary
+*.gif     binary
+*.ico     binary
+*.ogg     binary
+*.wav     binary
+*.mp3     binary
+*.ttf     binary
+*.otf     binary
+*.woff    binary
+*.woff2   binary
+*.zip     binary
+*.pdf     binary
+*.apk     binary
+*.aab     binary
+*.so      binary
+*.dll     binary
