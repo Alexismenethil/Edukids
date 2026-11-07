@@ -1,0 +1,18 @@
+class_name LevelSummary
+extends RefCounted
+## Resumen de un nivel de práctica (RF-14): aciertos, aciertos válidos, pistas y estrellas.
+
+var total := 0
+## Preguntas acertadas al primer intento (con o sin pista).
+var correct := 0
+## Aciertos válidos: al primer intento y sin pista (RN-11).
+var valid_hits := 0
+## Preguntas falladas que se corrigieron en el repaso final (no suman estrellas).
+var fixed := 0
+var hints_used := 0
+var lives_lost := 0
+## Tiempo respondiendo, sin contar la lectura de la retroalimentación.
+var time_ms := 0
+var percent := 0.0
+var stars := 0
+var completed := false

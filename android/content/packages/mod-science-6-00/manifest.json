@@ -1,0 +1,27 @@
+{
+  "format_version": "1.0",
+  "id": "mod-science-6-00",
+  "kind": "module",
+  "title": "Módulo 0 · Calentamiento científico",
+  "area": "science",
+  "grade": 6,
+  "number": 0,
+  "chapter": "sierra",
+  "stop": "huamanga",
+  "version": "1.0.0",
+  "min_app_version": "0.1.0",
+  "author": { "type": "official" },
+  "created_at": "2026-11-07T00:00:00Z",
+  "competencies": ["CYT.EXPLICA", "CYT.INDAGA"],
+  "levels": [
+    {
+      "id": "L01",
+      "kind": "regular",
+      "mechanic": "classic",
+      "file": "levels/l01.json",
+      "estimated_minutes": 10,
+      "lives": 3,
+      "danger": { "start": 2, "max": 4 }
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "id": "L01",
+  "title": "Números en la feria",
+  "guide_intro": [
+    "¡Rimaykullayki! Hoy calentamos motores con los números de la feria de Huamanga.",
+    "Lee con calma, elige tu respuesta y toca «Comprobar». Si dudas, pídeme una pista."
+  ],
+  "items": [
+    {
+      "id": "MAT00-L01-01",
+      "type": "multiple_choice",
+      "prompt": "En un año, los artesanos de la feria vendieron S/ 1 254 300. ¿Cuánto vale la cifra 5 en ese número?",
+      "options": [
+        { "id": "a", "text": "5 000", "feedback": "El 5 no está en las unidades de millar: cuenta las posiciones desde la derecha." },
+        { "id": "b", "text": "50 000", "correct": true },
+        { "id": "c", "text": "500 000", "feedback": "Ese sería su valor si estuviera en las centenas de millar." },
+        { "id": "d", "text": "500", "feedback": "El 5 está mucho más a la izquierda: en las decenas de millar." }
+      ],
+      "feedback": {
+        "correct": "¡Bien! El 5 está en las decenas de millar, así que vale 50 000.",
+        "incorrect": "Ubica cada cifra en el tablero de valor posicional."
+      },
+      "hint": "Escribe el número en un tablero: unidades, decenas, centenas, unidades de millar…",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Comunica su comprensión sobre los números y las operaciones",
+        "pisa": { "category": "quantity", "process": "interpret" },
+        "difficulty": 1,
+        "estimated_seconds": 45
+      }
+    },
+    {
+      "id": "MAT00-L01-02",
+      "type": "numeric",
+      "prompt": "Doña Rosa vende retablos pequeños a S/ 45 cada uno. El sábado vendió 12. ¿Cuántos soles recibió?",
+      "answer": 540,
+      "tolerance": 0,
+      "unit": "S/",
+      "accepted_formats": ["decimal"],
+      "feedback": {
+        "correct": "¡Exacto! 12 × 45 = 540 soles.",
+        "incorrect": "Son 12 grupos de 45: puedes calcular 10 × 45 y sumarle 2 × 45."
+      },
+      "hint": "Multiplica el precio de un retablo por la cantidad que vendió.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Usa estrategias y procedimientos de estimación y cálculo",
+        "pisa": { "category": "quantity", "process": "employ" },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "MAT00-L01-03",
+      "type": "ordering",
+      "prompt": "Ordena los platos y bebidas del más barato al más caro.",
+      "elements": [
+        { "id": "chicha", "text": "Chicha morada · S/ 2,50" },
+        { "id": "choclo", "text": "Choclo con queso · S/ 4,50" },
+        { "id": "puca", "text": "Puca picante · S/ 9" },
+        { "id": "mondongo", "text": "Mondongo · S/ 12" }
+      ],
+      "correct_order": ["chicha", "choclo", "puca", "mondongo"],
+      "feedback": {
+        "correct": "¡Muy bien! 2,50 < 4,50 < 9 < 12.",
+        "incorrect": "Compara primero la parte entera de cada precio: 2, 4, 9 y 12."
+      },
+      "hint": "Fíjate solo en los soles enteros para empezar.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Comunica su comprensión sobre los números y las operaciones",
+        "pisa": { "category": "quantity", "process": "employ" },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "MAT00-L01-04",
+      "type": "matching",
+      "prompt": "Une cada fracción con su número decimal.",
+      "left": [
+        { "id": "half", "text": "1/2" },
+        { "id": "quarter", "text": "1/4" },
+        { "id": "three_quarters", "text": "3/4" },
+        { "id": "tenth", "text": "1/10" }
+      ],
+      "right": [
+        { "id": "d050", "text": "0,5" },
+        { "id": "d025", "text": "0,25" },
+        { "id": "d075", "text": "0,75" },
+        { "id": "d010", "text": "0,1" },
+        { "id": "d040", "text": "0,4" }
+      ],
+      "pairs": [["half", "d050"], ["quarter", "d025"], ["three_quarters", "d075"], ["tenth", "d010"]],
+      "feedback": {
+        "correct": "¡Perfecto! Dividiste bien cada numerador entre su denominador.",
+        "incorrect": "Divide el numerador entre el denominador: 1 ÷ 4 = 0,25."
+      },
+      "hint": "Una fracción también es una división: 1/2 es 1 ÷ 2.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Traduce cantidades a expresiones numéricas",
+        "pisa": { "category": "quantity", "process": "employ" },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "MAT00-L01-05",
+      "type": "classification",
+      "prompt": "Pon cada número en su canasta: ¿primo o compuesto?",
+      "groups": [
+        { "id": "prime", "label": "Primos" },
+        { "id": "composite", "label": "Compuestos" }
+      ],
+      "elements": [
+        { "id": "n2", "text": "2", "group": "prime" },
+        { "id": "n7", "text": "7", "group": "prime" },
+        { "id": "n13", "text": "13", "group": "prime" },
+        { "id": "n29", "text": "29", "group": "prime" },
+        { "id": "n9", "text": "9", "group": "composite" },
+        { "id": "n15", "text": "15", "group": "composite" },
+        { "id": "n21", "text": "21", "group": "composite" },
+        { "id": "n12", "text": "12", "group": "composite" }
+      ],
+      "feedback": {
+        "correct": "¡Así es! Los primos solo se dividen exactamente entre 1 y entre sí mismos.",
+        "incorrect": "Busca divisores: 9 = 3 × 3, 15 = 3 × 5 y 21 = 3 × 7 son compuestos."
+      },
+      "hint": "Un número primo tiene solo dos divisores: el 1 y él mismo.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Comunica su comprensión sobre los números y las operaciones",
+        "pisa": { "category": "quantity", "process": "reason" },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT00-L01-06",
+      "type": "multi_select",
+      "prompt": "Don Félix quiere poner sus 36 panes chapla en bolsas con la misma cantidad, sin que sobre ninguno. ¿Cuántos panes puede poner en cada bolsa? Marca todas las respuestas posibles.",
+      "options": [
+        { "id": "p4", "text": "4", "correct": true },
+        { "id": "p5", "text": "5", "feedback": "36 ÷ 5 no es exacto: sobra 1 pan." },
+        { "id": "p6", "text": "6", "correct": true },
+        { "id": "p8", "text": "8", "feedback": "36 ÷ 8 = 4 y sobran 4 panes." },
+        { "id": "p9", "text": "9", "correct": true },
+        { "id": "p10", "text": "10", "feedback": "36 ÷ 10 no es exacto: sobran 6 panes." }
+      ],
+      "feedback": {
+        "correct": "¡Bien pensado! 4, 6 y 9 son divisores de 36.",
+        "incorrect": "Solo sirven los divisores de 36: la división debe ser exacta."
+      },
+      "hint": "Divide 36 entre cada número. ¿Sobra algo?",
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Usa estrategias y procedimientos para encontrar reglas generales",
+        "pisa": { "category": "quantity", "process": "employ" },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT00-L01-07",
+      "type": "true_false",
+      "prompt": "En el puesto de frutas hay 24 tunas y 16 paltas. ¿Verdadero o falso?",
+      "statements": [
+        { "id": "s1", "text": "Hay 8 tunas más que paltas.", "answer": true },
+        { "id": "s2", "text": "Las paltas son la mitad de las tunas.", "answer": false, "feedback": "La mitad de 24 es 12, y hay 16 paltas." },
+        { "id": "s3", "text": "En total hay 40 frutas.", "answer": true }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! 24 − 16 = 8 y 24 + 16 = 40.",
+        "incorrect": "Calcula la diferencia, la mitad y el total antes de decidir."
+      },
+      "hint": "Haz una operación por cada afirmación.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Argumenta afirmaciones sobre las relaciones numéricas",
+        "pisa": { "category": "quantity", "process": "reason" },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "MAT00-L01-08",
+      "type": "fill_blank",
+      "prompt": "Completa con el signo correcto: <, > o =.",
+      "text": "En la balanza, 0,5 kg {{1}} 1/2 kg, y 0,75 kg {{2}} 0,7 kg.",
+      "blanks": [
+        { "id": "1", "accepted": ["="], "options": ["<", ">", "="] },
+        { "id": "2", "accepted": [">"], "options": ["<", ">", "="] }
+      ],
+      "feedback": {
+        "correct": "¡Bien! 1/2 = 0,5 y 0,75 es mayor que 0,70.",
+        "incorrect": "Escribe todo como decimal: 1/2 = 0,5 y 0,7 = 0,70."
+      },
+      "hint": "Convierte la fracción en decimal antes de comparar.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Comunica su comprensión sobre los números y las operaciones",
+        "pisa": { "category": "quantity", "process": "interpret" },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    }
+  ]
+}

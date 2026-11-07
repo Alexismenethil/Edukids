@@ -61,7 +61,20 @@ func open_student_home() -> void:
 	view.setup(CompositionRoot.student_home_presenter())
 	view.edit_avatar_requested.connect(open_avatar_editor)
 	view.exit_requested.connect(open_title)
+	view.level_requested.connect(open_level)
 	_show(view)
+	_demo.on_student_home(view)
+
+
+## Nivel de práctica (RF-12): al salir o al terminar, vuelve al inicio del estudiante.
+func open_level() -> void:
+	var view := LevelScreen.new()
+	view.setup(CompositionRoot.level_presenter())
+	view.exit_requested.connect(open_student_home)
+	view.finished.connect(open_student_home)
+	view.replay_requested.connect(open_level)
+	_show(view)
+	_demo.on_level(view)
 
 
 ## Docente: la primera vez, la configuración inicial (RF-01); después, el PIN (RF-03).

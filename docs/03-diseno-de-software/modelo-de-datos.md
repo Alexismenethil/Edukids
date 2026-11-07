@@ -138,6 +138,9 @@ Tablas adicionales: `teacher` (nombre, `pin_hash`, `pin_salt`, intentos fallidos
 - `failed_attempts` y `locked_until` llevan el bloqueo temporal: con 5 fallos seguidos, el acceso se bloquea 5 minutos.
 - `student.avatar_json` guarda los índices de los catálogos del avatar: `{"body": "girl", "skin": 2, "hair_style": 3, "hair_color": 0, "top_color": 1, "bottom_color": 4}`. Un `{}` significa que el estudiante todavía no creó su personaje. Los colores no se guardan: los decide la paleta del juego.
 - Un estudiante con resultados se desactiva, no se elimina (RN-07).
+- `level.id` identifica el nivel en toda la tablet como `paquete/nivel` (por ejemplo, `mod-math-6-00/L01`); así un intento siempre apunta a un nivel registrado. Los paquetes que vienen con el juego se registran al iniciar, con `install_path` en `res://content/packages/…`.
+- `attempt.total_count` cuenta las preguntas del nivel (cada pregunta de una unidad de lectura por separado); `correct_count`, las acertadas al primer intento; `percent`, su porcentaje; y `stars`, las estrellas según RN-11. Un intento `in_progress` con respuestas se retoma al volver a abrir el nivel.
+- `answer.value_json` guarda la respuesta tal como la dio el estudiante: el id de la opción (`"b"`), una lista de ids (selección múltiple y ordenar), un objeto (verdadero o falso, emparejar, clasificar y completar) o el texto escrito (respuesta numérica, por ejemplo `"0,5"`). `first_try` es 0 en el repaso de una pregunta fallada y `with_hint` indica si se vio la pista.
 
 ## Nube (PostgreSQL)
 
