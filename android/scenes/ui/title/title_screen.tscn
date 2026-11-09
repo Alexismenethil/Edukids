@@ -299,6 +299,27 @@ mouse_filter = 0
 theme_type_variation = &"VersionLabel"
 text = "Versión 0.1.0"
 
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -60.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"GhostButton"
+theme_override_font_sizes/font_size = 18
+text = "Créditos"
+
+[node name="Credits" type="AcceptDialog" parent="."]
+title = "Créditos de música"
+dialog_text = "Música: «Through the Llama Passage», de Firage.\nFuente: firage.bandcamp.com/track/through-the-llama-passage\nLicencia: Creative Commons Atribución 4.0 (CC BY 4.0).\ncreativecommons.org/licenses/by/4.0/\nLa pista se reproduce sin modificar."
+
 [node name="Confetti" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 44
@@ -343,3 +364,5 @@ horizontal_alignment = 1
 [node name="Sfx" type="Node" parent="."]
 script = ExtResource("19_sfx")
 voices = 8
+
+[connection signal="pressed" from="CreditsButton" to="Credits" method="popup_centered"]

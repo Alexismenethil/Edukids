@@ -19,10 +19,6 @@ boot_splash/bg_color=Color(0.30980393, 0.65882355, 0.8666667, 1)
 boot_splash/image="res://assets/art/ui/ui_boot_splash.png"
 config/icon="res://icon.svg"
 
-[audio]
-
-buses/default_bus_layout="res://default_bus_layout.tres"
-
 [autoload]
 
 CompositionRoot="*res://src/main/composition_root.gd"
@@ -42,7 +38,6 @@ enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
 [gui]
 
 theme/custom="res://assets/themes/edukids_theme.tres"
-common/snap_controls_to_pixels=true
 
 [rendering]
 

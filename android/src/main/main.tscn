@@ -1,17 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://27ni7f3sc6a7"]
 
-[ext_resource type="Script" path="res://src/main/navigator.gd" id="1_navigator"]
+[ext_resource type="Script" uid="uid://doxyeyo6i5ufa" path="res://src/main/navigator.gd" id="1_navigator"]
 [ext_resource type="PackedScene" path="res://scenes/ui/components/diagnostics_overlay.tscn" id="2_diagnostics"]
+[ext_resource type="AudioStream" uid="uid://wop3foyw3dde" path="res://assets/audio/music/through_the_llama_passage.ogg" id="3_music"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=2125186966]
 script = ExtResource("1_navigator")
 
-[node name="Screens" type="Node" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=851116728]
+stream = ExtResource("3_music")
+autoplay = true
+bus = &"Music"
 
-[node name="Curtain" type="CanvasLayer" parent="."]
+[node name="Screens" type="Node" parent="." unique_id=322887770]
+
+[node name="Curtain" type="CanvasLayer" parent="." unique_id=495716614]
 layer = 10
 
-[node name="Fade" type="ColorRect" parent="Curtain"]
+[node name="Fade" type="ColorRect" parent="Curtain" unique_id=1659205297]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,7 +26,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.30980393, 0.65882355, 0.8666667, 1)
 
-[node name="Overlay" type="CanvasLayer" parent="."]
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1948212618]
 layer = 20
 
-[node name="Diagnostics" parent="Overlay" instance=ExtResource("2_diagnostics")]
+[node name="Diagnostics" parent="Overlay" unique_id=396944284 instance=ExtResource("2_diagnostics")]
