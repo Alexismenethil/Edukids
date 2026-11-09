@@ -67,6 +67,7 @@ func _ready() -> void:
 	_teacher.pressed.connect(_on_teacher_pressed)
 	_sound.pressed.connect(_on_sound_pressed)
 	_version.gui_input.connect(_on_version_input)
+	$Credits.get_label().add_theme_color_override("font_color", Color.WHITE)
 	_bubble.line_started.connect(_on_line_started)
 	_bubble.line_shown.connect(_on_line_shown)
 	_bubble.finished.connect(_on_dialogue_finished)

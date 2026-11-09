@@ -185,14 +185,13 @@ En la pantalla de inicio, tres toques seguidos sobre el texto de la versión abr
 
 ## Audio de la versión actual
 
-La introducción está sin música mientras se elige una nueva pista. Se conserva el sonido del cuy Quwi y el mismo efecto cuando los nudos del quipu se desprenden y regresan. El botón de sonido permite activar o silenciar el audio.
-
-Una candidata para escuchar es «Through the Llama Passage», de Firage, una composición para videojuego inspirada en los Andes. Está disponible en [Bandcamp](https://firage.bandcamp.com/track/through-the-llama-passage) bajo CC BY 4.0, pero todavía no está incluida en el juego.
+El juego incluye como música de fondo de prueba «Through the Llama Passage», de Firage, una composición para videojuego inspirada en los Andes. Se conserva el sonido del cuy Quwi y el mismo efecto cuando los nudos del quipu se desprenden y regresan. El botón de sonido permite activar o silenciar el audio.
 
 ## Licencias de terceros
 
 | Recurso | Licencia |
 | --- | --- |
+| [«Through the Llama Passage», de Firage](https://firage.bandcamp.com/track/through-the-llama-passage) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); audio sin modificar. También en los créditos del juego. |
 | Fredoka y Andika (`assets/fonts/`) | SIL Open Font License 1.1 (incluida en la carpeta) |
 | GdUnit4 (`addons/gdUnit4/`) | MIT (incluida en la carpeta) |
 | godot-sqlite 4.9 (`addons/godot-sqlite/`) | MIT (incluida en la carpeta) |

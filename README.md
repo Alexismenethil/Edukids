@@ -8,9 +8,11 @@ Videojuego educativo 2D para tablets Android que refuerza **Matemática**, **Com
 | Institución piloto | I.E. N.° 38984-22 Alfredo Mendoza Salazar, Mollepata II, Ayacucho |
 | Autor | Alexis Huamani Rivera |
 | Versión de la documentación | 3.0 (noviembre de 2026) |
-| Estado | Sprint 2 en curso: proyecto base del juego en Godot, pantalla de inicio y APK de prueba. |
+| Estado | Sprint 4 implementado y en revisión; el siguiente es el Sprint 5 de mecánicas de juego. |
 
 ## Cómo funciona
+
+La siguiente descripción presenta la visión completa del producto; algunas funciones todavía están pendientes según el [plan de trabajo](docs/PLAN-DE-TRABAJO.md).
 
 - **En el aula, sin internet:** cada estudiante entra con su avatar y un PIN, recorre el mapa de aventura y resuelve niveles. Cada respuesta correcta hace avanzar a su personaje y cada error acerca al zorro Atoq. Gana estrellas, insignias y cartas, y rinde el desafío final de cada módulo, que se califica con la escala AD, A, B o C.
 - **El docente:** en el modo docente de la tablet registra estudiantes, habilita módulos y retos, y revisa los reportes. Desde un **panel web** crea sus propios retos con preguntas sobre temas concretos.
