@@ -12,6 +12,19 @@ var total := 0
 ## null si ya se respondió todo (el intento quedó abierto justo al final).
 var step: StepViewModel
 var exit_question := ""
+## «chase», «bridge», «caiman» o «classic».
+var mechanic: StringName = &"classic"
+var mechanic_name := ""
+## Desafío final: sin medidor, sin vidas y sin decir si cada respuesta está bien (RN-10).
+var final := false
+## Portada del desafío final (null si es práctica o si continúa un intento).
+var cover: FinalCoverViewModel
+var lives := 0
+var lives_max := 0
+var danger := 0
+var danger_max := 0
+## Aspecto del personaje del estudiante, para la escena de la mecánica.
+var look: AvatarLookViewModel
 var exit_detail := ""
 var exit_confirm := ""
 var exit_cancel := ""

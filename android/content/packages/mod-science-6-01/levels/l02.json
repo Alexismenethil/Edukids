@@ -1,0 +1,330 @@
+{
+  "id": "L02",
+  "title": "Coco y la buena alimentación",
+  "guide_intro": [
+    "Coco quiere crecer fuerte, pero no sabe qué comer. ¡Ayúdalo con lo que sabes del cuerpo humano!",
+    "Cada acierto es una fruta para él."
+  ],
+  "items": [
+    {
+      "id": "CYT01-L02-01",
+      "type": "classification",
+      "prompt": "¿Qué nutriente aporta más cada alimento?",
+      "groups": [
+        {
+          "id": "prot",
+          "label": "Proteínas: construyen el cuerpo"
+        },
+        {
+          "id": "carb",
+          "label": "Carbohidratos: dan energía"
+        },
+        {
+          "id": "vit",
+          "label": "Vitaminas: protegen"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "Tarwi",
+          "group": "prot"
+        },
+        {
+          "id": "e2",
+          "text": "Trucha",
+          "group": "prot"
+        },
+        {
+          "id": "e3",
+          "text": "Papa",
+          "group": "carb"
+        },
+        {
+          "id": "e4",
+          "text": "Mote de maíz",
+          "group": "carb"
+        },
+        {
+          "id": "e5",
+          "text": "Naranja",
+          "group": "vit"
+        },
+        {
+          "id": "e6",
+          "text": "Zanahoria",
+          "group": "vit"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! Una comida balanceada combina los tres grupos.",
+        "incorrect": "Las menestras y el pescado construyen; los tubérculos y cereales dan energía; frutas y verduras protegen."
+      },
+      "hint": "El tarwi es una menestra andina.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "CYT01-L02-02",
+      "type": "multiple_choice",
+      "prompt": "¿En qué órgano se absorben la mayoría de los nutrientes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Estómago",
+          "feedback": "En el estómago se digieren los alimentos, pero casi no se absorben."
+        },
+        {
+          "id": "b",
+          "text": "Esófago",
+          "feedback": "El esófago solo lleva el alimento al estómago."
+        },
+        {
+          "id": "c",
+          "text": "Intestino grueso",
+          "feedback": "Allí se absorbe sobre todo agua."
+        },
+        {
+          "id": "d",
+          "text": "Intestino delgado",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! Sus paredes tienen pliegues que pasan los nutrientes a la sangre.",
+        "incorrect": "Recuerda el recorrido: ¿dónde pasan los nutrientes a la sangre?"
+      },
+      "hint": "Es el tubo más largo del sistema digestivo.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-L02-03",
+      "type": "ordering",
+      "prompt": "Ordena el recorrido de una tuna por el sistema digestivo.",
+      "elements": [
+        {
+          "id": "o2",
+          "text": "Esófago"
+        },
+        {
+          "id": "o4",
+          "text": "Intestino delgado"
+        },
+        {
+          "id": "o5",
+          "text": "Intestino grueso"
+        },
+        {
+          "id": "o1",
+          "text": "Boca"
+        },
+        {
+          "id": "o3",
+          "text": "Estómago"
+        }
+      ],
+      "correct_order": [
+        "o1",
+        "o2",
+        "o3",
+        "o4",
+        "o5"
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Boca, esófago, estómago, intestino delgado e intestino grueso.",
+        "incorrect": "Empieza por donde entra el alimento."
+      },
+      "hint": "El estómago está antes que los intestinos.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-L02-04",
+      "type": "matching",
+      "prompt": "Une cada sistema con su función.",
+      "left": [
+        {
+          "id": "s1",
+          "text": "Respiratorio"
+        },
+        {
+          "id": "s2",
+          "text": "Circulatorio"
+        },
+        {
+          "id": "s3",
+          "text": "Digestivo"
+        },
+        {
+          "id": "s4",
+          "text": "Excretor"
+        }
+      ],
+      "right": [
+        {
+          "id": "f2",
+          "text": "Lleva la sangre a todo el cuerpo"
+        },
+        {
+          "id": "f3",
+          "text": "Transforma los alimentos en nutrientes"
+        },
+        {
+          "id": "f4",
+          "text": "Elimina desechos de la sangre"
+        },
+        {
+          "id": "f5",
+          "text": "Produce la luz del cuerpo"
+        },
+        {
+          "id": "f1",
+          "text": "Toma oxígeno del aire"
+        }
+      ],
+      "pairs": [
+        [
+          "s1",
+          "f1"
+        ],
+        [
+          "s2",
+          "f2"
+        ],
+        [
+          "s3",
+          "f3"
+        ],
+        [
+          "s4",
+          "f4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Perfecto! Los sistemas trabajan juntos.",
+        "incorrect": "Piensa en el órgano principal de cada sistema."
+      },
+      "hint": "Los pulmones son del respiratorio; los riñones, del excretor.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "CYT01-L02-05",
+      "type": "true_false",
+      "prompt": "Hábitos saludables: ¿verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "Lavarse las manos antes de comer previene enfermedades.",
+          "answer": true
+        },
+        {
+          "id": "s2",
+          "text": "Tomar gaseosa reemplaza al agua.",
+          "answer": false,
+          "feedback": "La gaseosa tiene mucha azúcar: el cuerpo necesita agua."
+        },
+        {
+          "id": "s3",
+          "text": "Dormir bien ayuda a crecer y a aprender.",
+          "answer": true
+        },
+        {
+          "id": "s4",
+          "text": "Comer solo dulces da toda la energía que necesitamos.",
+          "answer": false,
+          "feedback": "El cuerpo necesita proteínas, vitaminas y minerales."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! Cuidar el cuerpo es parte de la ciencia.",
+        "incorrect": "Piensa qué ayuda al cuerpo y qué lo daña."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "reason"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-L02-06",
+      "type": "multiple_choice",
+      "prompt": "Killa midió su pulso: en reposo tuvo 80 latidos por minuto y, después de correr, 120. ¿Por qué aumentó?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Porque el corazón se cansa y late mal.",
+          "feedback": "Late más rápido, no mal."
+        },
+        {
+          "id": "b",
+          "text": "Porque los músculos necesitan más oxígeno y el corazón bombea más rápido.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Porque la sangre se enfría al correr.",
+          "feedback": "Al correr, el cuerpo se calienta."
+        },
+        {
+          "id": "d",
+          "text": "Porque los pulmones dejan de funcionar.",
+          "feedback": "Los pulmones trabajan más, no dejan de funcionar."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Al hacer ejercicio, la sangre debe llevar más oxígeno a los músculos.",
+        "incorrect": "Relaciona el sistema circulatorio con el respiratorio."
+      },
+      "hint": "¿Qué necesitan los músculos para moverse?",
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Indaga mediante métodos científicos para construir sus conocimientos",
+        "pisa": {
+          "category": "design_interpret",
+          "process": "explain"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 80
+      }
+    }
+  ]
+}

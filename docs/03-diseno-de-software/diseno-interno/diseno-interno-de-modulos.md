@@ -8,9 +8,10 @@ Componentes del juego con sus casos de uso, sus puertos y las reglas del dominio
 | --- | --- | --- | --- |
 | Aula e identidad | `ConfigureInstitution`, `GetClassroom`, `UnlockTeacherMode`, `RegisterStudent`, `UpdateStudent`, `SetStudentActive`, `ResetStudentPin`, `LoginStudent`, `ListStudents`, `GetStudentProfile`, `CustomizeAvatar`, `SuggestPin`, `SuggestAvatar` | `Pin`, `PinLockout` (bloqueo tras 5 fallos), `PersonName`, `TeacherCode`, `Avatar` | `InstitutionRepository`, `StudentRepository`, `PinHasher`, `Clock`, `IdGenerator`, `RandomSource` |
 | Paquetes | `FetchCatalog`, `DownloadPackage`, `InstallPackage`, `ImportPackageFile`, `ReleasePackage`, `EnablePackage` | Validación del manifiesto y del contenido | `CatalogGateway`, `PackageDownloader`, `PackageArchive`, `PackageRepository`, `FileImporter` |
-| Contenidos | `GetStopContent`, `OpenTheory`, `OpenReading` | `UnlockRule` (RN-18) | `PackageStore`, `ProgressRepository` |
-| Juego | `ListLevels`, `StartLevel`, `SubmitAnswer`, `RequestHint`, `ContinueLevel`, `FinishLevel`, `RegisterBundledPackages` | `LevelSession`, `EvaluatorRegistry` y un evaluador por tipo, `StarRule`; desde el Sprint 5, `DangerMeter` | `PackageStore`, `PackageRepository`, `AttemptRepository`, `LevelSessionStore`, `Clock`, `IdGenerator`, `RandomSource` |
-| Desafío final | `StartFinalChallenge`, `AnswerFinalItem`, `SubmitFinalChallenge`, `AuthorizeExtraAttempt` | `FinalChallenge`, `CnebGradeScale`, límite de intentos | `AttemptRepository`, `SettingsRepository`, `Clock` |
+| Mapa | `GetChapterMap` (capítulo, paradas y un sendero por área) | `Chapter` (paradas en orden), `TrailRule` (RN-18) | `PackageStore`, `AttemptRepository` |
+| Contenidos | `GetStopContent`, `OpenTheory`, `OpenReading` | — | `PackageStore`, `ProgressRepository` |
+| Juego | `StartLevel`, `SubmitAnswer`, `RequestHint`, `ContinueLevel`, `FinishLevel`, `RegisterBundledPackages` | `LevelSession`, `DangerMeter`, `StarRule`, `EvaluatorRegistry` y un evaluador por tipo | `PackageStore`, `PackageRepository`, `AttemptRepository`, `LevelSessionStore`, `Clock`, `IdGenerator`, `RandomSource` |
+| Desafío final | Los mismos casos de uso del juego (la sesión cambia sus reglas con `kind: final`); después `AuthorizeExtraAttempt` | `LevelSession` en modo final, `CnebGradeScale`, `TrailRule.attempts_left` | `AttemptRepository`, `SettingsRepository`, `Clock` |
 | Recompensas | `GrantRewards`, `GetCollection` (los accesorios de RF-32 amplían `CustomizeAvatar`) | Umbrales de accesorios, condiciones de insignias | `RewardRepository`, `StudentRepository` |
 | Reportes | `GetSectionReport`, `ExportReportCsv` | Agregados por estudiante, área y módulo | `AttemptRepository`, `ReportExporter` |
 | Ajustes | `UpdateEvaluationSettings`, `UpdateAudioSettings` | Rangos válidos de la escala | `SettingsRepository` |
@@ -31,16 +32,25 @@ stateDiagram-v2
     Completado --> [*]: FinishLevel calcula las estrellas
 ```
 
-Resultado de cada respuesta (`AnswerOutcome`): si fue correcta, la retroalimentación, si la pregunta volverá al final, si el guía ofrece una pista para la siguiente, la solución cuando ya no queda otra oportunidad y si el nivel terminó. Con las mecánicas del Sprint 5 se suman el valor del medidor, las vidas restantes y si Atoq alcanzó al avatar.
+Resultado de cada respuesta (`AnswerOutcome`): si fue correcta, la retroalimentación, si la pregunta volverá al final, si el guía ofrece una pista para la siguiente, la solución cuando ya no queda otra oportunidad, si el nivel terminó, el valor del medidor, las vidas restantes, si se perdió una vida, si hubo game over y la racha de aciertos seguidos.
 
-Reglas que aplica hoy la sesión (Sprint 4):
+Reglas que aplica la sesión:
 
 - Las preguntas de una unidad de lectura se presentan una por una, con el estímulo a la vista.
 - Una respuesta incompleta no cuenta: la pregunta sigue abierta.
 - Una pregunta fallada vuelve una sola vez al final del nivel (RF-29); la segunda respuesta se guarda, pero no suma estrellas.
 - Una pista no quita nada, pero esa pregunta deja de contar como acierto válido (RN-11).
 - Tras dos errores seguidos, el guía ofrece la pista de la siguiente pregunta, si la tiene (RF-26).
-- Si la aplicación se cierra, `StartLevel` rehace la sesión con las respuestas guardadas y el nivel continúa donde se quedó (RF-14). Si el paquete cambió de versión, empieza un intento nuevo (RN-05).
+- Si la aplicación se cierra, `StartLevel` rehace la sesión con las respuestas guardadas y el nivel continúa donde se quedó (RF-14). El medidor y las vidas se recalculan con las mismas reglas. Si el paquete cambió de versión, empieza un intento nuevo (RN-05).
+- El medidor empieza en 2 (máximo 4); cada acierto suma 1 y cada error resta 1. En 0 se pierde una vida y vuelve al inicio. Sin vidas, el nivel termina en game over y el intento se guarda con ese estado (RN-13 y RN-14). Los valores se pueden cambiar por nivel en el manifiesto.
+- Perder una vida impide la tercera estrella (RN-11).
+- En el desafío final (`kind: final`) no hay medidor, vidas, pistas ni repaso: cada pregunta se responde una vez, el avance no dice si está bien y al terminar se califica con `CnebGradeScale` y se devuelve la revisión de cada pregunta con su explicación y la respuesta correcta (RN-10, RN-12 y RF-30). Cada estudiante tiene `max_attempts` intentos (2 por defecto).
+
+## Orden de los niveles y mapa
+
+`TrailRule` aplica RN-18 dentro de cada módulo: los niveles de práctica se abren uno tras otro y el desafío final se abre al completar todos los de práctica. `StartLevel` rechaza un nivel cerrado (`level_locked`) o un desafío sin intentos (`no_attempts_left`).
+
+`GetChapterMap` arma el mapa de un capítulo a partir de los paquetes y de los intentos del estudiante (`LevelRecords`): cada parada de `Chapter` aparece con candado si no tiene paquetes (RN-01) y, si tiene, con un sendero por área. En cada sendero van primero los niveles de práctica (por número de módulo, paquete y posición) y al final los desafíos finales. Cada nivel trae su estado (cerrado, abierto o completado), sus mejores estrellas, si quedó a medias y, en el desafío final, la mejor calificación y los intentos que quedan.
 
 ## Ciclo de vida de un paquete
 

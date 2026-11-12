@@ -29,8 +29,8 @@ flowchart LR
 | Elegir perfil | Avatares grandes con el nombre de cada estudiante, filtrados por sección | Desplazamiento horizontal |
 | PIN | Teclado numérico grande de 4 dígitos | Bloqueo temporal tras 5 fallos |
 | Mapa general | Capítulos con su estado; botón de colección | Capítulos sin contenido habilitado aparecen apagados |
-| Mapa del capítulo | Paradas, escuelita y caminos | Animación breve del avatar al elegir una parada |
-| Parada | Escena del lugar, personaje local y tres senderos | Cada sendero muestra su progreso con estrellas |
+| Mapa del capítulo | Paradas, escuelita y caminos | Animación breve del avatar al elegir una parada. Hoy es el inicio del estudiante: las paradas son medallones ilustrados (retablo, cerámica, vicuña y ushnu) unidos por el Qhapaq Ñan, con candado si no tienen contenido |
+| Parada | Escena del lugar, personaje local y tres senderos | Cada sendero es una cuerda del quipu en el color del área, con un nudo por nivel (icono de su mecánica, número, estrellas o calificación, candado si está cerrado) y el desafío final al final. El nudo sugerido late con una flecha. Al tocar un nudo se abre su ficha con «¡Jugar!» |
 | Nivel | Escena de la mecánica, pregunta y respuestas | Ver la disposición de la pantalla |
 | Resultados | Estrellas animadas, aciertos y recompensas | Botones Seguir y Repetir |
 | Game over | Atoq con la bolsa de nudos y mensaje de ánimo | Botones Reintentar y Volver a la parada |
@@ -58,6 +58,8 @@ flowchart LR
 ```
 
 - Arriba a la izquierda: vidas. Al centro: medidor de peligro. A la derecha: avance y pausa.
+- En la persecución, el puente y el caimán, la escena de la mecánica ocupa una franja de 212 px arriba y la tarjeta de la pregunta, el resto. En la mecánica clásica no hay franja: las vidas y el medidor van en la columna de Quwi y Atoq se asoma por el borde derecho de la tarjeta. Al terminar, la franja se acerca y la tarjeta se desvanece para el final feliz.
+- El medidor de peligro llena sus segmentos con un solo color según el riesgo (verde, amarillo, naranja y rojo) y muestra quién acecha: Atoq, Coco o el río. Las vidas son corazones que se parten al perder una.
 - El avance es un quipu con un nudo por pregunta: verde si acertó, coral si volverá al final, dorado si la corrigió en el repaso y gris si no salió; la pregunta actual brilla con el color del área.
 - Al comprobar, cada parte respondida se marca con ✓ o ✗ y la retroalimentación sube desde abajo con el botón Seguir. El guía da la pista en un globo.
 - La pregunta ocupa la mitad inferior; la escena, la superior.

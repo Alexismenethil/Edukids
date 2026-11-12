@@ -1,0 +1,300 @@
+{
+  "id": "L02",
+  "title": "¿Tiene sentido? Atrapa la trampa",
+  "guide_intro": [
+    "¡Atoq escondió trampas en las oraciones! Lee rápido, pero lee bien.",
+    "Si algo no tiene sentido, ¡descúbrelo antes de que te alcance!"
+  ],
+  "items": [
+    {
+      "id": "COM01-L02-01",
+      "type": "true_false",
+      "prompt": "¿Estas oraciones tienen sentido? Verdadero si lo tienen; Falso si algo no encaja.",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "Como hacía mucho frío, Killa se puso su chompa de alpaca.",
+          "answer": true
+        },
+        {
+          "id": "s2",
+          "text": "El río estaba seco porque llovió toda la semana.",
+          "answer": false,
+          "feedback": "Si llovió toda la semana, el río tendría más agua, no estaría seco."
+        },
+        {
+          "id": "s3",
+          "text": "Aunque estaba cansado, Amaru terminó de tejer su chullo.",
+          "answer": true
+        },
+        {
+          "id": "s4",
+          "text": "Las vicuñas vuelan sobre la puna buscando ichu.",
+          "answer": false,
+          "feedback": "Las vicuñas no vuelan: caminan y corren por la puna."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Atrapaste las trampas! Leer con atención es descubrir lo que no encaja.",
+        "incorrect": "Imagina cada escena: ¿podría pasar así?"
+      },
+      "hint": "Fíjate en las palabras «porque» y «aunque».",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "evaluate_reflect"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "COM01-L02-02",
+      "type": "multiple_choice",
+      "prompt": "«Don Ignacio guardó sus gubias, barrió las virutas del suelo y cerró la caja con un pequeño candado. Al día siguiente, la familia Quispe vendría a recoger su pedido.» ¿Qué se puede inferir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Don Ignacio es panadero.",
+          "feedback": "Las gubias y las virutas son de trabajar la madera, no el pan."
+        },
+        {
+          "id": "b",
+          "text": "Don Ignacio terminó un trabajo de madera por encargo.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "La familia Quispe ya recogió su pedido.",
+          "feedback": "Dice que vendrían «al día siguiente»."
+        },
+        {
+          "id": "d",
+          "text": "Don Ignacio perdió sus herramientas.",
+          "feedback": "Las guardó: no las perdió."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien inferido! Las gubias y las virutas muestran que talla madera, y hay un pedido por entregar.",
+        "incorrect": "Inferir es usar pistas del texto: ¿qué herramienta es una gubia? ¿Qué deja en el suelo?"
+      },
+      "hint": "Las virutas son pedacitos de madera.",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "COM01-L02-03",
+      "type": "multiple_choice",
+      "prompt": "«La neblina era tan densa que no se veía ni la torre de la iglesia.» ¿Qué significa «densa» en esta oración?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transparente",
+          "feedback": "Si fuera transparente, se vería la torre."
+        },
+        {
+          "id": "b",
+          "text": "Pequeña",
+          "feedback": "El texto dice que tapaba hasta la torre."
+        },
+        {
+          "id": "c",
+          "text": "Ruidosa",
+          "feedback": "La neblina no hace ruido."
+        },
+        {
+          "id": "d",
+          "text": "Espesa",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! Era tan espesa que tapaba la vista.",
+        "incorrect": "La consecuencia te da la pista: no se veía nada."
+      },
+      "hint": "¿Qué tiene que tener la neblina para que no se vea una torre?",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "COM01-L02-04",
+      "type": "matching",
+      "prompt": "Une cada causa con su efecto.",
+      "left": [
+        {
+          "id": "c1",
+          "text": "Hubo helada en la madrugada."
+        },
+        {
+          "id": "c2",
+          "text": "Un huaico cerró la carretera."
+        },
+        {
+          "id": "c3",
+          "text": "Ganaron el concurso de danzas."
+        },
+        {
+          "id": "c4",
+          "text": "Nadie regó el biohuerto."
+        }
+      ],
+      "right": [
+        {
+          "id": "f2",
+          "text": "Los buses no pudieron salir."
+        },
+        {
+          "id": "f3",
+          "text": "Los estudiantes celebraron en la plaza."
+        },
+        {
+          "id": "f4",
+          "text": "Las lechugas se marchitaron."
+        },
+        {
+          "id": "f5",
+          "text": "Llovió en la ciudad."
+        },
+        {
+          "id": "f1",
+          "text": "Las hojas de papa amanecieron quemadas."
+        }
+      ],
+      "pairs": [
+        [
+          "c1",
+          "f1"
+        ],
+        [
+          "c2",
+          "f2"
+        ],
+        [
+          "c3",
+          "f3"
+        ],
+        [
+          "c4",
+          "f4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Cada efecto es lo que pasa por su causa.",
+        "incorrect": "Pregúntate: ¿qué pasa después y por qué?"
+      },
+      "hint": "La helada es frío extremo: ¿qué les hace a las plantas?",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "COM01-L02-05",
+      "type": "multiple_choice",
+      "prompt": "«¡Ven a la Feria del Libro de Huamanga! Habrá cuentacuentos, talleres de dibujo y libros a mitad de precio. Sábado 8, de 9 a. m. a 5 p. m., en la plaza.» ¿Para qué se escribió este texto?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Para invitar a las personas a la feria.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Para contar la historia de la plaza.",
+          "feedback": "No narra una historia: da datos de un evento."
+        },
+        {
+          "id": "c",
+          "text": "Para explicar cómo se fabrica un libro.",
+          "feedback": "No hay pasos ni explicaciones."
+        },
+        {
+          "id": "d",
+          "text": "Para opinar sobre los cuentacuentos.",
+          "feedback": "No da opiniones: anuncia actividades."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Exacto! Es un afiche: invita y da datos de fecha, hora y lugar.",
+        "incorrect": "Mira el inicio: «¡Ven a…!». ¿Qué busca el autor?"
+      },
+      "hint": "Los afiches suelen invitar o convencer.",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "evaluate_reflect"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "COM01-L02-06",
+      "type": "multiple_choice",
+      "prompt": "«La tuna crece en lugares secos de la sierra. Sus frutos pueden ser verdes, rojos o morados. Además, en sus pencas vive la cochinilla, un insecto del que se obtiene un tinte rojo para teñir tejidos.» ¿Cuál es el tema del texto?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Los tejidos de la sierra",
+          "feedback": "Los tejidos se mencionan, pero no son el tema central."
+        },
+        {
+          "id": "b",
+          "text": "La tuna y sus usos",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Los insectos de la sierra",
+          "feedback": "Solo se menciona un insecto, y por su relación con la tuna."
+        },
+        {
+          "id": "d",
+          "text": "El clima seco",
+          "feedback": "El clima es un detalle sobre dónde crece la tuna."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Todas las oraciones hablan de la tuna.",
+        "incorrect": "El tema es aquello de lo que hablan todas las oraciones."
+      },
+      "hint": "¿Qué palabra se repite o se retoma en cada oración?",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    }
+  ]
+}

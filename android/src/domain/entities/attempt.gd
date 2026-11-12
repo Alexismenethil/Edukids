@@ -44,8 +44,10 @@ func is_open() -> bool:
 	return status == IN_PROGRESS
 
 
+## Cierra el intento: completado, o en game over si se acabaron las vidas (RN-14).
+## En el desafío final guarda la calificación (RN-12).
 func complete(summary: LevelSummary, now_ms: int) -> void:
-	status = COMPLETED
+	status = GAME_OVER if summary.game_over else COMPLETED
 	finished_at_ms = now_ms
 	correct_count = summary.correct
 	total_count = summary.total
@@ -53,3 +55,8 @@ func complete(summary: LevelSummary, now_ms: int) -> void:
 	stars = summary.stars
 	lives_lost = summary.lives_lost
 	hints_used = summary.hints_used
+	cneb_grade = summary.grade.code() if summary.grade else ""
+
+
+func is_completed() -> bool:
+	return status == COMPLETED

@@ -14,7 +14,7 @@ extends SceneTree
 ## Ancho del atlas si el .rig.json no indica "atlas_width". El alto nunca debe pasar de 2048 px.
 const ATLAS_WIDTH := 1024
 const PADDING := 2
-const GAP := 4
+const GAP := 8
 
 
 func _init() -> void:
@@ -35,7 +35,8 @@ func _build(rig_path: String) -> int:
 
 	var part_names: Array[String] = []
 	for node: Dictionary in nodes:
-		if node.has("part"):
+		# Una pieza puede usarse en varios nodos (por ejemplo, la pata cercana y la lejana).
+		if node.has("part") and not part_names.has(node["part"]):
 			part_names.append(node["part"])
 
 	# 1. Rasterizar y recortar cada pieza.
@@ -99,8 +100,10 @@ func _scene_text(rig: Dictionary, pieces: Dictionary, scale: float) -> String:
 	var lines: PackedStringArray = ["[gd_scene format=3]", ""]
 	lines.append('[ext_resource type="Texture2D" path="%s" id="1_atlas"]' % rig["atlas"])
 	lines.append("")
+	var written := {}
 	for node: Dictionary in rig["nodes"]:
-		if node.has("part"):
+		if node.has("part") and not written.has(node["part"]):
+			written[node["part"]] = true
 			var region: Rect2i = pieces[node["part"]]["region"]
 			lines.append('[sub_resource type="AtlasTexture" id="AtlasTexture_%s"]' % node["part"])
 			lines.append('atlas = ExtResource("1_atlas")')

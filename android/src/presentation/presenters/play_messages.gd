@@ -45,11 +45,53 @@ const LABELS := {
 }
 const RECORD := "¡Nuevo récord!"
 const REPLAY := "Otra vez"
-const HOME_LEVELS := "¡A practicar!"
-const HOME_MESSAGE := "Mientras Quwi prepara el mapa, calienta con estos retos."
-const PLAY := "Jugar"
-const RESUME := "Seguir"
-const HALF_DONE := "A medias"
+const BACK_TO_STOP := "Volver a la parada"
+
+## Lo que cuenta Quwi al empezar, según la mecánica.
+const MECHANIC_INTROS := {
+	&"chase": "¡Cuidado! Atoq quiere tus nudos. Cada acierto te hace correr más rápido; cada error lo acerca a ti.",
+	&"bridge": "Crucemos el río: cada acierto pone una tabla del puente. Si fallas, el puente se tambalea… ¡y el río está frío!",
+	&"caiman": "Él es Coco, un caimán glotón que ama las frutas de la feria. Cada acierto es una fruta para él; si fallas, se pone gruñón y muerde.",
+	&"classic": "Resolvamos estas tarjetas con calma. Atoq anda cerca: si te equivocas, se asoma.",
+}
+## Lo que dice Quwi cuando el medidor llega a 0 y se pierde una vida (RN-13).
+const LIFE_LOST := {
+	&"chase": "¡Atoq te alcanzó y se llevó un nudo! Respira y sigue corriendo.",
+	&"bridge": "¡Splash! El puente se sacudió y caíste al río. ¡Arriba, que todavía puedes cruzar!",
+	&"caiman": "¡Ñac! Coco mordió uno de tus nudos. Dale una buena respuesta para calmarlo.",
+	&"classic": "Atoq se llevó un nudo. ¡Tú puedes recuperarlo!",
+}
+const GAME_OVER_TITLES := {
+	&"chase": "¡Atoq se llevó tus nudos!",
+	&"bridge": "¡El puente se vino abajo!",
+	&"caiman": "¡Coco se comió tus nudos!",
+	&"classic": "¡Atoq se llevó tus nudos!",
+}
+const GAME_OVER_MESSAGE := "Equivocarse también es aprender. Lee las explicaciones con calma y vuelve a intentarlo: ¡esta vez llegas!"
+const GAME_OVER_RETRY := "Reintentar"
+const STREAK := "¡Racha de %d!"
+
+const SAVE_ANSWER := "Guardar respuesta"
+const ANSWER_SAVED := "¡Respuesta guardada!"
+const FINAL_HEADING := "Desafío final"
+const FINAL_INTRO := "¡Llegó el desafío final! Demuestra todo lo que practicaste. Lee con calma: aquí no hay prisa."
+const FINAL_RULES: Array[String] = [
+	"Respondes cada pregunta una sola vez.",
+	"No hay vidas ni pistas: confía en lo que aprendiste.",
+	"Al entregar verás tu calificación y la explicación de cada pregunta.",
+]
+const FINAL_START := "¡Comenzar!"
+const FINAL_REVIEW := "Revisa tus respuestas"
+const FINAL_SEE := "Ver mi calificación"
+## Cuerda del quipu que se recupera al completar el desafío final de cada área.
+const CORDS := {&"math": "la cuerda de los números", &"language": "la cuerda de las palabras", &"science": "la cuerda de la naturaleza"}
+const GRADE_COLORS := {"AD": Color("#C99A1E"), "A": Color("#2E9E5B"), "B": Color("#E07B1F"), "C": Color("#D1495B")}
+const GRADE_LINES := {
+	"AD": "¡Logro destacado! Tu cuerda lleva un nudo dorado. Mama Sisa estará orgullosa.",
+	"A": "¡Logro esperado! Tu cuerda lleva un nudo dorado. ¡Lo lograste!",
+	"B": "Vas en camino. Repasa las explicaciones y, si te queda un intento, ¡ve por el nudo dorado!",
+	"C": "Estás empezando y eso está bien. Repasa los niveles de práctica y vuelve con más fuerza.",
+}
 
 
 ## Espacio que no se corta: «1 254 300» y «S/ 45» nunca quedan partidos entre dos líneas.
@@ -155,3 +197,41 @@ static func result_lines(correct: int, total: int, fixed: int, hints: int, time_
 	if time_ms > 0:
 		lines.append("Tiempo: %s." % duration(time_ms))
 	return lines
+
+
+static func streak(count: int) -> String:
+	return STREAK % count if count >= 3 else ""
+
+
+static func mechanic_intro(mechanic: StringName) -> String:
+	return MECHANIC_INTROS.get(mechanic, MECHANIC_INTROS[&"classic"])
+
+
+static func life_lost(mechanic: StringName) -> String:
+	return LIFE_LOST.get(mechanic, LIFE_LOST[&"classic"])
+
+
+static func game_over_title(mechanic: StringName) -> String:
+	return GAME_OVER_TITLES.get(mechanic, GAME_OVER_TITLES[&"classic"])
+
+
+static func attempt(number: int, maximum: int) -> String:
+	return "Intento %d de %d" % [number, maximum]
+
+
+static func cord(area: StringName) -> String:
+	return "¡Recuperaste %s!" % CORDS.get(area, "una cuerda del quipu")
+
+
+static func percent(value: float) -> String:
+	return "%s %%" % (str(int(value)) if is_equal_approx(value, roundf(value)) else String.num(value, 1).replace(".", ","))
+
+
+static func lives_left(left: int, maximum: int) -> String:
+	if left >= maximum:
+		return "¡Terminaste sin perder ningún nudo!"
+	return "Terminaste con %d de %d %s." % [left, maximum, "vida" if maximum == 1 else "vidas"]
+
+
+static func game_over_lines(answered: int, total: int) -> Array[String]:
+	return ["Respondiste %d de %d preguntas." % [answered, total]]

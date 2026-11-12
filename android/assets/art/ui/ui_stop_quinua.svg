@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Cerámica de Quinua: un cántaro pintado a mano sobre el horno. -->
+  <path d="M18,108 L102,108 L96,94 L24,94 Z" fill="#B8623B" stroke="#5A2E16" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M30,94 C30,90 34,88 38,88 L82,88 C86,88 90,90 90,94" fill="#8E4A28" stroke="#5A2E16" stroke-width="3"/>
+  <path d="M46,20 L74,20 L72,30 C88,36 98,52 96,68 C94,84 80,92 60,92 C40,92 26,84 24,68 C22,52 32,36 48,30 Z" fill="#D9895A" stroke="#5A2E16" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M44,16 L76,16 L76,22 L44,22 Z" fill="#E9A06E" stroke="#5A2E16" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M28,58 C48,64 72,64 92,58" stroke="#FFF4DC" stroke-width="6" fill="none"/>
+  <path d="M30,74 C48,80 72,80 90,74" stroke="#5A2E16" stroke-width="3" fill="none"/>
+  <g fill="#FFF4DC" stroke="#5A2E16" stroke-width="1.6">
+    <path d="M38,44 L44,38 L50,44 L44,50 Z"/><path d="M54,42 L60,36 L66,42 L60,48 Z"/><path d="M70,44 L76,38 L82,44 L76,50 Z"/>
+  </g>
+  <g fill="#C2185B"><circle cx="44" cy="44" r="2.2"/><circle cx="60" cy="42" r="2.2"/><circle cx="76" cy="44" r="2.2"/></g>
+  <path d="M96,52 C106,50 108,64 98,68" stroke="#5A2E16" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M34,98 L38,104 M48,98 L50,104 M62,98 L62,104 M76,98 L74,104 M88,98 L84,104" stroke="#F28C28" stroke-width="3" stroke-linecap="round"/>
+</svg>

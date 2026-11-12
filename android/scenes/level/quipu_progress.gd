@@ -2,7 +2,8 @@ class_name QuipuProgress
 extends Control
 ## Avance del nivel como un quipu: una cuerda principal con un nudo colgante por pregunta.
 ## Verde con ✓ si acertó, coral con un hueco si volverá al final, dorado si la corrigió en el
-## repaso y gris si no salió; la pregunta actual brilla con el color del área.
+## repaso y gris si no salió; la pregunta actual brilla con el color del área. En el desafío
+## final, las respondidas quedan lilas hasta entregar.
 
 const CORD := Color("#7A4A2A")
 const STEP := 40.0
@@ -10,6 +11,8 @@ const KNOT := 13.0
 const DROP := 32.0
 
 var accent := ActivityStyle.PRIMARY
+## Distancia entre nudos (más corta en la calificación del desafío final).
+var step := STEP
 var states: Array[StringName] = []
 var _pulse := 0.0
 var _flash := {}
@@ -24,7 +27,7 @@ func set_states(new_states: Array[StringName]) -> void:
 		if index < states.size() and states[index] != new_states[index] and new_states[index] != &"pending":
 			_flash[index] = 1.0
 	states = new_states.duplicate()
-	custom_minimum_size = Vector2(maxf(STEP * states.size() + 30.0, 120.0), 72.0)
+	custom_minimum_size = Vector2(maxf(step * states.size() + 30.0, 120.0), 72.0)
 	queue_redraw()
 
 
@@ -48,9 +51,9 @@ func _draw() -> void:
 	while x < finish.x - 4.0:
 		draw_line(Vector2(x, 11.5), Vector2(x + 4.0, 16.5), CORD.lightened(0.35), 1.6, true)
 		x += 7.0
-	var first := (size.x - STEP * (states.size() - 1)) * 0.5
+	var first := (size.x - step * (states.size() - 1)) * 0.5
 	for index in states.size():
-		var top := Vector2(first + index * STEP, 14.0)
+		var top := Vector2(first + index * step, 14.0)
 		var knot := top + Vector2(0.0, DROP)
 		var state := states[index]
 		var thread := CORD.lightened(0.15) if state == &"pending" else _color(state)
@@ -78,6 +81,8 @@ func _color(state: StringName) -> Color:
 			return Color("#E0A526")
 		&"wrong":
 			return ActivityStyle.MUTED
+		&"answered":
+			return Color("#8B7AC0")
 	return ActivityStyle.CREAM
 
 
@@ -95,6 +100,8 @@ func _knot(at: Vector2, radius: float, state: StringName) -> void:
 				Color.WHITE, 2.6, true)
 		&"missed":
 			draw_circle(at, 3.6, ActivityStyle.CREAM)
+		&"answered":
+			draw_circle(at, 3.2, Color.WHITE)
 		&"wrong":
 			draw_line(at + Vector2(-4, -4), at + Vector2(4, 4), Color.WHITE, 2.4, true)
 			draw_line(at + Vector2(4, -4), at + Vector2(-4, 4), Color.WHITE, 2.4, true)

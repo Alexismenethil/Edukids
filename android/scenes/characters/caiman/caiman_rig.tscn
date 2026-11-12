@@ -1,0 +1,137 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/characters/caiman/char_caiman_atlas.png" id="1_atlas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tail"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 240, 226, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_back"]
+atlas = ExtResource("1_atlas")
+region = Rect2(242, 240, 75, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_body"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 8, 421, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_front"]
+atlas = ExtResource("1_atlas")
+region = Rect2(731, 8, 79, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaw"]
+atlas = ExtResource("1_atlas")
+region = Rect2(423, 240, 250, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_head"]
+atlas = ExtResource("1_atlas")
+region = Rect2(437, 8, 286, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cheek"]
+atlas = ExtResource("1_atlas")
+region = Rect2(100, 388, 56, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_open"]
+atlas = ExtResource("1_atlas")
+region = Rect2(777, 240, 86, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_happy"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 388, 84, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_closed"]
+atlas = ExtResource("1_atlas")
+region = Rect2(871, 240, 84, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_angry"]
+atlas = ExtResource("1_atlas")
+region = Rect2(681, 240, 88, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_wow"]
+atlas = ExtResource("1_atlas")
+region = Rect2(325, 240, 90, 96)
+
+[node name="CaimanRig" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Tail" type="Sprite2D" parent="."]
+position = Vector2(204.0, -96.0)
+texture = SubResource("AtlasTexture_tail")
+centered = false
+offset = Vector2(-14.0, -78.0)
+
+[node name="LegBack" type="Sprite2D" parent="."]
+position = Vector2(136.0, -44.0)
+texture = SubResource("AtlasTexture_leg_back")
+centered = false
+offset = Vector2(-30.0, -30.0)
+
+[node name="BodyArt" type="Sprite2D" parent="."]
+position = Vector2(20.0, -100.0)
+texture = SubResource("AtlasTexture_body")
+centered = false
+offset = Vector2(-211.0, -124.0)
+
+[node name="LegFront" type="Sprite2D" parent="."]
+position = Vector2(-108.0, -48.0)
+texture = SubResource("AtlasTexture_leg_front")
+centered = false
+offset = Vector2(-49.0, -30.0)
+
+[node name="Head" type="Node2D" parent="."]
+position = Vector2(-160.0, -140.0)
+
+[node name="Jaw" type="Sprite2D" parent="Head"]
+position = Vector2(-12.0, 16.0)
+texture = SubResource("AtlasTexture_jaw")
+centered = false
+offset = Vector2(-233.0, -20.0)
+
+[node name="HeadArt" type="Sprite2D" parent="Head"]
+position = Vector2(-120.0, -40.0)
+texture = SubResource("AtlasTexture_head")
+centered = false
+offset = Vector2(-134.0, -90.0)
+
+[node name="Cheek" type="Sprite2D" parent="Head"]
+visible = false
+position = Vector2(-32.0, -16.0)
+texture = SubResource("AtlasTexture_cheek")
+centered = false
+offset = Vector2(-28.0, -18.0)
+
+[node name="Eyes" type="Node2D" parent="Head"]
+position = Vector2(-72.0, -92.0)
+
+[node name="EyesOpen" type="Sprite2D" parent="Head/Eyes"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_open")
+centered = false
+offset = Vector2(-44.0, -45.0)
+
+[node name="EyesHappy" type="Sprite2D" parent="Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_happy")
+centered = false
+offset = Vector2(-43.0, -49.0)
+
+[node name="EyesClosed" type="Sprite2D" parent="Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_closed")
+centered = false
+offset = Vector2(-43.0, -42.0)
+
+[node name="EyesAngry" type="Sprite2D" parent="Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_angry")
+centered = false
+offset = Vector2(-46.0, -46.0)
+
+[node name="EyesWow" type="Sprite2D" parent="Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_wow")
+centered = false
+offset = Vector2(-46.0, -58.0)

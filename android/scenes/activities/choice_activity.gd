@@ -17,14 +17,20 @@ func build() -> void:
 	_multiple = step.data.get("multiple", false)
 	var options: Array = step.data["options"]
 	# En la columna angosta de una lectura, las opciones siempre van en lista.
-	var long := compact() or options.any(func(option: Dictionary) -> bool: return option["text"].length() > LONG_TEXT)
+	var longest := 0
+	for option: Dictionary in options:
+		longest = maxi(longest, String(option["text"]).length())
+	var long := compact() or longest > LONG_TEXT
+	# Bajo la escena de una mecánica la tarjeta es más baja: las opciones medianas van en dos columnas.
+	var short := step.short and not compact()
+	var paired := short and long and longest <= 52 and options.size() >= 4
 	var container: Container
-	if long:
+	if long and not paired:
 		container = VBoxContainer.new()
-		container.add_theme_constant_override("separation", 8 if compact() else 12)
+		container.add_theme_constant_override("separation", 8 if compact() or short else 12)
 	else:
 		var grid := GridContainer.new()
-		grid.columns = 3 if options.size() in [3, 5, 6] else 2
+		grid.columns = 2 if paired else (3 if options.size() in [3, 5, 6] else 2)
 		grid.add_theme_constant_override("h_separation", 16)
 		grid.add_theme_constant_override("v_separation", 16)
 		container = grid
@@ -35,13 +41,21 @@ func build() -> void:
 		var card := TapCard.new()
 		card.accent = accent()
 		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		card.custom_minimum_size.y = (60 if compact() else 76) if long else 108
+		if paired:
+			card.custom_minimum_size.y = 76
+		elif long:
+			card.custom_minimum_size.y = 56 if compact() or short else 76
+		else:
+			card.custom_minimum_size.y = 92 if short else 108
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 16)
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		var badge := MarkBadge.new(LETTERS[index], accent(), _multiple, 40.0 if compact() else 46.0)
 		row.add_child(badge)
-		var text := ActivityStyle.label(option["text"], (23 if compact() else 26) if long else 32, ActivityStyle.INK, true, 120)
+		var text_size := 32
+		if long:
+			text_size = 23 if compact() or short else 26
+		var text := ActivityStyle.label(option["text"], text_size, ActivityStyle.INK, true, 120)
 		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		text.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT if long else HORIZONTAL_ALIGNMENT_CENTER
 		row.add_child(text)

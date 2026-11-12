@@ -42,10 +42,12 @@
   <g id="part_hair_back_3">
     <path d="M76,152 C70,90 108,54 160,54 C212,54 250,90 244,152 C242,162 236,166 230,158 L90,158 C84,166 78,162 76,152 Z" fill="#C9C9C9" stroke="#595959" stroke-width="4" stroke-linejoin="round"/>
   </g>
-  <g id="part_hair_back_4">
+  <g id="part_hair_tail_4">
     <path d="M206,76 C236,48 276,56 288,92 C298,122 290,164 270,190 C266,172 264,154 256,140 C248,120 236,102 218,94 Z" fill="#C9C9C9" stroke="#595959" stroke-width="4" stroke-linejoin="round"/>
     <path d="M232,74 C258,74 278,96 280,128" fill="none" stroke="#EDEDED" stroke-width="6" stroke-linecap="round"/>
     <path d="M250,118 C258,136 264,156 266,176" fill="none" stroke="#AEAEAE" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="part_hair_back_4">
     <path d="M76,152 C70,90 108,54 160,54 C212,54 250,90 244,152 C242,162 236,166 230,158 L90,158 C84,166 78,162 76,152 Z" fill="#C9C9C9" stroke="#595959" stroke-width="4" stroke-linejoin="round"/>
   </g>
   <g id="part_hair_tie_4">
@@ -198,14 +200,36 @@
     <path d="M121,155 Q132,140 143,155" fill="none" stroke="#3B2416" stroke-width="5" stroke-linecap="round"/>
     <path d="M177,155 Q188,140 199,155" fill="none" stroke="#3B2416" stroke-width="5" stroke-linecap="round"/>
   </g>
+  <g id="part_eyes_squeeze">
+    <path d="M122,142 L141,151 L122,160" fill="none" stroke="#3B2416" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M198,142 L179,151 L198,160" fill="none" stroke="#3B2416" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="part_eyes_wide">
+    <ellipse cx="132" cy="151" rx="13.5" ry="16.5" fill="#FFFFFF" stroke="#3B2416" stroke-width="3"/>
+    <ellipse cx="132" cy="152" rx="7.5" ry="9.5" fill="#3B2416"/>
+    <circle cx="135" cy="148" r="3.2" fill="#FFFFFF"/>
+    <ellipse cx="188" cy="151" rx="13.5" ry="16.5" fill="#FFFFFF" stroke="#3B2416" stroke-width="3"/>
+    <ellipse cx="188" cy="152" rx="7.5" ry="9.5" fill="#3B2416"/>
+    <circle cx="191" cy="148" r="3.2" fill="#FFFFFF"/>
+  </g>
+  <g id="part_eyes_star">
+    <ellipse cx="132" cy="151" rx="12.5" ry="15.5" fill="#3B2416"/>
+    <path d="M132,140 L134.6,148.4 L143,151 L134.6,153.6 L132,162 L129.4,153.6 L121,151 L129.4,148.4 Z" fill="#FFFFFF"/>
+    <circle cx="138.5" cy="143.5" r="2" fill="#FFFFFF"/>
+    <ellipse cx="188" cy="151" rx="12.5" ry="15.5" fill="#3B2416"/>
+    <path d="M188,140 L190.6,148.4 L199,151 L190.6,153.6 L188,162 L185.4,153.6 L177,151 L185.4,148.4 Z" fill="#FFFFFF"/>
+    <circle cx="194.5" cy="143.5" r="2" fill="#FFFFFF"/>
+  </g>
   <g id="part_lashes">
     <path d="M122,142 L115,137" stroke="#3B2416" stroke-width="3.4" stroke-linecap="round"/>
     <path d="M125.5,138.5 L120.5,132" stroke="#3B2416" stroke-width="3.4" stroke-linecap="round"/>
     <path d="M198,142 L205,137" stroke="#3B2416" stroke-width="3.4" stroke-linecap="round"/>
     <path d="M194.5,138.5 L199.5,132" stroke="#3B2416" stroke-width="3.4" stroke-linecap="round"/>
   </g>
-  <g id="part_brows">
+  <g id="part_brow_l">
     <path d="M119,126 Q131,118 143,124" fill="none" stroke="#7D7D7D" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g id="part_brow_r">
     <path d="M177,124 Q189,118 201,126" fill="none" stroke="#7D7D7D" stroke-width="5" stroke-linecap="round"/>
   </g>
   <g id="part_mouth_smile">
@@ -215,6 +239,14 @@
     <path d="M144,184 Q160,182 176,184 C176,198 170,207 160,207 C150,207 144,198 144,184 Z" fill="#7A2E2A" stroke="#5A2E16" stroke-width="2.2" stroke-linejoin="round"/>
     <path d="M148,185.5 L172,185.5 L171,190 Q160,192 149,190 Z" fill="#FFFFFF"/>
     <ellipse cx="160" cy="201" rx="9" ry="5" fill="#E8736E"/>
+  </g>
+  <g id="part_mouth_o">
+    <ellipse cx="160" cy="193" rx="7.5" ry="9.5" fill="#7A2E2A" stroke="#5A2E16" stroke-width="2.2"/>
+    <ellipse cx="160" cy="198" rx="4.6" ry="3.2" fill="#E8736E"/>
+  </g>
+  <g id="part_mouth_grin">
+    <path d="M143,185 Q160,182 177,185 C176,197 169,203 160,203 C151,203 144,197 143,185 Z" fill="#FFFFFF" stroke="#5A2E16" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M145,193 Q160,196 175,193" fill="none" stroke="#D9C9C0" stroke-width="1.6" stroke-linecap="round"/>
   </g>
 
   <!-- ===== Cabello de adelante ===== -->
@@ -243,26 +275,30 @@
     <path d="M140,62 L150,74 M166,48 L170,70 M194,62 L188,76" fill="none" stroke="#AEAEAE" stroke-width="3" stroke-linecap="round"/>
     <path d="M114,84 C128,76 142,74 152,76" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
   </g>
+  <g id="part_braid_l_3">
+    <g stroke="#595959" stroke-width="4" fill="#EDEDED">
+      <ellipse cx="97" cy="190" rx="13" ry="12"/><ellipse cx="94" cy="207" rx="12.5" ry="11.5"/><ellipse cx="97" cy="224" rx="12" ry="11"/><ellipse cx="94" cy="240" rx="11.5" ry="10.5"/><ellipse cx="97" cy="255" rx="11" ry="10"/>
+    </g>
+    <path d="M91,266 C89,274 93,282 97,284 C101,282 105,274 103,266 Z" fill="#EDEDED" stroke="#595959" stroke-width="3.5" stroke-linejoin="round"/>
+  </g>
+  <g id="part_braid_r_3">
+    <g stroke="#595959" stroke-width="4" fill="#EDEDED">
+      <ellipse cx="223" cy="190" rx="13" ry="12"/><ellipse cx="226" cy="207" rx="12.5" ry="11.5"/><ellipse cx="223" cy="224" rx="12" ry="11"/><ellipse cx="226" cy="240" rx="11.5" ry="10.5"/><ellipse cx="223" cy="255" rx="11" ry="10"/>
+    </g>
+    <path d="M217,266 C215,274 219,282 223,284 C227,282 231,274 229,266 Z" fill="#EDEDED" stroke="#595959" stroke-width="3.5" stroke-linejoin="round"/>
+  </g>
   <g id="part_hair_front_3">
     <path d="M160,62 C120,62 90,84 84,124 C82,140 82,160 92,184 L106,178 C98,160 98,140 102,128 C112,116 132,108 146,100 C154,94 158,86 160,76 Z" fill="#EDEDED" stroke="#595959" stroke-width="4" stroke-linejoin="round"/>
     <path d="M160,62 C200,62 230,84 236,124 C238,140 238,160 228,184 L214,178 C222,160 222,140 218,128 C208,116 188,108 174,100 C166,94 162,86 160,76 Z" fill="#EDEDED" stroke="#595959" stroke-width="4" stroke-linejoin="round"/>
-    <g stroke="#595959" stroke-width="4" fill="#EDEDED">
-      <ellipse cx="97" cy="190" rx="13" ry="12"/><ellipse cx="94" cy="207" rx="12.5" ry="11.5"/>
-      <ellipse cx="97" cy="224" rx="12" ry="11"/><ellipse cx="94" cy="240" rx="11.5" ry="10.5"/>
-      <ellipse cx="97" cy="255" rx="11" ry="10"/>
-      <ellipse cx="223" cy="190" rx="13" ry="12"/><ellipse cx="226" cy="207" rx="12.5" ry="11.5"/>
-      <ellipse cx="223" cy="224" rx="12" ry="11"/><ellipse cx="226" cy="240" rx="11.5" ry="10.5"/>
-      <ellipse cx="223" cy="255" rx="11" ry="10"/>
-    </g>
-    <path d="M91,266 C89,274 93,282 97,284 C101,282 105,274 103,266 Z" fill="#EDEDED" stroke="#595959" stroke-width="3.5" stroke-linejoin="round"/>
-    <path d="M217,266 C215,274 219,282 223,284 C227,282 231,274 229,266 Z" fill="#EDEDED" stroke="#595959" stroke-width="3.5" stroke-linejoin="round"/>
     <path d="M118,80 C130,72 144,68 154,68" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
     <path d="M160,64 L160,80" stroke="#AEAEAE" stroke-width="3" stroke-linecap="round"/>
   </g>
-  <g id="part_hair_tie_3">
+  <g id="part_hair_tie_l_3">
     <rect x="87" y="259" width="20" height="10" rx="5" fill="#C2185B" stroke="#5A2E16" stroke-width="2.6"/>
     <circle cx="88" cy="273" r="5.5" fill="#F28C28" stroke="#5A2E16" stroke-width="2.4"/>
     <circle cx="106" cy="274" r="5" fill="#1FA2A6" stroke="#5A2E16" stroke-width="2.4"/>
+  </g>
+  <g id="part_hair_tie_r_3">
     <rect x="213" y="259" width="20" height="10" rx="5" fill="#C2185B" stroke="#5A2E16" stroke-width="2.6"/>
     <circle cx="214" cy="274" r="5" fill="#1FA2A6" stroke="#5A2E16" stroke-width="2.4"/>
     <circle cx="232" cy="273" r="5.5" fill="#F28C28" stroke="#5A2E16" stroke-width="2.4"/>

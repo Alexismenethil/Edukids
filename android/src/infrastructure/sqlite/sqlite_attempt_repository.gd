@@ -30,9 +30,11 @@ func save_answer(answer: AttemptAnswer) -> Result:
 
 func finish_attempt(attempt: Attempt) -> Result:
 	return _database.execute(
-		"UPDATE attempt SET status = ?, finished_at = ?, correct_count = ?, total_count = ?, percent = ?, stars = ?, lives_lost = ?, hints_used = ? WHERE id = ?;",
+		"UPDATE attempt SET status = ?, finished_at = ?, correct_count = ?, total_count = ?, percent = ?, stars = ?, cneb_grade = ?, lives_lost = ?, hints_used = ? WHERE id = ?;",
 		[String(attempt.status), IsoTime.from_unix_ms(attempt.finished_at_ms), attempt.correct_count,
-			attempt.total_count, attempt.percent, attempt.stars, attempt.lives_lost, attempt.hints_used, attempt.id])
+			attempt.total_count, attempt.percent, attempt.stars,
+			null if attempt.cneb_grade.is_empty() else attempt.cneb_grade,
+			attempt.lives_lost, attempt.hints_used, attempt.id])
 
 
 func find_open_attempt(student_id: String, level_key: String) -> Attempt:
@@ -73,6 +75,16 @@ func best_stars(student_id: String) -> Dictionary:
 		for row: Dictionary in rows.value:
 			best[str(row["level_id"])] = int(row["best"]) if row["best"] != null else 0
 	return best
+
+
+func list_attempts(student_id: String) -> Array[Attempt]:
+	var attempts: Array[Attempt] = []
+	var rows := _database.query(
+		"SELECT %s FROM attempt WHERE student_id = ? ORDER BY started_at, rowid;" % ATTEMPT_COLUMNS, [student_id])
+	if rows.is_ok():
+		for row: Dictionary in rows.value:
+			attempts.append(_to_attempt(row))
+	return attempts
 
 
 static func _to_attempt(row: Dictionary) -> Attempt:

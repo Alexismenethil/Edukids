@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340">
+  <!-- Plaza de Huamanga: portales blancos con balcones de madera, las torres de la catedral,
+       árboles de la plaza y los cerros detrás. Ilustración plana, sin filtros. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5DB6E6"/>
+      <stop offset="0.7" stop-color="#BFE6F5"/>
+      <stop offset="1" stop-color="#FFE9C4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="340" fill="url(#sky)"/>
+  <circle cx="1060" cy="70" r="34" fill="#FFD35C"/>
+  <circle cx="1060" cy="70" r="46" fill="#FFE59A" opacity="0.4"/>
+  <path d="M0,190 L90,120 L170,160 L260,96 L360,150 L450,110 L560,170 L660,104 L760,150 L860,96 L960,140 L1060,108 L1160,150 L1280,112 L1280,240 L0,240 Z" fill="#9DB1D3"/>
+  <path d="M232,112 L260,96 L288,116 L272,112 L260,120 L246,112 Z M836,110 L860,96 L884,112 L870,110 L860,116 L848,110 Z" fill="#F7F9FB"/>
+  <path d="M0,220 C120,180 240,190 360,206 C480,222 600,188 720,196 C840,204 960,180 1080,192 C1160,200 1220,196 1280,188 L1280,260 L0,260 Z" fill="#A8B85A"/>
+  <path d="M0,232 C150,214 300,222 450,230 M620,214 C760,206 900,214 1040,220" stroke="#93A24B" stroke-width="3" fill="none"/>
+  <!-- Torres de la catedral -->
+  <g stroke="#7A5A3A" stroke-width="3" stroke-linejoin="round">
+    <rect x="520" y="120" width="54" height="170" fill="#E8D6B8"/>
+    <rect x="706" y="120" width="54" height="170" fill="#E8D6B8"/>
+    <path d="M514,122 L580,122 L547,92 Z M700,122 L766,122 L733,92 Z" fill="#B8623B"/>
+    <rect x="574" y="170" width="132" height="120" fill="#EFE0C4"/>
+    <path d="M574,172 L640,140 L706,172 Z" fill="#E8D6B8"/>
+    <path d="M622,290 L622,232 C622,218 658,218 658,232 L658,290 Z" fill="#7B4A2E"/>
+    <path d="M534,180 C534,166 560,166 560,180 L560,200 L534,200 Z M720,180 C720,166 746,166 746,180 L746,200 L720,200 Z" fill="#5A4A3E"/>
+    <circle cx="640" cy="190" r="10" fill="#C9B8A2"/>
+  </g>
+  <!-- Portales de la izquierda -->
+  <g stroke="#7A5A3A" stroke-width="3" stroke-linejoin="round">
+    <path d="M0,176 L470,176 L470,196 L0,196 Z" fill="#B8623B"/>
+    <rect x="0" y="196" width="470" height="110" fill="#FBF6EC"/>
+    <rect x="0" y="206" width="470" height="18" fill="#7B4A2E"/>
+  </g>
+  <g fill="#7B4A2E"><rect x="18" y="200" width="8" height="30"/><rect x="78" y="200" width="8" height="30"/><rect x="138" y="200" width="8" height="30"/><rect x="198" y="200" width="8" height="30"/><rect x="258" y="200" width="8" height="30"/><rect x="318" y="200" width="8" height="30"/><rect x="378" y="200" width="8" height="30"/><rect x="438" y="200" width="8" height="30"/></g>
+  <g fill="#D9C6A6" stroke="#7A5A3A" stroke-width="2.5">
+    <path d="M14,306 L14,268 C14,248 50,248 50,268 L50,306 Z"/><path d="M74,306 L74,268 C74,248 110,248 110,268 L110,306 Z"/><path d="M134,306 L134,268 C134,248 170,248 170,268 L170,306 Z"/><path d="M194,306 L194,268 C194,248 230,248 230,268 L230,306 Z"/><path d="M254,306 L254,268 C254,248 290,248 290,268 L290,306 Z"/><path d="M314,306 L314,268 C314,248 350,248 350,268 L350,306 Z"/><path d="M374,306 L374,268 C374,248 410,248 410,268 L410,306 Z"/><path d="M434,306 L434,268 C434,248 470,248 470,268 L470,306 Z"/>
+  </g>
+  <!-- Portales de la derecha -->
+  <g stroke="#7A5A3A" stroke-width="3" stroke-linejoin="round">
+    <path d="M810,176 L1280,176 L1280,196 L810,196 Z" fill="#B8623B"/>
+    <rect x="810" y="196" width="470" height="110" fill="#FBF6EC"/>
+    <rect x="810" y="206" width="470" height="18" fill="#7B4A2E"/>
+  </g>
+  <g fill="#7B4A2E"><rect x="826" y="200" width="8" height="30"/><rect x="886" y="200" width="8" height="30"/><rect x="946" y="200" width="8" height="30"/><rect x="1006" y="200" width="8" height="30"/><rect x="1066" y="200" width="8" height="30"/><rect x="1126" y="200" width="8" height="30"/><rect x="1186" y="200" width="8" height="30"/><rect x="1246" y="200" width="8" height="30"/></g>
+  <g fill="#D9C6A6" stroke="#7A5A3A" stroke-width="2.5">
+    <path d="M820,306 L820,268 C820,248 856,248 856,268 L856,306 Z"/><path d="M880,306 L880,268 C880,248 916,248 916,268 L916,306 Z"/><path d="M940,306 L940,268 C940,248 976,248 976,268 L976,306 Z"/><path d="M1000,306 L1000,268 C1000,248 1036,248 1036,268 L1036,306 Z"/><path d="M1060,306 L1060,268 C1060,248 1096,248 1096,268 L1096,306 Z"/><path d="M1120,306 L1120,268 C1120,248 1156,248 1156,268 L1156,306 Z"/><path d="M1180,306 L1180,268 C1180,248 1216,248 1216,268 L1216,306 Z"/><path d="M1240,306 L1240,268 C1240,248 1276,248 1276,268 L1276,306 Z"/>
+  </g>
+  <!-- Suelo de la plaza y árboles -->
+  <rect x="0" y="300" width="1280" height="40" fill="#E3CFA6"/>
+  <path d="M0,306 L1280,306" stroke="#C9B08A" stroke-width="3"/>
+  <g stroke="#5A2E16" stroke-width="3">
+    <rect x="492" y="262" width="8" height="40" fill="#7B4A2E"/><circle cx="496" cy="250" r="26" fill="#5E8F3A"/><circle cx="486" cy="242" r="12" fill="#77A84A" stroke="none"/>
+    <rect x="782" y="262" width="8" height="40" fill="#7B4A2E"/><circle cx="786" cy="250" r="26" fill="#5E8F3A"/><circle cx="776" cy="242" r="12" fill="#77A84A" stroke="none"/>
+  </g>
+  <g fill="#C2185B"><circle cx="470" cy="300" r="5"/><circle cx="812" cy="300" r="5"/></g>
+  <g fill="#F28C28"><circle cx="482" cy="302" r="4"/><circle cx="800" cy="302" r="4"/></g>
+</svg>

@@ -1,7 +1,7 @@
 class_name FolderPackageStore
 extends PackageStore
 ## Adaptador de salida: lee los paquetes desde carpetas, uno por subcarpeta con su manifest.json
-## (formato v1). Hoy, los módulos 0 que vienen con el juego (res://content/packages);
+## (formato v1). Hoy, las prácticas que vienen con el juego (res://content/packages);
 ## desde el Sprint 7, también los paquetes instalados en user://.
 
 const MANIFEST := "manifest.json"
@@ -83,7 +83,9 @@ func _scan() -> void:
 	_packages.sort_custom(func(a: ContentPackage, b: ContentPackage) -> bool:
 		var area_a := ContentPackage.AREAS.find(a.area)
 		var area_b := ContentPackage.AREAS.find(b.area)
-		return area_a < area_b if area_a != area_b else a.number < b.number)
+		if area_a != area_b:
+			return area_a < area_b
+		return a.number < b.number if a.number != b.number else a.id < b.id)
 
 
 static func _read_json(path: String) -> Result:

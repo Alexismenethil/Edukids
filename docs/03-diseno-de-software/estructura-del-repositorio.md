@@ -28,19 +28,18 @@ android/
 ├── src/
 │   ├── domain/                   1. Dominio: sin nodos, sin archivos y sin red
 │   │   ├── entities/             Institution, Section, Teacher, Student, StoryScene, ContentPackage, LevelEntry, Level, Item,
-│   │   │                         Attempt y AttemptAnswer
+│   │   │                         Attempt, AttemptAnswer y Chapter (paradas del mapa)
 │   │   ├── value_objects/        Pin, PinCredential, PersonName, TeacherCode, Avatar, AudioSettings, CnebGrade, TextAnswer,
-│   │   │                         NumberAnswer, Evaluation, SessionStep, AnswerOutcome y LevelSummary
-│   │   ├── rules/                PinLockout, DangerMeter, StarRule, CnebGradeScale y LevelSession; después UnlockRule
+│   │   │                         NumberAnswer, Evaluation, SessionStep, AnswerOutcome, LevelSummary y QuestionReview
+│   │   ├── rules/                PinLockout, DangerMeter, StarRule, CnebGradeScale, LevelSession y TrailRule (RN-18)
 │   │   ├── evaluators/           ItemEvaluator, EvaluatorRegistry y un evaluador por tipo de ítem P1
 │   │   └── errors/
 │   ├── application/              2. Aplicación
 │   │   ├── use_cases/
 │   │   │   ├── classroom/        ConfigureInstitution, UnlockTeacherMode, RegisterStudent, UpdateStudent, SetStudentActive,
 │   │   │   │                     ResetStudentPin, LoginStudent, ListStudents, CustomizeAvatar, SuggestPin, SuggestAvatar
-│   │   │   ├── play/             ListLevels, StartLevel, SubmitAnswer, RequestHint, ContinueLevel, FinishLevel,
-│   │   │   │                     RegisterBundledPackages y StepBuilder (prepara cada pregunta para la vista)
-│   │   │   ├── final_challenge/  StartFinalChallenge, AnswerFinalItem, SubmitFinalChallenge
+│   │   │   ├── play/             GetChapterMap, StartLevel, SubmitAnswer, RequestHint, ContinueLevel, FinishLevel,
+│   │   │   │                     RegisterBundledPackages, LevelRecords y StepBuilder (prepara cada pregunta para la vista)
 │   │   │   ├── packages/         FetchCatalog, DownloadPackage, InstallPackage, ImportPackageFile, ReleasePackage
 │   │   │   ├── rewards/          GrantRewards (los accesorios de RF-32 amplían CustomizeAvatar)
 │   │   │   ├── reports/          GetSectionReport, ExportReportCsv
@@ -63,21 +62,25 @@ android/
 │   │   └── play_session.gd       Quién entró y qué se vio mientras el juego está abierto
 │   └── main/                     Raíz de composición y navegador
 ├── scenes/                       4. Vistas (escenas de Godot)
-│   ├── ui/                       title/, profiles/ (perfiles y PIN), avatar/ (editor), student/, teacher/ (configuración,
+│   ├── ui/                       title/, profiles/ (perfiles y PIN), avatar/ (editor), teacher/ (configuración,
 │   │                             PIN docente y estudiantes) y components/ (teclado del PIN, quipu, carrusel, fondo de la Sierra)
-│   ├── map/                      Mapa general y mapas de capítulo
-│   ├── level/                    Nivel, quipu de avance, retroalimentación y resultados; después game over
-│   ├── mechanics/                Persecución, puente y clásica
+│   ├── map/                      Mapa del capítulo, parada con sus senderos, nudo de cada nivel y ficha antes de jugar
+│   ├── level/                    Nivel, vidas, medidor de peligro, quipu de avance, retroalimentación, resultados, game over,
+│   │                             portada y calificación del desafío final
+│   ├── mechanics/                Persecución, puente, caimán y clásica (Atoq que se asoma), con sus efectos y su cámara
+│   ├── world/                    Mundo por capas con paralaje (ParallaxWorld), sombreadores de cielo, rayos, neblina,
+│   │                             agua y viento, y lo que flota en el aire (polen, pétalos, mariposas, pájaros)
 │   ├── activities/               Un componente visual por tipo de ítem, tarjetas, canastas y el panel de lectura
-│   └── characters/               Avatar, guías, Atoq, Mama Sisa y fauna (cóndor); el rig de cada personaje se genera
+│   └── characters/               Avatar, Quwi, Atoq, Coco el caimán y fauna (cóndor); el rig de cada personaje se genera
 ├── assets/
-│   ├── art/                      Personajes, fondos, interfaz e iconos
+│   ├── art/                      Personajes, fondos, mundos de las mecánicas (worlds/), interfaz e iconos
 │   ├── audio/                    music/ y sfx/
 │   ├── fonts/
 │   └── themes/                   Tema de la interfaz
 ├── content/                      Escenas narrativas del juego base y módulos 0 de práctica (packages/)
 ├── art-src/                      Fuentes del arte (SVG maestros, rigs); tiene .gdignore y no se exporta
-├── tools/art/                    Herramientas del flujo de arte (generar rigs por piezas)
+├── tools/art/                    Herramientas del flujo de arte: rigs por piezas y generadores de mundos (worlds/, Python;
+│                                 tiene .gdignore y no se exporta)
 ├── tools/preview/                Galería de avatares para revisar el arte (no se exporta)
 ├── builds/                       APK y videos generados (ignorado por Git)
 └── tests/

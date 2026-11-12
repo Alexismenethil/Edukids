@@ -18,6 +18,12 @@ var solution := ""
 ## false si la respuesta no se pudo guardar.
 var saved := true
 var progress: Array[StringName] = []
+## Medidor de peligro y vidas después de responder (RN-13 y RN-14).
+var danger := 0
+var lives := 0
+var life_lost := false
+var game_over := false
+var streak := 0
 
 
 static func from_outcome(outcome: AnswerOutcome) -> AnswerResponse:
@@ -33,4 +39,9 @@ static func from_outcome(outcome: AnswerOutcome) -> AnswerResponse:
 	response.offer_hint = outcome.offer_hint
 	response.finished = outcome.finished
 	response.solution = outcome.solution
+	response.danger = outcome.danger
+	response.lives = outcome.lives
+	response.life_lost = outcome.life_lost
+	response.game_over = outcome.game_over
+	response.streak = outcome.streak
 	return response

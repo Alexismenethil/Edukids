@@ -1,0 +1,398 @@
+{
+  "id": "L01",
+  "title": "Reto: lectura",
+  "guide_intro": [
+    "¡Seremos detectives de lectura!",
+    "Cada historia permanecerá a tu lado mientras buscas pistas y sacas conclusiones."
+  ],
+  "items": [
+    {
+      "id": "COM-R01-U1",
+      "type": "reading_unit",
+      "prompt": "Lee la historia y responde.",
+      "stimulus": {
+        "type": "text",
+        "title": "El turno del agua",
+        "content": [
+          "Durante dos mañanas, el agua salió del manantial, pero no llegó a la última chacra de la comunidad. Killa y su abuelo decidieron seguir la acequia para averiguar qué ocurría.",
+          "A mitad del camino encontraron una grieta por la que se escapaba parte del agua. Las familias la repararon juntas. Killa anotó en su cuaderno cuándo llegaba el agua antes y después del arreglo.",
+          "En los tres días siguientes, el agua volvió a llegar a la última chacra. La comunidad acordó revisar la acequia cada semana y seguir anotando sus observaciones."
+        ]
+      },
+      "items": [
+        {
+          "id": "COM-R01-01",
+          "type": "multiple_choice",
+          "prompt": "¿Qué llevó a Killa y a su abuelo a revisar la acequia?",
+          "options": [
+            {
+              "id": "a",
+              "text": "El agua salía del manantial, pero no llegaba a la última chacra.",
+              "correct": true
+            },
+            {
+              "id": "b",
+              "text": "El agua llegaba a la última chacra antes de lo esperado.",
+              "feedback": "En el texto, el agua no llegaba a esa chacra."
+            },
+            {
+              "id": "c",
+              "text": "Querían averiguar si necesitaban cambiar el manantial.",
+              "feedback": "Revisa qué problema observaron en el recorrido del agua."
+            },
+            {
+              "id": "d",
+              "text": "Las familias habían decidido cambiar el turno de riego.",
+              "feedback": "El texto no indica que cambiaran el turno de riego."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Bien! Esa diferencia les hizo pensar que algo ocurría en el camino.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Compara el inicio y el final del recorrido del agua.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "locate"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 65
+          }
+        },
+        {
+          "id": "COM-R01-02",
+          "type": "multiple_choice",
+          "prompt": "¿Para qué pudo servir que Killa anotara cuándo llegaba el agua antes y después?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Para saber cuánta agua brotaba del manantial cada mañana.",
+              "feedback": "Las anotaciones trataban sobre cuándo llegaba el agua, no su cantidad."
+            },
+            {
+              "id": "b",
+              "text": "Para comparar lo ocurrido después del arreglo con lo que pasaba antes.",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "Para demostrar cuál de las familias reparó primero la grieta.",
+              "feedback": "Las anotaciones no registraban quién reparó la grieta."
+            },
+            {
+              "id": "d",
+              "text": "Para demostrar que no volvería a existir ninguna grieta.",
+              "feedback": "Unas anotaciones no permiten asegurar que jamás habrá otra grieta."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Exacto! Comparar los registros ayuda a valorar si el arreglo mejoró el recorrido.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Piensa en la utilidad de tener un dato de antes y otro de después.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "understand"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 75
+          }
+        },
+        {
+          "id": "COM-R01-03",
+          "type": "multiple_choice",
+          "prompt": "Amaru afirma: «La grieta era el único problema que podía existir». ¿Qué conclusión se apoya mejor en la historia?",
+          "options": [
+            {
+              "id": "a",
+              "text": "La grieta no pudo influir porque el agua salía del manantial.",
+              "feedback": "Aunque salía del manantial, parte del agua se escapaba por la grieta."
+            },
+            {
+              "id": "b",
+              "text": "Tres días de observación prueban que jamás habrá otros problemas.",
+              "feedback": "El texto no permite asegurar lo que ocurrirá para siempre."
+            },
+            {
+              "id": "c",
+              "text": "La grieta parecía influir, pero conviene seguir observando por si surgen otros problemas.",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "Como el agua volvió esos días, ya no hace falta revisar la acequia.",
+              "feedback": "La comunidad acordó seguir revisándola cada semana."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Buena evaluación! El arreglo coincidió con la mejora, pero la comunidad sigue vigilando.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Distingue lo que observaron de lo que nadie puede asegurar para siempre.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 85
+          }
+        },
+        {
+          "id": "COM-R01-04",
+          "type": "multiple_choice",
+          "prompt": "¿Cuál de estas ideas resume mejor la historia?",
+          "options": [
+            {
+              "id": "a",
+              "text": "El abuelo enseña a Killa a encontrar nuevos manantiales.",
+              "feedback": "La historia se centra en una acequia que ya existía."
+            },
+            {
+              "id": "b",
+              "text": "Killa anota datos para aprender a usar un cuaderno.",
+              "feedback": "Anotar es una parte de la historia, no resume el problema y su solución."
+            },
+            {
+              "id": "c",
+              "text": "Las familias cambian el turno de riego de la comunidad.",
+              "feedback": "En la historia reparan la acequia; no se menciona un cambio de turno."
+            },
+            {
+              "id": "d",
+              "text": "Una comunidad observa un problema, actúa en equipo y revisa el resultado.",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "¡Así es! Observar, colaborar y comprobar son las ideas que unen la historia.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Busca una opción que incluya el problema, la acción y lo que hicieron después.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "understand"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 70
+          }
+        }
+      ],
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Infiere e interpreta información del texto",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 295
+      }
+    },
+    {
+      "id": "COM-R01-U2",
+      "type": "reading_unit",
+      "prompt": "Lee la nota y responde.",
+      "stimulus": {
+        "type": "text",
+        "title": "Una malla para atrapar agua",
+        "content": [
+          "Un club escolar probó dos mallas del mismo tamaño para recoger gotas de niebla. Las colocó una junto a la otra y midió el agua que reunió cada una durante una mañana.",
+          "Ese día, la malla A recogió 2 litros y la malla B, 3 litros. El grupo quiere usar el agua para regar plantas y decidió repetir la prueba, porque la niebla y el viento cambian de un día a otro.",
+          "La experiencia les ayudará a comparar los resultados antes de escoger una malla para su jardín."
+        ]
+      },
+      "items": [
+        {
+          "id": "COM-R01-05",
+          "type": "multiple_choice",
+          "prompt": "¿Cuánta agua más recogió la malla B que la A esa mañana?",
+          "options": [
+            {
+              "id": "a",
+              "text": "1 litro",
+              "correct": true
+            },
+            {
+              "id": "b",
+              "text": "2 litros",
+              "feedback": "La malla A recogió 2 litros; calcula la diferencia."
+            },
+            {
+              "id": "c",
+              "text": "3 litros",
+              "feedback": "Esa fue la cantidad que recogió la malla B."
+            },
+            {
+              "id": "d",
+              "text": "5 litros",
+              "feedback": "Esa sería la suma, no la diferencia."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Bien! La diferencia entre 3 y 2 litros es 1 litro.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Resta lo que recogió la malla A de lo que recogió la malla B.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "locate"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 55
+          }
+        },
+        {
+          "id": "COM-R01-06",
+          "type": "multiple_choice",
+          "prompt": "Con los datos de una sola mañana, ¿qué puede afirmar el club?",
+          "options": [
+            {
+              "id": "a",
+              "text": "La malla B siempre recogerá exactamente 3 litros.",
+              "feedback": "El texto explica que la niebla y el viento cambian."
+            },
+            {
+              "id": "b",
+              "text": "En esa prueba la malla B recogió más agua que la A.",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "La malla A recogerá siempre 2 litros en cualquier mañana.",
+              "feedback": "Una mañana de medición no permite saber qué pasará todos los días."
+            },
+            {
+              "id": "d",
+              "text": "La malla B recogerá el doble que la A todos los días.",
+              "feedback": "Con una sola mañana no se puede afirmar lo que ocurrirá siempre."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Correcto! El dato se refiere a esa mañana; hacen falta más pruebas para generalizar.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Elige una conclusión que no vaya más allá de lo observado.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 75
+          }
+        },
+        {
+          "id": "COM-R01-07",
+          "type": "multiple_choice",
+          "prompt": "¿Para qué se escribió principalmente esta nota?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Para narrar una aventura escolar durante una mañana de niebla.",
+              "feedback": "La nota presenta una prueba y la razón para repetirla."
+            },
+            {
+              "id": "b",
+              "text": "Para afirmar que una malla funciona mejor en todas las condiciones.",
+              "feedback": "El grupo quiere repetir la prueba antes de elegir una malla."
+            },
+            {
+              "id": "c",
+              "text": "Para informar sobre una prueba y explicar por qué el club quiere repetirla.",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "Para enseñar paso a paso cómo fabricar dos mallas iguales.",
+              "feedback": "La nota cuenta una experiencia, pero no explica cómo fabricar las mallas."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Muy bien! La nota informa lo que se hizo, lo que se observó y el siguiente paso.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Fíjate en la clase de información que presenta cada párrafo.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "understand"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 70
+          }
+        },
+        {
+          "id": "COM-R01-08",
+          "type": "multiple_choice",
+          "prompt": "¿Qué acción ayudaría más a comparar las dos mallas con mayor confianza?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Medir solo la malla B varios días y usar el dato inicial de la A.",
+              "feedback": "Para compararlas conviene medir ambas en los mismos días."
+            },
+            {
+              "id": "b",
+              "text": "Poner una malla más cerca del viento para recoger más agua.",
+              "feedback": "Así las mallas no se probarían en condiciones comparables."
+            },
+            {
+              "id": "c",
+              "text": "Repetir un solo día sin anotar las condiciones de la prueba.",
+              "feedback": "Medir varios días y registrar condiciones hace más confiable la comparación."
+            },
+            {
+              "id": "d",
+              "text": "Repetir la prueba en varios días, manteniendo las mismas condiciones para ambas.",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "¡Buena decisión! Repetir y controlar las condiciones da una comparación más confiable.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Busca una opción que incluya varios días y condiciones equivalentes.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Infiere e interpreta información del texto",
+            "pisa": {
+              "category": "",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 80
+          }
+        }
+      ],
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Infiere e interpreta información del texto",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 280
+      }
+    }
+  ]
+}

@@ -122,3 +122,34 @@ func test_finishing_saves_the_result_and_the_best_stars() -> void:
 	assert_int(int(rows[0]["hints_used"])).is_equal(1)
 	assert_str(str(rows[0]["finished_at"])).is_equal("2026-11-07T00:01:30Z")
 	assert_str(_attempts.find_open_attempt("stu-1", LEVEL).id).is_equal("att-3")
+
+
+func test_game_overs_and_final_grades_are_kept() -> void:
+	var level := _register()
+	var practice := Attempt.start("att-go", "stu-1", level, 1000)
+	assert_bool(_attempts.create_attempt(practice).is_ok()).is_true()
+	var lost := LevelSummary.new()
+	lost.total = 2
+	lost.game_over = true
+	lost.lives_lost = 3
+	practice.complete(lost, 2000)
+	assert_bool(_attempts.finish_attempt(practice).is_ok()).is_true()
+	var final := Attempt.start("att-df", "stu-1", level, 3000)
+	final.kind = Attempt.FINAL
+	assert_bool(_attempts.create_attempt(final).is_ok()).is_true()
+	var graded := LevelSummary.new()
+	graded.total = 2
+	graded.correct = 2
+	graded.percent = 100.0
+	graded.final = true
+	graded.grade = CnebGradeScale.new().grade(2, 2)
+	final.complete(graded, 4000)
+	assert_bool(_attempts.finish_attempt(final).is_ok()).is_true()
+	var attempts := _attempts.list_attempts("stu-1")
+	assert_int(attempts.size()).is_equal(2)
+	assert_str(attempts[0].status).is_equal(Attempt.GAME_OVER)
+	assert_int(attempts[0].lives_lost).is_equal(3)
+	assert_str(attempts[1].cneb_grade).is_equal("AD")
+	assert_str(attempts[1].kind).is_equal(Attempt.FINAL)
+	assert_dict(_attempts.best_stars("stu-1")).is_equal({level.key(): 0})
+	assert_array(_attempts.list_attempts("nadie")).is_empty()

@@ -1,0 +1,320 @@
+{
+  "id": "L03",
+  "title": "La materia en la cocina de la abuela",
+  "guide_intro": [
+    "¡Atoq se llevó los nudos de la ciencia a la cocina de la abuela!",
+    "Mezclas, cambios y energía: responde rápido para que no te alcance."
+  ],
+  "items": [
+    {
+      "id": "CYT01-L03-01",
+      "type": "classification",
+      "prompt": "¿Cambio físico o cambio químico?",
+      "groups": [
+        {
+          "id": "phys",
+          "label": "Cambio físico"
+        },
+        {
+          "id": "chem",
+          "label": "Cambio químico"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "Hervir agua",
+          "group": "phys"
+        },
+        {
+          "id": "e2",
+          "text": "Cocinar un huevo",
+          "group": "chem"
+        },
+        {
+          "id": "e3",
+          "text": "Romper un papel",
+          "group": "phys"
+        },
+        {
+          "id": "e4",
+          "text": "Quemar leña",
+          "group": "chem"
+        },
+        {
+          "id": "e5",
+          "text": "Derretir mantequilla",
+          "group": "phys"
+        },
+        {
+          "id": "e6",
+          "text": "Una manzana que se oscurece al aire",
+          "group": "chem"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! En el cambio químico aparece una sustancia nueva.",
+        "incorrect": "Pregúntate: ¿sigue siendo la misma sustancia o se formó otra?"
+      },
+      "hint": "Un huevo cocido no vuelve a ser crudo.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "CYT01-L03-02",
+      "type": "multiple_choice",
+      "prompt": "¿Qué método usarías para separar el barro del agua en un balde?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Imantación",
+          "feedback": "El imán solo atrae metales como el hierro."
+        },
+        {
+          "id": "b",
+          "text": "Dejar reposar y pasar el agua limpia a otro recipiente (decantación)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Tamizado",
+          "feedback": "El tamiz separa sólidos de distinto tamaño."
+        },
+        {
+          "id": "d",
+          "text": "Disolverlo con más agua",
+          "feedback": "Así solo se obtiene más mezcla."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! El barro se asienta en el fondo y el agua se pasa con cuidado.",
+        "incorrect": "Piensa qué pasa si dejas el balde quieto un rato."
+      },
+      "hint": "El barro pesa más que el agua.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-L03-03",
+      "type": "matching",
+      "prompt": "Une cada mezcla con el método para separarla.",
+      "left": [
+        {
+          "id": "m1",
+          "text": "Arena con piedritas"
+        },
+        {
+          "id": "m2",
+          "text": "Limaduras de hierro con arena"
+        },
+        {
+          "id": "m3",
+          "text": "Agua con sal"
+        },
+        {
+          "id": "m4",
+          "text": "Agua con aceite"
+        }
+      ],
+      "right": [
+        {
+          "id": "t2",
+          "text": "Imantación"
+        },
+        {
+          "id": "t3",
+          "text": "Evaporación"
+        },
+        {
+          "id": "t4",
+          "text": "Decantación"
+        },
+        {
+          "id": "t5",
+          "text": "Congelación"
+        },
+        {
+          "id": "t1",
+          "text": "Tamizado"
+        }
+      ],
+      "pairs": [
+        [
+          "m1",
+          "t1"
+        ],
+        [
+          "m2",
+          "t2"
+        ],
+        [
+          "m3",
+          "t3"
+        ],
+        [
+          "m4",
+          "t4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Excelente! Cada método aprovecha una diferencia entre los componentes.",
+        "incorrect": "Busca qué diferencia hay: tamaño, magnetismo, o si se disuelve."
+      },
+      "hint": "La sal queda al evaporarse el agua.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "CYT01-L03-04",
+      "type": "true_false",
+      "prompt": "Estados del agua: ¿verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "El hielo y el vapor son la misma sustancia en distinto estado.",
+          "answer": true
+        },
+        {
+          "id": "s2",
+          "text": "Al evaporarse, el agua desaparece para siempre.",
+          "answer": false,
+          "feedback": "El vapor sigue siendo agua: puede condensarse y volver a ser líquido."
+        },
+        {
+          "id": "s3",
+          "text": "Los sólidos tienen forma propia.",
+          "answer": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien!",
+        "incorrect": "Recuerda el ciclo del agua: se evapora, se condensa y vuelve a caer."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-L03-05",
+      "type": "multiple_choice",
+      "prompt": "Al frotar las manos rápidamente, se calientan. ¿Qué transformación de energía ocurre?",
+      "options": [
+        {
+          "id": "a",
+          "text": "De luz a sonido"
+        },
+        {
+          "id": "b",
+          "text": "De calor a electricidad"
+        },
+        {
+          "id": "c",
+          "text": "De movimiento a calor",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "De sonido a movimiento"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! La energía del movimiento se transforma en calor por la fricción.",
+        "incorrect": "¿Qué haces con las manos y qué sientes después?"
+      },
+      "hint": "Frotar es moverse con fricción.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-L03-06",
+      "type": "multi_select",
+      "prompt": "¿Qué materiales dejan pasar la electricidad (son conductores)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cobre",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Aluminio",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Hierro",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Madera seca",
+          "feedback": "La madera seca es aislante."
+        },
+        {
+          "id": "e",
+          "text": "Plástico",
+          "feedback": "Por eso los cables se cubren con plástico."
+        },
+        {
+          "id": "f",
+          "text": "Vidrio",
+          "feedback": "El vidrio es aislante."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Así es! Los metales conducen la electricidad.",
+        "incorrect": "Los metales son buenos conductores."
+      },
+      "hint": "¿De qué está hecho el interior de un cable?",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    }
+  ]
+}

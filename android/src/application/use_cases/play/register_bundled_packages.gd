@@ -1,6 +1,6 @@
 class_name RegisterBundledPackages
 extends RefCounted
-## Caso de uso: registra los paquetes que vienen con el juego (los módulos 0 de práctica),
+## Caso de uso: registra los paquetes de práctica que vienen con el juego,
 ## validando cada nivel, para que los intentos sepan a qué nivel pertenecen.
 ## Los paquetes descargados o copiados por USB se registrarán al instalarse (Sprint 7).
 

@@ -25,21 +25,21 @@ func _ready() -> void:
 	_card.theme_type_variation = &"CardPanel"
 	_card.custom_minimum_size.x = 720
 	add_child(_card)
-	var box := Ui.vbox(10)
+	var box := Ui.vbox(6)
 	box.alignment = BoxContainer.ALIGNMENT_CENTER
 	_card.add_child(box)
 	var emblem := _emblem()
 	emblem.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	box.add_child(emblem)
 	var heading := Ui.label(_result.heading, &"TitleLabel", HORIZONTAL_ALIGNMENT_CENTER)
-	heading.add_theme_font_size_override("font_size", 44)
+	heading.add_theme_font_size_override("font_size", 40)
 	box.add_child(heading)
 	if not _result.title.is_empty():
 		box.add_child(Ui.label(_result.title, &"HintLabel", HORIZONTAL_ALIGNMENT_CENTER))
 	var row := Ui.hbox(18)
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	for index in 3:
-		var star := StarShape.new(104.0 if index == 1 else 88.0)
+		var star := StarShape.new(92.0 if index == 1 else 78.0)
 		star.size_flags_vertical = Control.SIZE_SHRINK_END if index != 1 else Control.SIZE_SHRINK_BEGIN
 		star.modulate.a = 0.0
 		row.add_child(star)
@@ -61,7 +61,7 @@ func _ready() -> void:
 	box.add_child(quipu)
 	for line in _result.lines:
 		var label := Ui.label(line, &"", HORIZONTAL_ALIGNMENT_CENTER)
-		label.add_theme_font_size_override("font_size", 26)
+		label.add_theme_font_size_override("font_size", 23)
 		box.add_child(label)
 	if not _result.guide_line.is_empty():
 		box.add_child(_guide_quote())

@@ -10,7 +10,8 @@ extends RefCounted
 @abstract func save_answer(answer: AttemptAnswer) -> Result
 
 
-## Guarda el cierre del intento: estado, fecha de término, aciertos, porcentaje y estrellas.
+## Guarda el cierre del intento: estado, fecha de término, aciertos, porcentaje, estrellas,
+## vidas perdidas y, en el desafío final, la calificación.
 @abstract func finish_attempt(attempt: Attempt) -> Result
 
 
@@ -24,3 +25,7 @@ extends RefCounted
 
 ## Mejores estrellas del estudiante por nivel: «paquete/nivel» → estrellas.
 @abstract func best_stars(student_id: String) -> Dictionary
+
+
+## Todos los intentos del estudiante (abiertos y cerrados), del más antiguo al más reciente.
+@abstract func list_attempts(student_id: String) -> Array[Attempt]

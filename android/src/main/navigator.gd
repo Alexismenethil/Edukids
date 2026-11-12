@@ -15,10 +15,12 @@ var _demo := DemoDirector.new()
 
 
 func _ready() -> void:
-	_demo.start(self, OS.get_cmdline_user_args())
-	if not _demo.opens_own_screen():
+	_demo.start(self, LaunchArgs.all())
+	if OS.is_debug_build() and (LaunchArgs.all().has("--lab") or LaunchArgs.all().has("--demo-lab")):
+		open_lab()
+	elif not _demo.opens_own_screen():
 		open_title()
-	if OS.get_cmdline_user_args().has("--diagnostics"):
+	if LaunchArgs.all().has("--diagnostics"):
 		_toggle_diagnostics.call_deferred()
 
 
@@ -41,7 +43,7 @@ func open_profiles() -> void:
 		if needs_avatar:
 			open_avatar_editor()
 		else:
-			open_student_home())
+			open_map())
 	_show(view)
 	_demo.on_profiles(view)
 
@@ -50,31 +52,52 @@ func open_profiles() -> void:
 func open_avatar_editor() -> void:
 	var view := AvatarEditorScreen.new()
 	view.setup(CompositionRoot.avatar_editor_presenter())
-	view.finished.connect(open_student_home)
-	view.back_requested.connect(open_student_home)
+	view.finished.connect(open_map)
+	view.back_requested.connect(open_map)
 	_show(view)
 	_demo.on_avatar_editor(view)
 
 
-func open_student_home() -> void:
-	var view := StudentHomeScreen.new()
-	view.setup(CompositionRoot.student_home_presenter())
+## Mapa del capítulo: el inicio del estudiante (RN-01 y RF-22).
+func open_map() -> void:
+	var view := ChapterMapScreen.new()
+	view.setup(CompositionRoot.map_presenter())
 	view.edit_avatar_requested.connect(open_avatar_editor)
 	view.exit_requested.connect(open_title)
+	view.stop_requested.connect(open_stop)
+	_show(view)
+	_demo.on_map(view)
+
+
+## Una parada con sus senderos. Sin `stop_id`, la última visitada.
+func open_stop(stop_id: String = "") -> void:
+	var view := StopScreen.new()
+	var presenter := CompositionRoot.map_presenter()
+	if not stop_id.is_empty():
+		presenter.stop(stop_id)
+	view.setup(presenter)
+	view.back_requested.connect(open_map)
 	view.level_requested.connect(open_level)
 	_show(view)
-	_demo.on_student_home(view)
+	_demo.on_stop(view)
 
 
-## Nivel de práctica (RF-12): al salir o al terminar, vuelve al inicio del estudiante.
+## Un nivel (RF-12): al salir o al terminar, vuelve a su parada.
 func open_level() -> void:
 	var view := LevelScreen.new()
 	view.setup(CompositionRoot.level_presenter())
-	view.exit_requested.connect(open_student_home)
-	view.finished.connect(open_student_home)
+	view.exit_requested.connect(_back_to_stop)
+	view.finished.connect(_back_to_stop)
 	view.replay_requested.connect(open_level)
 	_show(view)
 	_demo.on_level(view)
+
+
+func _back_to_stop() -> void:
+	if CompositionRoot.current_stop().is_empty():
+		open_map()
+	else:
+		open_stop()
 
 
 ## Docente: la primera vez, la configuración inicial (RF-01); después, el PIN (RF-03).
@@ -109,6 +132,14 @@ func open_teacher_panel() -> void:
 	view.exit_requested.connect(open_title)
 	_show(view)
 	_demo.on_teacher_panel(view)
+
+
+## Laboratorio de personajes (solo en compilaciones de depuración, con `--lab`).
+func open_lab() -> void:
+	var view := CharacterLab.new()
+	view.back_requested.connect(open_title)
+	view.auto_tour = LaunchArgs.all().has("--demo-lab")
+	_show(view)
 
 
 func _show(view: Node) -> void:

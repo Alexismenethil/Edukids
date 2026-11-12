@@ -1,0 +1,24 @@
+{
+  "name": "CaimanRig",
+  "master": "res://art-src/characters/caiman.svg",
+  "scale": 2.0,
+  "origin": [220, 170],
+  "atlas": "res://assets/art/characters/caiman/char_caiman_atlas.png",
+  "scene": "res://scenes/characters/caiman/caiman_rig.tscn",
+  "nodes": [
+    {"name": "Tail", "parent": "", "part": "tail", "pivot": [322, 122]},
+    {"name": "LegBack", "parent": "", "part": "leg_back", "pivot": [288, 148]},
+    {"name": "BodyArt", "parent": "", "part": "body", "pivot": [230, 120]},
+    {"name": "LegFront", "parent": "", "part": "leg_front", "pivot": [166, 146]},
+    {"name": "Head", "parent": "", "pivot": [140, 100]},
+    {"name": "Jaw", "parent": "Head", "part": "jaw", "pivot": [134, 108]},
+    {"name": "HeadArt", "parent": "Head", "part": "head", "pivot": [80, 80]},
+    {"name": "Cheek", "parent": "Head", "part": "cheek", "pivot": [124, 92], "visible": false},
+    {"name": "Eyes", "parent": "Head", "pivot": [104, 54]},
+    {"name": "EyesOpen", "parent": "Head/Eyes", "part": "eyes_open", "pivot": [104, 54]},
+    {"name": "EyesHappy", "parent": "Head/Eyes", "part": "eyes_happy", "pivot": [104, 54], "visible": false},
+    {"name": "EyesClosed", "parent": "Head/Eyes", "part": "eyes_closed", "pivot": [104, 54], "visible": false},
+    {"name": "EyesAngry", "parent": "Head/Eyes", "part": "eyes_angry", "pivot": [104, 54], "visible": false},
+    {"name": "EyesWow", "parent": "Head/Eyes", "part": "eyes_wow", "pivot": [104, 54], "visible": false}
+  ]
+}

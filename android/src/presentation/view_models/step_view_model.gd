@@ -24,3 +24,7 @@ var data := {}
 var area: AreaViewModel
 ## Textos de las actividades: «Verdadero», «Falso», «Palabras», etc.
 var labels := {}
+## Desafío final: sin pista y con «Guardar respuesta».
+var final := false
+## La vista la marca cuando la tarjeta es más baja (hay escena de mecánica arriba).
+var short := false

@@ -18,6 +18,16 @@ var offer_hint := false
 var finished := false
 ## Respuesta correcta, solo cuando ya no queda otra oportunidad.
 var solution := ""
+## Medidor de peligro y vidas después de responder (RN-13 y RN-14). En el desafío final
+## no hay medidor ni vidas: quedan en 0.
+var danger := 0
+var lives := 0
+## El medidor llegó a 0: Atoq (o el caimán, o el río) se llevó un nudo.
+var life_lost := false
+## Se acabaron las vidas: el nivel termina en game over y se puede reintentar.
+var game_over := false
+## Aciertos seguidos, contando esta respuesta.
+var streak := 0
 
 
 static func rejected(why: StringName) -> AnswerOutcome:

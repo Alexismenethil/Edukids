@@ -1,0 +1,69 @@
+{
+  "format_version": "1.0",
+  "id": "mod-math-6-01",
+  "kind": "module",
+  "title": "Módulo 1 · La feria de los números",
+  "area": "math",
+  "grade": 6,
+  "number": 1,
+  "chapter": "sierra",
+  "stop": "huamanga",
+  "version": "1.0.0",
+  "min_app_version": "0.1.0",
+  "author": {
+    "type": "official"
+  },
+  "created_at": "2026-11-11T00:00:00-05:00",
+  "competencies": [
+    "MAT.CANTIDAD",
+    "MAT.REGULARIDAD",
+    "MAT.FORMA",
+    "MAT.DATOS"
+  ],
+  "levels": [
+    {
+      "id": "L01",
+      "kind": "short",
+      "mechanic": "chase",
+      "file": "levels/l01.json",
+      "estimated_minutes": 5,
+      "lives": 3,
+      "danger": {
+        "start": 2,
+        "max": 4
+      }
+    },
+    {
+      "id": "L02",
+      "kind": "regular",
+      "mechanic": "bridge",
+      "file": "levels/l02.json",
+      "estimated_minutes": 10,
+      "lives": 3,
+      "danger": {
+        "start": 2,
+        "max": 4
+      }
+    },
+    {
+      "id": "L03",
+      "kind": "short",
+      "mechanic": "caiman",
+      "file": "levels/l03.json",
+      "estimated_minutes": 7,
+      "lives": 3,
+      "danger": {
+        "start": 2,
+        "max": 4
+      }
+    },
+    {
+      "id": "DF",
+      "kind": "final",
+      "mechanic": "classic",
+      "file": "levels/final.json",
+      "estimated_minutes": 18,
+      "max_attempts": 2
+    }
+  ]
+}

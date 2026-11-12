@@ -10,6 +10,8 @@ var _title: Label
 var _message: Label
 var _notes: VBoxContainer
 var _button: Button
+var _streak: PanelContainer
+var _streak_label: Label
 var _shown := false
 
 
@@ -26,9 +28,24 @@ func _ready() -> void:
 	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	column.alignment = BoxContainer.ALIGNMENT_CENTER
 	row.add_child(column)
+	var heading := HBoxContainer.new()
+	heading.add_theme_constant_override("separation", 14)
 	_title = ActivityStyle.label("", 34, ActivityStyle.INK, false)
 	_title.add_theme_font_override("font", ThemeDB.get_project_theme().get_font("font", &"Button"))
-	column.add_child(_title)
+	heading.add_child(_title)
+	# «¡Racha de 3!»: una cinta naranja cuando se encadenan aciertos.
+	_streak = PanelContainer.new()
+	var ribbon := ActivityStyle.box(Color("#F28C28"), Color("#B4561A"), 4, 16, 0)
+	ribbon.content_margin_left = 12
+	ribbon.content_margin_right = 12
+	ribbon.content_margin_top = 2
+	ribbon.content_margin_bottom = 4
+	_streak.add_theme_stylebox_override("panel", ribbon)
+	_streak.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	_streak_label = ActivityStyle.label("", 21, Color.WHITE, false)
+	_streak.add_child(_streak_label)
+	heading.add_child(_streak)
+	column.add_child(heading)
 	_message = ActivityStyle.label("", 25, ActivityStyle.INK, true, 420)
 	column.add_child(_message)
 	_notes = VBoxContainer.new()
@@ -60,6 +77,11 @@ func fill(feedback: FeedbackViewModel) -> void:
 	add_theme_stylebox_override("panel", style)
 	_mark.state = ActivityStyle.RIGHT if feedback.correct else ActivityStyle.WRONG
 	_title.text = feedback.title
+	_streak.visible = not feedback.streak_label.is_empty()
+	_streak_label.text = feedback.streak_label
+	if _streak.visible:
+		_streak.pivot_offset = _streak.get_combined_minimum_size() * 0.5
+		ActivityStyle.pop(_streak, 0.35)
 	_title.add_theme_color_override("font_color", color.darkened(0.25))
 	_message.text = feedback.message
 	for child in _notes.get_children():
@@ -89,6 +111,10 @@ func dismiss() -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.18)
 	tween.tween_callback(hide)
+
+
+func is_shown() -> bool:
+	return _shown
 
 
 func press_continue() -> void:

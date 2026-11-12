@@ -42,6 +42,7 @@ func _ready() -> void:
 	_data = {"grade": _view_model.default_grade, "school_year": _view_model.default_school_year}
 	_quwi = QUWI.instantiate()
 	_quwi.scale = Vector2(0.95, 0.95)
+	_quwi.interactive = true
 	add_child(_quwi)
 
 	var top := Ui.vbox(4)

@@ -18,7 +18,7 @@ func build() -> void:
 	for element: Dictionary in step.data["elements"]:
 		var card := TapCard.new()
 		card.accent = accent()
-		card.custom_minimum_size.y = 54 if compact() else 64
+		card.custom_minimum_size.y = 50 if compact() or step.short else 64
 		card.drag_data = {"ordering": element["id"]}
 		card.preview_text = element["text"]
 		card.accepts = func(data: Variant) -> bool:
@@ -27,9 +27,9 @@ func build() -> void:
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 16)
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		var number := MarkBadge.new("", accent(), false, 36.0 if compact() else 42.0)
+		var number := MarkBadge.new("", accent(), false, 36.0 if compact() or step.short else 42.0)
 		row.add_child(number)
-		var text := ActivityStyle.label(element["text"], 22 if compact() else 26, ActivityStyle.INK, true, 200)
+		var text := ActivityStyle.label(element["text"], 22 if compact() or step.short else 26, ActivityStyle.INK, true, 200)
 		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(text)
 		var grip := TextureRect.new()

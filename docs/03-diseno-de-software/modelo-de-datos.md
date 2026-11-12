@@ -123,7 +123,7 @@ Tablas adicionales: `teacher` (nombre, `pin_hash`, `pin_salt`, intentos fallidos
 | `package.chapter` | `sierra`, `selva`, `costa` |
 | `package.status` | `installed`, `archived` |
 | `level.kind` | `short`, `regular`, `final` |
-| `level.mechanic` | `chase`, `bridge`, `classic` |
+| `level.mechanic` | `chase`, `bridge`, `caiman`, `classic` (desde el esquema v2) |
 | `attempt.kind` | `practice`, `final` |
 | `attempt.status` | `in_progress`, `completed`, `game_over`, `closed` |
 | `attempt.cneb_grade` | `AD`, `A`, `B`, `C` (solo desafío final) |
@@ -139,6 +139,8 @@ Tablas adicionales: `teacher` (nombre, `pin_hash`, `pin_salt`, intentos fallidos
 - `student.avatar_json` guarda los índices de los catálogos del avatar: `{"body": "girl", "skin": 2, "hair_style": 3, "hair_color": 0, "top_color": 1, "bottom_color": 4}`. Un `{}` significa que el estudiante todavía no creó su personaje. Los colores no se guardan: los decide la paleta del juego.
 - Un estudiante con resultados se desactiva, no se elimina (RN-07).
 - `level.id` identifica el nivel en toda la tablet como `paquete/nivel` (por ejemplo, `mod-math-6-00/L01`); así un intento siempre apunta a un nivel registrado. Los paquetes que vienen con el juego se registran al iniciar, con `install_path` en `res://content/packages/…`.
+- `attempt.status` queda en `game_over` cuando se acaban las vidas; esos intentos no dan estrellas, pero se guardan para el reporte. `attempt.cneb_grade` se guarda al terminar un desafío final, y los intentos `completed` del desafío final cuentan para su límite de intentos.
+- Las migraciones están en `android/src/infrastructure/sqlite/migrations/`. La 002 agrega la mecánica `caiman`: como SQLite no permite cambiar un `CHECK`, vuelve a crear la tabla `level` con los mismos datos, con las claves foráneas apagadas y comprobadas (`PRAGMA foreign_key_check`) antes de confirmar.
 - `attempt.total_count` cuenta las preguntas del nivel (cada pregunta de una unidad de lectura por separado); `correct_count`, las acertadas al primer intento; `percent`, su porcentaje; y `stars`, las estrellas según RN-11. Un intento `in_progress` con respuestas se retoma al volver a abrir el nivel.
 - `answer.value_json` guarda la respuesta tal como la dio el estudiante: el id de la opción (`"b"`), una lista de ids (selección múltiple y ordenar), un objeto (verdadero o falso, emparejar, clasificar y completar) o el texto escrito (respuesta numérica, por ejemplo `"0,5"`). `first_try` es 0 en el repaso de una pregunta fallada y `with_hint` indica si se vio la pista.
 

@@ -1,0 +1,378 @@
+{
+  "id": "L01",
+  "title": "Cruzando la puna",
+  "guide_intro": [
+    "Para llegar a Pampa Galeras hay que cruzar el río: cada acierto pone una tabla del puente.",
+    "Hoy exploramos los seres vivos, las cadenas alimentarias y el ecosistema de la puna."
+  ],
+  "items": [
+    {
+      "id": "CYT01-L01-01",
+      "type": "ordering",
+      "prompt": "Ordena esta cadena alimentaria de la puna, empezando por el productor.",
+      "elements": [
+        {
+          "id": "c2",
+          "text": "Saltamontes"
+        },
+        {
+          "id": "c4",
+          "text": "Aguilucho"
+        },
+        {
+          "id": "c1",
+          "text": "Pasto de la puna"
+        },
+        {
+          "id": "c3",
+          "text": "Lagartija"
+        }
+      ],
+      "correct_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! La energía pasa del pasto al saltamontes, luego a la lagartija y al aguilucho.",
+        "incorrect": "El productor fabrica su alimento con la luz del sol: es la planta. Luego sigue quien se la come."
+      },
+      "hint": "¿Quién come a quién?",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-L01-02",
+      "type": "classification",
+      "prompt": "¿Productor, consumidor o descomponedor?",
+      "groups": [
+        {
+          "id": "prod",
+          "label": "Productores"
+        },
+        {
+          "id": "cons",
+          "label": "Consumidores"
+        },
+        {
+          "id": "desc",
+          "label": "Descomponedores"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "Ichu",
+          "group": "prod"
+        },
+        {
+          "id": "e2",
+          "text": "Queñua",
+          "group": "prod"
+        },
+        {
+          "id": "e3",
+          "text": "Vicuña",
+          "group": "cons"
+        },
+        {
+          "id": "e4",
+          "text": "Cóndor",
+          "group": "cons"
+        },
+        {
+          "id": "e5",
+          "text": "Hongos",
+          "group": "desc"
+        },
+        {
+          "id": "e6",
+          "text": "Bacterias del suelo",
+          "group": "desc"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! Las plantas producen, los animales consumen y los hongos y bacterias descomponen.",
+        "incorrect": "Pregúntate cómo obtiene su alimento cada ser vivo."
+      },
+      "hint": "Los descomponedores transforman los restos de otros seres.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "CYT01-L01-03",
+      "type": "multiple_choice",
+      "prompt": "En la cadena «ichu → vicuña → puma», ¿de dónde viene la energía que usa el puma?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo de la vicuña, que la produce sola.",
+          "feedback": "La vicuña no produce energía: la obtiene del ichu."
+        },
+        {
+          "id": "b",
+          "text": "Del Sol, cuya energía pasó por el ichu y la vicuña.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Del agua que toma el puma.",
+          "feedback": "El agua es necesaria, pero no es la fuente de energía."
+        },
+        {
+          "id": "d",
+          "text": "Del suelo de la puna.",
+          "feedback": "El suelo aporta minerales a las plantas, no la energía."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! Toda la energía de la cadena empieza en el Sol.",
+        "incorrect": "Las plantas captan la energía del Sol con la fotosíntesis; los animales la reciben al comer."
+      },
+      "hint": "¿Qué necesita el ichu para fabricar su alimento?",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "CYT01-L01-04",
+      "type": "true_false",
+      "prompt": "Sobre la vicuña de Pampa Galeras: ¿verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "Su fibra fina y densa la protege del frío.",
+          "answer": true
+        },
+        {
+          "id": "s2",
+          "text": "Vive en la selva baja.",
+          "answer": false,
+          "feedback": "Vive en la puna, sobre los 3500 metros de altitud."
+        },
+        {
+          "id": "s3",
+          "text": "Es herbívora: se alimenta de pastos.",
+          "answer": true
+        },
+        {
+          "id": "s4",
+          "text": "En el chaccu se la sacrifica para obtener su fibra.",
+          "answer": false,
+          "feedback": "En el chaccu se la esquila y luego se la libera."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! La vicuña está adaptada al frío de la puna.",
+        "incorrect": "Recuerda dónde vive y qué pasa en el chaccu."
+      },
+      "hint": "El chaccu es una tradición que cuida a la vicuña.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "CYT01-L01-05",
+      "type": "multiple_choice",
+      "prompt": "Si una helada muy fuerte secara los pastos de la puna, ¿qué pasaría primero?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Los pumas tendrían más alimento.",
+          "feedback": "Primero les afecta a los herbívoros."
+        },
+        {
+          "id": "b",
+          "text": "Habría más vicuñas.",
+          "feedback": "Sin pasto, tendrían menos alimento."
+        },
+        {
+          "id": "c",
+          "text": "Las vicuñas tendrían menos alimento y bajaría su población.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "No cambiaría nada en el ecosistema.",
+          "feedback": "En un ecosistema todo está relacionado."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien razonado! Al faltar el productor, el primer afectado es el herbívoro.",
+        "incorrect": "Sigue la cadena: ¿quién come pasto?"
+      },
+      "hint": "Empieza por el primer eslabón.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "reason"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "CYT01-L01-06",
+      "type": "matching",
+      "prompt": "Une cada característica con su utilidad.",
+      "left": [
+        {
+          "id": "a1",
+          "text": "Fibra densa de la vicuña"
+        },
+        {
+          "id": "a2",
+          "text": "Raíces profundas del ichu"
+        },
+        {
+          "id": "a3",
+          "text": "Vista aguda del cóndor"
+        },
+        {
+          "id": "a4",
+          "text": "Corteza en muchas capas de la queñua"
+        }
+      ],
+      "right": [
+        {
+          "id": "u2",
+          "text": "Buscar agua en el suelo"
+        },
+        {
+          "id": "u3",
+          "text": "Encontrar alimento desde lo alto"
+        },
+        {
+          "id": "u4",
+          "text": "Protegerse del frío"
+        },
+        {
+          "id": "u5",
+          "text": "Volar de noche"
+        },
+        {
+          "id": "u1",
+          "text": "Conservar el calor del cuerpo"
+        }
+      ],
+      "pairs": [
+        [
+          "a1",
+          "u1"
+        ],
+        [
+          "a2",
+          "u2"
+        ],
+        [
+          "a3",
+          "u3"
+        ],
+        [
+          "a4",
+          "u4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Perfecto! Son adaptaciones a la vida en las alturas.",
+        "incorrect": "Una adaptación ayuda a sobrevivir: piensa qué problema resuelve cada característica."
+      },
+      "hint": "En la puna hace frío y llueve poco.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "CYT01-L01-07",
+      "type": "multi_select",
+      "prompt": "¿Cuáles son componentes NO vivos (abióticos) de la puna?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El agua de los bofedales",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "La luz del sol",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Las rocas",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "El ichu",
+          "feedback": "El ichu es una planta: es un ser vivo."
+        },
+        {
+          "id": "e",
+          "text": "Las vicuñas",
+          "feedback": "Las vicuñas son seres vivos."
+        },
+        {
+          "id": "f",
+          "text": "La temperatura",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Así es! El agua, la luz, las rocas y la temperatura no tienen vida.",
+        "incorrect": "Los componentes abióticos no nacen, no crecen ni se reproducen."
+      },
+      "hint": "Separa lo que tiene vida de lo que no.",
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    }
+  ]
+}

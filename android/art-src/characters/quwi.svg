@@ -102,8 +102,10 @@
     <ellipse cx="145.5" cy="123" rx="3.4" ry="2.1" fill="#FFFFFF" opacity="0.85"/>
   </g>
 
-  <g id="part_brows">
+  <g id="part_brow_l">
     <path d="M97,79 Q111,70 126,77" stroke="#3E1E0E" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_brow_r">
     <path d="M174,77 Q189,70 203,79" stroke="#5A2E16" stroke-width="5" fill="none" stroke-linecap="round"/>
   </g>
 
@@ -123,6 +125,18 @@
     <path d="M97,110 Q112,92 127,110" stroke="#2B1A12" stroke-width="5.5" fill="none" stroke-linecap="round"/>
     <path d="M173,110 Q188,92 203,110" stroke="#2B1A12" stroke-width="5.5" fill="none" stroke-linecap="round"/>
   </g>
+  <g id="part_eyes_squeeze">
+    <path d="M99,92 L125,104 L99,116" stroke="#2B1A12" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M201,92 L175,104 L201,116" stroke="#2B1A12" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="part_eyes_star">
+    <ellipse cx="112" cy="104" rx="17" ry="20" fill="#2B1A12" stroke="#FFF4E4" stroke-width="2.4"/>
+    <path d="M112.0,92.0 L114.5,102.5 L125.0,105.0 L114.5,107.5 L112.0,118.0 L109.5,107.5 L99.0,105.0 L109.5,102.5 Z" fill="#FFFFFF"/>
+    <circle cx="120.5" cy="94" r="2.6" fill="#FFFFFF"/>
+    <ellipse cx="188" cy="104" rx="17" ry="20" fill="#2B1A12"/>
+    <path d="M188.0,92.0 L190.5,102.5 L201.0,105.0 L190.5,107.5 L188.0,118.0 L185.5,107.5 L175.0,105.0 L185.5,102.5 Z" fill="#FFFFFF"/>
+    <circle cx="196.5" cy="94" r="2.6" fill="#FFFFFF"/>
+  </g>
 
   <g id="part_mouth_smile">
     <path d="M150,136 L150,141" stroke="#5A2E16" stroke-width="3" stroke-linecap="round"/>
@@ -141,5 +155,9 @@
     <path d="M150,136 L150,140" stroke="#5A2E16" stroke-width="3" stroke-linecap="round"/>
     <ellipse cx="150" cy="150" rx="8" ry="10" fill="#6B2A1E" stroke="#5A2E16" stroke-width="3"/>
     <ellipse cx="150" cy="155" rx="5" ry="3.5" fill="#E8797A"/>
+  </g>
+  <g id="part_mouth_frown">
+    <path d="M150,136 L150,141" stroke="#5A2E16" stroke-width="3" stroke-linecap="round"/>
+    <path d="M137,151 Q150,140 163,151" stroke="#5A2E16" stroke-width="3.4" fill="none" stroke-linecap="round"/>
   </g>
 </svg>

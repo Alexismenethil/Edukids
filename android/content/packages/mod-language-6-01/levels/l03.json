@@ -1,0 +1,329 @@
+{
+  "id": "L03",
+  "title": "La caja que contaba historias",
+  "guide_intro": [
+    "Crucemos el río leyendo: cada respuesta correcta pone una tabla del puente.",
+    "El texto queda a la izquierda: vuelve a él todas las veces que quieras."
+  ],
+  "items": [
+    {
+      "id": "COM01-L03-U1",
+      "type": "reading_unit",
+      "prompt": "Lee la historia y responde.",
+      "stimulus": {
+        "type": "text",
+        "title": "La caja que contaba historias",
+        "content": [
+          "En su taller de Huamanga, don Ignacio preparaba una masa de papa sancochada y yeso. Con ella modelaba figuras tan pequeñas como un dedo: músicos, pastores y vendedoras de la feria. Su nieta Killa lo observaba en silencio.",
+          "—Abuelo, ¿por qué tus retablos tienen dos pisos? —preguntó un día. —Porque cuentan dos partes de una historia —respondió él—. Arriba pongo lo que la gente celebra; abajo, lo que trabaja. Así, quien abre las puertas entiende cómo vive un pueblo.",
+          "Ese año, la escuela organizó un concurso: cada estudiante debía contar la historia de su familia con un objeto. Killa no sabía modelar como su abuelo, pero recordó sus palabras. Pidió una caja de zapatos, la pintó de colores y dividió el interior con un cartón.",
+          "Arriba colocó a su familia bailando en la fiesta del pueblo; abajo, a su madre tejiendo y a su padre cosechando papa. No ganó el primer puesto, pero don Ignacio abrió la caja con cuidado, sonrió y dijo: «Ahora sí eres retablista»."
+        ]
+      },
+      "items": [
+        {
+          "id": "COM01-L03-01",
+          "type": "multiple_choice",
+          "prompt": "¿De qué material eran las figuras de don Ignacio?",
+          "options": [
+            {
+              "id": "a",
+              "text": "De arcilla cocida",
+              "feedback": "La arcilla se usa en la cerámica, no en estas figuras."
+            },
+            {
+              "id": "b",
+              "text": "De madera tallada",
+              "feedback": "El texto dice que usaba una masa."
+            },
+            {
+              "id": "c",
+              "text": "De una masa de papa sancochada y yeso",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "De piedra de Huamanga",
+              "feedback": "La piedra no se menciona."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Correcto! Está en el primer párrafo.",
+            "incorrect": "Vuelve al primer párrafo y busca la palabra «masa»."
+          },
+          "hint": "Busca qué preparaba don Ignacio.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "locate"
+            },
+            "difficulty": 1,
+            "estimated_seconds": 50
+          }
+        },
+        {
+          "id": "COM01-L03-02",
+          "type": "multiple_choice",
+          "prompt": "¿Por qué don Ignacio dijo «Ahora sí eres retablista» aunque Killa no ganó?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Porque la caja de Killa era la más grande.",
+              "feedback": "El tamaño no se menciona como razón."
+            },
+            {
+              "id": "b",
+              "text": "Porque Killa usó la idea de contar una historia en dos partes.",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "Porque Killa ganó el segundo puesto.",
+              "feedback": "El texto no dice en qué puesto quedó."
+            },
+            {
+              "id": "d",
+              "text": "Porque Killa aprendió a modelar como él.",
+              "feedback": "El texto dice que no sabía modelar como su abuelo."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Bien inferido! Killa entendió lo que hace un retablo: contar cómo vive un pueblo.",
+            "incorrect": "Relaciona lo que el abuelo explicó en el segundo párrafo con lo que hizo Killa."
+          },
+          "hint": "¿Qué había explicado el abuelo sobre los dos pisos?",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "understand"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 80
+          }
+        },
+        {
+          "id": "COM01-L03-03",
+          "type": "classification",
+          "prompt": "En el retablo de Killa, ¿qué va arriba y qué va abajo?",
+          "groups": [
+            {
+              "id": "up",
+              "label": "Arriba: lo que se celebra"
+            },
+            {
+              "id": "down",
+              "label": "Abajo: el trabajo"
+            }
+          ],
+          "elements": [
+            {
+              "id": "e1",
+              "text": "La familia bailando",
+              "group": "up"
+            },
+            {
+              "id": "e2",
+              "text": "La fiesta del pueblo",
+              "group": "up"
+            },
+            {
+              "id": "e3",
+              "text": "La madre tejiendo",
+              "group": "down"
+            },
+            {
+              "id": "e4",
+              "text": "El padre cosechando papa",
+              "group": "down"
+            }
+          ],
+          "feedback": {
+            "correct": "¡Muy bien! Killa siguió la idea de su abuelo.",
+            "incorrect": "Arriba van las celebraciones y abajo, los trabajos."
+          },
+          "hint": "Relee el último párrafo.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "locate"
+            },
+            "difficulty": 1,
+            "estimated_seconds": 60
+          }
+        },
+        {
+          "id": "COM01-L03-04",
+          "type": "multiple_choice",
+          "prompt": "En el texto, «modelaba» significa…",
+          "options": [
+            {
+              "id": "a",
+              "text": "pintaba con colores",
+              "feedback": "Pintar es otra acción."
+            },
+            {
+              "id": "b",
+              "text": "vendía en la feria",
+              "feedback": "No habla de vender."
+            },
+            {
+              "id": "c",
+              "text": "daba forma con las manos",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "rompía en pedazos",
+              "feedback": "Es lo contrario de lo que hacía."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Exacto! Modelar es dar forma a una masa.",
+            "incorrect": "Lee la oración completa: ¿qué hacía con la masa?"
+          },
+          "hint": "Piensa en lo que se hace con la plastilina.",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "understand"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 50
+          }
+        },
+        {
+          "id": "COM01-L03-05",
+          "type": "multiple_choice",
+          "prompt": "¿Qué mensaje transmite la historia?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Solo los adultos pueden hacer retablos.",
+              "feedback": "Killa demostró lo contrario."
+            },
+            {
+              "id": "b",
+              "text": "Ganar un concurso es lo más importante.",
+              "feedback": "Killa no ganó y aun así su abuelo estaba orgulloso."
+            },
+            {
+              "id": "c",
+              "text": "Es mejor no participar si no sabes dibujar.",
+              "feedback": "Killa participó con lo que sabía."
+            },
+            {
+              "id": "d",
+              "text": "Las tradiciones se aprenden y se pueden recrear de nuevas maneras.",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "¡Excelente! Killa recreó el retablo con una caja de zapatos.",
+            "incorrect": "Piensa en lo que Killa aprendió de su abuelo y en cómo lo usó."
+          },
+          "hint": "¿Qué hizo Killa con lo que aprendió?",
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 70
+          }
+        }
+      ]
+    },
+    {
+      "id": "COM01-L03-06",
+      "type": "ordering",
+      "prompt": "Ordena los hechos de la historia.",
+      "elements": [
+        {
+          "id": "h2",
+          "text": "La escuela organiza un concurso."
+        },
+        {
+          "id": "h4",
+          "text": "Don Ignacio abre la caja y sonríe."
+        },
+        {
+          "id": "h1",
+          "text": "Killa pregunta por qué los retablos tienen dos pisos."
+        },
+        {
+          "id": "h3",
+          "text": "Killa arma su retablo en una caja de zapatos."
+        }
+      ],
+      "correct_order": [
+        "h1",
+        "h2",
+        "h3",
+        "h4"
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Así ocurrieron los hechos.",
+        "incorrect": "Busca qué pasó primero, qué después y cómo terminó."
+      },
+      "hint": "El concurso viene después de la pregunta de Killa.",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "locate"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "COM01-L03-07",
+      "type": "true_false",
+      "prompt": "Según la historia, ¿verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "Killa ganó el primer puesto.",
+          "answer": false,
+          "feedback": "El texto dice que no ganó el primer puesto."
+        },
+        {
+          "id": "s2",
+          "text": "Don Ignacio trabajaba en Huamanga.",
+          "answer": true
+        },
+        {
+          "id": "s3",
+          "text": "Killa dividió la caja con un cartón.",
+          "answer": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Leíste con atención!",
+        "incorrect": "Vuelve al texto y busca cada dato."
+      },
+      "hint": "Relee el tercer y el cuarto párrafo.",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "locate"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    }
+  ]
+}

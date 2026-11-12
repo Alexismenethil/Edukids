@@ -1,0 +1,372 @@
+{
+  "id": "L01",
+  "title": "Reto: ciencia",
+  "guide_intro": [
+    "¡Hoy investigaremos como científicas y científicos!",
+    "Observa las tablas, compara lo que cambia y explica tus decisiones."
+  ],
+  "items": [
+    {
+      "id": "CYT-R01-U1",
+      "type": "reading_unit",
+      "prompt": "Observa el experimento y responde.",
+      "stimulus": {
+        "type": "table",
+        "title": "Semillas bajo observación",
+        "content": {
+          "columns": [
+            "Agua al día",
+            "Altura promedio"
+          ],
+          "rows": [
+            [
+              "20 ml",
+              "8 cm"
+            ],
+            [
+              "40 ml",
+              "12 cm"
+            ],
+            [
+              "60 ml",
+              "10 cm"
+            ]
+          ]
+        },
+        "note": "Usaron semillas de la misma planta, la misma tierra y la misma luz. Midieron al décimo día."
+      },
+      "items": [
+        {
+          "id": "CYT-R01-01",
+          "type": "multiple_choice",
+          "prompt": "¿Qué cantidad de agua obtuvo la mayor altura promedio en esta prueba?",
+          "options": [
+            {
+              "id": "a",
+              "text": "40 ml al día",
+              "correct": true
+            },
+            {
+              "id": "b",
+              "text": "20 ml al día",
+              "feedback": "Con 20 ml la altura fue de 8 cm."
+            },
+            {
+              "id": "c",
+              "text": "60 ml al día",
+              "feedback": "Con 60 ml la altura fue de 10 cm."
+            },
+            {
+              "id": "d",
+              "text": "40 ml y 60 ml dieron la misma altura.",
+              "feedback": "La tabla muestra 12 cm con 40 ml y 10 cm con 60 ml."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Bien! Con 40 ml al día la altura promedio fue 12 cm.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Busca la altura mayor y lee la cantidad de agua de esa fila.",
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Analiza datos e información",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "design_interpret"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 65
+          }
+        },
+        {
+          "id": "CYT-R01-02",
+          "type": "multiple_choice",
+          "prompt": "¿Qué conclusión está respaldada por los datos?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Cuanta más agua se dé, siempre crecerá más cualquier planta.",
+              "feedback": "Con 60 ml crecieron menos que con 40 ml en esta prueba."
+            },
+            {
+              "id": "b",
+              "text": "En esta prueba, 40 ml dieron la mayor altura entre las cantidades comparadas.",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "Con 60 ml las plantas siempre crecerán menos de 10 cm.",
+              "feedback": "La tabla muestra 10 cm en esta prueba y no permite afirmar qué pasa siempre."
+            },
+            {
+              "id": "d",
+              "text": "Con 60 ml crecieron más que con 40 ml en esta prueba.",
+              "feedback": "Compara los 10 cm de 60 ml con los 12 cm de 40 ml."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Correcto! La conclusión se limita a las cantidades y condiciones que se compararon.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Una buena conclusión no afirma más de lo que muestran los datos.",
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Analiza datos e información",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 80
+          }
+        },
+        {
+          "id": "CYT-R01-03",
+          "type": "multiple_choice",
+          "prompt": "Si otro grupo usa 40 ml pero cambia la planta a la sombra, ¿puede atribuir una diferencia solo al agua?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Sí, porque la sombra no afecta a las plantas.",
+              "feedback": "La luz es una condición que puede influir en el crecimiento."
+            },
+            {
+              "id": "b",
+              "text": "Sí, si las plantas de ambos grupos son de la misma especie.",
+              "feedback": "La especie importa, pero la luz también cambió entre los grupos."
+            },
+            {
+              "id": "c",
+              "text": "No, porque también cambió la luz.",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "No, porque la sombra impide medir la altura de las plantas.",
+              "feedback": "La altura sí se puede medir; el problema es que cambió otra condición."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Pensaste como científico! Al cambiar la luz, ya no se aísla el efecto del agua.",
+            "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+          },
+          "hint": "Compara todas las condiciones, no solo los mililitros.",
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Analiza datos e información",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "design_interpret"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 80
+          }
+        },
+        {
+          "id": "CYT-R01-04",
+          "type": "numeric",
+          "prompt": "¿Cuántos centímetros más midieron las plantas de 40 ml que las de 20 ml?",
+          "answer": 4,
+          "tolerance": 0,
+          "unit": "cm",
+          "accepted_formats": [
+            "decimal"
+          ],
+          "feedback": {
+            "correct": "¡Exacto! 12 cm − 8 cm = 4 cm.",
+            "incorrect": "Compara las alturas de esas dos filas y réstalas."
+          },
+          "hint": "Usa las alturas, no las cantidades de agua.",
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Analiza datos e información",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "design_interpret"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 60
+          }
+        }
+      ],
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Analiza datos e información",
+        "pisa": {
+          "category": "design_interpret",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 285
+      }
+    },
+    {
+      "id": "CYT-R01-05",
+      "type": "multiple_choice",
+      "prompt": "Killa quiere saber si más luz cambia el crecimiento. ¿Qué comparación es más justa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dos plantas iguales, con la misma agua y tierra, pero distinta luz.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Dos plantas iguales con distinta luz y distinta cantidad de agua.",
+          "feedback": "Si cambian luz y agua a la vez, no sabrás cuál influyó."
+        },
+        {
+          "id": "c",
+          "text": "Dos especies distintas con la misma agua y distinta luz.",
+          "feedback": "La diferencia de especie también podría influir en el crecimiento."
+        },
+        {
+          "id": "d",
+          "text": "Una planta al sol una semana y otra a la sombra dos semanas.",
+          "feedback": "También cambia el tiempo de crecimiento; compara durante el mismo periodo."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Así es! Mantener iguales las demás condiciones ayuda a estudiar la luz.",
+        "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+      },
+      "hint": "Para estudiar una causa, intenta cambiar solo esa condición.",
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Analiza datos e información",
+        "pisa": {
+          "category": "design_interpret",
+          "process": "design_interpret"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "CYT-R01-06",
+      "type": "multiple_choice",
+      "prompt": "Dos platos iguales con la misma cantidad de agua quedan en el mismo lugar. Uno está tapado. Días después, el destapado tiene menos agua. ¿Qué explicación es más razonable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El plato destapado absorbió toda el agua que perdió.",
+          "feedback": "No hay datos que demuestren que el plato absorbió el agua."
+        },
+        {
+          "id": "b",
+          "text": "En el plato destapado se evaporó más agua.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "El plato tapado produjo agua nueva durante esos días.",
+          "feedback": "La cubierta puede reducir la evaporación, pero no produce agua nueva."
+        },
+        {
+          "id": "d",
+          "text": "El agua se evaporó exactamente igual en ambos platos.",
+          "feedback": "Si se evaporara igual, este dato no explicaría la diferencia observada."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien! Parte del agua líquida pasó al aire como vapor, especialmente en el plato destapado.",
+        "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+      },
+      "hint": "Piensa en qué cambio de estado permite que el agua pase al aire.",
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Analiza datos e información",
+        "pisa": {
+          "category": "design_interpret",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "CYT-R01-07",
+      "type": "multiple_choice",
+      "prompt": "En tres días se midieron 19 °C, 22 °C y 20 °C. ¿Cuál afirmación coincide con esos datos?",
+      "options": [
+        {
+          "id": "a",
+          "text": "La temperatura aumentó todos los días.",
+          "feedback": "Compara 22 °C con 20 °C."
+        },
+        {
+          "id": "b",
+          "text": "El primer día fue el más cálido.",
+          "feedback": "19 °C es menor que las otras dos medidas."
+        },
+        {
+          "id": "c",
+          "text": "La temperatura subió del primer al segundo día y bajó el tercero.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "La temperatura bajó dos días seguidos.",
+          "feedback": "Del primer al segundo día pasó de 19 °C a 22 °C."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! De 19 a 22 subió y luego bajó de 22 a 20.",
+        "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+      },
+      "hint": "Compara el segundo dato con el primero y después con el tercero.",
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Analiza datos e información",
+        "pisa": {
+          "category": "design_interpret",
+          "process": "design_interpret"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 65
+      }
+    },
+    {
+      "id": "CYT-R01-08",
+      "type": "multiple_choice",
+      "prompt": "Una escuela observó menos mariposas después de retirar flores del jardín. ¿Qué sería prudente concluir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "La falta de flores fue la única causa de la disminución.",
+          "feedback": "Una sola observación no permite descartar otras causas."
+        },
+        {
+          "id": "b",
+          "text": "Al volver las flores habrá siempre el mismo número de mariposas.",
+          "feedback": "El dato no permite predecir con certeza lo que sucederá siempre."
+        },
+        {
+          "id": "c",
+          "text": "La disminución demuestra que el clima no influyó.",
+          "feedback": "Sin más observaciones no se puede descartar la influencia del clima."
+        },
+        {
+          "id": "d",
+          "text": "La disminución coincide con menos flores; conviene investigar si influyeron otros factores.",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Buena conclusión! La observación sugiere una relación, pero hace falta investigar más.",
+        "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+      },
+      "hint": "Distingue lo observado de una causa que todavía no se ha comprobado.",
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Analiza datos e información",
+        "pisa": {
+          "category": "design_interpret",
+          "process": "evaluate_reflect"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 85
+      }
+    }
+  ]
+}

@@ -168,29 +168,115 @@ func test_messages_for_time_and_counts() -> void:
 	assert_str(PlayMessages.details(8, 10)).is_equal("8 preguntas · 10 min")
 
 
-func test_the_home_lists_the_levels_with_stars() -> void:
-	_store.add("science", [SampleItems.multiple_choice("c1")])
+func _map() -> MapPresenter:
 	var students := InMemoryStudentRepository.new()
 	students.save_student(Student.new(STUDENT, "sec-a", "Killa Quispe", PinCredential.new("h", "s")))
-	var presenter := StudentHomePresenter.new(GetStudentProfile.new(students, _clock),
-		ListLevels.new(_store, _attempts), _session)
-	var start := _presenter()
-	start.open()
-	start.submit("b")
-	var home := presenter.home()
-	assert_str(home.greeting).is_equal("¡Hola, Killa!")
-	assert_int(home.levels.size()).is_equal(2)
-	var math := home.levels[0]
-	assert_str(math.details).is_equal("Matemática · 3 preguntas · 4 min")
-	assert_str(math.action_label).is_equal("Seguir")
-	assert_str(math.badge).is_equal("A medias")
-	var science := home.levels[1]
-	assert_str(science.action_label).is_equal("Jugar")
-	assert_str(science.area.name).is_equal("Ciencia y Tecnología")
-	presenter.choose(science)
-	assert_str(_session.level_package).is_equal("mod-science-6-00")
+	return MapPresenter.new(GetStudentProfile.new(students, _clock), GetChapterMap.new(_store, _attempts), _session)
+
+
+func test_the_map_shows_the_stops_of_the_sierra() -> void:
+	_store.add_module("mod-math-6-01", "math", [{"id": "L01", "mechanic": "chase"}, {"id": "DF", "kind": "final"}],
+		[SampleItems.multiple_choice("m1")])
+	var chapter := _map().chapter()
+	assert_str(chapter.greeting).is_equal("¡Hola, Killa!")
+	assert_str(chapter.chapter_title).is_equal("Las alturas de Ayacucho")
+	assert_int(chapter.stops.size()).is_equal(4)
+	assert_str(chapter.stops[0].name).is_equal("Huamanga")
+	assert_bool(chapter.stops[0].available).is_true()
+	assert_str(chapter.stops[0].icon).is_equal("stop_huamanga")
+	assert_bool(chapter.stops[1].available).is_false()
+	assert_str(chapter.stops[1].locked_text).is_equal(MapMessages.LOCKED)
+	assert_str(chapter.stops[2].name).is_equal("Pampa Galeras")
+	assert_int(chapter.current).is_equal(0)
+
+
+func test_a_stop_shows_its_trails_and_what_opens_next() -> void:
+	_store.add_module("mod-math-6-01", "math", [{"id": "L01", "mechanic": "chase"}, {"id": "L02", "mechanic": "caiman"},
+		{"id": "DF", "kind": "final"}], [SampleItems.multiple_choice("m1")])
+	var presenter := _map()
+	var stop := presenter.stop("huamanga")
+	assert_str(stop.name).is_equal("Huamanga")
+	assert_str(_session.stop_id).is_equal("huamanga")
+	var trail := stop.trails[0]
+	assert_str(trail.title).is_equal("Sendero de Matemática")
+	assert_str(trail.stars_label).is_equal("0 / 6")
+	var chase := trail.nodes[0]
+	assert_str(chase.mechanic_name).is_equal("Persecución")
+	assert_str(chase.icon).is_equal("mech_chase")
+	assert_str(chase.details).is_equal("1 preguntas · 4 min · 3 vidas")
+	assert_bool(chase.next).is_true()
+	assert_str(chase.action_label).is_equal(MapMessages.PLAY)
+	var caiman := trail.nodes[1]
+	assert_str(caiman.state).is_equal(TrailRule.LOCKED)
+	assert_bool(caiman.playable).is_false()
+	assert_str(caiman.locked_text).is_equal("Completa «Nivel L01» para abrir este nivel.")
+	assert_bool(presenter.choose(caiman)).is_false()
+	var final := trail.nodes[2]
+	assert_bool(final.final).is_true()
+	assert_str(final.mechanic_name).is_equal("Desafío final")
+	assert_str(final.attempts_text).is_equal("Te quedan 2 de 2 intentos.")
+	assert_bool(presenter.choose(chase)).is_true()
+	assert_str(_session.level_package).is_equal("mod-math-6-01")
 	presenter.log_out()
-	assert_str(_session.level_package).is_empty()
+	assert_str(_session.stop_id).is_empty()
+
+
+func test_losing_a_life_is_explained_and_game_over_is_kind() -> void:
+	_store.add_module("mod-math-6-01", "math", [{"id": "L01", "mechanic": "caiman", "lives": 2}],
+		[SampleItems.multiple_choice("m1"), SampleItems.multiple_choice("m2"), SampleItems.multiple_choice("m3"),
+		SampleItems.multiple_choice("m4")])
+	_session.choose_level("mod-math-6-01", "L01")
+	var presenter := _presenter()
+	var intro := presenter.open()
+	assert_str(intro.mechanic).is_equal("caiman")
+	assert_int(intro.lives).is_equal(2)
+	assert_str(intro.dialogue.lines[-1].text).is_equal(PlayMessages.mechanic_intro(&"caiman"))
+	presenter.submit("a")
+	presenter.next()
+	var lost := presenter.submit("a")
+	assert_bool(lost.life_lost).is_true()
+	assert_str(lost.notes[0]).is_equal(PlayMessages.life_lost(&"caiman"))
+	assert_int(lost.lives).is_equal(1)
+	presenter.next()
+	presenter.submit("a")
+	presenter.next()
+	var over := presenter.submit("a")
+	assert_bool(over.game_over).is_true()
+	assert_bool(over.finished).is_true()
+	assert_array(over.notes).not_contains([PlayMessages.WILL_RETURN])
+	var result := presenter.finish()
+	assert_bool(result.game_over).is_true()
+	assert_str(result.heading).is_equal("¡Coco se comió tus nudos!")
+	assert_str(result.replay_label).is_equal(PlayMessages.GAME_OVER_RETRY)
+	assert_array(result.lines).contains(["Respondiste 4 de 4 preguntas."])
+
+
+func test_the_final_challenge_hides_answers_until_the_grade() -> void:
+	_store.add_module("mod-math-6-01", "math", [{"id": "DF", "kind": "final"}],
+		[SampleItems.multiple_choice("m1"), SampleItems.multiple_choice("m2")])
+	_session.choose_level("mod-math-6-01", "DF")
+	var presenter := _presenter()
+	var intro := presenter.open()
+	assert_bool(intro.final).is_true()
+	assert_str(intro.cover.attempt_label).is_equal("Intento 1 de 2")
+	assert_str(intro.step.check_label).is_equal(PlayMessages.SAVE_ANSWER)
+	assert_bool(intro.step.hint_available).is_false()
+	var saved := presenter.submit("a")
+	assert_bool(saved.final).is_true()
+	assert_bool(saved.correct).is_false()
+	assert_str(saved.title).is_equal(PlayMessages.ANSWER_SAVED)
+	assert_str(saved.message).is_empty()
+	presenter.next()
+	presenter.submit("b")
+	var result := presenter.finish()
+	assert_bool(result.final).is_true()
+	assert_str(result.grade).is_equal("C")
+	assert_str(result.percent_label).is_equal("50 %")
+	assert_str(result.cord_label).is_equal("¡Recuperaste la cuerda de los números!")
+	assert_bool(result.golden_knot).is_false()
+	assert_str(result.attempts_label).is_equal("Te queda 1 de 2 intentos.")
+	assert_int(result.review.size()).is_equal(2)
+	assert_str(result.review[0].solution).is_equal("La respuesta era: 50%s000" % PlayMessages.NO_BREAK)
 
 
 func test_numbers_never_break_across_lines() -> void:

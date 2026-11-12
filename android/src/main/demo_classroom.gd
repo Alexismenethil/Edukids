@@ -101,6 +101,46 @@ static func wrong_answer(solution: Variant) -> Variant:
 	return solution
 
 
+## Una respuesta equivocada pensada para cada tipo de pregunta (para mostrar los errores).
+static func wrong_of(question: Item) -> Variant:
+	var spec := question.spec
+	match question.type:
+		ItemType.MULTIPLE_CHOICE:
+			for option: Dictionary in spec["options"]:
+				if option["id"] != spec["correct"]:
+					return option["id"]
+		ItemType.MULTI_SELECT:
+			for option: Dictionary in spec["options"]:
+				if not spec["correct"].has(option["id"]):
+					return [option["id"]]
+		ItemType.MATCHING:
+			var pairs: Dictionary = spec["pairs"].duplicate()
+			var keys := pairs.keys()
+			if keys.size() > 1:
+				var first: Variant = pairs[keys[0]]
+				pairs[keys[0]] = pairs[keys[1]]
+				pairs[keys[1]] = first
+			return pairs
+		ItemType.CLASSIFICATION:
+			var groups: Dictionary = solution_of(question)
+			var group_ids: Array = spec["groups"].map(func(group: Dictionary) -> String: return group["id"])
+			var key: Variant = groups.keys()[0]
+			groups[key] = group_ids[(group_ids.find(groups[key]) + 1) % group_ids.size()]
+			return groups
+		ItemType.FILL_BLANK:
+			var words: Dictionary = solution_of(question)
+			var blank: Dictionary = spec["blanks"][0]
+			for option: String in blank.get("options", []):
+				if not blank["accepted"].has(option):
+					words[blank["id"]] = option
+					return words
+			words[blank["id"]] = "nada"
+			return words
+		ItemType.NUMERIC:
+			return NumberAnswer.spoken(float(spec["answer"]) + 1.0).replace(" ", "")
+	return wrong_answer(solution_of(question))
+
+
 ## Tiempo para que la demostración termine de marcar su respuesta.
 static func answer_seconds(value: Variant) -> float:
 	if value is Array or value is Dictionary:

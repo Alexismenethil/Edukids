@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 260" width="340" height="260">
+  <!-- Atoq, el zorro andino travieso. Vista de perfil mirando a la derecha, listo para correr.
+       Cada grupo part_* es una pieza del recorte (cut-out). El rig se describe en atoq.rig.json.
+       Contornos del color de la sombra (#5A2E16); pelaje gris y rojizo; bolsa de tela tejida. -->
+  <defs>
+    <clipPath id="clip_atoq_body">
+      <path d="M100,160 C100,128 130,114 170,116 C208,118 236,128 242,152 C248,178 226,204 186,206 C150,208 118,204 106,190 C100,182 100,170 100,160 Z"/>
+    </clipPath>
+    <clipPath id="clip_atoq_head">
+      <path d="M224,106 C222,82 242,68 264,70 C284,72 296,86 304,98 L330,111 C338,116 337,126 328,129 L300,135 C288,146 266,150 247,146 C230,141 225,126 224,106 Z"/>
+    </clipPath>
+    <clipPath id="clip_atoq_tail">
+      <path d="M108,138 C90,120 60,118 38,104 C26,96 18,88 12,78 C6,96 8,118 24,134 C44,154 76,162 110,160 Z"/>
+    </clipPath>
+    <clipPath id="clip_atoq_bag">
+      <path d="M150,164 C150,156 156,152 164,152 L190,152 C198,152 204,158 203,166 L200,198 C199,206 193,210 185,210 L166,210 C158,210 152,205 152,197 Z"/>
+    </clipPath>
+  </defs>
+
+  <g id="part_tail">
+    <path d="M108,138 C90,120 60,118 38,104 C26,96 18,88 12,78 C6,96 8,118 24,134 C44,154 76,162 110,160 Z" fill="#A39C95"/>
+    <g clip-path="url(#clip_atoq_tail)">
+      <path d="M10,60 L44,60 C40,80 34,104 30,136 L0,136 Z" fill="#2E211B"/>
+      <path d="M30,134 C52,150 80,156 112,154 L112,170 L20,170 Z" fill="#F1E4D0"/>
+      <path d="M44,112 C62,122 84,128 104,134" stroke="#7C7570" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M56,132 C72,140 88,142 104,144" stroke="#C2683A" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.6"/>
+    </g>
+    <path d="M108,138 C90,120 60,118 38,104 C26,96 18,88 12,78 C6,96 8,118 24,134 C44,154 76,162 110,160 Z" fill="none" stroke="#5A2E16" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M30,104 L22,100 M40,120 L30,120 M56,136 L46,140" stroke="#5A2E16" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g id="part_leg_br">
+    <ellipse cx="140" cy="180" rx="20" ry="26" fill="#8E4423" stroke="#4A2614" stroke-width="4"/>
+    <path d="M144,196 C142,214 138,228 136,240" stroke="#4A2614" stroke-width="19" stroke-linecap="round" fill="none"/>
+    <path d="M144,196 C142,214 138,228 136,240" stroke="#9A4A24" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M139,224 C138,231 137,236 136,240" stroke="#2E211B" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <ellipse cx="134" cy="245" rx="11" ry="6" fill="#2E211B"/>
+  </g>
+  <g id="part_leg_fr">
+    <path d="M232,166 C234,190 236,216 238,238" stroke="#4A2614" stroke-width="19" stroke-linecap="round" fill="none"/>
+    <path d="M232,166 C234,190 236,216 238,238" stroke="#9A4A24" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M237,220 L238,238" stroke="#2E211B" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <ellipse cx="241" cy="244" rx="11" ry="6" fill="#2E211B"/>
+  </g>
+
+  <g id="part_body">
+    <path d="M100,160 C100,128 130,114 170,116 C208,118 236,128 242,152 C248,178 226,204 186,206 C150,208 118,204 106,190 C100,182 100,170 100,160 Z" fill="#A39C95"/>
+    <g clip-path="url(#clip_atoq_body)">
+      <path d="M96,140 C130,118 200,112 250,136 L250,110 L96,110 Z" fill="#7C7570"/>
+      <path d="M190,150 C214,148 236,156 250,170 L250,214 L190,214 C200,192 200,170 190,150 Z" fill="#C2683A" opacity="0.8"/>
+      <path d="M110,192 C140,182 190,182 236,190 L240,214 L104,214 Z" fill="#F1E4D0"/>
+      <path d="M128,132 C150,126 176,126 200,130" stroke="#B9B2AA" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8"/>
+    </g>
+    <path d="M100,160 C100,128 130,114 170,116 C208,118 236,128 242,152 C248,178 226,204 186,206 C150,208 118,204 106,190 C100,182 100,170 100,160 Z" fill="none" stroke="#5A2E16" stroke-width="4.5" stroke-linejoin="round"/>
+  </g>
+
+  <g id="part_bag">
+    <path d="M232,132 C210,146 190,156 170,160" stroke="#5A2E16" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M232,132 C210,146 190,156 170,160" stroke="#E0A526" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="170" cy="150" r="7" fill="#E8833A" stroke="#5A2E16" stroke-width="3"/>
+    <circle cx="183" cy="146" r="7" fill="#3B7DD8" stroke="#5A2E16" stroke-width="3"/>
+    <circle cx="195" cy="151" r="6.5" fill="#3FA34D" stroke="#5A2E16" stroke-width="3"/>
+    <path d="M150,164 C150,156 156,152 164,152 L190,152 C198,152 204,158 203,166 L200,198 C199,206 193,210 185,210 L166,210 C158,210 152,205 152,197 Z" fill="#C2185B"/>
+    <g clip-path="url(#clip_atoq_bag)">
+      <rect x="140" y="170" width="70" height="7" fill="#F28C28"/>
+      <rect x="140" y="184" width="70" height="5" fill="#1FA2A6"/>
+      <path d="M150,180 L156,174 L162,180 L168,174 L174,180 L180,174 L186,180 L192,174 L198,180 L204,174" stroke="#FFF4DC" stroke-width="2.4" fill="none"/>
+      <rect x="140" y="196" width="70" height="4" fill="#F28C28"/>
+      <path d="M184,152 C196,160 202,180 200,210 L212,210 L212,150 Z" fill="#7D0F3A" opacity="0.35"/>
+    </g>
+    <path d="M150,164 C150,156 156,152 164,152 L190,152 C198,152 204,158 203,166 L200,198 C199,206 193,210 185,210 L166,210 C158,210 152,205 152,197 Z" fill="none" stroke="#5A2E16" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M152,160 C164,166 190,166 203,160" stroke="#5A2E16" stroke-width="3.5" fill="none"/>
+  </g>
+
+  <g id="part_leg_bl">
+    <ellipse cx="126" cy="182" rx="23" ry="29" fill="#B5602F" stroke="#5A2E16" stroke-width="4"/>
+    <path d="M118,168 C114,176 114,186 118,194" stroke="#D07A44" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M130,200 C128,218 124,230 122,242" stroke="#5A2E16" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <path d="M130,200 C128,218 124,230 122,242" stroke="#C9682F" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <path d="M125,226 C124,233 123,238 122,242" stroke="#3A2418" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <ellipse cx="119" cy="247" rx="12" ry="6.5" fill="#3A2418"/>
+  </g>
+  <g id="part_leg_fl">
+    <path d="M216,168 C216,194 218,218 220,240" stroke="#5A2E16" stroke-width="21" stroke-linecap="round" fill="none"/>
+    <path d="M216,168 C216,194 218,218 220,240" stroke="#C9682F" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <path d="M219,222 L220,240" stroke="#3A2418" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <ellipse cx="223" cy="246" rx="12" ry="6.5" fill="#3A2418"/>
+  </g>
+
+  <g id="part_ear_back">
+    <path d="M232,90 L236,36 C237,28 245,27 248,34 L266,80 Z" fill="#A9552A" stroke="#5A2E16" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M240,80 L242,44 L256,78 Z" fill="#4A2614"/>
+  </g>
+
+  <g id="part_head">
+    <path d="M224,106 C222,82 242,68 264,70 C284,72 296,86 304,98 L330,111 C338,116 337,126 328,129 L300,135 C288,146 266,150 247,146 C230,141 225,126 224,106 Z" fill="#C9682F"/>
+    <g clip-path="url(#clip_atoq_head)">
+      <path d="M236,132 C258,138 288,136 304,128 L340,124 L340,160 L220,160 Z" fill="#F6EAD8"/>
+      <path d="M226,96 C240,84 262,80 280,84 L250,70 L220,80 Z" fill="#E0874E" opacity="0.7"/>
+      <path d="M220,118 C226,134 238,142 252,146 L220,150 Z" fill="#A9552A" opacity="0.5"/>
+    </g>
+    <path d="M224,106 C222,82 242,68 264,70 C284,72 296,86 304,98 L330,111 C338,116 337,126 328,129 L300,135 C288,146 266,150 247,146 C230,141 225,126 224,106 Z" fill="none" stroke="#5A2E16" stroke-width="4.5" stroke-linejoin="round"/>
+    <path d="M232,136 C228,146 230,154 236,158 C238,150 242,146 248,146 C246,152 250,156 256,156 C254,150 254,146 252,142 Z" fill="#F6EAD8" stroke="#5A2E16" stroke-width="3" stroke-linejoin="round"/>
+    <ellipse cx="330" cy="117" rx="8" ry="7" fill="#2E211B"/>
+    <ellipse cx="328" cy="114" rx="3" ry="2" fill="#8A7A70"/>
+  </g>
+
+  <g id="part_ear_front">
+    <path d="M250,84 L264,26 C266,18 274,18 276,26 L288,84 Z" fill="#C9682F" stroke="#5A2E16" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M258,80 L266,38 L280,80 Z" fill="#4A2614"/>
+    <path d="M264,79 C266,72 268,68 272,66 M272,80 C274,74 276,70 278,70" stroke="#F6EAD8" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <g id="part_eyes_open">
+    <path d="M266,102 C271,93 286,92 292,100 C285,106 273,107 266,102 Z" fill="#FFF8E7" stroke="#3A2418" stroke-width="2"/>
+    <circle cx="281" cy="100" r="5" fill="#E8A21D"/>
+    <ellipse cx="282" cy="100" rx="1.8" ry="4" fill="#1E140F"/>
+    <circle cx="279.5" cy="97.5" r="1.4" fill="#FFFFFF"/>
+    <path d="M264,100 C270,92 284,89 294,96" stroke="#3A2418" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M264,86 C272,88 282,86 292,80" stroke="#7A3A16" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_happy">
+    <path d="M266,102 C272,92 284,91 292,100" stroke="#3A2418" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+    <path d="M264,84 C272,80 282,80 292,82" stroke="#7A3A16" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_wide">
+    <ellipse cx="280" cy="99" rx="10" ry="9" fill="#FFF8E7" stroke="#3A2418" stroke-width="2.4"/>
+    <circle cx="282" cy="99" r="5" fill="#E8A21D"/>
+    <circle cx="282" cy="99" r="2.6" fill="#1E140F"/>
+    <circle cx="280" cy="96.5" r="1.5" fill="#FFFFFF"/>
+    <path d="M266,80 C274,74 284,74 292,78" stroke="#7A3A16" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_angry">
+    <path d="M266,103 C272,97 286,95 292,100 C285,106 273,107 266,103 Z" fill="#FFF8E7" stroke="#3A2418" stroke-width="2"/>
+    <circle cx="282" cy="101" r="4.4" fill="#E8A21D"/>
+    <ellipse cx="283" cy="101" rx="1.7" ry="3.4" fill="#1E140F"/>
+    <path d="M263,98 C270,95 284,94 294,98" stroke="#3A2418" stroke-width="4.4" fill="none" stroke-linecap="round"/>
+    <path d="M262,82 C272,86 284,90 296,95" stroke="#7A3A16" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_dizzy">
+    <circle cx="280" cy="99" r="11" fill="#FFF8E7" stroke="#3A2418" stroke-width="2.4"/>
+    <path d="M281.2,99.0 L281.3,99.4 L281.3,99.9 L281.0,100.4 L280.5,100.9 L279.9,101.1 L279.2,101.1 L278.4,100.9 L277.8,100.4 L277.2,99.7 L277.0,98.8 L277.0,97.8 L277.4,96.8 L278.2,95.9 L279.2,95.3 L280.4,95.1 L281.7,95.3 L282.9,95.8 L283.9,96.8 L284.6,98.2 L284.8,99.7 L284.5,101.2 L283.7,102.7 L282.4,103.8 L280.8,104.5 L279.0,104.7 L277.2,104.2 L275.5,103.2 L274.3,101.6 L273.6,99.7 L273.5,97.6 L274.1,95.5 L275.4,93.7 L277.2,92.4 L279.4,91.6 L281.8,91.6 L284.2,92.4 L286.2,94.0 L287.6,96.1 L288.3,98.7 L288.2,101.3 L287.2,103.9 L285.4,106.1 L282.9,107.6 L280.1,108.2 L277.1,107.9" stroke="#3A2418" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M264,80 C270,74 278,82 284,76 C288,72 292,74 294,77" stroke="#7A3A16" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <g id="part_mouth_grin">
+    <path d="M292,128 C296,133 300,134 304,133 C312,132 320,130 326,127" stroke="#3A2418" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <path d="M288,124 C290,128 292,130 294,130" stroke="#3A2418" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M308,133 L310,140 L313,132 Z" fill="#FFFFFF" stroke="#3A2418" stroke-width="1.4" stroke-linejoin="round"/>
+  </g>
+  <g id="part_mouth_laugh">
+    <path d="M288,129 C298,128 314,128 328,127 C322,142 306,151 293,146 C288,142 286,135 288,129 Z" fill="#7A1F2B" stroke="#3A2418" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M296,143 C300,137 310,136 315,142 C309,148 301,148 296,143 Z" fill="#E8697A"/>
+    <path d="M298,129 L301,135 L304,129 Z M312,128 L315,134 L318,128 Z" fill="#FFFFFF"/>
+  </g>
+</svg>

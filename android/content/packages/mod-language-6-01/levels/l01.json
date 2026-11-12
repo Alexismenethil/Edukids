@@ -1,0 +1,344 @@
+{
+  "id": "L01",
+  "title": "Palabras sabrosas para Coco",
+  "guide_intro": [
+    "Coco es un caimán muy especial: solo come frutas acompañadas de palabras bien usadas.",
+    "Fíjate en los conectores, las tildes y el sentido de cada oración."
+  ],
+  "items": [
+    {
+      "id": "COM01-L01-01",
+      "type": "fill_blank",
+      "prompt": "Completa el texto con los conectores que le dan sentido.",
+      "text": "La lluvia malogró la carretera; {{1}}, los comerciantes llegaron tarde a la feria. Querían vender sus tejidos, {{2}} el bus no salió a tiempo. {{3}} se arregle la pista, volverán el sábado.",
+      "blanks": [
+        {
+          "id": "1",
+          "accepted": [
+            "por eso"
+          ],
+          "options": [
+            "por eso",
+            "sin embargo",
+            "además"
+          ]
+        },
+        {
+          "id": "2",
+          "accepted": [
+            "pero"
+          ],
+          "options": [
+            "pero",
+            "porque",
+            "entonces"
+          ]
+        },
+        {
+          "id": "3",
+          "accepted": [
+            "Cuando"
+          ],
+          "options": [
+            "Cuando",
+            "Aunque",
+            "Porque"
+          ]
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! «Por eso» indica consecuencia, «pero» contrasta y «cuando» marca el momento.",
+        "incorrect": "Piensa qué relación hay: ¿consecuencia, contraste o tiempo?"
+      },
+      "hint": "La lluvia es la causa; llegar tarde, la consecuencia.",
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Escribe diversos tipos de textos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "COM01-L01-02",
+      "type": "multiple_choice",
+      "prompt": "¿En qué oración la palabra destacada está bien escrita?",
+      "options": [
+        {
+          "id": "a",
+          "text": "«Tú cuaderno está sobre la mesa.»",
+          "feedback": "«Tu» sin tilde es posesivo: tu cuaderno."
+        },
+        {
+          "id": "b",
+          "text": "«Quiero mas chicha morada.»",
+          "feedback": "«Más» indica cantidad y lleva tilde."
+        },
+        {
+          "id": "c",
+          "text": "«Él trajo el quipu de su abuela.»",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "«Se que vendrás mañana.»",
+          "feedback": "«Sé» del verbo saber lleva tilde."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! «Él» es pronombre personal y lleva tilde diacrítica.",
+        "incorrect": "La tilde diacrítica distingue palabras iguales con distinto significado: tu/tú, mas/más, se/sé, el/él."
+      },
+      "hint": "Pregúntate si la palabra es pronombre, posesivo o verbo.",
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Escribe diversos tipos de textos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "COM01-L01-03",
+      "type": "matching",
+      "prompt": "Une cada expresión con lo que significa.",
+      "left": [
+        {
+          "id": "e1",
+          "text": "Tiene un corazón de oro"
+        },
+        {
+          "id": "e2",
+          "text": "Se le hizo agua la boca"
+        },
+        {
+          "id": "e3",
+          "text": "Está en las nubes"
+        },
+        {
+          "id": "e4",
+          "text": "Le costó un ojo de la cara"
+        }
+      ],
+      "right": [
+        {
+          "id": "m2",
+          "text": "Tuvo muchas ganas de comer"
+        },
+        {
+          "id": "m3",
+          "text": "Está distraído"
+        },
+        {
+          "id": "m4",
+          "text": "Fue muy caro"
+        },
+        {
+          "id": "m5",
+          "text": "Tiene buena vista"
+        },
+        {
+          "id": "m1",
+          "text": "Es muy bondadoso"
+        }
+      ],
+      "pairs": [
+        [
+          "e1",
+          "m1"
+        ],
+        [
+          "e2",
+          "m2"
+        ],
+        [
+          "e3",
+          "m3"
+        ],
+        [
+          "e4",
+          "m4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Excelente! Son expresiones con sentido figurado: no se entienden al pie de la letra.",
+        "incorrect": "No las leas al pie de la letra: piensa qué quiere decir la persona que las usa."
+      },
+      "hint": "¿Alguien puede estar de verdad en las nubes?",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "COM01-L01-04",
+      "type": "classification",
+      "prompt": "¿Es un hecho o una opinión?",
+      "groups": [
+        {
+          "id": "fact",
+          "label": "Hecho"
+        },
+        {
+          "id": "opinion",
+          "label": "Opinión"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "El retablo tiene dos pisos con figuras.",
+          "group": "fact"
+        },
+        {
+          "id": "e2",
+          "text": "Los retablos son las artesanías más bonitas.",
+          "group": "opinion"
+        },
+        {
+          "id": "e3",
+          "text": "El agua hierve a 100 °C a nivel del mar.",
+          "group": "fact"
+        },
+        {
+          "id": "e4",
+          "text": "Creo que todos deberían visitar Quinua.",
+          "group": "opinion"
+        },
+        {
+          "id": "e5",
+          "text": "La feria empieza a las 8 de la mañana.",
+          "group": "fact"
+        },
+        {
+          "id": "e6",
+          "text": "La chicha morada es la mejor bebida del mundo.",
+          "group": "opinion"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Un hecho se puede comprobar; una opinión expresa lo que alguien piensa o siente.",
+        "incorrect": "Pregúntate: ¿se puede comprobar o depende de los gustos de cada persona?"
+      },
+      "hint": "Palabras como «creo», «mejor» o «más bonitas» suelen indicar opinión.",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "evaluate_reflect"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "COM01-L01-05",
+      "type": "multi_select",
+      "prompt": "En la oración «El artesano observó con paciencia su obra antes de venderla», ¿qué palabras pueden reemplazar a «observó» sin cambiar el sentido?",
+      "options": [
+        {
+          "id": "a",
+          "text": "miró",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "contempló",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "examinó",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "ignoró",
+          "feedback": "«Ignoró» significa lo contrario: no prestar atención."
+        },
+        {
+          "id": "e",
+          "text": "rompió",
+          "feedback": "«Rompió» cambia por completo el sentido."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Así es! Miró, contempló y examinó son sinónimos de «observó» en esta oración.",
+        "incorrect": "Busca palabras que signifiquen «mirar con atención»."
+      },
+      "hint": "Reemplaza cada palabra en la oración y léela otra vez.",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "COM01-L01-06",
+      "type": "ordering",
+      "prompt": "Ordena las oraciones para que el texto tenga sentido.",
+      "elements": [
+        {
+          "id": "o2",
+          "text": "Mezcló la arcilla con agua hasta lograr una masa suave."
+        },
+        {
+          "id": "o4",
+          "text": "Cuando la vasija estuvo seca, su abuela la coció en el horno."
+        },
+        {
+          "id": "o5",
+          "text": "Al día siguiente, Killa la pintó con tierras de colores."
+        },
+        {
+          "id": "o1",
+          "text": "Killa juntó arcilla del cerro."
+        },
+        {
+          "id": "o3",
+          "text": "Con la masa modeló una vasija pequeña."
+        }
+      ],
+      "correct_order": [
+        "o1",
+        "o2",
+        "o3",
+        "o4",
+        "o5"
+      ],
+      "feedback": {
+        "correct": "¡Perfecto! Es el proceso de la cerámica: juntar, mezclar, modelar, cocer y pintar.",
+        "incorrect": "Piensa en el orden real del trabajo: no se puede cocer algo que todavía no se ha modelado."
+      },
+      "hint": "Busca pistas de tiempo: «cuando», «al día siguiente».",
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 90
+      }
+    }
+  ]
+}

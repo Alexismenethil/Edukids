@@ -8,9 +8,14 @@ const FINAL := &"final"
 const KINDS: Array[StringName] = [SHORT, REGULAR, FINAL]
 const CHASE := &"chase"
 const BRIDGE := &"bridge"
+## Darle de comer al caimán Coco: cada acierto es una fruta para él; cada error lo pone gruñón.
+const CAIMAN := &"caiman"
 const CLASSIC := &"classic"
-const MECHANICS: Array[StringName] = [CHASE, BRIDGE, CLASSIC]
+const MECHANICS: Array[StringName] = [CHASE, BRIDGE, CAIMAN, CLASSIC]
 const DEFAULT_LIVES := 3
+const MAX_LIVES := 5
+## Intentos del desafío final, si el manifiesto no dice otra cosa.
+const DEFAULT_FINAL_ATTEMPTS := 2
 
 var id := ""
 var kind: StringName = SHORT
@@ -22,6 +27,8 @@ var lives := DEFAULT_LIVES
 var danger_start := DangerMeter.DEFAULT_START
 var danger_max := DangerMeter.DEFAULT_MAX
 var timer_seconds := 0
+## Solo en el desafío final: intentos que tiene cada estudiante.
+var max_attempts := DEFAULT_FINAL_ATTEMPTS
 
 
 static func parse(raw: Variant, position_in_package: int) -> Result:
@@ -46,7 +53,20 @@ static func parse(raw: Variant, position_in_package: int) -> Result:
 		entry.danger_start = int(danger.get("start", DangerMeter.DEFAULT_START))
 		entry.danger_max = int(danger.get("max", DangerMeter.DEFAULT_MAX))
 	entry.timer_seconds = int(raw.get("timer_seconds", 0))
+	entry.max_attempts = int(raw.get("max_attempts", DEFAULT_FINAL_ATTEMPTS))
+	if entry.kind == FINAL and entry.mechanic != CLASSIC:
+		return Result.fail(&"manifest_invalid", "El desafío final %s debe usar la mecánica clásica (RN-10)." % entry.id)
+	if entry.lives < 1 or entry.lives > MAX_LIVES:
+		return Result.fail(&"manifest_invalid", "El nivel %s debe tener entre 1 y %d vidas." % [entry.id, MAX_LIVES])
+	if not DangerMeter.create(entry.danger_start, entry.danger_max).is_ok():
+		return Result.fail(&"manifest_invalid", "El medidor de peligro del nivel %s no es válido." % entry.id)
+	if entry.max_attempts < 1:
+		return Result.fail(&"manifest_invalid", "El desafío final %s necesita al menos un intento." % entry.id)
 	return Result.ok(entry)
+
+
+func is_final() -> bool:
+	return kind == FINAL
 
 
 ## Rutas del paquete: relativas, en minúsculas, sin «..» ni rutas absolutas (formato v1).

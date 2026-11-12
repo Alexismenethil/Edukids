@@ -18,14 +18,18 @@
     {"name": "EarL", "parent": "Torso/Head", "part": "ear_l", "pivot": [97, 51]},
     {"name": "EarR", "parent": "Torso/Head", "part": "ear_r", "pivot": [203, 51]},
     {"name": "HeadArt", "parent": "Torso/Head", "part": "head", "pivot": [150, 108]},
-    {"name": "Brows", "parent": "Torso/Head", "part": "brows", "pivot": [150, 76]},
+    {"name": "BrowL", "parent": "Torso/Head", "part": "brow_l", "pivot": [111.5, 75]},
+    {"name": "BrowR", "parent": "Torso/Head", "part": "brow_r", "pivot": [188.5, 75]},
     {"name": "Eyes", "parent": "Torso/Head", "pivot": [150, 104]},
     {"name": "EyesOpen", "parent": "Torso/Head/Eyes", "part": "eyes_open", "pivot": [150, 104]},
     {"name": "EyesClosed", "parent": "Torso/Head/Eyes", "part": "eyes_closed", "pivot": [150, 104], "visible": false},
     {"name": "EyesHappy", "parent": "Torso/Head/Eyes", "part": "eyes_happy", "pivot": [150, 104], "visible": false},
+    {"name": "EyesSqueeze", "parent": "Torso/Head/Eyes", "part": "eyes_squeeze", "pivot": [150, 104], "visible": false},
+    {"name": "EyesStar", "parent": "Torso/Head/Eyes", "part": "eyes_star", "pivot": [150, 104], "visible": false},
     {"name": "Mouth", "parent": "Torso/Head", "pivot": [150, 145]},
     {"name": "MouthSmile", "parent": "Torso/Head/Mouth", "part": "mouth_smile", "pivot": [150, 145]},
     {"name": "MouthOpen", "parent": "Torso/Head/Mouth", "part": "mouth_open", "pivot": [150, 145], "visible": false},
-    {"name": "MouthO", "parent": "Torso/Head/Mouth", "part": "mouth_o", "pivot": [150, 145], "visible": false}
+    {"name": "MouthO", "parent": "Torso/Head/Mouth", "part": "mouth_o", "pivot": [150, 145], "visible": false},
+    {"name": "MouthFrown", "parent": "Torso/Head/Mouth", "part": "mouth_frown", "pivot": [150, 145], "visible": false}
   ]
 }

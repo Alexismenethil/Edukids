@@ -1,0 +1,31 @@
+{
+  "name": "AtoqRig",
+  "master": "res://art-src/characters/atoq.svg",
+  "scale": 2.0,
+  "origin": [170, 250],
+  "atlas": "res://assets/art/characters/atoq/char_atoq_atlas.png",
+  "scene": "res://scenes/characters/atoq/atoq_rig.tscn",
+  "nodes": [
+    {"name": "Body", "parent": "", "pivot": [170, 170]},
+    {"name": "Tail", "parent": "Body", "part": "tail", "pivot": [108, 148]},
+    {"name": "LegBR", "parent": "Body", "part": "leg_br", "pivot": [140, 178]},
+    {"name": "LegFR", "parent": "Body", "part": "leg_fr", "pivot": [232, 170]},
+    {"name": "BodyArt", "parent": "Body", "part": "body", "pivot": [170, 170]},
+    {"name": "Bag", "parent": "Body", "part": "bag", "pivot": [214, 140]},
+    {"name": "LegBL", "parent": "Body", "part": "leg_bl", "pivot": [126, 180]},
+    {"name": "LegFL", "parent": "Body", "part": "leg_fl", "pivot": [216, 172]},
+    {"name": "Head", "parent": "Body", "pivot": [236, 132]},
+    {"name": "EarBack", "parent": "Body/Head", "part": "ear_back", "pivot": [250, 84]},
+    {"name": "HeadArt", "parent": "Body/Head", "part": "head", "pivot": [262, 112]},
+    {"name": "EarFront", "parent": "Body/Head", "part": "ear_front", "pivot": [268, 82]},
+    {"name": "Eyes", "parent": "Body/Head", "pivot": [280, 100]},
+    {"name": "EyesOpen", "parent": "Body/Head/Eyes", "part": "eyes_open", "pivot": [280, 100]},
+    {"name": "EyesHappy", "parent": "Body/Head/Eyes", "part": "eyes_happy", "pivot": [280, 100], "visible": false},
+    {"name": "EyesWide", "parent": "Body/Head/Eyes", "part": "eyes_wide", "pivot": [280, 100], "visible": false},
+    {"name": "EyesAngry", "parent": "Body/Head/Eyes", "part": "eyes_angry", "pivot": [280, 100], "visible": false},
+    {"name": "EyesDizzy", "parent": "Body/Head/Eyes", "part": "eyes_dizzy", "pivot": [280, 100], "visible": false},
+    {"name": "Mouth", "parent": "Body/Head", "pivot": [306, 132]},
+    {"name": "MouthGrin", "parent": "Body/Head/Mouth", "part": "mouth_grin", "pivot": [306, 132]},
+    {"name": "MouthLaugh", "parent": "Body/Head/Mouth", "part": "mouth_laugh", "pivot": [306, 132], "visible": false}
+  ]
+}

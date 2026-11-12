@@ -1,0 +1,301 @@
+{
+  "id": "L01",
+  "title": "Carrera de cálculo en el Qhapaq Ñan",
+  "guide_intro": [
+    "¡Atoq se llevó los nudos de los números y corre por el camino inca!",
+    "Resuelve rápido, pero bien: cada acierto te da impulso."
+  ],
+  "items": [
+    {
+      "id": "MAT01-L01-01",
+      "type": "numeric",
+      "prompt": "Un chasqui recorre 4,5 km en una hora. A ese ritmo, ¿cuántos kilómetros recorre en 2 horas y media?",
+      "answer": 11.25,
+      "tolerance": 0,
+      "unit": "km",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Exacto! 4,5 × 2,5 = 11,25 km: 9 km en dos horas y 2,25 km en la media hora.",
+        "incorrect": "Dos horas y media son 2,5 horas. Calcula 4,5 × 2 = 9 y súmale la mitad de 4,5, que es 2,25."
+      },
+      "hint": "¿Cuánto recorre en media hora? Es la mitad de 4,5 km.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "MAT01-L01-02",
+      "type": "multiple_choice",
+      "prompt": "¿Qué número completa la igualdad?  3/4 de 48 = ▢",
+      "options": [
+        {
+          "id": "a",
+          "text": "12",
+          "feedback": "12 es 1/4 de 48. Necesitas 3 de esas partes."
+        },
+        {
+          "id": "b",
+          "text": "32",
+          "feedback": "32 son 2/3 de 48, no 3/4."
+        },
+        {
+          "id": "c",
+          "text": "36",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "64",
+          "feedback": "3/4 de un número siempre es menor que el número."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien! 48 ÷ 4 = 12 y 12 × 3 = 36.",
+        "incorrect": "Divide 48 entre 4 y multiplica por 3."
+      },
+      "hint": "Primero halla 1/4 de 48.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 40
+      }
+    },
+    {
+      "id": "MAT01-L01-03",
+      "type": "true_false",
+      "prompt": "Cálculo rápido: ¿verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "0,5 + 0,25 = 0,75",
+          "answer": true
+        },
+        {
+          "id": "s2",
+          "text": "El 20 % de 150 es 30.",
+          "answer": true
+        },
+        {
+          "id": "s3",
+          "text": "1/3 es mayor que 0,4.",
+          "answer": false,
+          "feedback": "1/3 ≈ 0,33, que es menor que 0,4."
+        },
+        {
+          "id": "s4",
+          "text": "2³ = 6",
+          "answer": false,
+          "feedback": "2³ = 2 × 2 × 2 = 8."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Rapidísimo! 0,75, 30, 0,33 < 0,4 y 2³ = 8.",
+        "incorrect": "Revisa cada cálculo con calma: una potencia no es una multiplicación por 3."
+      },
+      "hint": "Convierte 1/3 en decimal antes de comparar.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "reason"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "MAT01-L01-04",
+      "type": "matching",
+      "prompt": "Une cada operación con su resultado.",
+      "left": [
+        {
+          "id": "o1",
+          "text": "15 % de 200"
+        },
+        {
+          "id": "o2",
+          "text": "2/5 de 35"
+        },
+        {
+          "id": "o3",
+          "text": "1,2 × 15"
+        },
+        {
+          "id": "o4",
+          "text": "3/8 de 64"
+        }
+      ],
+      "right": [
+        {
+          "id": "r14",
+          "text": "14"
+        },
+        {
+          "id": "r18",
+          "text": "18"
+        },
+        {
+          "id": "r24",
+          "text": "24"
+        },
+        {
+          "id": "r16",
+          "text": "16"
+        },
+        {
+          "id": "r30",
+          "text": "30"
+        }
+      ],
+      "pairs": [
+        [
+          "o1",
+          "r30"
+        ],
+        [
+          "o2",
+          "r14"
+        ],
+        [
+          "o3",
+          "r18"
+        ],
+        [
+          "o4",
+          "r24"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Perfecto! 30, 14, 18 y 24.",
+        "incorrect": "Halla una parte y multiplica: 2/5 de 35 es 35 ÷ 5 × 2."
+      },
+      "hint": "Para un porcentaje, piensa en cuánto es el 10 % y súmalo.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "MAT01-L01-05",
+      "type": "ordering",
+      "prompt": "Ordena de menor a mayor.",
+      "elements": [
+        {
+          "id": "n12",
+          "text": "1/2"
+        },
+        {
+          "id": "n07",
+          "text": "0,7"
+        },
+        {
+          "id": "n34",
+          "text": "3/4"
+        },
+        {
+          "id": "n045",
+          "text": "0,45"
+        },
+        {
+          "id": "n35",
+          "text": "3/5"
+        }
+      ],
+      "correct_order": [
+        "n045",
+        "n12",
+        "n35",
+        "n07",
+        "n34"
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! 0,45 < 0,5 < 0,6 < 0,7 < 0,75.",
+        "incorrect": "Escribe todos como decimales: 1/2 = 0,5, 3/5 = 0,6 y 3/4 = 0,75."
+      },
+      "hint": "Convierte cada fracción en decimal.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "MAT01-L01-06",
+      "type": "multi_select",
+      "prompt": "¿Qué números son múltiplos de 4 y también de 6? Marca todos.",
+      "options": [
+        {
+          "id": "m12",
+          "text": "12",
+          "correct": true
+        },
+        {
+          "id": "m18",
+          "text": "18",
+          "feedback": "18 es múltiplo de 6, pero no de 4."
+        },
+        {
+          "id": "m24",
+          "text": "24",
+          "correct": true
+        },
+        {
+          "id": "m30",
+          "text": "30",
+          "feedback": "30 no es múltiplo de 4."
+        },
+        {
+          "id": "m36",
+          "text": "36",
+          "correct": true
+        },
+        {
+          "id": "m42",
+          "text": "42",
+          "feedback": "42 no es múltiplo de 4."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Así es! Son múltiplos de 12, el mínimo común múltiplo de 4 y 6.",
+        "incorrect": "Busca los números que se dividen exactamente entre 4 y entre 6."
+      },
+      "hint": "El mcm de 4 y 6 es 12: busca sus múltiplos.",
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Resuelve problemas de regularidad, equivalencia y cambio",
+        "pisa": {
+          "category": "change_relationships",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 80
+      }
+    }
+  ]
+}

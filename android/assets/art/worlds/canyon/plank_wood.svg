@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30">
+  <!-- Tramo del puente: tres tablas. -->
+  <path d="M8,4 L36,4 Q40,4 40,8 L40,22 Q40,26 36,26 L8,26 Q4,26 4,22 L4,8 Q4,4 8,4 Z" fill="#94603A"/>
+  <path d="M8,4 L36,4 Q40,4 40,8 L40,18 L4,18 L4,8 Q4,4 8,4 Z" fill="#C98A4E"/>
+  <path d="M10,8 L32,8" fill="none" stroke="#E2AD72" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.4,21 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" fill="#6E4430"/>
+  <path d="M30.4,21 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" fill="#6E4430"/>
+  <path d="M47,4 L75,4 Q79,4 79,8 L79,22 Q79,26 75,26 L47,26 Q43,26 43,22 L43,8 Q43,4 47,4 Z" fill="#94603A"/>
+  <path d="M47,4 L75,4 Q79,4 79,8 L79,18 L43,18 L43,8 Q43,4 47,4 Z" fill="#C98A4E"/>
+  <path d="M49,8 L71,8" fill="none" stroke="#E2AD72" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M49.4,21 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" fill="#6E4430"/>
+  <path d="M69.4,21 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" fill="#6E4430"/>
+  <path d="M86,4 L114,4 Q118,4 118,8 L118,22 Q118,26 114,26 L86,26 Q82,26 82,22 L82,8 Q82,4 86,4 Z" fill="#94603A"/>
+  <path d="M86,4 L114,4 Q118,4 118,8 L118,18 L82,18 L82,8 Q82,4 86,4 Z" fill="#C98A4E"/>
+  <path d="M88,8 L110,8" fill="none" stroke="#E2AD72" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M88.4,21 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" fill="#6E4430"/>
+  <path d="M108.4,21 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" fill="#6E4430"/>
+</svg>

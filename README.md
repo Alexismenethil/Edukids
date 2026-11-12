@@ -8,7 +8,7 @@ Videojuego educativo 2D para tablets Android que refuerza **Matemática**, **Com
 | Institución piloto | I.E. N.° 38984-22 Alfredo Mendoza Salazar, Mollepata II, Ayacucho |
 | Autor | Alexis Huamani Rivera |
 | Versión de la documentación | 3.0 (noviembre de 2026) |
-| Estado | Sprint 4 implementado y en revisión; el siguiente es el Sprint 5 de mecánicas de juego. |
+| Estado | Sprint 5 implementado y en revisión (mapa, mecánicas, vidas, game over y desafío final); el siguiente es el Sprint 6 de arte, animación y audio. |
 
 ## Cómo funciona
 

@@ -1,0 +1,560 @@
+{
+  "id": "DF",
+  "title": "Desafío final: ciencia en la Sierra",
+  "guide_intro": [
+    "Demuestra todo lo que investigaste en la puna."
+  ],
+  "items": [
+    {
+      "id": "CYT01-DF-01",
+      "type": "multiple_choice",
+      "prompt": "¿Qué parte de la planta fabrica su alimento con la luz del sol (fotosíntesis)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "La raíz"
+        },
+        {
+          "id": "b",
+          "text": "Las hojas",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "La flor"
+        },
+        {
+          "id": "d",
+          "text": "El fruto"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! Las hojas tienen clorofila.",
+        "incorrect": "La fotosíntesis ocurre donde está la clorofila."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 40
+      }
+    },
+    {
+      "id": "CYT01-DF-02",
+      "type": "true_false",
+      "prompt": "La Tierra y el universo: ¿verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "La Luna tiene luz propia.",
+          "answer": false,
+          "feedback": "La Luna refleja la luz del Sol."
+        },
+        {
+          "id": "s2",
+          "text": "La Tierra gira alrededor del Sol.",
+          "answer": true
+        },
+        {
+          "id": "s3",
+          "text": "El día y la noche se deben a la rotación de la Tierra.",
+          "answer": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien!",
+        "incorrect": "Recuerda los movimientos de la Tierra: rotación y traslación."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-DF-03",
+      "type": "matching",
+      "prompt": "Une cada órgano con su sistema.",
+      "left": [
+        {
+          "id": "o1",
+          "text": "Pulmones"
+        },
+        {
+          "id": "o2",
+          "text": "Corazón"
+        },
+        {
+          "id": "o3",
+          "text": "Estómago"
+        },
+        {
+          "id": "o4",
+          "text": "Riñones"
+        }
+      ],
+      "right": [
+        {
+          "id": "s2",
+          "text": "Circulatorio"
+        },
+        {
+          "id": "s3",
+          "text": "Digestivo"
+        },
+        {
+          "id": "s4",
+          "text": "Excretor"
+        },
+        {
+          "id": "s5",
+          "text": "Óseo"
+        },
+        {
+          "id": "s1",
+          "text": "Respiratorio"
+        }
+      ],
+      "pairs": [
+        [
+          "o1",
+          "s1"
+        ],
+        [
+          "o2",
+          "s2"
+        ],
+        [
+          "o3",
+          "s3"
+        ],
+        [
+          "o4",
+          "s4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Perfecto!",
+        "incorrect": "Piensa en la función de cada órgano."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-DF-04",
+      "type": "classification",
+      "prompt": "¿Recurso renovable o no renovable?",
+      "groups": [
+        {
+          "id": "ren",
+          "label": "Renovable"
+        },
+        {
+          "id": "non",
+          "label": "No renovable"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "Energía del sol",
+          "group": "ren"
+        },
+        {
+          "id": "e2",
+          "text": "Viento",
+          "group": "ren"
+        },
+        {
+          "id": "e3",
+          "text": "Petróleo",
+          "group": "non"
+        },
+        {
+          "id": "e4",
+          "text": "Gas natural",
+          "group": "non"
+        },
+        {
+          "id": "e5",
+          "text": "Agua de los ríos",
+          "group": "ren"
+        },
+        {
+          "id": "e6",
+          "text": "Carbón mineral",
+          "group": "non"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien!",
+        "incorrect": "Los renovables se recuperan en poco tiempo; los no renovables tardan millones de años."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "CYT01-DF-U1",
+      "type": "reading_unit",
+      "prompt": "Observa el experimento de Killa y responde.",
+      "stimulus": {
+        "type": "table",
+        "title": "Experimento: ¿qué suelo guarda más agua?",
+        "content": {
+          "columns": [
+            "Suelo",
+            "Agua que se echó",
+            "Agua que salió por abajo"
+          ],
+          "rows": [
+            [
+              "Arenoso",
+              "200 ml",
+              "150 ml"
+            ],
+            [
+              "Arcilloso",
+              "200 ml",
+              "40 ml"
+            ],
+            [
+              "Con humus (hojas descompuestas)",
+              "200 ml",
+              "70 ml"
+            ]
+          ]
+        },
+        "note": "Killa usó vasos iguales con la misma cantidad de suelo y echó el agua a la misma hora."
+      },
+      "items": [
+        {
+          "id": "CYT01-DF-05",
+          "type": "numeric",
+          "prompt": "¿Cuántos mililitros de agua guardó el suelo arcilloso?",
+          "answer": 160,
+          "tolerance": 0,
+          "unit": "ml",
+          "accepted_formats": [
+            "decimal"
+          ],
+          "feedback": {
+            "correct": "¡Exacto! 200 − 40 = 160 ml.",
+            "incorrect": "Lo que guarda es lo que se echó menos lo que salió."
+          },
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Indaga mediante métodos científicos para construir sus conocimientos",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "design_interpret"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 60
+          }
+        },
+        {
+          "id": "CYT01-DF-06",
+          "type": "multiple_choice",
+          "prompt": "¿Qué suelo guardó más agua?",
+          "options": [
+            {
+              "id": "a",
+              "text": "El arenoso"
+            },
+            {
+              "id": "b",
+              "text": "El arcilloso",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "El suelo con humus"
+            },
+            {
+              "id": "d",
+              "text": "Todos guardaron lo mismo"
+            }
+          ],
+          "feedback": {
+            "correct": "¡Correcto! Guardó 160 ml.",
+            "incorrect": "Compara el agua que quedó en cada vaso."
+          },
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Indaga mediante métodos científicos para construir sus conocimientos",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "design_interpret"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 60
+          }
+        },
+        {
+          "id": "CYT01-DF-07",
+          "type": "multiple_choice",
+          "prompt": "¿Qué cambió Killa a propósito en su experimento?",
+          "options": [
+            {
+              "id": "a",
+              "text": "La cantidad de agua"
+            },
+            {
+              "id": "b",
+              "text": "El tamaño de los vasos"
+            },
+            {
+              "id": "c",
+              "text": "El tipo de suelo",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "La hora en que echó el agua"
+            }
+          ],
+          "feedback": {
+            "correct": "¡Muy bien! Es la variable que se compara; lo demás se mantuvo igual.",
+            "incorrect": "En un experimento justo se cambia una sola cosa."
+          },
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Indaga mediante métodos científicos para construir sus conocimientos",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "design_interpret"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 70
+          }
+        },
+        {
+          "id": "CYT01-DF-08",
+          "type": "multiple_choice",
+          "prompt": "Un agricultor quiere que su chacra de suelo arenoso conserve la humedad entre lluvias. Según los datos, ¿qué le conviene?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Agregar más arena"
+            },
+            {
+              "id": "b",
+              "text": "Agregar humus (hojas descompuestas) al suelo",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "Regar con menos agua"
+            },
+            {
+              "id": "d",
+              "text": "Retirar todas las plantas"
+            }
+          ],
+          "feedback": {
+            "correct": "¡Excelente! El suelo con humus guardó 130 ml, mucho más que el arenoso (50 ml).",
+            "incorrect": "Compara el arenoso con el que tiene humus."
+          },
+          "metadata": {
+            "competency": "CYT.INDAGA",
+            "capacity": "Indaga mediante métodos científicos para construir sus conocimientos",
+            "pisa": {
+              "category": "design_interpret",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 90
+          }
+        }
+      ]
+    },
+    {
+      "id": "CYT01-DF-09",
+      "type": "ordering",
+      "prompt": "Ordena las fases de la Luna a partir de la luna nueva.",
+      "elements": [
+        {
+          "id": "f2",
+          "text": "Cuarto creciente"
+        },
+        {
+          "id": "f4",
+          "text": "Cuarto menguante"
+        },
+        {
+          "id": "f1",
+          "text": "Luna nueva"
+        },
+        {
+          "id": "f3",
+          "text": "Luna llena"
+        }
+      ],
+      "correct_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "feedback": {
+        "correct": "¡Correcto!",
+        "incorrect": "Después de la luna nueva, la parte iluminada crece hasta la luna llena y luego mengua."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-DF-10",
+      "type": "multiple_choice",
+      "prompt": "¿Por qué en Pampa Galeras hace más frío que en Huamanga?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Porque está más cerca del mar"
+        },
+        {
+          "id": "b",
+          "text": "Porque tiene más árboles"
+        },
+        {
+          "id": "c",
+          "text": "Porque está a mayor altitud",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Porque allí no llega el sol"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien! A mayor altitud, menor temperatura.",
+        "incorrect": "Compara la altura de la puna con la de la ciudad."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "explain"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "CYT01-DF-11",
+      "type": "multi_select",
+      "prompt": "¿Qué acciones ayudan a cuidar el agua del río?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No arrojar basura",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Reciclar los plásticos",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Lavar la ropa con detergente en la orilla"
+        },
+        {
+          "id": "d",
+          "text": "Tratar las aguas residuales",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Quemar llantas cerca del río"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien!",
+        "incorrect": "Piensa qué acciones ensucian el agua y cuáles la protegen."
+      },
+      "metadata": {
+        "competency": "CYT.EXPLICA",
+        "capacity": "Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+        "pisa": {
+          "category": "explain",
+          "process": "evaluate_reflect"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "CYT01-DF-12",
+      "type": "multiple_choice",
+      "prompt": "Killa quiere saber si la luz influye en el crecimiento del frijol. ¿Qué experimento es correcto?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dos macetas con distinta tierra: una con luz y otra sin luz."
+        },
+        {
+          "id": "b",
+          "text": "Una sola maceta al sol durante un mes."
+        },
+        {
+          "id": "c",
+          "text": "Dos macetas iguales, con la misma tierra y agua: una con luz y otra en la oscuridad.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Dos macetas en la oscuridad con distinta cantidad de agua."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Excelente! Solo cambia la luz; todo lo demás es igual.",
+        "incorrect": "En un experimento justo se cambia una sola variable."
+      },
+      "metadata": {
+        "competency": "CYT.INDAGA",
+        "capacity": "Indaga mediante métodos científicos para construir sus conocimientos",
+        "pisa": {
+          "category": "design_interpret",
+          "process": "design_interpret"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 90
+      }
+    }
+  ]
+}

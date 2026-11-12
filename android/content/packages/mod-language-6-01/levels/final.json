@@ -1,0 +1,562 @@
+{
+  "id": "DF",
+  "title": "Desafío final: los guardianes del agua",
+  "guide_intro": [
+    "Demuestra todo lo que aprendiste leyendo en Huamanga."
+  ],
+  "items": [
+    {
+      "id": "COM01-DF-U1",
+      "type": "reading_unit",
+      "prompt": "Lee el texto y responde.",
+      "stimulus": {
+        "type": "text",
+        "title": "Los guardianes del agua",
+        "content": [
+          "En las alturas de Ayacucho, muchas comunidades construyen qochas: pequeñas lagunas hechas con piedras y champa para guardar el agua de la lluvia.",
+          "Durante los meses de lluvia, de diciembre a marzo, las qochas se llenan. El agua se filtra poco a poco en la tierra y alimenta los manantiales que están más abajo. Por eso, en los meses secos, los puquiales siguen dando agua.",
+          "A esta práctica se le llama «siembra y cosecha de agua». Las familias trabajan juntas en faenas para limpiar las qochas y reparar sus muros.",
+          "Gracias a las qochas hay pasto para los animales y agua para regar las chacras. Además, llegan aves como la huallata, que vive en sus orillas."
+        ]
+      },
+      "items": [
+        {
+          "id": "COM01-DF-01",
+          "type": "multiple_choice",
+          "prompt": "¿Con qué se construyen las qochas?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Con cemento y fierro"
+            },
+            {
+              "id": "b",
+              "text": "Con piedras y champa",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "Con madera de eucalipto"
+            },
+            {
+              "id": "d",
+              "text": "Con plástico"
+            }
+          ],
+          "feedback": {
+            "correct": "¡Correcto!",
+            "incorrect": "Está en el primer párrafo."
+          },
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "locate"
+            },
+            "difficulty": 1,
+            "estimated_seconds": 40
+          }
+        },
+        {
+          "id": "COM01-DF-02",
+          "type": "multiple_choice",
+          "prompt": "¿En qué meses se llenan las qochas?",
+          "options": [
+            {
+              "id": "a",
+              "text": "De junio a agosto"
+            },
+            {
+              "id": "b",
+              "text": "De abril a mayo"
+            },
+            {
+              "id": "c",
+              "text": "Todo el año por igual"
+            },
+            {
+              "id": "d",
+              "text": "De diciembre a marzo",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "¡Bien!",
+            "incorrect": "Busca en el segundo párrafo los meses de lluvia."
+          },
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "locate"
+            },
+            "difficulty": 1,
+            "estimated_seconds": 40
+          }
+        },
+        {
+          "id": "COM01-DF-03",
+          "type": "multiple_choice",
+          "prompt": "¿Por qué los puquiales dan agua en los meses secos?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Porque llueve todo el año.",
+              "feedback": "El texto habla de meses secos."
+            },
+            {
+              "id": "b",
+              "text": "Porque las familias llevan agua en baldes.",
+              "feedback": "Eso no se dice en el texto."
+            },
+            {
+              "id": "c",
+              "text": "Porque el agua de las qochas se filtra en la tierra y llega a los manantiales.",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "Porque las aves traen agua.",
+              "feedback": "Las aves viven en las orillas; no traen agua."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Muy bien!",
+            "incorrect": "Relee el segundo párrafo: busca la palabra «filtra»."
+          },
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "understand"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 60
+          }
+        },
+        {
+          "id": "COM01-DF-04",
+          "type": "multiple_choice",
+          "prompt": "En el texto, las «faenas» son…",
+          "options": [
+            {
+              "id": "a",
+              "text": "fiestas con música"
+            },
+            {
+              "id": "b",
+              "text": "trabajos que la comunidad hace en conjunto",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "lluvias fuertes"
+            },
+            {
+              "id": "d",
+              "text": "tipos de pasto"
+            }
+          ],
+          "feedback": {
+            "correct": "¡Exacto!",
+            "incorrect": "Lee la oración completa: las familias trabajan juntas en faenas."
+          },
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "understand"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 50
+          }
+        },
+        {
+          "id": "COM01-DF-05",
+          "type": "multiple_choice",
+          "prompt": "¿Cuál es el propósito principal del texto?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Convencer a los turistas de visitar Ayacucho"
+            },
+            {
+              "id": "b",
+              "text": "Contar una leyenda sobre una laguna"
+            },
+            {
+              "id": "c",
+              "text": "Explicar cómo las qochas ayudan a cuidar el agua",
+              "correct": true
+            },
+            {
+              "id": "d",
+              "text": "Dar instrucciones para nadar en una laguna"
+            }
+          ],
+          "feedback": {
+            "correct": "¡Correcto! Es un texto informativo.",
+            "incorrect": "Piensa qué aprende quien lo lee."
+          },
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 60
+          }
+        },
+        {
+          "id": "COM01-DF-06",
+          "type": "multiple_choice",
+          "prompt": "Si una comunidad deja de limpiar sus qochas durante años, ¿qué podría pasar?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Llegarían más huallatas."
+            },
+            {
+              "id": "b",
+              "text": "Llovería más en la puna."
+            },
+            {
+              "id": "c",
+              "text": "Los muros se harían más fuertes."
+            },
+            {
+              "id": "d",
+              "text": "Se guardaría menos agua y los puquiales podrían secarse en los meses secos.",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "¡Excelente razonamiento!",
+            "incorrect": "Une las ideas: si la qocha se llena de barro, guarda menos agua."
+          },
+          "metadata": {
+            "competency": "COM.LEE",
+            "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+            "pisa": {
+              "category": "",
+              "process": "evaluate_reflect"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 80
+          }
+        }
+      ]
+    },
+    {
+      "id": "COM01-DF-07",
+      "type": "matching",
+      "prompt": "Une cada palabra con su sinónimo.",
+      "left": [
+        {
+          "id": "w1",
+          "text": "veloz"
+        },
+        {
+          "id": "w2",
+          "text": "antiguo"
+        },
+        {
+          "id": "w3",
+          "text": "alegre"
+        },
+        {
+          "id": "w4",
+          "text": "hermoso"
+        }
+      ],
+      "right": [
+        {
+          "id": "s2",
+          "text": "viejo"
+        },
+        {
+          "id": "s3",
+          "text": "contento"
+        },
+        {
+          "id": "s4",
+          "text": "bello"
+        },
+        {
+          "id": "s5",
+          "text": "lento"
+        },
+        {
+          "id": "s1",
+          "text": "rápido"
+        }
+      ],
+      "pairs": [
+        [
+          "w1",
+          "s1"
+        ],
+        [
+          "w2",
+          "s2"
+        ],
+        [
+          "w3",
+          "s3"
+        ],
+        [
+          "w4",
+          "s4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Bien!",
+        "incorrect": "Un sinónimo significa lo mismo."
+      },
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Escribe diversos tipos de textos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "understand"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "COM01-DF-08",
+      "type": "multiple_choice",
+      "prompt": "¿Cuál de estas palabras es esdrújula?",
+      "options": [
+        {
+          "id": "a",
+          "text": "canción"
+        },
+        {
+          "id": "b",
+          "text": "árbol"
+        },
+        {
+          "id": "c",
+          "text": "pájaro",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "maíz"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! Pá-ja-ro: la sílaba tónica es la antepenúltima.",
+        "incorrect": "Las esdrújulas llevan la fuerza en la antepenúltima sílaba y siempre llevan tilde."
+      },
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Escribe diversos tipos de textos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "COM01-DF-09",
+      "type": "fill_blank",
+      "prompt": "Completa con el conector adecuado.",
+      "text": "Las qochas guardan agua; {{1}}, ayudan a que haya pasto. {{2}} llueva poco, el agua guardada dura varios meses.",
+      "blanks": [
+        {
+          "id": "1",
+          "accepted": [
+            "además"
+          ],
+          "options": [
+            "además",
+            "aunque",
+            "porque"
+          ]
+        },
+        {
+          "id": "2",
+          "accepted": [
+            "Aunque"
+          ],
+          "options": [
+            "Aunque",
+            "Porque",
+            "Entonces"
+          ]
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien!",
+        "incorrect": "«Además» suma una idea; «aunque» presenta un obstáculo que no impide lo demás."
+      },
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Escribe diversos tipos de textos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "COM01-DF-10",
+      "type": "classification",
+      "prompt": "¿Qué tipo de texto es cada uno?",
+      "groups": [
+        {
+          "id": "narr",
+          "label": "Narrativo: cuenta una historia"
+        },
+        {
+          "id": "inst",
+          "label": "Instructivo: da pasos"
+        },
+        {
+          "id": "info",
+          "label": "Informativo: explica un tema"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "Una leyenda sobre el origen de una laguna",
+          "group": "narr"
+        },
+        {
+          "id": "e2",
+          "text": "Una receta de puca picante",
+          "group": "inst"
+        },
+        {
+          "id": "e3",
+          "text": "Una nota sobre las vicuñas de Pampa Galeras",
+          "group": "info"
+        },
+        {
+          "id": "e4",
+          "text": "El cuento de Killa y el retablo",
+          "group": "narr"
+        },
+        {
+          "id": "e5",
+          "text": "Los pasos para armar un biohuerto",
+          "group": "inst"
+        },
+        {
+          "id": "e6",
+          "text": "Un artículo sobre la siembra de agua",
+          "group": "info"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Excelente!",
+        "incorrect": "Pregúntate qué busca cada texto: contar, enseñar a hacer o explicar."
+      },
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "evaluate_reflect"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "COM01-DF-11",
+      "type": "ordering",
+      "prompt": "Ordena las oraciones de esta noticia breve.",
+      "elements": [
+        {
+          "id": "n2",
+          "text": "Participaron más de cuarenta familias."
+        },
+        {
+          "id": "n4",
+          "text": "Al terminar, compartieron una pachamanca en la orilla."
+        },
+        {
+          "id": "n1",
+          "text": "El sábado se realizó la faena en la qocha de la comunidad."
+        },
+        {
+          "id": "n3",
+          "text": "Limpiaron el barro y repararon el muro de piedra."
+        }
+      ],
+      "correct_order": [
+        "n1",
+        "n2",
+        "n3",
+        "n4"
+      ],
+      "feedback": {
+        "correct": "¡Bien ordenada!",
+        "incorrect": "Una noticia empieza diciendo qué pasó y cuándo; luego da detalles y termina con el cierre."
+      },
+      "metadata": {
+        "competency": "COM.ESCRIBE",
+        "capacity": "Escribe diversos tipos de textos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "COM01-DF-12",
+      "type": "multiple_choice",
+      "prompt": "Rosa dice: «Hay que cuidar las qochas». ¿Qué razón del texto apoya mejor su opinión?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Las qochas son pequeñas."
+        },
+        {
+          "id": "b",
+          "text": "Las qochas dan agua para los animales y las chacras en los meses secos.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Las faenas se hacen en grupo."
+        },
+        {
+          "id": "d",
+          "text": "La huallata es un ave bonita."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien argumentado!",
+        "incorrect": "La mejor razón muestra un beneficio importante."
+      },
+      "metadata": {
+        "competency": "COM.LEE",
+        "capacity": "Lee diversos tipos de textos escritos en su lengua materna",
+        "pisa": {
+          "category": "",
+          "process": "evaluate_reflect"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 70
+      }
+    }
+  ]
+}

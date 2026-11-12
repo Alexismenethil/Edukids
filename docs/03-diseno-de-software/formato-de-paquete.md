@@ -55,7 +55,7 @@ mod-math-6-01-1.0.0.zip
 | `competencies` | lista | Sí | Competencias del CNEB que trabaja. |
 | `theory` | texto | No | Ruta de la explicación del guía. |
 | `readings` | lista | No | Fichas: `id`, `title` y `pages` (rutas de imágenes). |
-| `levels` | lista | Sí | Niveles: `id`, `kind` (`short`, `regular` o `final`), `mechanic` (`chase`, `bridge` o `classic`), `file`, `estimated_minutes`, `lives` y `danger` (`start` y `max`), además de `timer_seconds` si el nivel tiene tiempo. |
+| `levels` | lista | Sí | Niveles: `id`, `kind` (`short`, `regular` o `final`), `mechanic` (`chase`, `bridge`, `caiman` o `classic`), `file`, `estimated_minutes`, `lives` (de 1 a 5) y `danger` (`start` y `max`), además de `timer_seconds` si el nivel tiene tiempo. El desafío final usa siempre `classic` (RN-10) y puede indicar `max_attempts` (por defecto, 2). |
 
 ```json
 {
@@ -96,7 +96,8 @@ mod-math-6-01-1.0.0.zip
       "kind": "final",
       "mechanic": "classic",
       "file": "levels/FINAL.json",
-      "estimated_minutes": 20
+      "estimated_minutes": 20,
+      "max_attempts": 2
     }
   ]
 }
@@ -210,7 +211,15 @@ Valores de `pisa.category` y `pisa.process`:
 
 ## Paquetes incluidos en el juego
 
-El juego trae tres módulos de práctica en `android/content/packages/`, con el mismo formato: `mod-math-6-00`, `mod-language-6-00` y `mod-science-6-00` (número 0, «calentamiento»). Cada uno tiene un nivel de 8 preguntas que usa los tipos de ítem P1 y se registra en la base local al iniciar el juego. No llevan `checksums.sha256` porque viajan dentro del APK firmado. Su contenido es original y debe revisarlo un docente de 6.° grado antes del piloto.
+El juego trae en `android/content/packages/` los paquetes de la parada de Huamanga, con el mismo formato, y los registra en la base local al iniciar. No llevan `checksums.sha256` porque viajan dentro del APK firmado. Su contenido es original y debe revisarlo un docente de 6.° grado antes del piloto.
+
+| Paquetes | Número | Niveles |
+| --- | --- | --- |
+| `mod-math-6-00`, `mod-language-6-00`, `mod-science-6-00` | 0 (calentamiento) | Un nivel clásico de 8 preguntas con los tipos de ítem P1 |
+| `mod-*-6-01-practica` | 1 | Retos adicionales: fracciones y probabilidad, comprensión lectora e interpretación de datos |
+| `mod-math-6-01`, `mod-language-6-01`, `mod-science-6-01` | 1 | Borrador del módulo 1: tres niveles con las mecánicas de persecución, puente y caimán (6 a 8 preguntas, de dificultad básica a avanzada) y un desafío final de 12 preguntas |
+
+En cada parada, los niveles de un área forman un sendero: primero los de práctica (por número de módulo y posición) y al final el desafío final.
 
 ## Integridad y validación
 

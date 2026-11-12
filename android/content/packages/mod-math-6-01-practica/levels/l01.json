@@ -1,0 +1,330 @@
+{
+  "id": "L01",
+  "title": "Reto: fracciones",
+  "guide_intro": [
+    "¡Hoy usaremos fracciones para tomar decisiones en una visita!",
+    "Observa los datos y piensa con calma antes de responder."
+  ],
+  "items": [
+    {
+      "id": "MAT-R01-U1",
+      "type": "reading_unit",
+      "prompt": "Observa el cuadro y responde.",
+      "stimulus": {
+        "type": "table",
+        "title": "¿A dónde iremos?",
+        "content": {
+          "columns": [
+            "Lugar elegido",
+            "Parte del salón"
+          ],
+          "rows": [
+            [
+              "Río Huatatas",
+              "1/2"
+            ],
+            [
+              "Bosque",
+              "1/4"
+            ],
+            [
+              "Museo",
+              "1/6"
+            ],
+            [
+              "Mirador",
+              "1/12"
+            ]
+          ]
+        },
+        "note": "Son 24 estudiantes; cada uno eligió un solo lugar."
+      },
+      "items": [
+        {
+          "id": "MAT-R01-01",
+          "type": "numeric",
+          "prompt": "¿Qué parte del salón eligió el río o el bosque? Escribe una fracción o un decimal.",
+          "answer": 0.75,
+          "tolerance": 0,
+          "unit": "",
+          "accepted_formats": [
+            "decimal",
+            "fraction"
+          ],
+          "feedback": {
+            "correct": "¡Bien! 1/2 equivale a 2/4, y 2/4 + 1/4 = 3/4.",
+            "incorrect": "Revisa los datos y las operaciones que elegiste."
+          },
+          "hint": "Convierte 1/2 y 1/4 a fracciones con el mismo denominador.",
+          "metadata": {
+            "competency": "MAT.CANTIDAD",
+            "capacity": "Resuelve problemas de cantidad",
+            "pisa": {
+              "category": "quantity",
+              "process": "employ"
+            },
+            "difficulty": 2,
+            "estimated_seconds": 80
+          }
+        },
+        {
+          "id": "MAT-R01-02",
+          "type": "multiple_choice",
+          "prompt": "¿Qué parte más del salón eligió el río que el museo?",
+          "options": [
+            {
+              "id": "a",
+              "text": "1/6",
+              "feedback": "Ese es el grupo que eligió el museo; falta calcular la diferencia."
+            },
+            {
+              "id": "b",
+              "text": "1/3",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "2/3",
+              "feedback": "Esa es la suma de 1/2 y 1/6; la pregunta pide la diferencia."
+            },
+            {
+              "id": "d",
+              "text": "1/4",
+              "feedback": "Busca un denominador común para restar 1/2 y 1/6."
+            }
+          ],
+          "feedback": {
+            "correct": "¡Exacto! 1/2 − 1/6 = 3/6 − 1/6 = 1/3.",
+            "incorrect": "Expresa ambas fracciones con un mismo denominador y resta."
+          },
+          "hint": "Convierte ambas fracciones a sextos antes de restar.",
+          "metadata": {
+            "competency": "MAT.CANTIDAD",
+            "capacity": "Resuelve problemas de cantidad",
+            "pisa": {
+              "category": "quantity",
+              "process": "employ"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 80
+          }
+        },
+        {
+          "id": "MAT-R01-03",
+          "type": "numeric",
+          "prompt": "De los 24 estudiantes, ¿cuántos eligieron el río o el mirador?",
+          "answer": 14,
+          "tolerance": 0,
+          "unit": "estudiantes",
+          "accepted_formats": [
+            "decimal"
+          ],
+          "feedback": {
+            "correct": "¡Lo lograste! La mitad de 24 es 12 y un doceavo es 2: en total, 14 estudiantes.",
+            "incorrect": "Revisa los datos y las operaciones que elegiste."
+          },
+          "hint": "Calcula cuántos son 1/2 y 1/12 de 24; luego suma.",
+          "metadata": {
+            "competency": "MAT.CANTIDAD",
+            "capacity": "Resuelve problemas de cantidad",
+            "pisa": {
+              "category": "quantity",
+              "process": "employ"
+            },
+            "difficulty": 3,
+            "estimated_seconds": 80
+          }
+        }
+      ],
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "understand"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 240
+      }
+    },
+    {
+      "id": "MAT-R01-04",
+      "type": "multiple_choice",
+      "prompt": "Hay 3 tarjetas de sol y 9 de nube en una bolsa. Al sacar una sin mirar, ¿qué explicación es correcta?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sacar sol es más probable: hay 12 tarjetas en total.",
+          "feedback": "El total incluye también las tarjetas de nube."
+        },
+        {
+          "id": "b",
+          "text": "Ambas opciones son igual de probables, porque solo hay dos dibujos.",
+          "feedback": "Compara cuántas tarjetas hay de cada dibujo."
+        },
+        {
+          "id": "c",
+          "text": "Sacar sol es imposible, porque hay más tarjetas de nube.",
+          "feedback": "Sí hay tarjetas de sol, aunque son menos."
+        },
+        {
+          "id": "d",
+          "text": "Sacar sol es menos probable: solo 3 de las 12 tarjetas son de sol.",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Así es! La probabilidad de sol es 3/12, menor que la de nube, 9/12.",
+        "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+      },
+      "hint": "Cuenta las tarjetas de cada dibujo y luego el total.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "interpret"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT-R01-05",
+      "type": "numeric",
+      "prompt": "En la feria hay 8 bolsas con 3/4 kg de quinua cada una. Si se usan 2 kg, ¿cuántos kilogramos quedan?",
+      "answer": 4,
+      "tolerance": 0,
+      "unit": "kg",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "Ocho bolsas reúnen 6 kg; después de usar 2 kg quedan 4 kg.",
+        "incorrect": "Revisa los datos y las operaciones que elegiste."
+      },
+      "hint": "Primero calcula 8 × 3/4. Después resta los 2 kg que se usaron.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT-R01-06",
+      "type": "multiple_choice",
+      "prompt": "Ana dice que 1/3 es mayor que 1/2 porque 3 es mayor que 2. ¿Qué le responderías?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tiene razón: siempre gana la fracción con el número de abajo más grande.",
+          "feedback": "Piensa en el tamaño de las partes cuando divides un mismo entero."
+        },
+        {
+          "id": "b",
+          "text": "1/3 es menor: al dividir el mismo entero en 3 partes, cada parte es más pequeña.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Son iguales, porque ambas fracciones tienen un 1 arriba.",
+          "feedback": "La cantidad de partes en que se divide el entero también importa."
+        },
+        {
+          "id": "d",
+          "text": "No se pueden comparar fracciones con distinto denominador.",
+          "feedback": "Sí se pueden comparar usando dibujos o fracciones equivalentes."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Buen razonamiento! Un tercio es menor que un medio del mismo entero.",
+        "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+      },
+      "hint": "Imagina una tortilla dividida en 2 partes y otra igual dividida en 3.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "interpret"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 75
+      }
+    },
+    {
+      "id": "MAT-R01-07",
+      "type": "numeric",
+      "prompt": "Una receta usa 3/4 de taza de leche. Si preparas el doble, ¿cuántas tazas necesitas? Escribe una fracción o un decimal.",
+      "answer": 1.5,
+      "tolerance": 0,
+      "unit": "tazas",
+      "accepted_formats": [
+        "decimal",
+        "fraction"
+      ],
+      "feedback": {
+        "correct": "¡Bien! 2 × 3/4 = 6/4, lo mismo que 3/2 o 1,5 tazas.",
+        "incorrect": "Revisa los datos y las operaciones que elegiste."
+      },
+      "hint": "Suma 3/4 + 3/4, sin cambiar el denominador.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT-R01-08",
+      "type": "multiple_choice",
+      "prompt": "De los visitantes de una feria, 3/8 fueron a artesanía y 2/8 a comida. Si cada uno eligió una sola zona, ¿qué parte eligió otras zonas?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5/8",
+          "feedback": "Esa es la parte que eligió artesanía o comida, no la que falta."
+        },
+        {
+          "id": "b",
+          "text": "1/8",
+          "feedback": "Suma primero 3/8 y 2/8; después busca cuánto falta para 8/8."
+        },
+        {
+          "id": "c",
+          "text": "1/2",
+          "feedback": "La mitad equivale a 4/8; comprueba cuánto falta desde 5/8."
+        },
+        {
+          "id": "d",
+          "text": "3/8",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! 3/8 + 2/8 = 5/8; faltan 3/8 para completar el total.",
+        "incorrect": "Vuelve a los datos y compara las opciones antes de decidir."
+      },
+      "hint": "Todo el grupo representa 8/8. Resta la parte que eligió las dos zonas.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    }
+  ]
+}

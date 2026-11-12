@@ -36,12 +36,26 @@ Para grabar videos o probar los recorridos sin tocar la pantalla. Solo funciona 
 | `--demo-editor` | Un estudiante sin personaje lo crea (con `--demo-data`) |
 | `--demo-teacher` | PIN docente, lista de estudiantes y formulario para agregar uno (con `--demo-data`) |
 | `--demo-setup` | Configuración inicial completa (con `--demo-empty`) |
-| `--demo-home` | Inicio del estudiante con los niveles para practicar (con `--demo-data`) |
-| `--demo-level` | Juega solo el nivel de Matemática: falla una pregunta, pide una pista, repasa y llega a los resultados (con `--demo-data`) |
-| `--demo-level-language`, `--demo-level-science` | Lo mismo con los niveles de Comunicación (lectura) y de Ciencia y Tecnología (tabla) |
+| `--demo-map` | Mapa de la Sierra: entra a Huamanga, abre la ficha de un nivel y lo juega (con `--demo-data`) |
+| `--demo-chase` | Persecución de Atoq: saltos con vuelta, tropiezos, un nudo robado y el arco tejido |
+| `--demo-caiman` | Coco, el caimán glotón: saltos por la fruta, mordiscos, un nudo perdido y el paseo en su lomo |
+| `--demo-bridge` | El puente colgante: tablas que caen del cielo, viento, una caída al río con el rescate del cóndor y el arco iris |
+| `--demo-classic` | Tarjetas con Quwi y Atoq que se asoma por el costado |
+| `--demo-gameover` | Responde todo mal hasta perder las tres vidas |
+| `--demo-final` | Desafío final: portada, respuestas guardadas y calificación con la revisión |
+| `--lab` | Laboratorio de personajes: cada títere con sus gestos, caras y emotes, para tocarlo y probarlo |
+| `--demo-lab` | El laboratorio se recorre solo: todos los personajes con sus gestos, la carrera y un toque |
+
+Los modos de nivel se usan con `--demo-data` y juegan el primer nivel que tenga esa mecánica; con `--demo-area=language` o `--demo-area=science` se elige el área. En la base de demostración se completan solos los niveles anteriores del módulo, para que el elegido esté abierto.
 
 ```bash
 godot --path android -- --demo-data --demo-profiles
+```
+
+En un emulador o en la tablet, el lanzador de Android no pasa argumentos: en una compilación de depuración se escriben en `user://demo_args.txt` y se vuelve a abrir la app (para volver al juego normal, se borra el archivo):
+
+```bash
+adb shell "run-as pe.edu.unsch.edukids sh -c 'echo --demo-data --demo-chase > /data/user/0/pe.edu.unsch.edukids/files/demo_args.txt'"
 ```
 
 Grabar un video con el Movie Maker de Godot:
@@ -68,17 +82,53 @@ bash tests/architecture/check_dependencies.sh
 
 | Carpeta | Qué prueba |
 | --- | --- |
-| `tests/unit/domain` | Medidor de peligro (RN-13), estrellas (RN-11), escala AD/A/B/C (RN-12), escenas narrativas, PIN, avatar, evaluadores de cada tipo de ítem, respuestas escritas y numéricas, y la sesión del nivel |
-| `tests/unit/application` | Casos de uso con repositorios falsos: aula, niveles, respuestas, pistas y continuar un nivel |
-| `tests/unit/presentation` | Presentadores y modelos de vista |
-| `tests/integration` | JSON, módulos 0 incluidos, SQLite (aula, intentos y respuestas), hash del PIN, reloj, aleatoriedad e identificadores |
+| `tests/unit/domain` | Medidor de peligro (RN-13), vidas y game over (RN-14), estrellas (RN-11), escala AD/A/B/C (RN-12), orden de los niveles (RN-18), escenas narrativas, PIN, avatar, evaluadores de cada tipo de ítem, respuestas escritas y numéricas, la sesión del nivel y el desafío final |
+| `tests/unit/application` | Casos de uso con repositorios falsos: aula, mapa del capítulo, niveles cerrados, respuestas, pistas, game over, desafío final con intentos y continuar un nivel |
+| `tests/unit/presentation` | Presentadores y modelos de vista: mapa, parada, nivel, vidas, game over y calificación |
+| `tests/unit/scenes` | Motor de títeres: curvas, clips, reproducción, resortes y la biblioteca de gestos |
+| `tests/integration` | JSON, paquetes incluidos y sus senderos, SQLite (aula, intentos, respuestas, game over, calificaciones y la migración 002), hash del PIN, reloj, aleatoriedad e identificadores |
 | `tests/architecture` | Regla de dependencias entre capas (RNF-15, CA-20) |
 
 El CI ([`.github/workflows/android.yml`](../.github/workflows/android.yml)) ejecuta la verificación de capas y las pruebas en cada cambio dentro de `android/`. Los reportes de GdUnit4 se guardan en `reports/` (ignorado por Git).
 
+## Mapa y mecánicas
+
+Después de entrar con su PIN, el estudiante llega al **mapa de la Sierra**: el Qhapaq Ñan une Huamanga, Quinua, Pampa Galeras y Vilcashuamán. Las paradas sin contenido muestran un candado. En **Huamanga** hay un sendero por área (una cuerda del quipu) con un nudo por nivel: los niveles de cada módulo se abren en orden y el desafío final se abre al completarlos (RN-18).
+
+| Mecánica | Escena (`scenes/mechanics/`) | Mundo | Qué pasa con cada respuesta |
+| --- | --- | --- | --- |
+| Persecución (`chase`) | `ChaseStage` | Valle del Qhapaq Ñan, corre sin fin | El avatar acelera y salta una piedra con una vuelta; con un error tropieza y Atoq se acerca riendo. En 0, Atoq se lanza y se lleva un nudo. Al final, el avatar cruza el arco tejido |
+| Puente (`bridge`) | `BridgeStage` | Cañón con río y cascada | Cada acierto hace caer un tramo de tablas desde el cielo; con un error sopla el viento y el puente se sacude. En 0, el avatar cae al río y un cóndor lo rescata. Al final cruza y sale un arco iris |
+| Caimán (`caiman`) | `CaimanStage` | Laguna con muelle, totoras y nenúfares | Cada acierto lanza una fruta y Coco salta fuera del agua para atraparla; con un error se acerca, salpica y muerde el aire. En 0, salta hasta el muelle y se lleva un nudo. Al final, lleva al avatar en su lomo a la otra orilla |
+| Clásica (`classic`) | `ClassicStage` | Valle de los menús | Atoq se asoma por el borde de la tarjeta según el medidor |
+
+**Mundo a pantalla completa.** Cada mecánica arma su mundo con `ParallaxWorld` (`scenes/world/`): capas
+con paralaje, cielo con sol, rayos de luz, neblina, agua con corriente, pasto que se mece, polen,
+pétalos, mariposas y pájaros. La cámara tiene tres encuadres: mientras se responde, la franja de arriba
+de la tarjeta (`QUESTION`); al responder, la tarjeta baja y la cámara abre a toda la pantalla para la
+reacción (`ACTION`); y un primer plano para los momentos fuertes, como cuando se pierde una vida
+(`CLOSE`). La tarjeta vuelve con la explicación. Los menús y el mapa usan el mismo valle
+(`SierraBackdrop`).
+
+**Personajes con vida.** Quwi, el avatar, Atoq y Coco son títeres del mismo motor (`scenes/characters/puppet/`,
+guía en [`scenes/characters/README.md`](scenes/characters/README.md)): la pose se arma por capas (reposo,
+carrera, clips, cara, mirada y resortes), así que respiran, parpadean, siguen el dedo con la mirada, giran la
+cabeza, y el pelo, las orejas, las colas y la chalina rebotan solos. Tienen expresiones con nombre, emotes
+sobre la cabeza, gestos de biblioteca y reaccionan cuando los tocan o los acarician. Un personaje nuevo se
+declara con datos y se prueba en el laboratorio (`--lab`).
+
+**Dirección de cine.** `MechanicStage` da a cada mecánica una pausa de impacto (`hit_stop`), un golpe de zoom
+(`punch`), un destello suave (`flash`), barras de cine para los momentos grandes (`cinema`) y cambios de luz
+(`light`: fría cuando el peligro alcanza al avatar, dorada en la victoria). Los efectos son formas vectoriales
+(`scenes/fx/`: polvo, estrellas, brillitos, salpicaduras, anillos, golpes y papel picado).
+
+Todas usan la misma regla del dominio: el medidor de peligro y las vidas (RN-13 y RN-14). Sin vidas, el nivel termina en game over y se puede reintentar. El desafío final no tiene medidor, vidas ni pistas: guarda cada respuesta sin decir si está bien y al entregar muestra la calificación AD, A, B o C, la cuerda recuperada y la explicación de cada pregunta.
+
 ## Motor de actividades
 
-Los niveles se leen de paquetes con el [formato v1](../docs/03-diseno-de-software/formato-de-paquete.md). El juego trae tres módulos de práctica en `content/packages/` (`mod-math-6-00`, `mod-language-6-00` y `mod-science-6-00`), que aparecen en el inicio del estudiante mientras llega el mapa.
+Los niveles se leen de paquetes con el [formato v1](../docs/03-diseno-de-software/formato-de-paquete.md). El juego trae en `content/packages/` los módulos 0 de calentamiento, los retos adicionales de práctica y un borrador del módulo 1 de cada área, con niveles de persecución, puente y caimán y un desafío final de 12 preguntas. Son contenidos de prueba pendientes de revisión docente; los módulos oficiales se validan en el Sprint 9. Los paquetes anteriores no se modificaron, para conservar sus intentos en curso.
+
+Las preguntas, su orden y sus números son los mismos para todos los estudiantes. Se mezclan algunos elementos de las actividades de ordenar, emparejar, clasificar y completar; por ahora no se generan ejercicios ni valores distintos por estudiante.
 
 | Tipo de ítem | Evaluador (dominio) | Actividad (vista) |
 | --- | --- | --- |
@@ -117,16 +167,19 @@ adb install -r android/builds/edukids-debug.apk
 ```text
 android/
 ├── src/
-│   ├── domain/          1. Reglas: aula (Pin, PinLockout, Avatar, Student…), DangerMeter, StarRule, CnebGradeScale
+│   ├── domain/          1. Reglas: aula (Pin, PinLockout, Avatar, Student…), LevelSession, DangerMeter, StarRule,
+│   │                       CnebGradeScale, TrailRule y los evaluadores de cada tipo de ítem
 │   ├── application/     2. Casos de uso (aula, ajustes, historia), puertos y DTO
 │   ├── infrastructure/  3. Adaptadores de salida: SQLite, memoria, hash del PIN, JSON, reloj, UUID
 │   ├── presentation/    3. Presentadores, modelos de vista y paleta del avatar
 │   └── main/            Raíz de composición (autoload), navegador y modo demostración
-├── scenes/              4. Vistas: inicio, perfiles y PIN, editor del avatar, modo docente, personajes
+├── scenes/              4. Vistas: inicio, perfiles y PIN, editor del avatar, mapa y paradas, nivel y mecánicas,
+│                           mundos con paralaje, actividades, modo docente y personajes (avatar, Quwi, Atoq y Coco)
 ├── assets/              Arte importado, fuentes y tema de la interfaz
 ├── content/story/       Escenas narrativas del juego base (JSON)
+├── content/packages/    Paquetes de la parada de Huamanga que vienen con el juego
 ├── art-src/             Fuentes del arte (SVG maestros); Godot no las importa
-├── tools/art/           Herramientas del flujo de arte
+├── tools/art/           Herramientas del flujo de arte (rigs por piezas y generadores de mundos)
 ├── tools/preview/       Galería de avatares para revisar el arte
 ├── tests/               Pruebas y verificación de capas
 └── addons/gdUnit4/      Pruebas (versión fijada)
@@ -139,16 +192,17 @@ El detalle está en la [estructura del repositorio](../docs/03-diseno-de-softwar
 | Recurso | Fuente | Cómo llega al juego |
 | --- | --- | --- |
 | Fondos por capas | `assets/art/backgrounds/*.svg` | Godot importa el SVG a 1,5× |
+| Mundos de las mecánicas | `tools/art/worlds/*.py` → `assets/art/worlds/<mundo>/*.svg` | Los scripts escriben capas SVG limpias (valle, cañón y laguna); Godot importa cada capa a su escala, con mipmaps. Ver `tools/art/worlds/README.md` |
 | Interfaz e iconos | `assets/art/ui/*.svg` | Godot importa el SVG a 2× |
 | Personajes por piezas | `art-src/characters/<personaje>.svg` y `<personaje>.rig.json` | `tools/art/build_cutout_rig.gd` rasteriza cada pieza a 2×, arma un atlas y genera la escena del rig |
 | Avatar del estudiante | `art-src/characters/avatar.svg` y `avatar.rig.json` | Igual que Quwi, pero las piezas de piel, cabello y ropa van en gris y el juego las tiñe con la paleta de `src/presentation/styles/avatar_palette.gd` |
 | Letras del logotipo | Fredoka Bold (OFL) | `art-src/tools/make_logo_letters.py` genera una letra por SVG y su escena |
 | Ícono de la app | `icon.svg` y `art-src/icons/` | PNG de 192 y 432 px para Android |
 
-Reconstruir el rig de Quwi después de editar su SVG:
+Reconstruir el rig de un personaje después de editar su SVG (`quwi`, `atoq` o `caiman`):
 
 ```bash
-godot --headless --path android -s res://tools/art/build_cutout_rig.gd -- res://art-src/characters/quwi.rig.json
+godot --headless --path android -s res://tools/art/build_cutout_rig.gd -- res://art-src/characters/atoq.rig.json
 ```
 
 Reconstruir el avatar y revisar todas sus combinaciones en una captura:

@@ -4,151 +4,191 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_back_0"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1379, 464, 352, 229)
+region = Rect2(912, 353, 352, 229)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_back_1"]
 atlas = ExtResource("1_atlas")
-region = Rect2(714, 4, 448, 322)
+region = Rect2(392, 8, 448, 322)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_back_2"]
 atlas = ExtResource("1_atlas")
-region = Rect2(455, 464, 344, 241)
+region = Rect2(336, 353, 344, 241)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_back_3"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1023, 464, 352, 229)
+region = Rect2(1272, 353, 352, 229)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hair_tail_4"]
+atlas = ExtResource("1_atlas")
+region = Rect2(1584, 8, 185, 274)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_back_4"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 464, 447, 284)
+region = Rect2(1632, 353, 352, 229)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_back_5"]
 atlas = ExtResource("1_atlas")
-region = Rect2(334, 4, 376, 337)
+region = Rect2(8, 8, 376, 337)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_tie_4"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1100, 980, 54, 58)
+region = Rect2(1766, 849, 54, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_leg_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(630, 752, 60, 208)
+region = Rect2(732, 617, 60, 208)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_leg_r"]
 atlas = ExtResource("1_atlas")
-region = Rect2(566, 752, 60, 208)
+region = Rect2(800, 617, 60, 208)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_socks"]
 atlas = ExtResource("1_atlas")
-region = Rect2(358, 980, 154, 88)
+region = Rect2(704, 849, 154, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shoe_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(625, 980, 105, 64)
+region = Rect2(1224, 849, 105, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shoe_r"]
 atlas = ExtResource("1_atlas")
-region = Rect2(516, 980, 105, 64)
+region = Rect2(1337, 849, 105, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pants"]
 atlas = ExtResource("1_atlas")
-region = Rect2(803, 464, 216, 232)
+region = Rect2(688, 353, 216, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_skirt"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 980, 270, 140)
+region = Rect2(342, 849, 270, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_neck"]
 atlas = ExtResource("1_atlas")
-region = Rect2(278, 980, 76, 112)
+region = Rect2(620, 849, 76, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_torso"]
 atlas = ExtResource("1_atlas")
-region = Rect2(334, 752, 228, 220)
+region = Rect2(496, 617, 228, 220)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_band"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1158, 980, 208, 54)
+region = Rect2(8, 1029, 208, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sleeve_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(784, 752, 86, 174)
+region = Rect2(868, 617, 86, 174)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hand_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1038, 980, 58, 58)
+region = Rect2(1618, 849, 58, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sleeve_r"]
 atlas = ExtResource("1_atlas")
-region = Rect2(694, 752, 86, 174)
+region = Rect2(962, 617, 86, 174)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hand_r"]
 atlas = ExtResource("1_atlas")
-region = Rect2(976, 980, 58, 58)
+region = Rect2(1828, 849, 58, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_head"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1522, 4, 368, 300)
+region = Rect2(1208, 8, 368, 300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_blush"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1694, 980, 248, 36)
+region = Rect2(682, 1029, 248, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyes_open"]
 atlas = ExtResource("1_atlas")
-region = Rect2(734, 980, 160, 60)
+region = Rect2(1450, 849, 160, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyes_closed"]
 atlas = ExtResource("1_atlas")
-region = Rect2(626, 1124, 170, 22)
+region = Rect2(1530, 1029, 170, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyes_happy"]
 atlas = ExtResource("1_atlas")
-region = Rect2(200, 1124, 170, 29)
+region = Rect2(1138, 1029, 170, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_squeeze"]
+atlas = ExtResource("1_atlas")
+region = Rect2(224, 1029, 166, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_wide"]
+atlas = ExtResource("1_atlas")
+region = Rect2(866, 849, 176, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_star"]
+atlas = ExtResource("1_atlas")
+region = Rect2(1050, 849, 166, 66)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lashes"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 1124, 192, 32)
+region = Rect2(938, 1029, 192, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_brows"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_brow_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(444, 1124, 178, 24)
+region = Rect2(1460, 1029, 62, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brow_r"]
+atlas = ExtResource("1_atlas")
+region = Rect2(1390, 1029, 62, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mouth_smile"]
 atlas = ExtResource("1_atlas")
-region = Rect2(374, 1124, 66, 26)
+region = Rect2(1316, 1029, 66, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mouth_open"]
 atlas = ExtResource("1_atlas")
-region = Rect2(898, 980, 74, 58)
+region = Rect2(1684, 849, 74, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mouth_o"]
+atlas = ExtResource("1_atlas")
+region = Rect2(634, 1029, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mouth_grin"]
+atlas = ExtResource("1_atlas")
+region = Rect2(548, 1029, 78, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_front_0"]
 atlas = ExtResource("1_atlas")
-region = Rect2(874, 752, 326, 172)
+region = Rect2(8, 849, 326, 172)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_front_1"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1204, 752, 340, 172)
+region = Rect2(1390, 617, 340, 172)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_front_2"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 752, 326, 224)
+region = Rect2(162, 617, 326, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_braid_l_3"]
+atlas = ExtResource("1_atlas")
+region = Rect2(85, 617, 69, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hair_tie_l_3"]
+atlas = ExtResource("1_atlas")
+region = Rect2(473, 1029, 67, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_braid_r_3"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 617, 69, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hair_tie_r_3"]
+atlas = ExtResource("1_atlas")
+region = Rect2(398, 1029, 67, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_front_3"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 4, 326, 456)
+region = Rect2(8, 353, 320, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_front_4"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1548, 752, 326, 172)
+region = Rect2(1056, 617, 326, 172)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hair_front_5"]
 atlas = ExtResource("1_atlas")
-region = Rect2(1166, 4, 352, 312)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hair_tie_3"]
-atlas = ExtResource("1_atlas")
-region = Rect2(1370, 980, 320, 50)
+region = Rect2(848, 8, 352, 312)
 
 [node name="AvatarRig" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -182,6 +222,13 @@ position = Vector2(0.0, 0.0)
 texture = SubResource("AtlasTexture_hair_back_3")
 centered = false
 offset = Vector2(-176.0, -326.0)
+
+[node name="HairTail4" type="Sprite2D" parent="HairBack"]
+visible = false
+position = Vector2(108.0, -256.0)
+texture = SubResource("AtlasTexture_hair_tail_4")
+centered = false
+offset = Vector2(-22.0, -60.0)
 
 [node name="HairBack4" type="Sprite2D" parent="HairBack"]
 visible = false
@@ -337,6 +384,27 @@ texture = SubResource("AtlasTexture_eyes_happy")
 centered = false
 offset = Vector2(-85.0, -14.0)
 
+[node name="EyesSqueeze" type="Sprite2D" parent="Torso/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_squeeze")
+centered = false
+offset = Vector2(-83.0, -25.0)
+
+[node name="EyesWide" type="Sprite2D" parent="Torso/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_wide")
+centered = false
+offset = Vector2(-88.0, -38.0)
+
+[node name="EyesStar" type="Sprite2D" parent="Torso/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_star")
+centered = false
+offset = Vector2(-83.0, -33.0)
+
 [node name="Lashes" type="Sprite2D" parent="Torso/Head/Eyes"]
 visible = false
 position = Vector2(0.0, 0.0)
@@ -344,11 +412,17 @@ texture = SubResource("AtlasTexture_lashes")
 centered = false
 offset = Vector2(-96.0, -44.0)
 
-[node name="Brows" type="Sprite2D" parent="Torso/Head"]
-position = Vector2(0.0, -180.0)
-texture = SubResource("AtlasTexture_brows")
+[node name="BrowL" type="Sprite2D" parent="Torso/Head"]
+position = Vector2(-58.0, -184.0)
+texture = SubResource("AtlasTexture_brow_l")
 centered = false
-offset = Vector2(-89.0, -13.0)
+offset = Vector2(-31.0, -9.0)
+
+[node name="BrowR" type="Sprite2D" parent="Torso/Head"]
+position = Vector2(58.0, -184.0)
+texture = SubResource("AtlasTexture_brow_r")
+centered = false
+offset = Vector2(-31.0, -9.0)
 
 [node name="Mouth" type="Node2D" parent="Torso/Head"]
 position = Vector2(0.0, -44.0)
@@ -365,6 +439,20 @@ position = Vector2(0.0, 0.0)
 texture = SubResource("AtlasTexture_mouth_open")
 centered = false
 offset = Vector2(-37.0, -23.0)
+
+[node name="MouthO" type="Sprite2D" parent="Torso/Head/Mouth"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_mouth_o")
+centered = false
+offset = Vector2(-20.0, -22.0)
+
+[node name="MouthGrin" type="Sprite2D" parent="Torso/Head/Mouth"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_mouth_grin")
+centered = false
+offset = Vector2(-39.0, -22.0)
 
 [node name="HairFront" type="Node2D" parent="Torso/Head"]
 position = Vector2(0.0, 0.0)
@@ -389,12 +477,44 @@ texture = SubResource("AtlasTexture_hair_front_2")
 centered = false
 offset = Vector2(-163.0, -374.0)
 
+[node name="BraidL3" type="Node2D" parent="Torso/Head/HairFront"]
+visible = false
+position = Vector2(-126.0, -64.0)
+
+[node name="BraidL3Art" type="Sprite2D" parent="Torso/Head/HairFront/BraidL3"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_braid_l_3")
+centered = false
+offset = Vector2(-37.0, -14.0)
+
+[node name="BraidTieL3" type="Sprite2D" parent="Torso/Head/HairFront/BraidL3"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_hair_tie_l_3")
+centered = false
+offset = Vector2(-34.0, 149.0)
+
+[node name="BraidR3" type="Node2D" parent="Torso/Head/HairFront"]
+visible = false
+position = Vector2(126.0, -64.0)
+
+[node name="BraidR3Art" type="Sprite2D" parent="Torso/Head/HairFront/BraidR3"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_braid_r_3")
+centered = false
+offset = Vector2(-32.0, -14.0)
+
+[node name="BraidTieR3" type="Sprite2D" parent="Torso/Head/HairFront/BraidR3"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_hair_tie_r_3")
+centered = false
+offset = Vector2(-33.0, 149.0)
+
 [node name="HairFront3" type="Sprite2D" parent="Torso/Head/HairFront"]
 visible = false
 position = Vector2(0.0, 0.0)
 texture = SubResource("AtlasTexture_hair_front_3")
 centered = false
-offset = Vector2(-163.0, -310.0)
+offset = Vector2(-160.0, -310.0)
 
 [node name="HairFront4" type="Sprite2D" parent="Torso/Head/HairFront"]
 visible = false
@@ -409,10 +529,3 @@ position = Vector2(0.0, 0.0)
 texture = SubResource("AtlasTexture_hair_front_5")
 centered = false
 offset = Vector2(-176.0, -322.0)
-
-[node name="HairTie3" type="Sprite2D" parent="Torso/Head/HairFront"]
-visible = false
-position = Vector2(0.0, 0.0)
-texture = SubResource("AtlasTexture_hair_tie_3")
-centered = false
-offset = Vector2(-160.0, 85.0)

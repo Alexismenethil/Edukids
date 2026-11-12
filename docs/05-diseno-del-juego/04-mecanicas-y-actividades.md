@@ -20,6 +20,7 @@ Todas las mecánicas de práctica comparten una sola regla del dominio (RN-13 y 
 - Cada acierto suma 1; cada error resta 1.
 - Si llega a **0**, se pierde una vida y el medidor vuelve a 2.
 - Cada nivel empieza con **3 vidas**; con 0 vidas el nivel termina en game over y se puede reintentar de inmediato.
+- Perder una vida impide la tercera estrella del nivel (RN-11).
 - Estos valores se pueden ajustar por nivel en el paquete.
 
 | Respuesta | Medidor | Vidas | Qué se ve en la persecución |
@@ -44,6 +45,13 @@ Todas las mecánicas de práctica comparten una sola regla del dominio (RN-13 y 
 - **Fantasía:** construir un camino para cruzar un río, un barranco o un andén.
 - **Cómo funciona:** cada acierto coloca una piedra o una tabla; cada error hace que el puente se tambalee (el medidor baja). En 0, el avatar cae al agua, pierde una vida y vuelve al inicio del tramo.
 - **Ideal para:** niveles regulares con problemas de varios pasos y secuencias.
+
+### Coco, el caimán glotón
+
+- **Fantasía:** darle de comer a Coco, un caimán bonachón que ama las frutas de la feria (tunas, paltas, choclos, lúcumas y papas).
+- **Cómo funciona:** cada acierto lanza una fruta a su boca; Coco la mastica feliz y se aleja contento. Cada error lo pone gruñón: se acerca a la orilla y muerde el aire. El medidor se ve como la distancia de Coco al muelle; en 0, Coco se lleva un nudo de un mordisco (una vida). Al terminar, Coco se duerme satisfecho y cruza al avatar al otro lado del río en su lomo.
+- **Ideal para:** niveles cortos de práctica con preguntas variadas (proporciones, datos, uso del lenguaje, nutrición).
+- **Nota:** el caimán es propio de la Selva; en la Sierra aparece como visitante. Cuando exista el capítulo de la Selva, su lugar natural es la parada del río Apurímac.
 
 ### Clásica
 
@@ -88,8 +96,8 @@ Los tipos de ítem están definidos en [tipos de ítems y calificación](../06-c
 
 | Niveles | Dificultad de los ítems | Mecánica sugerida |
 | --- | --- | --- |
-| 1 y 2 | Básica | Persecución (corto) |
-| 3 a 5 | Básica e intermedia | Persecución o puente |
+| 1 y 2 | Básica | Persecución o caimán (corto) |
+| 3 a 5 | Básica e intermedia | Persecución, caimán o puente |
 | 6 a 8 | Intermedia y avanzada | Puente o clásica con unidades de lectura |
 | Desafío final | 30 % básica, 50 % intermedia y 20 % avanzada | Clásica sin medidor |
 

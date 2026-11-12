@@ -10,6 +10,7 @@
 | Humbi | Guía de la Costa | Pingüino de Humboldt | Tranquilo, observador y gran nadador | Capítulo 3 [POR CONFIRMAR] |
 | Atoq | Antagonista | Zorro andino (*atuq* en quechua) | Travieso y bromista, nunca cruel | Todo el juego |
 | Mama Sisa | Guardiana del quipu | Abuela de la comunidad | Sabia, cálida y paciente | Prólogo, cierres de capítulo y epílogo |
+| Coco | Personaje de la mecánica del caimán | Caimán | Glotón, bonachón y un poco gruñón con hambre | Niveles con la mecánica del caimán |
 
 ## Avatar del estudiante
 
@@ -44,6 +45,13 @@ Los guías explican la teoría con diálogos, dan pistas y reaccionan a cada res
 - **Animaciones:** correr, acechar, reír, tropezar, enojarse de forma cómica, alcanzar y huir.
 - **Sonido:** un efecto instrumental propio, sin voz.
 
+## Coco, el caimán glotón
+
+- **Diseño:** caimán verde de perfil, con cabeza grande, ojos redondos y expresivos, panza crema, escamas redondeadas y dientes pequeños y romos (nunca amenazantes).
+- **Expresiones:** tranquilo, feliz (ojos cerrados en arco y mejillas rosadas), gruñón (ceño fruncido) y dormido.
+- **Animaciones:** flotar, parpadear, abrir la boca, masticar, morder el aire, bostezar y dormir.
+- **Tono:** muerde el aire o un nudo de forma cómica; nunca lastima al avatar.
+
 ## Mama Sisa
 
 Abuela de la comunidad y guardiana del quipu. Da las misiones, recibe las cuerdas recuperadas y aparece en los cierres de capítulo. Viste ropa tradicional ayacuchana y lleva el quipu en las manos.
@@ -66,9 +74,26 @@ Cada parada tiene un personaje local que presenta el lugar. Los nombres son prov
 
 ## Animaciones del MVP
 
-| Personaje | Animaciones mínimas |
+| Personaje | Animaciones |
 | --- | --- |
-| Avatar (niño y niña) | Reposo, correr, saltar, celebrar, tropezar y pensar |
-| Quwi | Reposo, hablar, aplaudir, pensar y consolar |
-| Atoq | Correr, reír, alcanzar y huir |
+| Avatar (niño y niña) | Reposo vivo, trote, salto con voltereta, saludo, celebración con estrellas en los ojos, aplauso, baile, pensar, tropiezo con mareo, susto y tristeza; la cola de caballo, las trenzas, la falda y los brazos rebotan solos |
+| Quwi | Reposo vivo, hablar, saludar, celebrar, pensar, consolar, olfatear, cosquillas y asomarse; las orejas y la chalina rebotan solas |
+| Atoq | Galope con la cola al viento, reír, lanzarse, tropezar y quedar mareado, gruñir con pisotón, aullar, olfatear y acechar |
+| Coco | Flotar, seguir la fruta con los ojos brillantes, abrir la boca, masticar, morder el aire, relamerse, bostezar, dar un coletazo y dormir entre zetas |
 | Mama Sisa | Reposo, hablar y entregar la cuerda |
+
+## Motor de títeres
+
+Todos los personajes comparten un mismo motor de animación por piezas (`android/scenes/characters/puppet/`). Así se comportan igual de vivos y un personaje nuevo se agrega declarando datos, sin programar su animación desde cero.
+
+| Capacidad | Qué ve el estudiante |
+| --- | --- |
+| Pose por capas | El personaje respira, corre, saluda y mira al mismo tiempo, sin cortes entre un gesto y otro |
+| Mirada y cabeza en 2.5D | Sigue con los ojos el dedo que toca la pantalla, la fruta que vuela o al zorro que lo persigue |
+| Movimiento secundario | El pelo, las orejas, las colas, la chalina y la bolsa llegan tarde y rebotan |
+| Expresiones | Alegría, risa, asombro, duda, preocupación, tristeza, esfuerzo, mareo y sueño, con cejas que se inclinan |
+| Emotes | Corazón, sorpresa, pregunta, idea, nota musical, zetas, gota de apuro, enojo, estrellas de mareo y brillitos |
+| Toque y caricia | Cada personaje reacciona distinto cada vez que lo tocan; si lo acarician, se pone feliz |
+| Vida propia | Cuando nadie lo mira, se estira, mira alrededor, olfatea o cambia el peso de un pie al otro |
+
+La guía para crear un personaje está en `android/scenes/characters/README.md` y se prueba en el laboratorio de personajes (`--lab`).

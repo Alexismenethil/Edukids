@@ -1,0 +1,310 @@
+{
+  "id": "L02",
+  "title": "El puente de los problemas",
+  "guide_intro": [
+    "Para cruzar el río necesitamos un puente: cada problema bien resuelto pone una tabla.",
+    "Son problemas de varios pasos. Lee dos veces y anota los datos."
+  ],
+  "items": [
+    {
+      "id": "MAT01-L02-01",
+      "type": "numeric",
+      "prompt": "Doña Juana compra 3 sacos de papa de 50 kg cada uno, a S/ 1,20 el kilo. Paga con S/ 200. ¿Cuánto recibe de vuelto?",
+      "answer": 20,
+      "tolerance": 0,
+      "unit": "S/",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Exacto! 150 kg × 1,20 = S/ 180 y 200 − 180 = S/ 20.",
+        "incorrect": "Son tres pasos: kilos (3 × 50 = 150), costo (150 × 1,20 = 180) y vuelto (200 − 180)."
+      },
+      "hint": "Primero calcula cuántos kilos compra en total.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 110
+      }
+    },
+    {
+      "id": "MAT01-L02-02",
+      "type": "multiple_choice",
+      "prompt": "Un retablo cuesta S/ 240 y hoy tiene 15 % de descuento. ¿Cuánto se paga?",
+      "options": [
+        {
+          "id": "a",
+          "text": "S/ 225",
+          "feedback": "Restaste 15 soles, pero el descuento es el 15 % de 240."
+        },
+        {
+          "id": "b",
+          "text": "S/ 36",
+          "feedback": "S/ 36 es el descuento, no lo que se paga."
+        },
+        {
+          "id": "c",
+          "text": "S/ 216",
+          "feedback": "S/ 216 sería con 10 % de descuento."
+        },
+        {
+          "id": "d",
+          "text": "S/ 204",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! El 15 % de 240 es 36, y 240 − 36 = 204.",
+        "incorrect": "Calcula el 10 % (24) y el 5 % (12): el descuento es 36."
+      },
+      "hint": "El 10 % de 240 es 24. ¿Cuánto es el 5 %?",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "MAT01-L02-03",
+      "type": "numeric",
+      "prompt": "En la feria hay 84 puestos. Los 3/7 venden comida y 1/4 de los demás vende artesanía. ¿Cuántos puestos venden artesanía?",
+      "answer": 12,
+      "tolerance": 0,
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Bien pensado! 3/7 de 84 = 36 de comida; quedan 48, y 1/4 de 48 = 12.",
+        "incorrect": "No es 1/4 de 84: primero quita los 36 de comida y calcula 1/4 de los 48 que quedan."
+      },
+      "hint": "«Los demás» son los puestos que no venden comida.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 120
+      }
+    },
+    {
+      "id": "MAT01-L02-04",
+      "type": "fill_blank",
+      "prompt": "Un bus sale de Huamanga a las 7:45 y tarda 1 h 35 min en llegar a Quinua. Completa el cálculo.",
+      "text": "Con 1 hora más son las {{1}}. Con 15 minutos más son las {{2}}. Con los 20 minutos que faltan llega a las {{3}}.",
+      "blanks": [
+        {
+          "id": "1",
+          "accepted": [
+            "8:45"
+          ],
+          "options": [
+            "8:45",
+            "8:35",
+            "9:45"
+          ]
+        },
+        {
+          "id": "2",
+          "accepted": [
+            "9:00"
+          ],
+          "options": [
+            "9:00",
+            "8:60",
+            "9:15"
+          ]
+        },
+        {
+          "id": "3",
+          "accepted": [
+            "9:20"
+          ],
+          "options": [
+            "9:20",
+            "9:10",
+            "9:35"
+          ]
+        }
+      ],
+      "feedback": {
+        "correct": "¡Exacto! Llega a las 9:20.",
+        "incorrect": "Suma por partes: 1 hora, luego 15 minutos para llegar a la hora en punto y después 20 minutos."
+      },
+      "hint": "15 + 20 = 35 minutos.",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "MAT01-L02-05",
+      "type": "multiple_choice",
+      "prompt": "Se reparten 3/4 de una torta entre 3 amigos en partes iguales. Luis dice que cada uno recibe 1/4 y Rosa dice que 1/3. ¿Quién tiene razón?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rosa, porque son 3 amigos.",
+          "feedback": "Un tercio sería si repartieran la torta entera; aquí se reparten 3/4."
+        },
+        {
+          "id": "b",
+          "text": "Luis, porque 3/4 ÷ 3 = 1/4.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Los dos, porque es lo mismo.",
+          "feedback": "1/4 y 1/3 no son iguales: 1/3 es más grande."
+        },
+        {
+          "id": "d",
+          "text": "Ninguno: cada uno recibe 3/7.",
+          "feedback": "No se suman numeradores y denominadores al repartir."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! Tres cuartos repartidos entre 3 da un cuarto para cada uno.",
+        "incorrect": "Dibuja la torta en 4 partes, toma 3 y repártelas entre 3 amigos."
+      },
+      "hint": "¿Cuántos cuartos hay y entre cuántos se reparten?",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "reason"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "MAT01-L02-06",
+      "type": "classification",
+      "prompt": "Problema: «Killa compra 4 cuadernos a S/ 3,50 cada uno. Tiene 11 años y vive a 2 km de la escuela. ¿Cuánto gasta?» ¿Qué datos necesitas y cuáles sobran?",
+      "groups": [
+        {
+          "id": "need",
+          "label": "Necesito"
+        },
+        {
+          "id": "extra",
+          "label": "Sobra"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "4 cuadernos",
+          "group": "need"
+        },
+        {
+          "id": "e2",
+          "text": "S/ 3,50 cada uno",
+          "group": "need"
+        },
+        {
+          "id": "e3",
+          "text": "Tiene 11 años",
+          "group": "extra"
+        },
+        {
+          "id": "e4",
+          "text": "Vive a 2 km",
+          "group": "extra"
+        },
+        {
+          "id": "e5",
+          "text": "Compra en la mañana",
+          "group": "extra"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Solo necesitas la cantidad y el precio: 4 × 3,50 = S/ 14.",
+        "incorrect": "Pregúntate: ¿este dato cambia lo que gasta? Su edad y la distancia no cambian el precio."
+      },
+      "hint": "Lee la pregunta: ¿qué se quiere saber?",
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "interpret"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT01-L02-07",
+      "type": "numeric",
+      "prompt": "Un corral rectangular mide 12 m de largo y 7,5 m de ancho. ¿Cuántos metros de malla se necesitan para cercarlo con 2 vueltas?",
+      "answer": 78,
+      "tolerance": 0,
+      "unit": "m",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Excelente! El perímetro es 2 × (12 + 7,5) = 39 m, y con 2 vueltas son 78 m.",
+        "incorrect": "El perímetro suma los cuatro lados: 12 + 7,5 + 12 + 7,5 = 39 m. Luego, dos vueltas."
+      },
+      "hint": "Primero calcula una vuelta: el perímetro.",
+      "metadata": {
+        "competency": "MAT.FORMA",
+        "capacity": "Resuelve problemas de forma, movimiento y localización",
+        "pisa": {
+          "category": "space_shape",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 110
+      }
+    },
+    {
+      "id": "MAT01-L02-08",
+      "type": "numeric",
+      "prompt": "Un tanque de agua tiene forma de cubo de 1,5 m de arista. ¿Cuántos litros caben? (1 m³ = 1000 L)",
+      "answer": 3375,
+      "tolerance": 0,
+      "unit": "L",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Impresionante! 1,5 × 1,5 × 1,5 = 3,375 m³, que son 3375 litros.",
+        "incorrect": "El volumen de un cubo es arista × arista × arista: 1,5 × 1,5 = 2,25 y 2,25 × 1,5 = 3,375 m³."
+      },
+      "hint": "Calcula el volumen en m³ y luego multiplica por 1000.",
+      "metadata": {
+        "competency": "MAT.FORMA",
+        "capacity": "Resuelve problemas de forma, movimiento y localización",
+        "pisa": {
+          "category": "space_shape",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 120
+      }
+    }
+  ]
+}

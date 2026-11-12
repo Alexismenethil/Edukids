@@ -19,3 +19,15 @@ var continue_label := ""
 var mood: StringName = &""
 ## Aviso si la respuesta no se pudo guardar.
 var warning := ""
+## Desafío final: la respuesta solo se guarda; la corrección llega al entregar.
+var final := false
+## Medidor de peligro y vidas después de responder.
+var danger := 0
+var lives := 0
+var life_lost := false
+var game_over := false
+var streak := 0
+## «¡Racha de 3!» desde el tercer acierto seguido; vacío si no.
+var streak_label := ""
+## Lo que dice el guía cuando se pierde una vida.
+var life_line := ""

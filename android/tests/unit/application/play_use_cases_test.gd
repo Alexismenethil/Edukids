@@ -147,16 +147,96 @@ func test_a_new_content_version_starts_a_new_attempt() -> void:
 	assert_int(again.total).is_equal(2)
 
 
-func test_the_level_list_shows_stars_and_unfinished_levels() -> void:
-	_store.add("science", [SampleItems.multiple_choice("c1")])
-	var cards := ListLevels.new(_store, _attempts).execute(STUDENT)
-	assert_int(cards.size()).is_equal(2)
-	assert_str(cards[0].title).is_equal("Nivel de prueba")
-	assert_int(cards[0].question_count).is_equal(3)
-	assert_bool(cards[0].in_progress).is_false()
-	var start := _start()
-	_submit(start.attempt_id, "b")
-	assert_bool(ListLevels.new(_store, _attempts).execute(STUDENT)[0].in_progress).is_true()
+func _module(entries: Array, package_id: String = "mod-math-6-01", area: String = "math") -> void:
+	_store.add_module(package_id, area, entries, [SampleItems.multiple_choice("m1"), SampleItems.multiple_choice("m2")])
+
+
+func _play(package_id: String, level_id: String, answers: Array) -> LevelSummaryResponse:
+	var started := StartLevel.new(_store, _attempts, _sessions, _registry, _builder, _ids, _clock).execute(
+		STUDENT, package_id, level_id)
+	assert_bool(started.is_ok()).override_failure_message(started.message).is_true()
+	var start: LevelStartResponse = started.value
+	for answer: Variant in answers:
+		var response := _submit(start.attempt_id, answer)
+		if response.finished:
+			break
+		_continue(start.attempt_id)
+	var finished := FinishLevel.new(_sessions, _attempts, _clock).execute(start.attempt_id)
+	assert_bool(finished.is_ok()).override_failure_message(finished.message).is_true()
+	return finished.value
+
+
+func test_levels_open_in_order_inside_a_module() -> void:
+	_module([{"id": "L01", "mechanic": "chase"}, {"id": "L02", "mechanic": "caiman"}, {"id": "DF", "kind": "final"}])
+	var start := StartLevel.new(_store, _attempts, _sessions, _registry, _builder, _ids, _clock)
+	assert_str(start.execute(STUDENT, "mod-math-6-01", "L02").error).is_equal("level_locked")
+	assert_str(start.execute(STUDENT, "mod-math-6-01", "DF").error).is_equal("level_locked")
+	_play("mod-math-6-01", "L01", ["b", "b"])
+	var opened := start.execute(STUDENT, "mod-math-6-01", "L02")
+	assert_bool(opened.is_ok()).is_true()
+	assert_str((opened.value as LevelStartResponse).mechanic).is_equal("caiman")
+	assert_int((opened.value as LevelStartResponse).lives).is_equal(3)
+	assert_int((opened.value as LevelStartResponse).danger).is_equal(2)
+
+
+func test_running_out_of_lives_ends_in_game_over() -> void:
+	_module([{"id": "L01", "mechanic": "chase", "lives": 1, "danger": {"start": 1, "max": 4}}])
+	var summary := _play("mod-math-6-01", "L01", ["a"])
+	assert_bool(summary.game_over).is_true()
+	assert_int(summary.stars).is_equal(0)
+	assert_int(summary.lives_left).is_equal(0)
+	var attempts := _attempts.list_attempts(STUDENT)
+	assert_str(attempts[0].status).is_equal(Attempt.GAME_OVER)
+	assert_dict(_attempts.best_stars(STUDENT)).is_empty()
+	var again := _play("mod-math-6-01", "L01", ["b", "b"])
+	assert_bool(again.game_over).is_false()
+	assert_int(again.stars).is_equal(3)
+
+
+func test_the_final_challenge_is_graded_and_has_limited_attempts() -> void:
+	_module([{"id": "L01"}, {"id": "DF", "kind": "final", "max_attempts": 1}])
+	_play("mod-math-6-01", "L01", ["b", "b"])
+	var final := _play("mod-math-6-01", "DF", ["b", "a"])
+	assert_bool(final.final).is_true()
+	assert_str(final.grade).is_equal("C")
+	assert_str(final.grade_description).is_equal("En inicio")
+	assert_float(final.percent).is_equal(50.0)
+	assert_int(final.review.size()).is_equal(2)
+	assert_bool(final.review[1].correct).is_false()
+	assert_str(final.review[1].solution).is_equal("50 000")
+	assert_int(final.attempts_left).is_equal(0)
+	assert_array(final.progress).is_equal([LevelSession.RIGHT, LevelSession.MISSED])
+	var closed := StartLevel.new(_store, _attempts, _sessions, _registry, _builder, _ids, _clock).execute(
+		STUDENT, "mod-math-6-01", "DF")
+	assert_str(closed.error).is_equal("no_attempts_left")
+	assert_str(_attempts.list_attempts(STUDENT)[-1].cneb_grade).is_equal("C")
+
+
+func test_the_chapter_map_shows_trails_with_locks_stars_and_grades() -> void:
+	_module([{"id": "L01", "mechanic": "chase"}, {"id": "L02", "mechanic": "bridge"}, {"id": "DF", "kind": "final"}])
+	_module([{"id": "L01", "mechanic": "caiman"}], "mod-science-6-01", "science")
+	_store.add_module("mod-math-6-00", "math", [{"id": "L01"}], [SampleItems.multiple_choice("w1")], "huamanga", 0)
+	_play("mod-math-6-01", "L01", ["b", "a", "a"])
+	var map := GetChapterMap.new(_store, _attempts).execute(STUDENT, Chapter.SIERRA)
+	assert_int(map.stops.size()).is_equal(4)
+	var huamanga := map.stops[0]
+	assert_bool(huamanga.available).is_true()
+	assert_bool(map.stops[1].available).is_false()
+	assert_int(huamanga.trails.size()).is_equal(2)
+	var math := huamanga.trails[0]
+	assert_str(math.area).is_equal("math")
+	var ids: Array = math.nodes.map(func(node: TrailNodeResponse) -> String: return "%s/%s" % [node.package_id, node.level_id])
+	assert_array(ids).is_equal(["mod-math-6-00/L01", "mod-math-6-01/L01", "mod-math-6-01/L02", "mod-math-6-01/DF"])
+	assert_str(math.nodes[1].state).is_equal(TrailRule.DONE)
+	assert_int(math.nodes[1].best_stars).is_equal(1)
+	assert_str(math.nodes[2].state).is_equal(TrailRule.OPEN)
+	assert_str(math.nodes[2].unlocked_by).is_equal("Nivel L01")
+	assert_str(math.nodes[3].state).is_equal(TrailRule.LOCKED)
+	assert_int(math.nodes[3].attempts_left).is_equal(2)
+	assert_int(math.stars).is_equal(1)
+	assert_int(math.max_stars).is_equal(9)
+	assert_int(map.stars).is_equal(1)
+	assert_str(huamanga.trails[1].nodes[0].mechanic).is_equal("caiman")
 
 
 func test_bundled_packages_are_registered_with_their_levels() -> void:

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Ushnu de Vilcashuamán: plataforma de piedra escalonada con su portada trapezoidal. -->
+  <circle cx="86" cy="30" r="14" fill="#FFD35C" stroke="#E0A526" stroke-width="3"/>
+  <g stroke="#5A2E16" stroke-width="3" stroke-linejoin="round">
+    <path d="M10,108 L110,108 L104,92 L16,92 Z" fill="#B9A894"/>
+    <path d="M20,92 L100,92 L94,76 L26,76 Z" fill="#C9B8A2"/>
+    <path d="M30,76 L90,76 L84,60 L36,60 Z" fill="#B9A894"/>
+    <path d="M40,60 L80,60 L75,46 L45,46 Z" fill="#C9B8A2"/>
+    <path d="M52,108 L68,108 L65,84 L55,84 Z" fill="#5A4A3E"/>
+  </g>
+  <g stroke="#8E7F6E" stroke-width="2"><path d="M30,100 L40,100 M70,100 L84,100 M36,84 L46,84 M76,84 L88,84 M46,68 L54,68 M66,68 L76,68"/></g>
+  <path d="M56,46 L64,46 L62,38 L58,38 Z" fill="#E0A526" stroke="#5A2E16" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

@@ -39,7 +39,7 @@ func _migrate_and_seed() -> void:
 func test_creates_the_documented_schema() -> void:
 	var migrated := SqliteMigrator.new(_db, MIGRATIONS).migrate()
 	assert_bool(migrated.is_ok()).is_true()
-	assert_int(migrated.value).is_equal(1)
+	assert_int(migrated.value).is_equal(2)
 	var rows: Array = _db.query("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' ORDER BY name;").value
 	assert_array(rows.map(func(row: Dictionary) -> String: return str(row["name"]))).is_equal(TABLES)
 
@@ -49,13 +49,13 @@ func test_running_twice_changes_nothing() -> void:
 	migrator.migrate()
 	var again := migrator.migrate()
 	assert_bool(again.is_ok()).is_true()
-	assert_int(again.value).is_equal(1)
-	assert_int(int(_db.query("SELECT COUNT(*) AS total FROM schema_migration;").value[0]["total"])).is_equal(1)
+	assert_int(again.value).is_equal(2)
+	assert_int(int(_db.query("SELECT COUNT(*) AS total FROM schema_migration;").value[0]["total"])).is_equal(2)
 
 
 func test_finds_migrations_in_order() -> void:
 	var files := SqliteMigrator.new(_db, MIGRATIONS).pending_files()
-	assert_int(files.size()).is_greater_equal(1)
+	assert_int(files.size()).is_greater_equal(2)
 	assert_int(files[0]["version"]).is_equal(1)
 	assert_str(files[0]["name"]).is_equal("initial_schema")
 
@@ -88,3 +88,27 @@ func test_answers_need_an_existing_attempt() -> void:
 	assert_bool(_db.execute(answer, ["missing"]).is_ok()).is_false()
 	_db.execute(ATTEMPT, ["a1", "practice", null])
 	assert_bool(_db.execute(answer, ["a1"]).is_ok()).is_true()
+
+
+## Una tablet que ya tenía el esquema v1 con intentos guardados pasa al v2 sin perder nada,
+## y desde entonces acepta niveles con la mecánica del caimán.
+func test_version_two_keeps_attempts_and_accepts_the_caiman() -> void:
+	var only_first := "user://test_migrations_v1"
+	DirAccess.make_dir_recursive_absolute(only_first)
+	var copy := FileAccess.open(only_first + "/001_initial_schema.sql", FileAccess.WRITE)
+	copy.store_string(FileAccess.get_file_as_string(MIGRATIONS + "/001_initial_schema.sql"))
+	copy.close()
+	assert_int(SqliteMigrator.new(_db, only_first).migrate().value).is_equal(1)
+	_db.execute(SEED)
+	assert_bool(_db.execute(ATTEMPT, ["at1", "practice", null]).is_ok()).is_true()
+	var caiman_v1 := "INSERT INTO level (id, package_id, kind, mechanic, position, title) VALUES ('mod-math-6-01:L02', 'mod-math-6-01', 'short', 'caiman', 2, 'Coco');"
+	assert_bool(_db.execute(caiman_v1).is_ok()).is_false()
+	var migrated := SqliteMigrator.new(_db, MIGRATIONS).migrate()
+	assert_bool(migrated.is_ok()).override_failure_message(migrated.message).is_true()
+	assert_int(migrated.value).is_equal(2)
+	assert_int(int(_db.query("SELECT COUNT(*) AS total FROM attempt;").value[0]["total"])).is_equal(1)
+	assert_bool(_db.execute(caiman_v1).is_ok()).is_true()
+	assert_bool(_db.execute(ATTEMPT, ["at2", "practice", null]).is_ok()).is_true()
+	assert_bool(_db.execute(ATTEMPT.replace("'mod-math-6-01:L01'", "'no-existe'"), ["at3", "practice", null]).is_ok()).is_false()
+	DirAccess.remove_absolute(only_first + "/001_initial_schema.sql")
+	DirAccess.remove_absolute(only_first)

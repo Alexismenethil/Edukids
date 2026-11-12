@@ -64,11 +64,46 @@ El proyecto avanza por sprints, cada uno con un entregable que se puede verifica
 | Guardado de intentos: cada respuesta en el momento (RNF-06), cierre con aciertos, porcentaje, pistas y estrellas (RF-14, RF-25); el nivel continúa donde se quedó al reabrir la aplicación | Hecho |
 | Lectura y validación del manifiesto y de los niveles del formato de paquete v1 | Hecho (la instalación de paquetes descargados queda para el Sprint 7) |
 | Módulos 0 de práctica de las tres áreas, con contenido original ambientado en Ayacucho y los 9 tipos de ítem | Hecho; falta la revisión de los docentes de 6.° grado |
+| Retos adicionales de práctica: fracciones y probabilidad, comprensión lectora e interpretación de datos | Primera versión; falta la revisión de los docentes de 6.° grado |
 | Pantalla del nivel con la mecánica clásica, quipu de avance, retroalimentación, pistas de Quwi y resultados con estrellas; los niveles aparecen en el inicio del estudiante | Hecho |
 | Pruebas: 228 (77 nuevas) y verificación de dependencias | Hecho |
 | Prueba en Android (emulador de tablet 2560 × 1600): tocar opciones, teclado del juego, arrastrar tarjetas, tender cuerdas, llenar canastas y continuar el nivel después de cerrar la aplicación | Hecho; falta repetirla en la tablet real del piloto |
 | Tipos P2 (respuesta breve, tocar en la imagen y ¿tiene sentido?) | Pendientes: el registro de evaluadores ya permite agregarlos sin tocar la sesión |
-| Vidas, medidor de peligro, Atoq y game over (RN-13, RN-14) | Sprint 5, con las mecánicas |
+| Vidas, medidor de peligro, Atoq y game over (RN-13, RN-14) | Hecho en el Sprint 5 |
+
+## Avance del Sprint 5
+
+| Entregable | Estado |
+| --- | --- |
+| Mapa del capítulo de la Sierra: Huamanga, Quinua, Pampa Galeras y Vilcashuamán unidas por el Qhapaq Ñan; las paradas sin contenido muestran un candado (RN-01). Es el nuevo inicio del estudiante | Hecho |
+| Parada de Huamanga con un sendero por área (una cuerda del quipu con un nudo por nivel), estrellas por sendero y ficha del nivel antes de jugar; un nivel se abre en tres toques desde el mapa (RF-22) | Hecho |
+| Orden de los niveles de cada módulo y desafío final que se abre al completar la práctica (RN-18) | Hecho; abrirlo antes desde el modo docente queda para el Sprint 7 |
+| Medidor de peligro y vidas en todos los niveles de práctica, con game over y reintento (RN-13 y RN-14); perder una vida impide la tercera estrella (RN-11) | Hecho |
+| Escenas a pantalla completa: cada mecánica tiene su mundo por capas con paralaje (valle, cañón y laguna), cielo con sol, rayos de luz, neblina, agua con corriente, pasto que se mece, polen, pájaros y cóndores; la cámara encuadra la franja de arriba de la tarjeta mientras se responde y abre a toda la pantalla para cada reacción | Hecho |
+| Persecución: el valle corre sin fin; con cada acierto el avatar acelera y salta una piedra con una vuelta; con cada error tropieza y Atoq se acerca riendo; si lo alcanza, se lanza y se lleva un nudo; al final, el arco tejido | Hecho |
+| Puente colgante: con cada acierto cae un tramo de tablas desde el cielo; con cada error sopla el viento y el puente se sacude; al perder una vida, el avatar cae al río y un cóndor lo rescata; al final, el cruce con un arco iris | Hecho |
+| Coco, el caimán glotón (mecánica nueva): con cada acierto el avatar lanza una fruta de la feria y Coco salta fuera de la laguna para atraparla; con cada error salpica y muerde el aire; en 0, salta hasta el muelle y se lleva un nudo; al final, lleva al avatar en su lomo a la otra orilla | Hecho |
+| Mecánica clásica con Atoq que se asoma por el costado según el medidor | Hecho |
+| Desafío final (RN-10, RN-12 y RF-30): portada con el intento, respuestas guardadas sin corrección, calificación AD, A, B o C con porcentaje, cuerda del quipu (con nudo dorado en AD y A) y revisión de cada pregunta; 2 intentos por defecto | Hecho; ajustar la escala y dar intentos extra desde el modo docente queda pendiente |
+| Personajes por piezas: Atoq y Coco, con rig generado desde su SVG; el avatar trota con las rodillas arriba, salta con una vuelta, tropieza y se asusta | Primera versión; el pulido de animación es del Sprint 6 |
+| Menús y mapa con el mismo valle de las escenas (nubes, pájaros, polen y pasto que se mece) | Hecho |
+| Borrador del módulo 1 de las tres áreas: 12 niveles y 95 preguntas, más retadores y variados (problemas de varios pasos, proporciones, datos, inferencias, hechos y opiniones, cadenas alimentarias, cambios de la materia y diseño de experimentos) | Primera versión; falta la revisión de los docentes de 6.° grado |
+| Esquema SQLite v2: la tabla `level` acepta la mecánica `caiman` sin perder los intentos guardados | Hecho |
+| Pruebas: 251 y verificación de dependencias | Hecho |
+| Mama Sisa entregando la cuerda, insignias, cartas del álbum y accesorios | Sprint 6 (arte) y prioridad P2 |
+
+## Avance del Sprint 6
+
+| Entregable | Estado |
+| --- | --- |
+| Motor de títeres (`Puppet`): pose por capas, clips con curvas, ciclos de marcha, resortes, tiras flexibles, cara con expresiones, mirada 2.5D, emotes, toque y caricia, gestos de biblioteca | Hecho |
+| Quwi, el avatar, Atoq y Coco pasados al motor, con caras nuevas (ojos apretados, de estrella, de asombro, de enojo y de mareo; bocas nuevas; cejas separadas) y la cola de caballo y las trenzas como piezas que se mecen | Hecho |
+| Laboratorio de personajes (`--lab`) y guía para crear un personaje | Hecho |
+| Dirección de cine en las mecánicas: pausa de impacto, golpe de zoom, destello, barras de cine, luz fría o dorada y cámara que respira | Hecho |
+| Efectos vectoriales (`ToonFx`): polvo, estrellas, brillitos, golpes, anillos, salpicaduras, hojas, corazones y papel picado | Hecho |
+| Pruebas: 293 y verificación de dependencias | Hecho |
+| Mama Sisa entregando la cuerda, insignias, cartas del álbum y accesorios | Pendiente (arte) y prioridad P2 |
+| Medición del rendimiento en la tablet real | Pendiente |
 
 ## Épicas
 

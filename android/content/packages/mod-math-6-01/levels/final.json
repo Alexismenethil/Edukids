@@ -1,0 +1,493 @@
+{
+  "id": "DF",
+  "title": "Desafío final: la feria de los números",
+  "guide_intro": [
+    "Demuestra todo lo que practicaste en la feria."
+  ],
+  "items": [
+    {
+      "id": "MAT01-DF-01",
+      "type": "multiple_choice",
+      "prompt": "¿Cuál es el valor posicional del 7 en 3 742 581?",
+      "options": [
+        {
+          "id": "a",
+          "text": "7 000",
+          "feedback": "El 7 está en las centenas de millar."
+        },
+        {
+          "id": "b",
+          "text": "700 000",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "70 000",
+          "feedback": "Cuenta las posiciones desde la derecha."
+        },
+        {
+          "id": "d",
+          "text": "7 000 000",
+          "feedback": "Ese sería el valor en las unidades de millón."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien! El 7 está en las centenas de millar: vale 700 000.",
+        "incorrect": "Ubica el número en un tablero de valor posicional."
+      },
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 40
+      }
+    },
+    {
+      "id": "MAT01-DF-02",
+      "type": "numeric",
+      "prompt": "Calcula: 2,5 × 1,4",
+      "answer": 3.5,
+      "tolerance": 0,
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Exacto! 2,5 × 1,4 = 3,5.",
+        "incorrect": "Multiplica 25 × 14 = 350 y separa dos decimales: 3,50."
+      },
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "MAT01-DF-03",
+      "type": "true_false",
+      "prompt": "¿Verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "1/2 = 0,5",
+          "answer": true
+        },
+        {
+          "id": "s2",
+          "text": "3/10 = 0,03",
+          "answer": false,
+          "feedback": "3/10 = 0,3; 0,03 es 3/100."
+        },
+        {
+          "id": "s3",
+          "text": "25 % = 1/4",
+          "answer": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto!",
+        "incorrect": "Recuerda: décimos tienen una cifra decimal y centésimos, dos."
+      },
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "reason"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "MAT01-DF-04",
+      "type": "matching",
+      "prompt": "Une cada fracción con su fracción equivalente simplificada.",
+      "left": [
+        {
+          "id": "f1",
+          "text": "2/4"
+        },
+        {
+          "id": "f2",
+          "text": "6/9"
+        },
+        {
+          "id": "f3",
+          "text": "10/25"
+        },
+        {
+          "id": "f4",
+          "text": "9/12"
+        }
+      ],
+      "right": [
+        {
+          "id": "g2",
+          "text": "2/3"
+        },
+        {
+          "id": "g3",
+          "text": "2/5"
+        },
+        {
+          "id": "g4",
+          "text": "3/4"
+        },
+        {
+          "id": "g5",
+          "text": "3/5"
+        },
+        {
+          "id": "g1",
+          "text": "1/2"
+        }
+      ],
+      "pairs": [
+        [
+          "f1",
+          "g1"
+        ],
+        [
+          "f2",
+          "g2"
+        ],
+        [
+          "f3",
+          "g3"
+        ],
+        [
+          "f4",
+          "g4"
+        ]
+      ],
+      "feedback": {
+        "correct": "¡Muy bien!",
+        "incorrect": "Divide numerador y denominador entre el mismo número."
+      },
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "MAT01-DF-05",
+      "type": "numeric",
+      "prompt": "Una receta de puca picante para 4 personas lleva 600 g de papa. ¿Cuántos gramos se necesitan para 10 personas?",
+      "answer": 1500,
+      "tolerance": 0,
+      "unit": "g",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Bien! 150 g por persona y 150 × 10 = 1500 g.",
+        "incorrect": "Halla los gramos para una persona (600 ÷ 4) y multiplica por 10."
+      },
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Resuelve problemas de regularidad, equivalencia y cambio",
+        "pisa": {
+          "category": "change_relationships",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT01-DF-06",
+      "type": "multiple_choice",
+      "prompt": "El 40 % de los 75 estudiantes de 6.° grado prefiere el vóley. ¿Cuántos estudiantes son?",
+      "options": [
+        {
+          "id": "a",
+          "text": "40",
+          "feedback": "40 es el porcentaje, no la cantidad."
+        },
+        {
+          "id": "b",
+          "text": "35",
+          "feedback": "Revisa el cálculo: 10 % de 75 es 7,5."
+        },
+        {
+          "id": "c",
+          "text": "30",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "45",
+          "feedback": "45 es el 60 %."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! 10 % de 75 es 7,5 y 4 × 7,5 = 30.",
+        "incorrect": "Calcula el 10 % y multiplícalo por 4."
+      },
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "MAT01-DF-07",
+      "type": "ordering",
+      "prompt": "Ordena de menor a mayor.",
+      "elements": [
+        {
+          "id": "b",
+          "text": "5/8"
+        },
+        {
+          "id": "d",
+          "text": "2/3"
+        },
+        {
+          "id": "a",
+          "text": "0,6"
+        },
+        {
+          "id": "c",
+          "text": "0,65"
+        }
+      ],
+      "correct_order": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "feedback": {
+        "correct": "¡Excelente! 0,6 < 0,625 < 0,65 < 0,666…",
+        "incorrect": "Convierte: 5/8 = 0,625 y 2/3 ≈ 0,667."
+      },
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "MAT01-DF-08",
+      "type": "numeric",
+      "prompt": "Un terreno rectangular mide 45 m de largo y su ancho es la tercera parte del largo. ¿Cuál es su área?",
+      "answer": 675,
+      "tolerance": 0,
+      "unit": "m²",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Exacto! El ancho es 15 m y 45 × 15 = 675 m².",
+        "incorrect": "Primero el ancho: 45 ÷ 3 = 15 m. El área es largo × ancho."
+      },
+      "metadata": {
+        "competency": "MAT.FORMA",
+        "capacity": "Resuelve problemas de forma, movimiento y localización",
+        "pisa": {
+          "category": "space_shape",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "MAT01-DF-09",
+      "type": "fill_blank",
+      "prompt": "Descubre la regla y completa la secuencia.",
+      "text": "3, 7, 15, 31, {{1}}, {{2}}",
+      "blanks": [
+        {
+          "id": "1",
+          "accepted": [
+            "63"
+          ],
+          "options": [
+            "63",
+            "62",
+            "47"
+          ]
+        },
+        {
+          "id": "2",
+          "accepted": [
+            "127"
+          ],
+          "options": [
+            "127",
+            "126",
+            "95"
+          ]
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Cada número es el doble del anterior más 1.",
+        "incorrect": "Mira cómo crece: 3 × 2 + 1 = 7, 7 × 2 + 1 = 15…"
+      },
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Resuelve problemas de regularidad, equivalencia y cambio",
+        "pisa": {
+          "category": "change_relationships",
+          "process": "reason"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT01-DF-10",
+      "type": "classification",
+      "prompt": "Clasifica cada cuerpo: ¿prisma o pirámide?",
+      "groups": [
+        {
+          "id": "prism",
+          "label": "Prismas"
+        },
+        {
+          "id": "pyramid",
+          "label": "Pirámides"
+        }
+      ],
+      "elements": [
+        {
+          "id": "e1",
+          "text": "Cubo",
+          "group": "prism"
+        },
+        {
+          "id": "e2",
+          "text": "Caja de zapatos",
+          "group": "prism"
+        },
+        {
+          "id": "e3",
+          "text": "Prisma de base pentagonal",
+          "group": "prism"
+        },
+        {
+          "id": "e4",
+          "text": "Pirámide de base cuadrada",
+          "group": "pyramid"
+        },
+        {
+          "id": "e5",
+          "text": "Tetraedro (4 caras triangulares)",
+          "group": "pyramid"
+        },
+        {
+          "id": "e6",
+          "text": "Carpa con una sola punta",
+          "group": "pyramid"
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien! Los prismas tienen dos bases iguales; las pirámides, una base y una punta.",
+        "incorrect": "Busca si el cuerpo tiene dos bases paralelas o una sola base y un vértice arriba."
+      },
+      "metadata": {
+        "competency": "MAT.FORMA",
+        "capacity": "Resuelve problemas de forma, movimiento y localización",
+        "pisa": {
+          "category": "space_shape",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    },
+    {
+      "id": "MAT01-DF-11",
+      "type": "numeric",
+      "prompt": "Rosa ahorra S/ 12 la primera semana y, cada semana, S/ 4 más que la anterior. ¿Cuánto ahorró en total en 5 semanas?",
+      "answer": 100,
+      "tolerance": 0,
+      "unit": "S/",
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Excelente! 12 + 16 + 20 + 24 + 28 = S/ 100.",
+        "incorrect": "Escribe lo de cada semana: 12, 16, 20, 24 y 28. Luego suma todo."
+      },
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Resuelve problemas de regularidad, equivalencia y cambio",
+        "pisa": {
+          "category": "change_relationships",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 110
+      }
+    },
+    {
+      "id": "MAT01-DF-12",
+      "type": "multiple_choice",
+      "prompt": "Una tienda ofrece «lleva 3 y paga 2» en chompas de S/ 60. Otra ofrece 30 % de descuento en cada chompa. Si compras 3 chompas, ¿qué conviene más?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El 30 % de descuento: pagas S/ 54.",
+          "feedback": "S/ 54 es el descuento total, no lo que pagas."
+        },
+        {
+          "id": "b",
+          "text": "Las dos ofertas cuestan lo mismo.",
+          "feedback": "Calcula cada una: no dan lo mismo."
+        },
+        {
+          "id": "c",
+          "text": "«Lleva 3 y paga 2»: pagas S/ 120.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "El 30 % de descuento: pagas S/ 126.",
+          "feedback": "Ese es el precio con descuento, pero la otra oferta es más barata."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Muy bien! Pagas 2 × 60 = S/ 120, y con el 30 % pagarías 3 × 42 = S/ 126.",
+        "incorrect": "Calcula las dos: 2 × 60 y 3 × (60 − 18)."
+      },
+      "metadata": {
+        "competency": "MAT.CANTIDAD",
+        "capacity": "Resuelve problemas de cantidad",
+        "pisa": {
+          "category": "quantity",
+          "process": "reason"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 120
+      }
+    }
+  ]
+}

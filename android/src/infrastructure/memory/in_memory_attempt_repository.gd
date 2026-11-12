@@ -26,6 +26,7 @@ func finish_attempt(attempt: Attempt) -> Result:
 		if _attempts[index].id == attempt.id:
 			var stored := _attempts[index]
 			attempt.started_at_ms = stored.started_at_ms
+			attempt.kind = stored.kind
 			_attempts[index] = _copy(attempt)
 			return Result.ok()
 	return Result.fail(&"attempt_not_found", "No existe el intento %s." % attempt.id)
@@ -53,6 +54,14 @@ func best_stars(student_id: String) -> Dictionary:
 		if attempt.student_id == student_id and attempt.status == Attempt.COMPLETED:
 			best[attempt.level_key] = maxi(best.get(attempt.level_key, 0), attempt.stars)
 	return best
+
+
+func list_attempts(student_id: String) -> Array[Attempt]:
+	var found: Array[Attempt] = []
+	for attempt in _attempts:
+		if attempt.student_id == student_id:
+			found.append(_copy(attempt))
+	return found
 
 
 static func _copy(attempt: Attempt) -> Attempt:

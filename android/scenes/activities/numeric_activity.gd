@@ -24,7 +24,7 @@ func build() -> void:
 	_unit = step.data.get("unit", "")
 	_unit_first = step.data.get("unit_first", false)
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 16 if compact() else 34)
+	row.add_theme_constant_override("separation", 16 if _small() else 34)
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	center(row)
 	add_child(row)
@@ -41,27 +41,27 @@ func _make_board() -> Control:
 	column.add_child(caption)
 	_board = PanelContainer.new()
 	var style := ActivityStyle.box(BOARD, FRAME, 14, 18, 10)
-	style.content_margin_left = 16 if compact() else 30
-	style.content_margin_right = 16 if compact() else 30
+	style.content_margin_left = 16 if _small() else 30
+	style.content_margin_right = 16 if _small() else 30
 	style.content_margin_top = 22
 	style.content_margin_bottom = 22
 	_board.add_theme_stylebox_override("panel", style)
-	_board.custom_minimum_size = Vector2(196, 110) if compact() else Vector2(380, 150)
+	_board.custom_minimum_size = Vector2(196, 110) if _small() else Vector2(380, 150)
 	var line := HBoxContainer.new()
 	line.alignment = BoxContainer.ALIGNMENT_CENTER
 	line.add_theme_constant_override("separation", 6)
-	_value = ActivityStyle.label("", 40 if compact() else 58, CHALK, false)
+	_value = ActivityStyle.label("", 40 if _small() else 58, CHALK, false)
 	_value.add_theme_color_override("font_outline_color", Color(1, 1, 1, 0.08))
 	_value.add_theme_constant_override("outline_size", 4)
 	line.add_child(_value)
 	_caret = ColorRect.new()
 	_caret.color = CHALK
-	_caret.custom_minimum_size = Vector2(4, 40) if compact() else Vector2(5, 56)
+	_caret.custom_minimum_size = Vector2(4, 40) if _small() else Vector2(5, 56)
 	_caret.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	_caret.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	line.add_child(_caret)
 	_board.add_child(line)
-	_mark = MarkBadge.new("", accent(), false, 40.0 if compact() else 54.0)
+	_mark = MarkBadge.new("", accent(), false, 40.0 if _small() else 54.0)
 	_mark.visible = false
 	line.add_child(_mark)
 	column.add_child(_board)
@@ -74,8 +74,8 @@ func _make_board() -> Control:
 func _make_keypad() -> Control:
 	var grid := GridContainer.new()
 	grid.columns = 3
-	grid.add_theme_constant_override("h_separation", 8 if compact() else 12)
-	grid.add_theme_constant_override("v_separation", 8 if compact() else 12)
+	grid.add_theme_constant_override("h_separation", 8 if _small() else 12)
+	grid.add_theme_constant_override("v_separation", 8 if _small() else 12)
 	var keys: Array[String] = ["7", "8", "9", "4", "5", "6", "1", "2", "3"]
 	keys.append("," if step.data.get("decimal", true) else "")
 	keys.append("0")
@@ -87,8 +87,8 @@ func _make_keypad() -> Control:
 			grid.add_child(Control.new())
 			continue
 		var button := Ui.button("" if key == BACKSPACE else key, "backspace" if key == BACKSPACE else "", &"KeyButton")
-		button.custom_minimum_size = Vector2(68, 54) if compact() else Vector2(92, 64)
-		button.add_theme_font_size_override("font_size", 28 if compact() else 34)
+		button.custom_minimum_size = Vector2(68, 54) if _small() else Vector2(92, 64)
+		button.add_theme_font_size_override("font_size", 28 if _small() else 34)
 		if key == BACKSPACE:
 			button.add_theme_color_override("icon_normal_color", ActivityStyle.BROWN)
 			button.add_theme_color_override("icon_pressed_color", ActivityStyle.BROWN)
@@ -172,3 +172,8 @@ func apply_answer(value: Variant) -> void:
 	var text := str(value)
 	for index in text.length():
 		get_tree().create_timer(0.3 * index).timeout.connect(_press.bind(text[index]))
+
+
+## Teclado y pizarra más pequeños en la columna de lectura o bajo la escena de la mecánica.
+func _small() -> bool:
+	return compact() or (step != null and step.short)

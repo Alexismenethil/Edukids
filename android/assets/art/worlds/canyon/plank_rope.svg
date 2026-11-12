@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30">
+  <!-- Remiendo de soga tejida (cuando una pregunta del repaso vuelve a fallar). -->
+  <path d="M2,9 Q60,13 118,9" fill="none" stroke="#8A6A3A" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2,9 Q60,13 118,9" fill="none" stroke="#D9B26F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2,15 Q60,19 118,15" fill="none" stroke="#8A6A3A" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2,15 Q60,19 118,15" fill="none" stroke="#E8833A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2,21 Q60,25 118,21" fill="none" stroke="#8A6A3A" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2,21 Q60,25 118,21" fill="none" stroke="#D9B26F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M53,15 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z" fill="#C2185B"/>
+  <path d="M55.5,13 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0 Z" fill="#FF8FB3"/>
+</svg>

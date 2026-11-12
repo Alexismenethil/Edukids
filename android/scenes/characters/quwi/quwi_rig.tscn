@@ -4,71 +4,87 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_foot_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(355, 504, 120, 68)
+region = Rect2(602, 516, 120, 68)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_foot_r"]
 atlas = ExtResource("1_atlas")
-region = Rect2(231, 504, 120, 68)
+region = Rect2(474, 516, 120, 68)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_body"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 4, 382, 346)
+region = Rect2(8, 8, 382, 346)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arm_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 354, 125, 146)
+region = Rect2(8, 362, 125, 146)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arm_r"]
 atlas = ExtResource("1_atlas")
-region = Rect2(133, 354, 124, 146)
+region = Rect2(141, 362, 124, 146)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scarf"]
 atlas = ExtResource("1_atlas")
-region = Rect2(261, 354, 372, 102)
+region = Rect2(273, 362, 372, 102)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scarf_tail"]
 atlas = ExtResource("1_atlas")
-region = Rect2(804, 4, 136, 180)
+region = Rect2(816, 8, 136, 180)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ear_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(637, 354, 139, 101)
+region = Rect2(653, 362, 139, 101)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ear_r"]
 atlas = ExtResource("1_atlas")
-region = Rect2(780, 354, 139, 101)
+region = Rect2(800, 362, 139, 101)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_head"]
 atlas = ExtResource("1_atlas")
-region = Rect2(390, 4, 410, 342)
+region = Rect2(398, 8, 410, 342)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_brows"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_brow_l"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 594, 226, 25)
+region = Rect2(608, 614, 72, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brow_r"]
+atlas = ExtResource("1_atlas")
+region = Rect2(528, 614, 72, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyes_open"]
 atlas = ExtResource("1_atlas")
-region = Rect2(4, 504, 223, 86)
+region = Rect2(243, 516, 223, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyes_closed"]
 atlas = ExtResource("1_atlas")
-region = Rect2(234, 594, 226, 23)
+region = Rect2(688, 614, 226, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyes_happy"]
 atlas = ExtResource("1_atlas")
-region = Rect2(679, 504, 228, 34)
+region = Rect2(292, 614, 228, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_squeeze"]
+atlas = ExtResource("1_atlas")
+region = Rect2(730, 516, 220, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_star"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 516, 227, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mouth_smile"]
 atlas = ExtResource("1_atlas")
-region = Rect2(603, 504, 72, 41)
+region = Rect2(212, 614, 72, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mouth_open"]
 atlas = ExtResource("1_atlas")
-region = Rect2(479, 504, 74, 61)
+region = Rect2(8, 614, 74, 61)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mouth_o"]
 atlas = ExtResource("1_atlas")
-region = Rect2(557, 504, 42, 58)
+region = Rect2(90, 614, 42, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mouth_frown"]
+atlas = ExtResource("1_atlas")
+region = Rect2(140, 614, 64, 41)
 
 [node name="QuwiRig" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -139,11 +155,17 @@ texture = SubResource("AtlasTexture_head")
 centered = false
 offset = Vector2(-205.0, -171.0)
 
-[node name="Brows" type="Sprite2D" parent="Torso/Head"]
-position = Vector2(0.0, -220.0)
-texture = SubResource("AtlasTexture_brows")
+[node name="BrowL" type="Sprite2D" parent="Torso/Head"]
+position = Vector2(-77.0, -222.0)
+texture = SubResource("AtlasTexture_brow_l")
 centered = false
-offset = Vector2(-113.0, -12.0)
+offset = Vector2(-36.0, -10.0)
+
+[node name="BrowR" type="Sprite2D" parent="Torso/Head"]
+position = Vector2(77.0, -222.0)
+texture = SubResource("AtlasTexture_brow_r")
+centered = false
+offset = Vector2(-36.0, -10.0)
 
 [node name="Eyes" type="Node2D" parent="Torso/Head"]
 position = Vector2(0.0, -164.0)
@@ -168,6 +190,20 @@ texture = SubResource("AtlasTexture_eyes_happy")
 centered = false
 offset = Vector2(-114.0, -14.0)
 
+[node name="EyesSqueeze" type="Sprite2D" parent="Torso/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_squeeze")
+centered = false
+offset = Vector2(-110.0, -32.0)
+
+[node name="EyesStar" type="Sprite2D" parent="Torso/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_star")
+centered = false
+offset = Vector2(-115.0, -45.0)
+
 [node name="Mouth" type="Node2D" parent="Torso/Head"]
 position = Vector2(0.0, -82.0)
 
@@ -190,3 +226,10 @@ position = Vector2(0.0, 0.0)
 texture = SubResource("AtlasTexture_mouth_o")
 centered = false
 offset = Vector2(-21.0, -23.0)
+
+[node name="MouthFrown" type="Sprite2D" parent="Torso/Head/Mouth"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_mouth_frown")
+centered = false
+offset = Vector2(-32.0, -23.0)

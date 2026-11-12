@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="80" viewBox="0 0 110 80">
+  <!-- Canasta tejida para las frutas. -->
+  <path d="M8,30 L102,30 Q98,74 80,76 L30,76 Q12,74 8,30 Z" fill="#C2185B"/>
+  <path d="M10,38 L100,38 L99,43 L11,43 Z" fill="#F28C28"/>
+  <path d="M10,50 L100,50 L99,55 L11,55 Z" fill="#FFD23F"/>
+  <path d="M10,62 L100,62 L99,67 L11,67 Z" fill="#1FA2A6"/>
+  <path d="M14,44 L18,40 L22,44 L18,48 Z" fill="#FFF4DC"/>
+  <path d="M26.5,44 L30.5,40 L34.5,44 L30.5,48 Z" fill="#FFF4DC"/>
+  <path d="M39,44 L43,40 L47,44 L43,48 Z" fill="#FFF4DC"/>
+  <path d="M51.5,44 L55.5,40 L59.5,44 L55.5,48 Z" fill="#FFF4DC"/>
+  <path d="M64,44 L68,40 L72,44 L68,48 Z" fill="#FFF4DC"/>
+  <path d="M76.5,44 L80.5,40 L84.5,44 L80.5,48 Z" fill="#FFF4DC"/>
+  <path d="M89,44 L93,40 L97,44 L93,48 Z" fill="#FFF4DC"/>
+  <path d="M4,26 Q55,18 106,26 L106,33 Q55,25 4,33 Z" fill="#8A1E44"/>
+</svg>

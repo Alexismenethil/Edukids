@@ -1,0 +1,289 @@
+{
+  "id": "L03",
+  "title": "Frutas contadas para Coco",
+  "guide_intro": [
+    "Coco, el caimán glotón, solo come frutas bien contadas.",
+    "Hoy usamos proporciones, fracciones y datos de la feria."
+  ],
+  "items": [
+    {
+      "id": "MAT01-L03-01",
+      "type": "numeric",
+      "prompt": "Coco come 3 tunas cada 2 horas. A ese ritmo, ¿cuántas tunas come en 10 horas?",
+      "answer": 15,
+      "tolerance": 0,
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Ñam! 10 horas son 5 veces 2 horas, y 5 × 3 = 15 tunas.",
+        "incorrect": "Busca cuántos grupos de 2 horas hay en 10 horas y multiplica por 3."
+      },
+      "hint": "Haz una tabla: 2 h → 3 tunas, 4 h → 6 tunas…",
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Resuelve problemas de regularidad, equivalencia y cambio",
+        "pisa": {
+          "category": "change_relationships",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 70
+      }
+    },
+    {
+      "id": "MAT01-L03-02",
+      "type": "multiple_choice",
+      "prompt": "En la canasta hay 4 tunas rojas, 6 tunas verdes y 2 paltas. Si Coco saca una fruta sin mirar, ¿qué es más probable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sacar una tuna roja",
+          "feedback": "Hay 4 rojas de 12 frutas; las verdes son más."
+        },
+        {
+          "id": "b",
+          "text": "Sacar una palta",
+          "feedback": "Solo hay 2 paltas de 12 frutas."
+        },
+        {
+          "id": "c",
+          "text": "Sacar una tuna verde",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Todas tienen la misma probabilidad",
+          "feedback": "No: hay distinta cantidad de cada fruta."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Así es! Las verdes son 6 de 12: la mitad de la canasta.",
+        "incorrect": "Lo más probable es lo que hay en mayor cantidad."
+      },
+      "hint": "Cuenta cuántas frutas hay de cada tipo.",
+      "metadata": {
+        "competency": "MAT.DATOS",
+        "capacity": "Resuelve problemas de gestión de datos e incertidumbre",
+        "pisa": {
+          "category": "uncertainty_data",
+          "process": "employ"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "MAT01-L03-03",
+      "type": "multiple_choice",
+      "prompt": "Con la misma canasta (4 rojas, 6 verdes y 2 paltas), ¿qué fracción de las frutas son tunas rojas?",
+      "options": [
+        {
+          "id": "a",
+          "text": "1/3",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "1/4",
+          "feedback": "1/4 sería 3 de 12."
+        },
+        {
+          "id": "c",
+          "text": "4/6",
+          "feedback": "Comparaste rojas con verdes, no con el total."
+        },
+        {
+          "id": "d",
+          "text": "2/5",
+          "feedback": "El total son 12 frutas."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Correcto! 4/12 simplificado es 1/3.",
+        "incorrect": "Es la cantidad de rojas sobre el total: 4/12, y se simplifica."
+      },
+      "hint": "El total de frutas es 4 + 6 + 2.",
+      "metadata": {
+        "competency": "MAT.DATOS",
+        "capacity": "Resuelve problemas de gestión de datos e incertidumbre",
+        "pisa": {
+          "category": "uncertainty_data",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 60
+      }
+    },
+    {
+      "id": "MAT01-L03-04",
+      "type": "ordering",
+      "prompt": "Coco anotó cuántas frutas comió: lunes 8, martes 5, miércoles 11, jueves 7 y viernes 3. Ordena los días de más a menos frutas.",
+      "elements": [
+        {
+          "id": "lun",
+          "text": "Lunes · 8"
+        },
+        {
+          "id": "mar",
+          "text": "Martes · 5"
+        },
+        {
+          "id": "vie",
+          "text": "Viernes · 3"
+        },
+        {
+          "id": "mie",
+          "text": "Miércoles · 11"
+        },
+        {
+          "id": "jue",
+          "text": "Jueves · 7"
+        }
+      ],
+      "correct_order": [
+        "mie",
+        "lun",
+        "jue",
+        "mar",
+        "vie"
+      ],
+      "feedback": {
+        "correct": "¡Muy bien ordenado! 11 > 8 > 7 > 5 > 3.",
+        "incorrect": "Fíjate que es de MÁS a MENOS: empieza por el miércoles."
+      },
+      "hint": "Busca primero el número más grande.",
+      "metadata": {
+        "competency": "MAT.DATOS",
+        "capacity": "Resuelve problemas de gestión de datos e incertidumbre",
+        "pisa": {
+          "category": "uncertainty_data",
+          "process": "employ"
+        },
+        "difficulty": 1,
+        "estimated_seconds": 50
+      }
+    },
+    {
+      "id": "MAT01-L03-05",
+      "type": "numeric",
+      "prompt": "Con esos datos (8, 5, 11, 7 y 3 frutas), ¿cuántas frutas comió Coco en promedio por día?",
+      "answer": 6.8,
+      "tolerance": 0,
+      "accepted_formats": [
+        "decimal"
+      ],
+      "feedback": {
+        "correct": "¡Excelente! La suma es 34 y 34 ÷ 5 = 6,8 frutas por día.",
+        "incorrect": "El promedio es la suma de los datos dividida entre la cantidad de datos: 34 ÷ 5."
+      },
+      "hint": "Suma las frutas de los 5 días.",
+      "metadata": {
+        "competency": "MAT.DATOS",
+        "capacity": "Resuelve problemas de gestión de datos e incertidumbre",
+        "pisa": {
+          "category": "uncertainty_data",
+          "process": "employ"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 90
+      }
+    },
+    {
+      "id": "MAT01-L03-06",
+      "type": "true_false",
+      "prompt": "En el mercado, 3 tunas cuestan S/ 2 y 9 tunas cuestan S/ 6. ¿Verdadero o falso?",
+      "statements": [
+        {
+          "id": "s1",
+          "text": "El precio es proporcional a la cantidad de tunas.",
+          "answer": true
+        },
+        {
+          "id": "s2",
+          "text": "12 tunas cuestan S/ 8.",
+          "answer": true
+        },
+        {
+          "id": "s3",
+          "text": "Con S/ 10 se compran 14 tunas.",
+          "answer": false,
+          "feedback": "S/ 10 son 5 veces S/ 2: se compran 15 tunas."
+        },
+        {
+          "id": "s4",
+          "text": "Cada tuna cuesta más de S/ 1.",
+          "answer": false,
+          "feedback": "Cada tuna cuesta 2 ÷ 3 ≈ S/ 0,67."
+        }
+      ],
+      "feedback": {
+        "correct": "¡Bien razonado! Es una proporción: 3 tunas por cada S/ 2.",
+        "incorrect": "Usa la relación 3 tunas → S/ 2 y multiplica: 12 tunas son 4 veces 3."
+      },
+      "hint": "¿Cuántas veces cabe S/ 2 en S/ 10?",
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Resuelve problemas de regularidad, equivalencia y cambio",
+        "pisa": {
+          "category": "change_relationships",
+          "process": "reason"
+        },
+        "difficulty": 3,
+        "estimated_seconds": 100
+      }
+    },
+    {
+      "id": "MAT01-L03-07",
+      "type": "multi_select",
+      "prompt": "Coco reparte 24 frutas en bolsas con la misma cantidad, sin que sobre ninguna y con más de 3 frutas por bolsa. ¿Cuántas frutas puede poner en cada bolsa?",
+      "options": [
+        {
+          "id": "b4",
+          "text": "4",
+          "correct": true
+        },
+        {
+          "id": "b5",
+          "text": "5",
+          "feedback": "24 ÷ 5 no es exacto."
+        },
+        {
+          "id": "b6",
+          "text": "6",
+          "correct": true
+        },
+        {
+          "id": "b8",
+          "text": "8",
+          "correct": true
+        },
+        {
+          "id": "b9",
+          "text": "9",
+          "feedback": "24 ÷ 9 no es exacto."
+        },
+        {
+          "id": "b12",
+          "text": "12",
+          "correct": true
+        }
+      ],
+      "feedback": {
+        "correct": "¡Todo correcto! Son los divisores de 24 mayores que 3: 4, 6, 8, 12 y 24.",
+        "incorrect": "Sirven los números que dividen exactamente a 24 y son mayores que 3."
+      },
+      "hint": "Divide 24 entre cada número. ¿Sobra algo?",
+      "metadata": {
+        "competency": "MAT.REGULARIDAD",
+        "capacity": "Resuelve problemas de regularidad, equivalencia y cambio",
+        "pisa": {
+          "category": "change_relationships",
+          "process": "employ"
+        },
+        "difficulty": 2,
+        "estimated_seconds": 80
+      }
+    }
+  ]
+}

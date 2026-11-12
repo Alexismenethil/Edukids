@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Vicuña de Pampa Galeras sobre el ichu de la puna. -->
+  <path d="M8,106 C30,98 90,98 112,106 L112,114 L8,114 Z" fill="#D9B26F"/>
+  <g stroke="#D6B865" stroke-width="2.5" stroke-linecap="round"><path d="M14,104 L10,94 M18,104 L18,92 M22,104 L26,95"/><path d="M96,104 L92,94 M100,104 L100,92 M104,104 L108,95"/></g>
+  <g stroke="#5A2E16" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M40,74 L36,104 M50,76 L50,104 M78,76 L80,104 M88,72 L92,104" fill="none" stroke-width="7"/>
+    <path d="M40,74 L36,104 M50,76 L50,104 M78,76 L80,104 M88,72 L92,104" fill="none" stroke="#C98E58" stroke-width="3.5"/>
+    <path d="M30,62 C30,52 42,48 56,49 L80,50 C92,51 98,58 96,68 C94,78 84,80 70,80 L48,80 C36,80 30,72 30,62 Z" fill="#C98E58"/>
+    <path d="M36,70 C44,78 60,80 76,79 C70,72 50,70 36,70 Z" fill="#FFF4DC" stroke="none"/>
+    <path d="M30,60 C28,48 26,36 24,26 C23,20 30,18 33,22 C36,32 38,44 40,54 Z" fill="#C98E58"/>
+    <path d="M30,58 C28,48 27,40 26,32 L33,30 C35,40 37,48 39,56 Z" fill="#FFF4DC" stroke="none"/>
+    <path d="M14,24 C14,16 22,12 30,14 C36,15 38,22 34,26 C30,30 20,30 14,24 Z" fill="#C98E58"/>
+    <path d="M24,14 L22,4 L28,11 Z M31,15 L33,5 L36,13 Z" fill="#C98E58"/>
+    <path d="M96,60 C102,58 104,64 100,68" fill="none"/>
+  </g>
+  <circle cx="24" cy="19" r="2.6" fill="#2E211B"/>
+  <path d="M14,24 C16,26 18,26 20,25" stroke="#5A2E16" stroke-width="2" fill="none"/>
+</svg>

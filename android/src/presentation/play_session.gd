@@ -12,6 +12,9 @@ var teaser_told := false
 ## Nivel elegido para jugar: paquete y nivel.
 var level_package := ""
 var level_id := ""
+## Capítulo y parada del mapa donde está el estudiante (a donde vuelve al terminar un nivel).
+var chapter: StringName = &"sierra"
+var stop_id := ""
 
 
 func choose_level(package_id: String, chosen_level_id: String) -> void:
@@ -19,7 +22,12 @@ func choose_level(package_id: String, chosen_level_id: String) -> void:
 	level_id = chosen_level_id
 
 
+func choose_stop(chosen_stop_id: String) -> void:
+	stop_id = chosen_stop_id
+
+
 func log_out() -> void:
 	student_id = ""
 	level_package = ""
 	level_id = ""
+	stop_id = ""

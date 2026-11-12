@@ -1,0 +1,193 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/characters/atoq/char_atoq_atlas.png" id="1_atlas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tail"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 225, 215, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_br"]
+atlas = ExtResource("1_atlas")
+region = Rect2(120, 8, 92, 202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_fr"]
+atlas = ExtResource("1_atlas")
+region = Rect2(599, 8, 63, 191)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_body"]
+atlas = ExtResource("1_atlas")
+region = Rect2(220, 8, 300, 195)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bag"]
+atlas = ExtResource("1_atlas")
+region = Rect2(231, 225, 181, 173)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_bl"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 8, 104, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_fl"]
+atlas = ExtResource("1_atlas")
+region = Rect2(528, 8, 63, 194)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ear_back"]
+atlas = ExtResource("1_atlas")
+region = Rect2(516, 225, 80, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_head"]
+atlas = ExtResource("1_atlas")
+region = Rect2(670, 8, 237, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ear_front"]
+atlas = ExtResource("1_atlas")
+region = Rect2(420, 225, 88, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_open"]
+atlas = ExtResource("1_atlas")
+region = Rect2(760, 225, 73, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_happy"]
+atlas = ExtResource("1_atlas")
+region = Rect2(931, 225, 70, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_wide"]
+atlas = ExtResource("1_atlas")
+region = Rect2(686, 225, 66, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_angry"]
+atlas = ExtResource("1_atlas")
+region = Rect2(841, 225, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyes_dizzy"]
+atlas = ExtResource("1_atlas")
+region = Rect2(604, 225, 74, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mouth_grin"]
+atlas = ExtResource("1_atlas")
+region = Rect2(108, 410, 87, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mouth_laugh"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 410, 92, 51)
+
+[node name="AtoqRig" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(0.0, -160.0)
+
+[node name="Tail" type="Sprite2D" parent="Body"]
+position = Vector2(-124.0, -44.0)
+texture = SubResource("AtlasTexture_tail")
+centered = false
+offset = Vector2(-205.0, -146.0)
+
+[node name="LegBR" type="Sprite2D" parent="Body"]
+position = Vector2(-60.0, 16.0)
+texture = SubResource("AtlasTexture_leg_br")
+centered = false
+offset = Vector2(-46.0, -54.0)
+
+[node name="LegFR" type="Sprite2D" parent="Body"]
+position = Vector2(124.0, 0.0)
+texture = SubResource("AtlasTexture_leg_fr")
+centered = false
+offset = Vector2(-21.0, -29.0)
+
+[node name="BodyArt" type="Sprite2D" parent="Body"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_body")
+centered = false
+offset = Vector2(-147.0, -115.0)
+
+[node name="Bag" type="Sprite2D" parent="Body"]
+position = Vector2(88.0, -60.0)
+texture = SubResource("AtlasTexture_bag")
+centered = false
+offset = Vector2(-134.0, -27.0)
+
+[node name="LegBL" type="Sprite2D" parent="Body"]
+position = Vector2(-88.0, 20.0)
+texture = SubResource("AtlasTexture_leg_bl")
+centered = false
+offset = Vector2(-52.0, -60.0)
+
+[node name="LegFL" type="Sprite2D" parent="Body"]
+position = Vector2(92.0, 4.0)
+texture = SubResource("AtlasTexture_leg_fl")
+centered = false
+offset = Vector2(-23.0, -31.0)
+
+[node name="Head" type="Node2D" parent="Body"]
+position = Vector2(132.0, -76.0)
+
+[node name="EarBack" type="Sprite2D" parent="Body/Head"]
+position = Vector2(28.0, -96.0)
+texture = SubResource("AtlasTexture_ear_back")
+centered = false
+offset = Vector2(-42.0, -116.0)
+
+[node name="HeadArt" type="Sprite2D" parent="Body/Head"]
+position = Vector2(52.0, -40.0)
+texture = SubResource("AtlasTexture_head")
+centered = false
+offset = Vector2(-83.0, -91.0)
+
+[node name="EarFront" type="Sprite2D" parent="Body/Head"]
+position = Vector2(64.0, -100.0)
+texture = SubResource("AtlasTexture_ear_front")
+centered = false
+offset = Vector2(-42.0, -130.0)
+
+[node name="Eyes" type="Node2D" parent="Body/Head"]
+position = Vector2(88.0, -64.0)
+
+[node name="EyesOpen" type="Sprite2D" parent="Body/Head/Eyes"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_open")
+centered = false
+offset = Vector2(-39.0, -47.0)
+
+[node name="EyesHappy" type="Sprite2D" parent="Body/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_happy")
+centered = false
+offset = Vector2(-39.0, -46.0)
+
+[node name="EyesWide" type="Sprite2D" parent="Body/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_wide")
+centered = false
+offset = Vector2(-35.0, -57.0)
+
+[node name="EyesAngry" type="Sprite2D" parent="Body/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_angry")
+centered = false
+offset = Vector2(-43.0, -43.0)
+
+[node name="EyesDizzy" type="Sprite2D" parent="Body/Head/Eyes"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_eyes_dizzy")
+centered = false
+offset = Vector2(-39.0, -59.0)
+
+[node name="Mouth" type="Node2D" parent="Body/Head"]
+position = Vector2(140.0, 0.0)
+
+[node name="MouthGrin" type="Sprite2D" parent="Body/Head/Mouth"]
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_mouth_grin")
+centered = false
+offset = Vector2(-41.0, -21.0)
+
+[node name="MouthLaugh" type="Sprite2D" parent="Body/Head/Mouth"]
+visible = false
+position = Vector2(0.0, 0.0)
+texture = SubResource("AtlasTexture_mouth_laugh")
+centered = false
+offset = Vector2(-43.0, -15.0)
