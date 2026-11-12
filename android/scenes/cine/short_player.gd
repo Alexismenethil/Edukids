@@ -436,6 +436,7 @@ func _beat_title(beat: Dictionary) -> void:
 	add_child(card)
 	move_child(card, _bubble.get_index())
 	card.modulate.a = 0.0
+	Sounds.play(&"title", 1.0, -3.0)
 	var tween := card.create_tween()
 	tween.tween_property(card, "modulate:a", 1.0, 0.5)
 	tween.tween_interval(float(beat.get("time", 2.2)))

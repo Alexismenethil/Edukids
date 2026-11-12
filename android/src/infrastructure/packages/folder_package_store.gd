@@ -1,8 +1,9 @@
 class_name FolderPackageStore
 extends PackageStore
 ## Adaptador de salida: lee los paquetes desde carpetas, uno por subcarpeta con su manifest.json
-## (formato v1). Hoy, las prácticas que vienen con el juego (res://content/packages);
-## desde el Sprint 7, también los paquetes instalados en user://.
+## (formato v1): los instalados en user://packages y los que vienen con el juego
+## (res://content/packages). Si un paquete está en las dos, gana la primera carpeta de la lista
+## (así una versión instalada reemplaza a la del juego).
 
 const MANIFEST := "manifest.json"
 
@@ -50,6 +51,13 @@ func load_level(package_id: String, level_id: String) -> Result:
 	return parsed
 
 
+func refresh() -> void:
+	_scanned = false
+	_packages.clear()
+	_levels.clear()
+	problems.clear()
+
+
 func _find(package_id: String) -> ContentPackage:
 	for package in list_packages():
 		if package.id == package_id:
@@ -63,7 +71,7 @@ func _scan() -> void:
 		var directory := DirAccess.open(folder)
 		if directory == null:
 			continue
-		var names := Array(directory.get_directories())
+		var names := Array(directory.get_directories()).filter(func(name: String) -> bool: return not name.begins_with("."))
 		names.sort()
 		for name: String in names:
 			var location := folder.path_join(name)
@@ -79,6 +87,7 @@ func _scan() -> void:
 			if _packages.any(func(known: ContentPackage) -> bool: return known.id == package.id):
 				continue
 			package.location = location
+			package.bundled = folder.begins_with("res://")
 			_packages.append(package)
 	_packages.sort_custom(func(a: ContentPackage, b: ContentPackage) -> bool:
 		var area_a := ContentPackage.AREAS.find(a.area)

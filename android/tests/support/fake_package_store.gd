@@ -13,6 +13,7 @@ func add(area: String, items: Array, version: String = "1.0.0") -> ContentPackag
 	raw["version"] = version
 	var package: ContentPackage = ContentPackage.parse(raw).value
 	package.location = "res://fake/%s" % package.id
+	package.bundled = true
 	for index in _packages.size():
 		if _packages[index].id == package.id:
 			_packages.remove_at(index)
@@ -41,11 +42,29 @@ func add_module(package_id: String, area: String, entries: Array, items: Array, 
 	assert(parsed.is_ok(), parsed.message)
 	var package: ContentPackage = parsed.value
 	package.location = "res://fake/%s" % package_id
+	package.bundled = true
 	_packages.append(package)
 	for entry: Dictionary in entries:
 		var file := SampleItems.level_file(items, entry["id"])
 		file["title"] = "Nivel %s" % entry["id"]
 		_files["%s/%s" % [package_id, entry["id"]]] = file
+	return package
+
+
+## Agrega (o reemplaza) un paquete desde su manifiesto y sus niveles { id: archivo }.
+func add_raw(manifest: Dictionary, level_files: Dictionary, bundled: bool = false) -> ContentPackage:
+	var parsed := ContentPackage.parse(manifest)
+	assert(parsed.is_ok(), parsed.message)
+	var package: ContentPackage = parsed.value
+	package.location = ("res://fake/%s" if bundled else "user://packages/%s") % package.id
+	package.bundled = bundled
+	for index in _packages.size():
+		if _packages[index].id == package.id:
+			_packages.remove_at(index)
+			break
+	_packages.append(package)
+	for level_id: String in level_files:
+		_files["%s/%s" % [package.id, level_id]] = level_files[level_id]
 	return package
 
 
@@ -62,3 +81,7 @@ func load_level(package_id: String, level_id: String) -> Result:
 				(parsed.value as Level).location = package.location
 			return parsed
 	return Result.fail(&"level_not_found", "No existe %s/%s." % [package_id, level_id])
+
+
+func refresh() -> void:
+	pass

@@ -106,9 +106,26 @@ El proyecto avanza por sprints, cada uno con un entregable que se puede verifica
 | Cortos: prólogo (fiesta en Huamanga), la cuerda que vuelve al quipu al superar un desafío final, y las llegadas a la Selva y a la Costa | Hecho; las llegadas se enlazan cuando existan los mapas de esos capítulos |
 | Mundos de la Selva y de la Costa con las medidas del valle; la persecución y la pantalla del nivel eligen el mundo y el guía según el capítulo | Hecho; faltan los mapas y los contenidos de los capítulos 2 y 3 |
 | Herramientas: generador del primer borrador del rig desde el SVG, laboratorio con cortos, guías para crear personajes y cortos | Hecho |
-| Pruebas: 308 y verificación de dependencias | Hecho |
+| Ritmo y variedad: solo los momentos grandes interrumpen la pregunta; variantes barajadas en cada mecánica y luz que avanza con el nivel | Hecho |
+| Sonido: 21 efectos suaves afinados con la música, ambiente por región y mezcla que baja la música mientras se piensa | Hecho; falta escucharlo en la tablet |
+| Portada viva (Mama Sisa, Kuntur, Atoq que se asoma), entrada con cámara y sonido, e icono nuevo | Hecho |
+| Portada nueva: el valle de Huamanga en la mañana con dos cordilleras nevadas, andenes y chacras de colores, el pueblito con su iglesia blanca y humo en las chimeneas, la pradera con pircas y el camino que nace en el botón Jugar, llamas (una mamá con su manta tejida y su cría) y ovejas que pastan, y una mata de cantuta propia para el picaflor, que Mama Sisa mira sin taparlo | Hecho |
+| Pruebas: 311 y verificación de dependencias | Hecho |
 | Insignias, cartas del álbum y accesorios | Pendiente (arte) y prioridad P2 |
 | Medición del rendimiento en la tablet real | Pendiente |
+
+## Avance del Sprint 7
+
+| Entregable | Estado |
+| --- | --- |
+| Instalación verificada (formato v1): SHA-256 del archivo si viene del catálogo, solo rutas y extensiones permitidas, espacio suficiente, `checksums.sha256` de cada archivo, manifiesto válido y compatible (`min_app_version`) y niveles que se pueden jugar; se descomprime en una carpeta temporal y recién después se mueve a su lugar | Hecho |
+| Actualizaciones: una versión nueva reemplaza a la anterior y conserva los intentos; nunca se instala una más antigua; una instalada reemplaza a la que trae el juego | Hecho |
+| Importar un paquete copiado por USB o por cable (RF-19): lista los `.zip` de `Download/EduKids` y `Documents/EduKids`, y el selector de archivos del sistema | Hecho; falta probar los permisos en la tablet real |
+| Habilitación por sección (RF-09): el docente decide qué paquetes ve cada sección en el mapa y puede abrir antes un desafío final (RN-18); los paquetes del juego vienen habilitados y los instalados esperan al docente | Hecho |
+| Modo docente: pestaña «Paquetes» con las tarjetas de cada paquete, su origen y versión, y la ventana para importar | Hecho |
+| Pruebas: 336 (reglas del paquete, instalación con archivos dañados o prohibidos, versiones, habilitación, mapa por sección y un ZIP de verdad) y verificación de dependencias | Hecho |
+| Cliente del catálogo, control de espacio antes de descargar y descarga reanudable con encabezado Range (RF-06, RF-07 y RF-08) | Pendiente: se conecta con la API del Sprint 8 |
+| Firma digital de los paquetes oficiales | Fase posterior (P3) |
 
 ## Épicas
 

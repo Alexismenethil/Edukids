@@ -9,6 +9,11 @@ const DEMO_DATABASE_PATH := "user://edukids_demo.db"
 const MIGRATIONS_DIRECTORY := "res://src/infrastructure/sqlite/migrations"
 ## Paquetes que vienen con el juego (los módulos de práctica de la parada de Huamanga).
 const BUNDLED_PACKAGES := "res://content/packages"
+## Paquetes instalados (descargados o importados por USB); el modo demostración usa otra carpeta.
+const INSTALLED_PACKAGES := "user://packages"
+const DEMO_INSTALLED_PACKAGES := "user://packages_demo"
+## Carpeta interna donde también se buscan paquetes para importar (las pruebas y la demostración).
+const IMPORTS := "user://imports"
 
 ## Descripción del almacenamiento para el panel de medición.
 var storage_status := "Sin iniciar"
@@ -22,6 +27,8 @@ var _institutions: InstitutionRepository
 var _students: StudentRepository
 var _registry: EvaluatorRegistry
 var _store: FolderPackageStore
+var _files: ZipPackageFiles
+var _access: PackageAccessRepository
 var _packages: PackageRepository
 var _attempts: AttemptRepository
 var _level_sessions := InMemoryLevelSessionStore.new()
@@ -40,11 +47,15 @@ func _ready() -> void:
 	_ids = UuidV4Generator.new()
 	_hasher = Pbkdf2PinHasher.new()
 	_registry = EvaluatorRegistry.standard()
-	var bundled: Array[String] = [BUNDLED_PACKAGES]
-	_store = FolderPackageStore.new(bundled, _registry)
 	_steps = StepBuilder.new(_random)
 	var args := LaunchArgs.all()
 	var demo := OS.is_debug_build() and (args.has("--demo-data") or args.has("--demo-empty"))
+	var installed := DEMO_INSTALLED_PACKAGES if demo else INSTALLED_PACKAGES
+	if demo:
+		_remove_folder(DEMO_INSTALLED_PACKAGES)
+	var folders: Array[String] = [installed, BUNDLED_PACKAGES]
+	_store = FolderPackageStore.new(folders, _registry)
+	_files = ZipPackageFiles.new(installed, _import_folders())
 	var settings := _open_storage(DEMO_DATABASE_PATH if demo else DATABASE_PATH, demo)
 	var mixer := GodotAudioMixer.new()
 	_get_story_scene = GetStoryScene.new(JsonStoryRepository.new(STORY_DIRECTORY))
@@ -85,7 +96,7 @@ func avatar_editor_presenter() -> AvatarEditorPresenter:
 
 
 func map_presenter() -> MapPresenter:
-	return MapPresenter.new(GetStudentProfile.new(_students, _clock), GetChapterMap.new(_store, _attempts), _session)
+	return MapPresenter.new(GetStudentProfile.new(_students, _clock), GetChapterMap.new(_store, _attempts, _students, _access), _session)
 
 
 func level_presenter() -> LevelPresenter:
@@ -173,6 +184,11 @@ func demo_find(area: StringName, mechanic: StringName) -> PackedStringArray:
 	return PackedStringArray()
 
 
+## Capítulo del mapa donde está el estudiante (sierra, selva o costa).
+func current_chapter() -> StringName:
+	return _session.chapter
+
+
 ## Entra con el primer estudiante que ya tiene personaje (modo demostración).
 func demo_login() -> bool:
 	if not OS.is_debug_build():
@@ -214,6 +230,38 @@ func teacher_panel_presenter() -> TeacherPanelPresenter:
 	)
 
 
+func packages_presenter() -> PackagesPresenter:
+	return PackagesPresenter.new(
+		ListPackages.new(_store, _access),
+		SetPackageAccess.new(_store, _access),
+		ListImportFiles.new(_files),
+		InstallPackage.new(_files, _store, _packages, _registry, _version),
+	)
+
+
+## Borra una carpeta con todo su contenido (la demostración empieza sin paquetes instalados).
+static func _remove_folder(path: String) -> void:
+	var directory := DirAccess.open(path)
+	if directory == null:
+		return
+	for name in directory.get_directories():
+		_remove_folder(path.path_join(name))
+	for name in directory.get_files():
+		directory.remove(name)
+	DirAccess.remove_absolute(path)
+
+
+## Carpetas donde el docente deja los paquetes copiados por USB o por cable: Descargas/EduKids y
+## Documentos/EduKids de la tablet, además de la carpeta interna de importación.
+func _import_folders() -> Array[String]:
+	var folders: Array[String] = [IMPORTS]
+	for kind in [OS.SYSTEM_DIR_DOWNLOADS, OS.SYSTEM_DIR_DOCUMENTS]:
+		var base := OS.get_system_dir(kind)
+		if not base.is_empty():
+			folders.append(base.path_join("EduKids"))
+	return folders
+
+
 func diagnostics() -> DiagnosticsViewModel:
 	var view_model := DiagnosticsViewModel.new()
 	view_model.version = _version
@@ -241,6 +289,7 @@ func _open_storage(path: String, fresh: bool) -> SettingsRepository:
 	_institutions = SqliteInstitutionRepository.new(database)
 	_students = SqliteStudentRepository.new(database)
 	_packages = SqlitePackageRepository.new(database, _clock)
+	_access = SqlitePackageAccessRepository.new(database)
 	_attempts = SqliteAttemptRepository.new(database)
 	storage_status = "SQLite %s · esquema v%d" % [database.engine_version(), migrated.value]
 	return SqliteSettingsRepository.new(database, _clock)
@@ -252,5 +301,6 @@ func _use_memory(reason: String) -> SettingsRepository:
 	_institutions = InMemoryInstitutionRepository.new()
 	_students = InMemoryStudentRepository.new()
 	_packages = InMemoryPackageRepository.new()
+	_access = InMemoryPackageAccessRepository.new()
 	_attempts = InMemoryAttemptRepository.new()
 	return InMemorySettingsRepository.new()

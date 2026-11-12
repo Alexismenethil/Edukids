@@ -30,8 +30,10 @@ android/
 │   │   ├── entities/             Institution, Section, Teacher, Student, StoryScene, ContentPackage, LevelEntry, Level, Item,
 │   │   │                         Attempt, AttemptAnswer y Chapter (paradas del mapa)
 │   │   ├── value_objects/        Pin, PinCredential, PersonName, TeacherCode, Avatar, AudioSettings, CnebGrade, TextAnswer,
-│   │   │                         NumberAnswer, Evaluation, SessionStep, AnswerOutcome, LevelSummary y QuestionReview
-│   │   ├── rules/                PinLockout, DangerMeter, StarRule, CnebGradeScale, LevelSession y TrailRule (RN-18)
+│   │   │                         NumberAnswer, Evaluation, SessionStep, AnswerOutcome, LevelSummary, QuestionReview y
+│   │   │                         SemanticVersion
+│   │   ├── rules/                PinLockout, DangerMeter, StarRule, CnebGradeScale, LevelSession, TrailRule (RN-18) y
+│   │   │                         PackageRules (contenido permitido, SHA-256, compatibilidad y habilitación por defecto)
 │   │   ├── evaluators/           ItemEvaluator, EvaluatorRegistry y un evaluador por tipo de ítem P1
 │   │   └── errors/
 │   ├── application/              2. Aplicación
@@ -40,7 +42,8 @@ android/
 │   │   │   │                     ResetStudentPin, LoginStudent, ListStudents, CustomizeAvatar, SuggestPin, SuggestAvatar
 │   │   │   ├── play/             GetChapterMap, StartLevel, SubmitAnswer, RequestHint, ContinueLevel, FinishLevel,
 │   │   │   │                     RegisterBundledPackages, LevelRecords y StepBuilder (prepara cada pregunta para la vista)
-│   │   │   ├── packages/         FetchCatalog, DownloadPackage, InstallPackage, ImportPackageFile, ReleasePackage
+│   │   │   ├── packages/         InstallPackage, ListPackages, SetPackageAccess (RF-09) y ListImportFiles (RF-19);
+│   │   │   │                     después FetchCatalog y DownloadPackage
 │   │   │   ├── rewards/          GrantRewards (los accesorios de RF-32 amplían CustomizeAvatar)
 │   │   │   ├── reports/          GetSectionReport, ExportReportCsv
 │   │   │   ├── settings/         GetAudioSettings, RestoreAudioSettings, ToggleSound
@@ -49,7 +52,8 @@ android/
 │   │   └── dto/                  Objetos de petición y respuesta
 │   ├── infrastructure/           3. Adaptadores de salida
 │   │   ├── sqlite/               Repositorios y migraciones
-│   │   ├── packages/             FolderPackageStore (lee paquetes de carpetas); después ZIP, validación e instalación
+│   │   ├── packages/             FolderPackageStore (lee paquetes de carpetas) y ZipPackageFiles (lee el ZIP, calcula
+│   │   │                         los SHA-256 e instala en user://packages pasando por una carpeta temporal)
 │   │   ├── network/              Cliente del catálogo y descarga por rangos
 │   │   ├── security/             Hash del PIN (PBKDF2-HMAC-SHA256 con sal)
 │   │   ├── memory/               Repositorios en memoria si SQLite no está disponible y sesiones de nivel en curso
@@ -62,14 +66,16 @@ android/
 │   │   └── play_session.gd       Quién entró y qué se vio mientras el juego está abierto
 │   └── main/                     Raíz de composición y navegador
 ├── scenes/                       4. Vistas (escenas de Godot)
-│   ├── ui/                       title/, profiles/ (perfiles y PIN), avatar/ (editor), teacher/ (configuración,
-│   │                             PIN docente y estudiantes) y components/ (teclado del PIN, quipu, carrusel, fondo de la Sierra)
+│   ├── ui/                       title/ (portada), profiles/ (perfiles y PIN), avatar/ (editor), teacher/ (configuración,
+│   │                             PIN docente, estudiantes y paquetes) y components/ (teclado del PIN, quipu, carrusel,
+│   │                             fondo de la Sierra)
 │   ├── map/                      Mapa del capítulo, parada con sus senderos, nudo de cada nivel y ficha antes de jugar
 │   ├── level/                    Nivel, vidas, medidor de peligro, quipu de avance, retroalimentación, resultados, game over,
 │   │                             portada y calificación del desafío final
 │   ├── mechanics/                Persecución, puente, caimán y clásica (Atoq que se asoma), con sus efectos y su cámara
 │   ├── world/                    Mundo por capas con paralaje (ParallaxWorld), sombreadores de cielo, rayos, neblina,
-│   │                             agua y viento, y lo que flota en el aire (polen, pétalos, mariposas, pájaros)
+│   │                             agua y viento, lo que flota en el aire (polen, pétalos, mariposas, pájaros), el humo
+│   │                             de las chimeneas y fauna/ (llamas y ovejas que pastan: GrazingAnimal y sus rigs)
 │   ├── activities/               Un componente visual por tipo de ítem, tarjetas, canastas y el panel de lectura
 │   └── characters/               Avatar, Quwi, Atoq, Coco el caimán y fauna (cóndor); el rig de cada personaje se genera
 ├── assets/
@@ -78,10 +84,11 @@ android/
 │   ├── fonts/
 │   └── themes/                   Tema de la interfaz
 ├── content/                      Escenas narrativas del juego base y módulos 0 de práctica (packages/)
-├── art-src/                      Fuentes del arte (SVG maestros, rigs); tiene .gdignore y no se exporta
-├── tools/art/                    Herramientas del flujo de arte: rigs por piezas y generadores de mundos (worlds/, Python;
-│                                 tiene .gdignore y no se exporta)
-├── tools/preview/                Galería de avatares para revisar el arte (no se exporta)
+├── art-src/                      Fuentes del arte (SVG maestros, rigs): characters/, fauna/ e icons/; tiene .gdignore y no
+│                                 se exporta
+├── tools/art/                    Herramientas del flujo de arte: rigs por piezas, fauna.py (animales del paisaje) y
+│                                 generadores de mundos y de la portada (worlds/, Python; no se exporta)
+├── tools/preview/                Galería de avatares y laboratorio de poses para revisar el arte (no se exporta)
 ├── builds/                       APK y videos generados (ignorado por Git)
 └── tests/
     ├── unit/                     Dominio, casos de uso y presentadores, sin escenas

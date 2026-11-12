@@ -2,23 +2,36 @@ class_name GetChapterMap
 extends RefCounted
 ## Caso de uso: el mapa de un capítulo. Cada parada muestra un sendero por área con sus niveles
 ## en orden (los de práctica primero y el desafío final al final), sus estrellas y si están
-## abiertos (RN-01, RN-18 y RF-22). Las paradas sin paquetes aparecen con candado.
+## abiertos (RN-01, RN-18 y RF-22). Solo aparecen los paquetes habilitados para la sección del
+## estudiante, y el docente puede abrir antes un desafío final (RF-09). Las paradas sin paquetes
+## aparecen con candado.
 
 var _store: PackageStore
 var _attempts: AttemptRepository
+var _students: StudentRepository
+var _access: PackageAccessRepository
+var _saved := {}
 
 
-func _init(store: PackageStore, attempts: AttemptRepository) -> void:
+func _init(store: PackageStore, attempts: AttemptRepository, students: StudentRepository = null,
+		access: PackageAccessRepository = null) -> void:
 	_store = store
 	_attempts = attempts
+	_students = students
+	_access = access
 
 
 func execute(student_id: String, chapter: StringName) -> ChapterMapResponse:
 	var records := LevelRecords.of(_attempts.list_attempts(student_id))
 	var response := ChapterMapResponse.new()
 	response.chapter = chapter
+	_saved = {}
+	if _students and _access:
+		var student := _students.find_student(student_id)
+		if student:
+			_saved = _access.access_of(student.section_id)
 	var packages := _store.list_packages().filter(func(package: ContentPackage) -> bool:
-		return package.chapter == chapter and package.kind == ContentPackage.MODULE)
+		return package.chapter == chapter and package.kind == ContentPackage.MODULE and _enabled(package))
 	packages.sort_custom(func(a: ContentPackage, b: ContentPackage) -> bool:
 		return a.number < b.number if a.number != b.number else a.id < b.id)
 	for stop_id in Chapter.stops_of(chapter):
@@ -42,13 +55,19 @@ func execute(student_id: String, chapter: StringName) -> ChapterMapResponse:
 	return response
 
 
+## Sin repositorio de acceso (pruebas antiguas, vista previa) se muestran todos los paquetes.
+func _enabled(package: ContentPackage) -> bool:
+	return _access == null or PackageRules.access_for(package, _saved)["enabled"]
+
+
 func _trail(area: StringName, packages: Array, records: LevelRecords) -> TrailResponse:
 	var trail := TrailResponse.new()
 	trail.area = area
 	var practice: Array[TrailNodeResponse] = []
 	var finals: Array[TrailNodeResponse] = []
 	for package: ContentPackage in packages:
-		var states := TrailRule.states(package.levels, records.completed_ids(package))
+		var states := TrailRule.states(package.levels, records.completed_ids(package),
+			_access != null and PackageRules.access_for(package, _saved)["final_open"])
 		var previous_title := ""
 		var entries := package.levels.duplicate()
 		entries.sort_custom(func(a: LevelEntry, b: LevelEntry) -> bool: return a.position < b.position)

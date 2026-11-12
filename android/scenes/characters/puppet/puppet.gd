@@ -415,6 +415,8 @@ func emote(kind: StringName, seconds: float = 1.4) -> void:
 	bubble.life = seconds
 	bubble.size = emote_size
 	bubble.position = Vector2(emote_anchor.x * facing, emote_anchor.y - lift)
+	if kind != &"zzz" and kind != &"sweat":
+		Sounds.play(&"pop", randf_range(0.95, 1.1), -9.0)
 	if kind == &"dizzy" or kind == &"sparkle":
 		bubble.position.x = 0.0
 	add_child(bubble)

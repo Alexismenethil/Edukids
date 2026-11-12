@@ -6,6 +6,7 @@ extends RefCounted
 ##   --demo-profiles   elegir perfil, un PIN incorrecto y el correcto (usar con --demo-data)
 ##   --demo-editor     un estudiante sin personaje lo crea (usar con --demo-data)
 ##   --demo-teacher    PIN docente y lista de estudiantes (usar con --demo-data)
+##   --demo-packages   modo docente: importa un paquete por USB, lo instala y lo habilita para 6.° A
 ##   --demo-setup      configuración inicial completa (usar con --demo-empty)
 ##   --demo-map        mapa de la Sierra, entra a Huamanga y abre un nivel (usar con --demo-data)
 ##   --demo-chase      persecución de Atoq: aciertos, tropiezos y un nudo perdido
@@ -38,6 +39,7 @@ const MODES := {
 	"--demo-profiles": "profiles",
 	"--demo-editor": "editor",
 	"--demo-teacher": "teacher",
+	"--demo-packages": "packages",
 	"--demo-setup": "setup",
 	"--demo": "title",
 }
@@ -76,14 +78,14 @@ func start(navigator: Node, args: PackedStringArray) -> void:
 	match _mode:
 		"profiles", "editor":
 			navigator.open_profiles.call_deferred()
-		"teacher":
+		"teacher", "packages":
 			navigator.open_teacher_gate.call_deferred()
 		"setup":
 			navigator.open_setup.call_deferred()
 
 
 func opens_own_screen() -> bool:
-	return _mode in ["profiles", "editor", "teacher", "setup", "map"] or PLAYS.has(_mode)
+	return _mode in ["profiles", "editor", "teacher", "packages", "setup", "map"] or PLAYS.has(_mode)
 
 
 func on_title(view: Node) -> void:
@@ -117,13 +119,39 @@ func on_setup(view: Node) -> void:
 
 
 func on_teacher_gate(view: Node) -> void:
-	if _mode == "teacher":
+	if _mode in ["teacher", "packages"]:
 		_script(view, [[1.8, "type_pin", [DemoClassroom.TEACHER_PIN]]])
 
 
 func on_teacher_panel(view: Node) -> void:
 	if _mode == "teacher":
 		_script(view, [[3.2, "open_add_dialog", []]])
+	elif _mode == "packages":
+		var root: Node = _navigator.get_node("/root/CompositionRoot")
+		var zip := DemoPackages.write_sample(root.IMPORTS)
+		var tween := _navigator.create_tween()
+		tween.tween_interval(2.2)
+		tween.tween_callback(func() -> void:
+			if is_instance_valid(view):
+				view.open_packages())
+		tween.tween_interval(2.6)
+		tween.tween_callback(func() -> void:
+			if is_instance_valid(view):
+				view.open_packages().open_import())
+		tween.tween_interval(2.4)
+		tween.tween_callback(func() -> void:
+			if is_instance_valid(view):
+				view.open_packages().install_file(zip))
+		tween.tween_interval(3.6)
+		tween.tween_callback(func() -> void:
+			if is_instance_valid(view):
+				var packages: PackagesView = view.open_packages()
+				packages.close_import()
+				packages.demo_set_access(DemoPackages.PACKAGE_ID, true, false))
+		tween.tween_interval(2.8)
+		tween.tween_callback(func() -> void:
+			if is_instance_valid(view):
+				view.open_packages().demo_set_access(DemoPackages.PACKAGE_ID, true, true))
 
 
 ## Mapa: saluda, entra a Huamanga.

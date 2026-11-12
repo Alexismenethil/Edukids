@@ -4,10 +4,28 @@ extends Node
 
 const TITLE_SCREEN := preload("res://scenes/ui/title/title_screen.tscn")
 const FADE_SECONDS := 0.6
+## Ambiente de cada región: un fondo muy suave de viento, selva u olas debajo de la música.
+const AMBIENCE := {
+	&"sierra": "res://assets/audio/ambience/amb_sierra.ogg",
+	&"selva": "res://assets/audio/ambience/amb_selva.ogg",
+	&"costa": "res://assets/audio/ambience/amb_costa.ogg",
+}
+## Región del ambiente según el mundo de un corto.
+const PLACE_REGIONS := {&"jungle": &"selva", &"coast": &"costa"}
+## Volumen de la música (dB) en los menús, mientras se responde y durante un corto.
+const MUSIC_MENU := 0.0
+const MUSIC_LEVEL := -7.0
+const MUSIC_SHORT := -4.0
 
 @onready var _screens: Node = $Screens
 @onready var _fade: ColorRect = $Curtain/Fade
 @onready var _diagnostics: DiagnosticsOverlay = $Overlay/Diagnostics
+@onready var _music: AudioStreamPlayer = $Music
+
+var _ambience: AudioStreamPlayer
+var _ambience_region: StringName = &""
+var _music_base := 0.0
+var _mix_tween: Tween
 
 var _current: Node
 var _title_ready_ms := 0
@@ -15,6 +33,12 @@ var _demo := DemoDirector.new()
 
 
 func _ready() -> void:
+	_music_base = _music.volume_db
+	_ambience = AudioStreamPlayer.new()
+	_ambience.name = "Ambience"
+	_ambience.bus = _music.bus
+	_ambience.volume_db = -60.0
+	add_child(_ambience)
 	_demo.start(self, LaunchArgs.all())
 	if OS.is_debug_build() and (LaunchArgs.all().has("--lab") or LaunchArgs.all().has("--demo-lab")):
 		open_lab()
@@ -26,7 +50,30 @@ func _ready() -> void:
 		_toggle_diagnostics.call_deferred()
 
 
+## Mezcla de la pantalla: la música baja mientras se piensa y sube en los menús, y el ambiente de
+## la región entra y sale con suavidad. Nada cambia de golpe.
+func _mix(music_db: float, region: StringName, ambience_db: float) -> void:
+	if _mix_tween:
+		_mix_tween.kill()
+	_mix_tween = create_tween().set_parallel(true)
+	_mix_tween.tween_property(_music, "volume_db", _music_base + music_db, 1.2).set_trans(Tween.TRANS_SINE)
+	if region != _ambience_region and AMBIENCE.has(region) and ResourceLoader.exists(AMBIENCE[region]):
+		_ambience_region = region
+		var bed: AudioStream = load(AMBIENCE[region])
+		if bed is AudioStreamOggVorbis:
+			(bed as AudioStreamOggVorbis).loop = true
+		var swap := create_tween()
+		swap.tween_property(_ambience, "volume_db", -60.0, 0.5)
+		swap.tween_callback(func() -> void:
+			_ambience.stream = bed
+			_ambience.play())
+		swap.tween_property(_ambience, "volume_db", ambience_db, 1.6).set_trans(Tween.TRANS_SINE)
+	else:
+		_mix_tween.tween_property(_ambience, "volume_db", ambience_db, 1.2).set_trans(Tween.TRANS_SINE)
+
+
 func open_title() -> void:
+	_mix(MUSIC_MENU, &"sierra", -15.0)
 	var view: TitleScreen = TITLE_SCREEN.instantiate()
 	view.setup(CompositionRoot.title_presenter())
 	view.play_requested.connect(_on_play_requested.bind(view))
@@ -63,6 +110,7 @@ func open_avatar_editor(first_time: bool = false) -> void:
 
 ## Mapa del capítulo: el inicio del estudiante (RN-01 y RF-22).
 func open_map() -> void:
+	_mix(MUSIC_MENU, CompositionRoot.current_chapter(), -13.0)
 	var view := ChapterMapScreen.new()
 	view.setup(CompositionRoot.map_presenter())
 	view.edit_avatar_requested.connect(open_avatar_editor)
@@ -88,6 +136,7 @@ func open_stop(stop_id: String = "") -> void:
 
 ## Un nivel (RF-12): al salir o al terminar, vuelve a su parada.
 func open_level() -> void:
+	_mix(MUSIC_LEVEL, CompositionRoot.current_chapter(), -9.0)
 	var view := LevelScreen.new()
 	view.setup(CompositionRoot.level_presenter())
 	view.exit_requested.connect(_back_to_stop)
@@ -138,7 +187,7 @@ func open_teacher_gate() -> void:
 
 func open_teacher_panel() -> void:
 	var view := TeacherPanelScreen.new()
-	view.setup(CompositionRoot.teacher_panel_presenter())
+	view.setup(CompositionRoot.teacher_panel_presenter(), CompositionRoot.packages_presenter())
 	view.exit_requested.connect(open_title)
 	_show(view)
 	_demo.on_teacher_panel(view)
@@ -157,6 +206,7 @@ func open_short(short_id: StringName, then: Callable, look: AvatarLookViewModel 
 		then.call()
 		return
 	script.params = params
+	_mix(MUSIC_SHORT, PLACE_REGIONS.get(script.place(), &"sierra"), -8.0)
 	var view := ShortPlayer.new()
 	view.auto_advance = auto
 	view.finished.connect(then, CONNECT_ONE_SHOT)

@@ -2,14 +2,6 @@
 
 [ext_resource type="Script" path="res://scenes/ui/title/title_screen.gd" id="1_title"]
 [ext_resource type="Script" path="res://scenes/ui/title/sun_rays.gd" id="2_rays"]
-[ext_resource type="Script" path="res://scenes/ui/title/sky_drifter.gd" id="3_drifter"]
-[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_cloud_a.svg" id="4_cloud_a"]
-[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_cloud_b.svg" id="5_cloud_b"]
-[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_sierra_far.svg" id="6_far"]
-[ext_resource type="Texture2D" path="res://assets/art/characters/condor/char_condor.svg" id="7_condor"]
-[ext_resource type="Script" path="res://scenes/characters/condor/condor_flight.gd" id="8_condor"]
-[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_sierra_mid.svg" id="9_mid"]
-[ext_resource type="Texture2D" path="res://assets/art/backgrounds/sierra/bg_sierra_near.svg" id="10_near"]
 [ext_resource type="PackedScene" path="res://scenes/characters/quwi/quwi.tscn" id="11_quwi"]
 [ext_resource type="Script" path="res://scenes/ui/title/quipu_cords.gd" id="12_quipu"]
 [ext_resource type="Texture2D" path="res://assets/art/ui/ui_ribbon_subtitle.svg" id="13_ribbon"]
@@ -19,7 +11,6 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/components/speech_bubble.tscn" id="17_bubble"]
 [ext_resource type="Texture2D" path="res://assets/art/ui/ui_icon_sound_on.svg" id="18_sound"]
 [ext_resource type="Script" path="res://scenes/ui/components/sfx_player.gd" id="19_sfx"]
-[ext_resource type="PackedScene" path="res://scenes/characters/hummingbird/hummingbird.tscn" id="20_bird"]
 
 [sub_resource type="Gradient" id="Gradient_sky"]
 offsets = PackedFloat32Array(0, 0.42, 0.7, 1)
@@ -43,25 +34,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_dot"]
-colors = PackedColorArray(1, 1, 0.92156863, 1, 1, 1, 0.92156863, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dot"]
-gradient = SubResource("Gradient_dot")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="Gradient" id="Gradient_confetti"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
 colors = PackedColorArray(0.9098039, 0.5137255, 0.22745098, 1, 0.23137255, 0.49019608, 0.84705883, 1, 0.24705882, 0.6392157, 0.3019608, 1, 0.7607843, 0.09411765, 0.35686275, 1, 0.9490196, 0.75686276, 0.30588236, 1)
-
-[sub_resource type="Gradient" id="Gradient_pollen_life"]
-offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.85, 1, 1, 1, 0.85, 1, 1, 1, 0)
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -114,96 +90,9 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="CloudFar" type="Sprite2D" parent="World"]
-modulate = Color(1, 1, 1, 0.85)
-position = Vector2(250, 330)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_cloud_b")
-script = ExtResource("3_drifter")
-speed = 6.0
-
-[node name="CloudA" type="Sprite2D" parent="World"]
-position = Vector2(620, 420)
-scale = Vector2(0.6667, 0.6667)
-texture = ExtResource("4_cloud_a")
-script = ExtResource("3_drifter")
-speed = 9.0
-
-[node name="CloudB" type="Sprite2D" parent="World"]
-position = Vector2(1520, 360)
-scale = Vector2(0.6667, 0.6667)
-texture = ExtResource("5_cloud_b")
-script = ExtResource("3_drifter")
-speed = 13.0
-
-[node name="CloudSmall" type="Sprite2D" parent="World"]
-modulate = Color(1, 1, 1, 0.9)
-position = Vector2(1180, 470)
-scale = Vector2(0.42, 0.42)
-texture = ExtResource("4_cloud_a")
-flip_h = true
-script = ExtResource("3_drifter")
-speed = 7.5
-
-[node name="FarLayer" type="TextureRect" parent="World"]
-layout_mode = 0
-offset_top = 330.0
-offset_right = 1920.0
-offset_bottom = 760.0
-mouse_filter = 2
-texture = ExtResource("6_far")
-expand_mode = 1
-
-[node name="Condor" type="Sprite2D" parent="World"]
-position = Vector2(2080, 470)
-scale = Vector2(0.42, 0.42)
-texture = ExtResource("7_condor")
-script = ExtResource("8_condor")
-
-[node name="MidLayer" type="TextureRect" parent="World"]
-layout_mode = 0
-offset_top = 580.0
-offset_right = 1920.0
-offset_bottom = 920.0
-mouse_filter = 2
-texture = ExtResource("9_mid")
-expand_mode = 1
-
-[node name="NearLayer" type="TextureRect" parent="World"]
-layout_mode = 0
-offset_top = 760.0
-offset_right = 1920.0
-offset_bottom = 970.0
-mouse_filter = 2
-texture = ExtResource("10_near")
-expand_mode = 1
-
-[node name="Hummingbird" parent="World/NearLayer" instance=ExtResource("20_bird")]
-position = Vector2(-140, -60)
-scale = Vector2(0.68, 0.68)
-flowers = Array[Vector2]([Vector2(520, 96), Vector2(498, 104), Vector2(562, 118), Vector2(540, 128), Vector2(410, 129), Vector2(449, 137)])
-outside = Vector2(-140, -60)
-
 [node name="Quwi" parent="World" instance=ExtResource("11_quwi")]
 position = Vector2(1336, 904)
 scale = Vector2(0.8, 0.8)
-
-[node name="Pollen" type="CPUParticles2D" parent="World"]
-position = Vector2(960, 640)
-amount = 26
-lifetime = 10.0
-preprocess = 10.0
-texture = SubResource("GradientTexture2D_dot")
-emission_shape = 3
-emission_rect_extents = Vector2(980, 320)
-direction = Vector2(1, -0.35)
-spread = 30.0
-gravity = Vector2(0, -3)
-initial_velocity_min = 8.0
-initial_velocity_max = 24.0
-scale_amount_min = 0.12
-scale_amount_max = 0.32
-color_ramp = SubResource("Gradient_pollen_life")
 
 [node name="Logo" type="Control" parent="."]
 layout_mode = 1

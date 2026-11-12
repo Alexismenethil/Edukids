@@ -1,7 +1,7 @@
 class_name TeacherPanelPresenter
 extends RefCounted
-## Presentador del modo docente: estudiantes por sección (RF-04), PIN (RF-17) y pestañas
-## de lo que viene en los próximos sprints.
+## Presentador del modo docente: estudiantes por sección (RF-04), PIN (RF-17), la pestaña de
+## paquetes (la arma PackagesPresenter) y las de lo que viene en los próximos sprints.
 
 const AUTO_LOCK_SECONDS := 300
 
@@ -36,10 +36,9 @@ func panel() -> TeacherPanelViewModel:
 	view_model.auto_lock_seconds = AUTO_LOCK_SECONDS
 	view_model.tabs = [
 		{"id": "students", "label": "Estudiantes", "enabled": true, "soon": ""},
-		{"id": "packages", "label": "Paquetes", "enabled": false, "soon": "Sprint 7"},
-		{"id": "enable", "label": "Habilitar", "enabled": false, "soon": "Sprint 7"},
+		{"id": "packages", "label": "Paquetes", "enabled": true, "soon": ""},
 		{"id": "reports", "label": "Reportes", "enabled": false, "soon": "Sprint 10"},
-		{"id": "settings", "label": "Ajustes", "enabled": false, "soon": "Sprint 6"},
+		{"id": "settings", "label": "Ajustes", "enabled": false, "soon": "Sprint 8"},
 	]
 	for section in classroom.sections:
 		view_model.sections.append(SectionTabViewModel.create(section["id"], "%d.° %s" % [classroom.grade, section["name"]]))

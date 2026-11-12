@@ -11,6 +11,7 @@ pinta por capas para el paralaje de `ParallaxWorld` (`scenes/world/`).
 | `lagoon.py` | Laguna de Coco | `lagoon_far`, `lagoon_mid`, `lagoon_near`, el nenúfar y la canasta |
 | `jungle.py` | Selva del valle del Apurímac (capítulo 2) | `jungle_far`, `jungle_mid`, `jungle_near`, `jungle_ground`, `jungle_front` |
 | `coast.py` | Costa: del mar al desierto (capítulo 3) | `coast_far`, `coast_mid`, `coast_near`, `coast_ground`, `coast_front` |
+| `cover.py` | Portada: el valle de Huamanga en la mañana | `cover_horizon` (cordilleras), `cover_hills` (andenes y chacras), `cover_village` (iglesia, casitas y eucaliptos), `cover_land` (pradera, camino, pircas y árboles) y `cover_front` |
 
 `svgkit.py` arma los documentos SVG (curvas suaves, degradados, capas que se repiten sin costura) y
 `cartoon.py` dibuja los elementos del paisaje andino (cerros nevados, molles, eucaliptos, queñuas,
@@ -32,7 +33,13 @@ python3 tools/art/worlds/canyon.py assets/art/worlds/canyon
 python3 tools/art/worlds/lagoon.py assets/art/worlds/lagoon
 python3 tools/art/worlds/jungle.py assets/art/worlds/jungle
 python3 tools/art/worlds/coast.py assets/art/worlds/coast
+python3 tools/art/worlds/cover.py assets/art/worlds/cover
 ```
+
+Las capas de la portada no se repiten: están dibujadas en unidades de pantalla de 1280 × 800 y van de x = -400
+a 1680 para cubrir pantallas anchas. `cover.py` imprime dónde quedan las chimeneas del pueblito (la portada les
+pone humo) y con el paso `preview` compone una vista de prueba. La mata de cantuta del picaflor de la portada es
+`prop_cantuta.svg` (paso `props` de `valley.py`), que imprime la boca de cada flor.
 
 Se puede pintar una sola capa: `python3 tools/art/worlds/valley.py assets/art/worlds/valley near`.
 Godot importa cada SVG a la escala que dice su `.import` (`svg/scale`): las capas cercanas a más

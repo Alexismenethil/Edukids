@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" width="432" height="432">
+  <!-- Fondo del icono adaptable de Android: cielo, rayos de sol, cerros nevados y pradera. -->
+  <defs>
+    <linearGradient id="icon_sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA4E8"/><stop offset="0.6" stop-color="#A9E0F6"/><stop offset="1" stop-color="#FFE9C4"/></linearGradient>
+    <clipPath id="icon_round"><rect width="432" height="432" rx="0"/></clipPath>
+  </defs>
+  <g transform="scale(1.0)">
+    <rect width="432" height="432" fill="url(#icon_sky)"/>
+    <path d="M216,250 L632.8,198.3 L632.8,301.7 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L614.0,384.3 L569.1,477.4 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L516.3,543.6 L435.4,608.1 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L359.2,644.8 L258.3,667.9 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L173.7,667.9 L72.8,644.8 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L-3.4,608.1 L-84.3,543.6 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L-137.1,477.4 L-182.0,384.3 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L-200.8,301.7 L-200.8,198.3 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L-182.0,115.7 L-137.1,22.6 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L-84.3,-43.6 L-3.4,-108.1 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L72.8,-144.8 L173.7,-167.9 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L258.3,-167.9 L359.2,-144.8 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L435.4,-108.1 L516.3,-43.6 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M216,250 L569.1,22.6 L614.0,115.7 Z" fill="#FFFFFF" opacity="0.22"/>
+    <circle cx="216" cy="250" r="150" fill="#FFF6D8" opacity="0.35"/>
+    <path d="M-10,330 L70,196 L112,250 L160,170 L236,300 L300,214 L360,290 L442,220 L442,440 L-10,440 Z" fill="#A9B4E6"/>
+    <path d="M70,196 L92,224 L78,230 L66,220 L52,234 Z M160,170 L186,214 L170,222 L158,206 L140,222 Z M300,214 L318,238 L304,244 L296,234 L282,246 Z" fill="#FFFFFF"/>
+    <path d="M-10,352 C80,318 150,330 216,346 C290,362 360,330 442,340 L442,440 L-10,440 Z" fill="#7CC96A"/>
+    <path d="M-10,388 C90,366 180,380 260,392 C330,402 390,384 442,388 L442,440 L-10,440 Z" fill="#5DB352"/>
+  </g>
+</svg>

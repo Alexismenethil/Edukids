@@ -281,6 +281,7 @@ func leap(leap_height: float = 110.0, turn: bool = false) -> void:
 	if _hop:
 		_hop.kill()
 	play(&"airborne")
+	Sounds.play(&"hop", 1.0, -5.0)
 	spin = 0.0
 	_leap = create_tween()
 	_leap.tween_property(self, "squash", Vector2(1.18, 0.8), 0.09)

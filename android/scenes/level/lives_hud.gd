@@ -33,6 +33,7 @@ func set_lives(lives: int, maximum: int) -> void:
 
 ## Rompe el último corazón lleno.
 func lose_one() -> void:
+	Sounds.play(&"life")
 	if _lives <= 0:
 		return
 	_lives -= 1

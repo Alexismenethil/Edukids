@@ -1,0 +1,106 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/worlds/fauna/fauna_llama_atlas.png" id="1_atlas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_bf"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 8, 40, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_ff"]
+atlas = ExtResource("1_atlas")
+region = Rect2(56, 8, 39, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_bn"]
+atlas = ExtResource("1_atlas")
+region = Rect2(103, 8, 40, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_fn"]
+atlas = ExtResource("1_atlas")
+region = Rect2(151, 8, 43, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_body"]
+atlas = ExtResource("1_atlas")
+region = Rect2(292, 8, 214, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tail"]
+atlas = ExtResource("1_atlas")
+region = Rect2(733, 8, 54, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blanket"]
+atlas = ExtResource("1_atlas")
+region = Rect2(625, 8, 100, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neck"]
+atlas = ExtResource("1_atlas")
+region = Rect2(202, 8, 82, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_head"]
+atlas = ExtResource("1_atlas")
+region = Rect2(514, 8, 103, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tassels"]
+atlas = ExtResource("1_atlas")
+region = Rect2(795, 8, 52, 34)
+
+[node name="LlamaRig" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="LegBF" type="Sprite2D" parent="."]
+position = Vector2(-52.0, -144.0)
+texture = SubResource("AtlasTexture_leg_bf")
+centered = false
+offset = Vector2(-22.0, -4.0)
+
+[node name="LegFF" type="Sprite2D" parent="."]
+position = Vector2(48.0, -144.0)
+texture = SubResource("AtlasTexture_leg_ff")
+centered = false
+offset = Vector2(-19.0, -4.0)
+
+[node name="LegBN" type="Sprite2D" parent="."]
+position = Vector2(-68.0, -140.0)
+texture = SubResource("AtlasTexture_leg_bn")
+centered = false
+offset = Vector2(-22.0, -4.0)
+
+[node name="LegFN" type="Sprite2D" parent="."]
+position = Vector2(64.0, -140.0)
+texture = SubResource("AtlasTexture_leg_fn")
+centered = false
+offset = Vector2(-19.0, -4.0)
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0.0, -124.0)
+texture = SubResource("AtlasTexture_body")
+centered = false
+offset = Vector2(-105.0, -120.0)
+
+[node name="Tail" type="Sprite2D" parent="Body"]
+position = Vector2(-80.0, -64.0)
+texture = SubResource("AtlasTexture_tail")
+centered = false
+offset = Vector2(-39.0, -51.0)
+
+[node name="Blanket" type="Sprite2D" parent="Body"]
+position = Vector2(4.0, -72.0)
+texture = SubResource("AtlasTexture_blanket")
+centered = false
+offset = Vector2(-48.0, -38.0)
+
+[node name="Neck" type="Sprite2D" parent="Body"]
+position = Vector2(72.0, -44.0)
+texture = SubResource("AtlasTexture_neck")
+centered = false
+offset = Vector2(-33.0, -124.0)
+
+[node name="Head" type="Sprite2D" parent="Body/Neck"]
+position = Vector2(28.0, -112.0)
+texture = SubResource("AtlasTexture_head")
+centered = false
+offset = Vector2(-29.0, -84.0)
+
+[node name="Tassels" type="Sprite2D" parent="Body/Neck/Head"]
+position = Vector2(4.0, -36.0)
+texture = SubResource("AtlasTexture_tassels")
+centered = false
+offset = Vector2(-26.0, -14.0)

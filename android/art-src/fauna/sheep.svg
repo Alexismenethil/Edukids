@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122 110" width="122" height="110">
+  <!-- Oveja del paisaje, de perfil mirando a la derecha: lana blanca, cara y patas oscuras. -->
+  <g id="part_leg_bf">
+    <path d="M30.5,70 L29,104 L35,104 L37.5,70 Z" fill="#2C2626"/>
+    <ellipse cx="32" cy="104" rx="4.2" ry="2.4" fill="#1E1A1A"/>
+  </g>
+  <g id="part_leg_ff">
+    <path d="M70.5,70 L73,104 L79,104 L77.5,70 Z" fill="#2C2626"/>
+    <ellipse cx="76" cy="104" rx="4.2" ry="2.4" fill="#1E1A1A"/>
+  </g>
+  <g id="part_leg_bn">
+    <path d="M24.5,70 L22,104 L28,104 L31.5,70 Z" fill="#3B3434"/>
+    <ellipse cx="25" cy="104" rx="4.2" ry="2.4" fill="#1E1A1A"/>
+  </g>
+  <g id="part_leg_fn">
+    <path d="M76.5,70 L80,104 L86,104 L83.5,70 Z" fill="#3B3434"/>
+    <ellipse cx="83" cy="104" rx="4.2" ry="2.4" fill="#1E1A1A"/>
+  </g>
+  <g id="part_tail">
+    <circle cx="14" cy="52" r="7" fill="#FFFDF6" stroke="#A89A88" stroke-width="1.8"/>
+  </g>
+  <g id="part_body">
+    <circle cx="22" cy="58" r="14.8" fill="#A89A88"/>
+    <circle cx="30" cy="44" r="14.8" fill="#A89A88"/>
+    <circle cx="44" cy="38" r="15.8" fill="#A89A88"/>
+    <circle cx="58" cy="37" r="15.8" fill="#A89A88"/>
+    <circle cx="72" cy="41" r="14.8" fill="#A89A88"/>
+    <circle cx="82" cy="52" r="13.8" fill="#A89A88"/>
+    <circle cx="76" cy="66" r="14.8" fill="#A89A88"/>
+    <circle cx="60" cy="72" r="15.8" fill="#A89A88"/>
+    <circle cx="42" cy="72" r="15.8" fill="#A89A88"/>
+    <circle cx="26" cy="68" r="13.8" fill="#A89A88"/>
+    <circle cx="22" cy="58" r="13" fill="#FFFDF6"/>
+    <circle cx="30" cy="44" r="13" fill="#FFFDF6"/>
+    <circle cx="44" cy="38" r="14" fill="#FFFDF6"/>
+    <circle cx="58" cy="37" r="14" fill="#FFFDF6"/>
+    <circle cx="72" cy="41" r="13" fill="#FFFDF6"/>
+    <circle cx="82" cy="52" r="12" fill="#FFFDF6"/>
+    <circle cx="76" cy="66" r="13" fill="#FFFDF6"/>
+    <circle cx="60" cy="72" r="14" fill="#FFFDF6"/>
+    <circle cx="42" cy="72" r="14" fill="#FFFDF6"/>
+    <circle cx="26" cy="68" r="12" fill="#FFFDF6"/>
+    <ellipse cx="52" cy="56" rx="34" ry="20" fill="#FFFDF6"/>
+    <ellipse cx="52" cy="70" rx="26" ry="5" fill="#E6DED0" opacity="0.6"/>
+    <path d="M36,44 C37,40 43,40 44,44" fill="none" stroke="#E6DED0" stroke-width="2" stroke-linecap="round"/>
+    <path d="M52,42 C53,38 59,38 60,42" fill="none" stroke="#E6DED0" stroke-width="2" stroke-linecap="round"/>
+    <path d="M64,48 C65,44 71,44 72,48" fill="none" stroke="#E6DED0" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30,58 C31,54 37,54 38,58" fill="none" stroke="#E6DED0" stroke-width="2" stroke-linecap="round"/>
+    <path d="M46,56 C47,52 53,52 54,56" fill="none" stroke="#E6DED0" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <g id="part_head">
+    <path d="M82,46 C78,58 84,70 94,72 C104,74 110,66 108,56 C106,46 96,40 88,42 Z" fill="#3B3434"/>
+    <path d="M84,50 C78,52 72,58 72,62 C76,62 82,58 86,54 Z" fill="#3B3434"/>
+    <path d="M104,50 C110,50 114,54 116,58 C112,58 106,56 103,54 Z" fill="#3B3434"/>
+    <circle cx="86" cy="42" r="7" fill="#FFFDF6" stroke="#A89A88" stroke-width="1.5"/>
+    <circle cx="94" cy="40" r="6" fill="#FFFDF6" stroke="#A89A88" stroke-width="1.5"/>
+    <circle cx="99" cy="56" r="3.2" fill="#FFFFFF"/>
+    <circle cx="100" cy="56.5" r="1.8" fill="#1E1A1A"/>
+    <circle cx="100.6" cy="55.6" r="0.7" fill="#FFFFFF"/>
+    <path d="M103,68 C105,69 107,68 108,66" fill="none" stroke="#8A7F7F" stroke-width="1.4" stroke-linecap="round"/>
+    <ellipse cx="94" cy="64" rx="3.5" ry="2" fill="#F28A80" opacity="0.5"/>
+  </g>
+</svg>

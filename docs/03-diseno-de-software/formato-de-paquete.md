@@ -228,6 +228,16 @@ En cada parada, los niveles de un área forman un sendero: primero los de práct
 3. El instalador aplica las reglas de contenido y valida el manifiesto antes de mover los archivos a su carpeta definitiva (ver [flujo de instalación](../02-arquitectura-software/flujos-principales.md)).
 4. Fase posterior (P3): firma digital de los paquetes oficiales.
 
+## Instalación en la tablet
+
+- Los paquetes instalados quedan en `user://packages/<id>/`, uno por carpeta, con los mismos archivos del ZIP.
+  Si un paquete instalado tiene el mismo `id` que uno que trae el juego, el instalado lo reemplaza.
+- Para importar por USB o por cable (RF-19), el docente copia el `.zip` en `Download/EduKids` (o
+  `Documents/EduKids`) de la tablet y lo elige en **Modo docente → Paquetes → Importar paquete**.
+- No se instala una versión más antigua que la que ya está; con la misma versión, el paquete queda como estaba.
+- Los paquetes que trae el juego aparecen habilitados para todas las secciones. Los instalados esperan a que
+  el docente los habilite para cada sección, y el docente puede abrir antes el desafío final (RF-09).
+
 ## Versionado
 
 - `format_version` cambia cuando cambia este documento. La aplicación rechaza paquetes con una versión mayor de formato que no conoce.

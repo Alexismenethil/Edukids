@@ -25,6 +25,9 @@ var _caught := false
 var _arch: Sprite2D
 var _arch_knot: KnotSprite
 var _lines: _SpeedLines
+## Variantes que tocan en orden barajado, para que dos respuestas seguidas no se vean igual.
+var _good_moves: Array[StringName] = []
+var _bad_moves: Array[StringName] = []
 var _glance := 2.0
 var _warm := Color(1.0, 0.93, 0.82)
 ## Obstáculos en el camino: {"node", "jump", "life_lost", "done"}.
@@ -106,10 +109,15 @@ func _update_obstacles() -> void:
 		var screen_x := node.position.x - world.cam_x
 		if not obstacle["done"] and screen_x - RUNNER_X < (120.0 if obstacle["jump"] else 36.0):
 			obstacle["done"] = true
-			if obstacle["jump"]:
-				_jump()
-			else:
-				_trip(obstacle["life_lost"])
+			match obstacle.get("move", &""):
+				&"double":
+					_double_hop()
+				&"knot":
+					_grab_knot(node)
+				&"trip":
+					_trip(obstacle["life_lost"])
+				_:
+					_jump()
 	_obstacles = _obstacles.filter(func(obstacle: Dictionary) -> bool:
 		var node: Node2D = obstacle["node"]
 		if node.position.x - world.cam_x < -400.0:
@@ -122,23 +130,150 @@ func react(feedback: FeedbackViewModel) -> float:
 	danger = feedback.danger
 	if feedback.correct:
 		_target = SPRINT
-		_place_obstacle(true, false)
 		_gap_target = _gap_for(danger) + 60.0
+		# Cada acierto se ve distinto: voltereta sobre una piedra, dos saltitos, un nudo que atrapa
+		# en el aire o una carrera a toda velocidad. La racha de tres siempre es la carrera.
+		var move := &"dash" if feedback.streak > 0 and feedback.streak % 3 == 0 else _next_move(_good_moves, [&"flip", &"double", &"knot", &"dash"])
+		match move:
+			&"dash":
+				_dash(feedback.streak >= 3)
+			&"double":
+				_place_obstacle(true, false, &"double", "prop_ichu")
+				_place_obstacle(true, false, &"none", "prop_ichu", 190.0)
+			&"knot":
+				_place_knot()
+			_:
+				_place_obstacle(true, false, &"flip", "prop_stone" if randf() < 0.6 else "prop_apacheta")
 		return 1.9
 	_target = TROT * 1.6
-	_place_obstacle(false, feedback.life_lost)
-	return 3.3 if feedback.life_lost else 1.9
+	if feedback.life_lost:
+		_place_obstacle(false, true, &"trip")
+		return 3.3
+	# Los errores también varían: un tropezón, Atoq que se acerca agazapado o que se burla aullando.
+	match _next_move(_bad_moves, [&"trip", &"sneak", &"taunt"]):
+		&"sneak":
+			_atoq_gag(&"sneak", "¡Shh!")
+		&"taunt":
+			_atoq_gag(&"howl", "¡Auuu!")
+		_:
+			_place_obstacle(false, false, &"trip")
+	return 1.9
 
 
-func _place_obstacle(jump: bool, life_lost: bool) -> void:
+## Siguiente variante de una lista barajada; al acabarse se vuelve a barajar sin repetir la última.
+func _next_move(queue: Array[StringName], options: Array[StringName]) -> StringName:
+	if queue.is_empty():
+		var last: StringName = get_meta(&"last_move", &"")
+		queue.assign(options)
+		queue.shuffle()
+		if queue.size() > 1 and queue[queue.size() - 1] == last:
+			queue.reverse()
+	var move: StringName = queue.pop_back()
+	set_meta(&"last_move", move)
+	return move
+
+
+func _place_obstacle(jump: bool, life_lost: bool, move: StringName = &"flip", prop: String = "", extra: float = 0.0) -> void:
 	var sprite := Sprite2D.new()
-	sprite.texture = load(WORLD + PROPS[randi() % PROPS.size()] + ".svg")
+	sprite.texture = load(WORLD + (prop if not prop.is_empty() else PROPS[randi() % PROPS.size()]) + ".svg")
 	sprite.scale = Vector2.ONE * 0.5
 	sprite.offset = Vector2(0, -sprite.texture.get_height() * 0.5 + 6.0)
-	var ahead := 600.0 if jump else 300.0
+	var ahead := (600.0 if jump else 300.0) + extra
 	sprite.position = Vector2(world.cam_x + RUNNER_X + ahead, ground_y + 4.0)
 	_track.add_child(sprite)
-	_obstacles.append({"node": sprite, "jump": jump, "life_lost": life_lost, "done": false})
+	_obstacles.append({"node": sprite, "jump": jump, "life_lost": life_lost, "done": move == &"none", "move": move})
+
+
+## Un nudo dorado flota sobre el camino: el avatar salta y lo atrapa.
+func _place_knot() -> void:
+	var knot := KnotSprite.new()
+	knot.color = StageFx.KNOT_COLORS[randi() % StageFx.KNOT_COLORS.size()]
+	knot.radius = 15.0
+	knot.position = Vector2(world.cam_x + RUNNER_X + 600.0, ground_y - 250.0)
+	_track.add_child(knot)
+	var bob := knot.create_tween().set_loops()
+	bob.tween_property(knot, "position:y", knot.position.y - 14.0, 0.4).set_trans(Tween.TRANS_SINE)
+	bob.tween_property(knot, "position:y", knot.position.y, 0.4).set_trans(Tween.TRANS_SINE)
+	_obstacles.append({"node": knot, "jump": true, "life_lost": false, "done": false, "move": &"knot"})
+
+
+func _grab_knot(knot: Node2D) -> void:
+	ToonFx.puff(actors, _avatar.position + Vector2(-20, -4), 5, 13.0, Vector2(-120.0, 0.0))
+	_avatar.leap(128.0, false)
+	_avatar.look_toward(Vector2(0.4, -1.0), 0.5)
+	var tween := create_tween()
+	tween.tween_interval(0.3)
+	tween.tween_callback(func() -> void:
+		if is_instance_valid(knot):
+			knot.visible = false
+		ToonFx.ring(actors, _avatar.position + Vector2(20, -270), 22.0, Color(1.0, 0.92, 0.6, 0.9))
+		ToonFx.sparkles(actors, _avatar.position + Vector2(20, -270), 12, 70.0)
+		ToonFx.stars(actors, _avatar.position + Vector2(20, -250), 6)
+		StageFx.float_text(actors, "¡Nudo!", _avatar.position + Vector2(90, -300), Color("#FFF3B0"), 40)
+		punch(0.04))
+	tween.tween_interval(0.5)
+	tween.tween_callback(func() -> void:
+		_atoq.surprise(0.9)
+		_gap_target = _gap_for(danger)
+		if not _finishing:
+			_target = TROT)
+
+
+## Dos matas seguidas: dos saltitos rápidos.
+func _double_hop() -> void:
+	StageFx.float_text(actors, "¡Hop, hop!", _avatar.position + Vector2(70, -250), Color("#FFF3B0"), 38)
+	var tween := create_tween()
+	for i in 2:
+		tween.tween_callback(func() -> void:
+			Sounds.play(&"hop", 1.1 + i * 0.12, -7.0)
+			_avatar.hop(74.0, 0.34))
+		tween.tween_interval(0.36)
+	tween.tween_callback(func() -> void:
+		ToonFx.stars(actors, _avatar.position + Vector2(0, -24), 5)
+		_atoq.surprise(0.8)
+		_atoq.emote(&"sweat", 1.0)
+		_gap_target = _gap_for(danger)
+		if not _finishing:
+			_target = TROT)
+
+
+## Carrera a toda velocidad: el mundo pasa volando y Atoq se queda muy atrás.
+func _dash(streak: bool) -> void:
+	Sounds.play(&"whoosh", 1.0, -3.0)
+	_target = SPRINT * 1.35
+	_avatar.set_expression(&"determined")
+	_avatar.look_reset()
+	ToonFx.streaks(actors, _avatar.position + Vector2(-10, -90), 12, 110.0)
+	ToonFx.puff(actors, _avatar.position + Vector2(-30, -4), 8, 16.0, Vector2(-260.0, 0.0))
+	StageFx.float_text(actors, "¡Racha!" if streak else "¡Zuum!", _avatar.position + Vector2(70, -250), Color("#FFF3B0"), 44 if streak else 40)
+	_gap_target = _gap_for(danger_max) + 120.0
+	_atoq.surprise(1.2)
+	_atoq.emote(&"sweat", 1.2)
+	if streak:
+		punch(0.05)
+		ToonFx.stars(actors, _avatar.position + Vector2(0, -120), 10, 15.0)
+		ToonFx.sparkles(actors, _avatar.position + Vector2(0, -140), 14, 120.0)
+	var tween := create_tween()
+	tween.tween_interval(1.25)
+	tween.tween_callback(func() -> void:
+		_gap_target = _gap_for(danger)
+		if not _finishing:
+			_target = TROT)
+
+
+## Atoq hace de las suyas en vez de que el avatar tropiece: se acerca agazapado o se burla.
+func _atoq_gag(clip: StringName, text: String) -> void:
+	_gap_target = _gap_for(maxi(1, danger))
+	_avatar.express(&"worry", 1.4)
+	_avatar.look_toward(Vector2(-1.0, 0.1), 1.2)
+	_atoq.play(clip)
+	StageFx.float_text(actors, text, _atoq.position + Vector2(30, -230), Color("#FFE0C2"), 36)
+	var tween := create_tween()
+	tween.tween_interval(1.1)
+	tween.tween_callback(func() -> void:
+		_atoq.laugh(0.9)
+		if not _finishing and not _caught:
+			_target = TROT)
 
 
 ## Acierto: salto grande con giro, polvo al despegar y al caer, chispas y Atoq que se queda atrás.
@@ -203,7 +338,7 @@ func _trip(life_lost: bool) -> void:
 		tween.tween_callback(func() -> void:
 			_gap_target = _gap_for(maxi(1, danger))
 			cinema(false)
-			light(Color.WHITE, 0.6))
+			light(journey_light(), 0.6))
 	tween.tween_interval(0.55)
 	tween.tween_callback(func() -> void:
 		if not _finishing and not _caught:

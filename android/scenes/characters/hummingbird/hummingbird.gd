@@ -9,7 +9,8 @@ extends Node2D
 @export var visits_per_trip := 3
 
 const BEAK_TILT := -0.6
-## Desde el centro del cuerpo hasta la punta del pico inclinado, en la escala de la escena.
+## Desde el centro del cuerpo hasta la punta del pico inclinado, con el picaflor a escala 0.68
+## (con otra escala se ajusta solo).
 const BEAK_REACH := Vector2(-23.5, 21.0)
 
 @onready var _body: Sprite2D = $Body
@@ -49,7 +50,8 @@ func _trip(delay: float) -> void:
 	for i in mini(visits_per_trip, order.size()):
 		var mouth: Vector2 = order[i]
 		var facing_right := mouth.x >= from.x
-		var target := mouth + Vector2(BEAK_REACH.x * (1.0 if facing_right else -1.0), BEAK_REACH.y)
+		var reach := BEAK_REACH * absf(_base_scale.y) / 0.68
+		var target := mouth + Vector2(reach.x * (1.0 if facing_right else -1.0), reach.y)
 		tween.tween_callback(_face.bind(facing_right, false))
 		tween.tween_property(self, "position", target, 0.55).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_callback(_face.bind(facing_right, true))

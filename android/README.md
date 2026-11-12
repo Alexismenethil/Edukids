@@ -36,6 +36,7 @@ Para grabar videos o probar los recorridos sin tocar la pantalla. Solo funciona 
 | `--demo-editor` | Un estudiante sin personaje lo crea (con `--demo-data`) |
 | `--demo-teacher` | PIN docente, lista de estudiantes y formulario para agregar uno (con `--demo-data`) |
 | `--demo-setup` | Configuración inicial completa (con `--demo-empty`) |
+| `--demo-packages` | Modo docente: abre «Paquetes», importa un módulo de muestra copiado «por USB», lo instala y lo habilita para 6.° A con su desafío final abierto (con `--demo-data`) |
 | `--demo-map` | Mapa de la Sierra: entra a Huamanga, abre la ficha de un nivel y lo juega (con `--demo-data`) |
 | `--demo-chase` | Persecución de Atoq: saltos con vuelta, tropiezos, un nudo robado y el arco tejido |
 | `--demo-caiman` | Coco, el caimán glotón: saltos por la fruta, mordiscos, un nudo perdido y el paseo en su lomo |
@@ -87,6 +88,7 @@ bash tests/architecture/check_dependencies.sh
 | `tests/unit/domain` | Medidor de peligro (RN-13), vidas y game over (RN-14), estrellas (RN-11), escala AD/A/B/C (RN-12), orden de los niveles (RN-18), escenas narrativas, PIN, avatar, evaluadores de cada tipo de ítem, respuestas escritas y numéricas, la sesión del nivel y el desafío final |
 | `tests/unit/application` | Casos de uso con repositorios falsos: aula, mapa del capítulo, niveles cerrados, respuestas, pistas, game over, desafío final con intentos y continuar un nivel |
 | `tests/unit/presentation` | Presentadores y modelos de vista: mapa, parada, nivel, vidas, game over y calificación |
+| `tests/unit/scenes` (audio) | Cada sonido del banco tiene su archivo y cada capítulo, su ambiente |
 | `tests/unit/scenes` | Motor de títeres (curvas, clips, reproducción, resortes y gestos) y revisión de datos: elenco, clips y caras de cada personaje, mundos de cada región y guiones de los cortos |
 | `tests/integration` | JSON, paquetes incluidos y sus senderos, SQLite (aula, intentos, respuestas, game over, calificaciones y la migración 002), hash del PIN, reloj, aleatoriedad e identificadores |
 | `tests/architecture` | Regla de dependencias entre capas (RNF-15, CA-20) |
@@ -130,12 +132,71 @@ botón «Historia» del mapa; al superar un desafío final, Mama Sisa recibe la 
 corto de llegada. El elenco (`scenes/characters/cast.gd`) suma a Mama Sisa, Kuntur (el cóndor que rescata al
 avatar en el puente), Tunki y Humbi.
 
+**Ritmo y variedad.** Para que un nivel no se alargue ni se repita, solo los momentos grandes bajan la
+tarjeta y se ven a pantalla completa: la primera respuesta, una vida perdida y cada racha de tres. En el resto
+la escena reacciona en su franja mientras llega la explicación. Cada mecánica alterna variantes barajadas (en
+la persecución: voltereta, dos saltitos, un nudo atrapado en el aire o una carrera a toda velocidad; Atoq que
+acecha o se burla en vez del tropezón), y la luz del mundo avanza del día al atardecer con el nivel.
+
+**Sonido.** Los efectos se piden por nombre (`Sounds.play(&"correct")`, en `scenes/audio/sounds.gd`) y se
+generan con `tools/audio/make_sfx.py`: son timbres suaves de kalimba, campanitas y cuerda pulsada, afinados
+con la música (mi menor, pentatónica de sol). El navegador mezcla la música con un ambiente por región
+(viento en la Sierra, río y pájaros en la Selva, olas en la Costa): la música baja mientras se piensa y sube
+en los menús, sin cambios bruscos.
+
 **Dirección de cine.** `MechanicStage` da a cada mecánica una pausa de impacto (`hit_stop`), un golpe de zoom
 (`punch`), un destello suave (`flash`), barras de cine para los momentos grandes (`cinema`) y cambios de luz
 (`light`: fría cuando el peligro alcanza al avatar, dorada en la victoria). Los efectos son formas vectoriales
 (`scenes/fx/`: polvo, estrellas, brillitos, salpicaduras, anillos, golpes y papel picado).
 
 Todas usan la misma regla del dominio: el medidor de peligro y las vidas (RN-13 y RN-14). Sin vidas, el nivel termina en game over y se puede reintentar. El desafío final no tiene medidor, vidas ni pistas: guarda cada respuesta sin decir si está bien y al entregar muestra la calificación AD, A, B o C, la cuerda recuperada y la explicación de cada pregunta.
+
+## Dónde está cada cosa (para seguir creando)
+
+| Quiero… | Voy a… |
+| --- | --- |
+| Crear o cambiar un personaje | [`scenes/characters/README.md`](scenes/characters/README.md): SVG por piezas → `tools/art/scaffold_rig.gd` → `build_cutout_rig.gd` → script que hereda de `Puppet` (o de `GuideCharacter` si es un guía) → `Cast.ROSTER` |
+| Agregar un gesto | El diccionario `CLIPS` del personaje, o `PuppetMoves` si sirve para todos |
+| Escribir un corto | [`scenes/cine/README.md`](scenes/cine/README.md): una clase que hereda de `ShortScript` y su entrada en `Shorts.CATALOG` |
+| Pintar o cambiar un mundo | [`tools/art/worlds/README.md`](tools/art/worlds/README.md) y `WorldSets` (`scenes/world/world_sets.gd`) |
+| Crear una mecánica de juego | Una clase que hereda de `MechanicStage` (`scenes/mechanics/`): arma su mundo en `_build_world()` y responde en `react()` |
+| Cambiar o agregar un sonido | `tools/audio/make_sfx.py` (genera los archivos) y `Sounds.NAMES` (`scenes/audio/sounds.gd`) |
+| Cambiar la mezcla de música y ambientes | `_mix()` en `src/main/navigator.gd` |
+| Cambiar el icono | `art-src/icons/` (fuentes SVG) → `icon.svg` y `assets/art/icons/` |
+| Cambiar la portada | `tools/art/worlds/cover.py` (horizonte, lomas con andenes y chacras, pueblito, pradera y primer plano) y `_build_valley()` en `scenes/ui/title/title_screen.gd` (capas, humo, animales y personajes) |
+| Agregar animales al paisaje | `tools/art/fauna.py` → `art-src/fauna/*.svg` y su `.rig.json` → `build_cutout_rig.gd`; `GrazingAnimal` (`scenes/world/fauna/`) los hace pastar, rumiar y caminar |
+| Probar personajes y cortos | `godot --path . -- --lab` |
+
+Pendiente para los capítulos 2 y 3: sus mapas (`ChapterMapScreen` hoy dibuja solo la Sierra), sus paquetes de
+contenido y enlazar los cortos `selva` y `costa` a la llegada. El puente y el caimán todavía usan sus mundos
+de la Sierra en cualquier región.
+
+## Paquetes (Sprint 7)
+
+Un paquete llega a la tablet como ZIP (formato v1) y se instala con el flujo verificado de la arquitectura
+(`InstallPackage`): el SHA-256 del archivo si viene del catálogo, solo rutas y extensiones permitidas, espacio
+suficiente, la lista `checksums.sha256` de cada archivo, el manifiesto válido y compatible con la versión de la
+aplicación, y cada nivel que se pueda jugar. Recién entonces se descomprime en una carpeta temporal y se mueve a
+`user://packages/<id>`; nunca queda un paquete a medias. Una versión instalada reemplaza a la que trae el juego,
+y no se instala una versión más antigua que la que ya está.
+
+En el modo docente, la pestaña **Paquetes** muestra los paquetes de la tablet por sección: el docente los habilita
+para el mapa de cada sección y puede abrir antes un desafío final (RF-09). Los paquetes del juego vienen
+habilitados; los instalados esperan a que el docente los habilite. **Importar paquete** lista los `.zip` copiados
+por USB o por cable a `Download/EduKids` o `Documents/EduKids` de la tablet (RF-19), y en Android también abre el
+selector de archivos del sistema.
+
+| Pieza | Dónde |
+| --- | --- |
+| Reglas del paquete y versiones | `PackageRules` y `SemanticVersion` (`src/domain/`) |
+| Casos de uso | `InstallPackage`, `ListPackages`, `SetPackageAccess`, `ListImportFiles` (`src/application/use_cases/packages/`) |
+| Lectura del ZIP e instalación | `ZipPackageFiles` (`src/infrastructure/packages/`) |
+| Habilitación por sección | `SqlitePackageAccessRepository` (tabla `package_section`) |
+| Pantalla | `PackagesView` (`scenes/ui/teacher/`) con `PackagesPresenter` |
+
+Falta para cerrar el sprint: el cliente del catálogo y la descarga reanudable desde la Dirección (RF-06, RF-07 y
+RF-08), que se conectan con la API del Sprint 8, y probar en la tablet real el acceso a la carpeta de descargas
+(Android 13 o posterior pide el selector del sistema).
 
 ## Motor de actividades
 
@@ -204,8 +265,9 @@ El detalle está en la [estructura del repositorio](../docs/03-diseno-de-softwar
 
 | Recurso | Fuente | Cómo llega al juego |
 | --- | --- | --- |
-| Fondos por capas | `assets/art/backgrounds/*.svg` | Godot importa el SVG a 1,5× |
-| Mundos de las mecánicas | `tools/art/worlds/*.py` → `assets/art/worlds/<mundo>/*.svg` | Los scripts escriben capas SVG limpias (valle, cañón y laguna); Godot importa cada capa a su escala, con mipmaps. Ver `tools/art/worlds/README.md` |
+| Fondos por capas | `assets/art/backgrounds/huamanga/*.svg` (plaza de la parada) | Godot importa el SVG a 1,5× |
+| Mundos de las mecánicas | `tools/art/worlds/*.py` → `assets/art/worlds/<mundo>/*.svg` | Los scripts escriben capas SVG limpias (valle, cañón, laguna, selva, costa y la portada); Godot importa cada capa a su escala, con mipmaps. Ver `tools/art/worlds/README.md` |
+| Animales del paisaje | `tools/art/fauna.py` → `art-src/fauna/*.svg` y `.rig.json` | `build_cutout_rig.gd` arma el atlas y el rig en `scenes/world/fauna/`; la llama se tiñe (blanca, caramelo o café) |
 | Interfaz e iconos | `assets/art/ui/*.svg` | Godot importa el SVG a 2× |
 | Personajes por piezas | `art-src/characters/<personaje>.svg` y `<personaje>.rig.json` | `tools/art/build_cutout_rig.gd` rasteriza cada pieza a 2×, arma un atlas y genera la escena del rig |
 | Avatar del estudiante | `art-src/characters/avatar.svg` y `avatar.rig.json` | Igual que Quwi, pero las piezas de piel, cabello y ropa van en gris y el juego las tiñe con la paleta de `src/presentation/styles/avatar_palette.gd` |

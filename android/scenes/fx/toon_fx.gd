@@ -41,6 +41,7 @@ static func puff(parent: Node, at: Vector2, amount: int = 6, size: float = 15.0,
 
 ## Estrellas doradas que saltan con giro.
 static func stars(parent: Node, at: Vector2, amount: int = 8, size: float = 13.0, color: Color = GOLD) -> void:
+	Sounds.play(&"star", randf_range(0.96, 1.06), -6.0)
 	var burst := _burst(parent, at)
 	for i in amount:
 		var angle := -PI * 0.5 + randf_range(-1.25, 1.25)
@@ -63,6 +64,7 @@ static func sparkles(parent: Node, at: Vector2, amount: int = 10, radius: float 
 
 ## Destello de golpe: estrella de puntas, rayas hacia afuera y estrellitas.
 static func impact(parent: Node, at: Vector2, size: float = 46.0, color: Color = Color("#FFD75E")) -> void:
+	Sounds.play(&"impact", 1.0, -3.0)
 	var burst := _burst(parent, at)
 	burst.add({"shape": ToonBurst.Shape.POW, "pos": Vector2.ZERO, "life": 0.34, "size": size, "color": color,
 		"outline": Color(OUTLINE, 0.9), "turn": randf() * TAU, "fade": 0.55})
@@ -88,6 +90,7 @@ static func streaks(parent: Node, at: Vector2, amount: int = 10, size: float = 9
 
 ## Salpicadura: gotas que saltan y ondas en la superficie.
 static func splash(parent: Node, at: Vector2, amount: int = 14, power: float = 1.0) -> void:
+	Sounds.play(&"splash", randf_range(0.92, 1.08), -4.0 if amount >= 20 else -9.0)
 	var burst := _burst(parent, at)
 	for i in amount:
 		var angle := -PI * 0.5 + randf_range(-0.75, 0.75)
@@ -131,6 +134,7 @@ static func crumbs(parent: Node, at: Vector2, amount: int = 10, color: Color = G
 
 ## Papel picado con los colores del tejido: cae desde arriba a todo lo ancho.
 static func confetti(parent: Node, width: float, amount: int = 70, top: float = -30.0) -> ToonBurst:
+	Sounds.play(&"sparkle", 1.0, -5.0)
 	var burst := _burst(parent, Vector2.ZERO)
 	burst.z_index = 8
 	for i in amount:

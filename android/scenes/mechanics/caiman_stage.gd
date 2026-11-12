@@ -27,6 +27,7 @@ var _coco_x := 900.0
 var _riding := false
 var _busy := false
 var _follow := false
+var _grumbles := 0
 
 
 func _build_world() -> void:
@@ -229,6 +230,11 @@ func _feed() -> void:
 		StageFx.burst(actors, Vector2(start.x - 40.0, FRONT_WATER), &"splash", 26))
 	leap.tween_property(_coco, "position", apex, 0.38).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	leap.parallel().tween_property(_coco, "rotation", 0.32, 0.38)
+	# Uno de cada dos saltos, Coco da una voltereta en el aire antes de atrapar la fruta.
+	if _fed % 2 == 0:
+		leap.parallel().tween_callback(func() -> void:
+			_coco.play(&"flip", {"speed": 1.5})
+			StageFx.float_text(actors, "¡Yuju!", _coco.position + Vector2(40, -200), Color("#FFF3B0"), 36)).set_delay(0.02)
 	leap.tween_callback(func() -> void:
 		_coco.chomp(1.3)
 		_coco.fullness = clampf(float(_fed) / maxf(1.0, total), 0.0, 1.0)
@@ -253,9 +259,14 @@ func _feed() -> void:
 		create_tween().tween_property(_coco, "position:x", _coco_x, 1.0).set_trans(Tween.TRANS_SINE))
 
 
-## Error: Coco se pone gruñón, se acerca, salpica con la cola y muerde el aire.
+## Error: Coco se pone gruñón, se acerca, salpica con la cola y muerde el aire. A veces, en vez de
+## morder, da un coletazo que empapa el muelle.
 func _grumble() -> void:
 	_coco_x = _x_for(danger)
+	_grumbles += 1
+	if _grumbles % 2 == 0:
+		_tail_soak()
+		return
 	var tween := create_tween()
 	tween.tween_property(_coco, "position:x", _coco_x, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(func() -> void:
@@ -267,6 +278,26 @@ func _grumble() -> void:
 		StageFx.burst(actors, Vector2(_coco.position.x + 190.0, FRONT_WATER), &"splash", 30)
 		_ripples.ring(Vector2(_coco.position.x + 190.0, FRONT_WATER + 6.0)))
 	tween.tween_interval(1.2)
+	tween.tween_callback(_coco.set_mood.bind(&"calm"))
+
+
+func _tail_soak() -> void:
+	var tween := create_tween()
+	tween.tween_property(_coco, "position:x", _coco_x, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(func() -> void:
+		_coco.set_mood(&"angry")
+		_coco.emote(&"anger", 1.1)
+		_coco.play(&"tail_slap"))
+	tween.tween_interval(0.3)
+	tween.tween_callback(func() -> void:
+		shake(4.0, 0.25)
+		StageFx.float_text(actors, "¡Plaf!", _coco.position + Vector2(120, -130), Color("#DFF4FB"), 40)
+		StageFx.burst(actors, Vector2(_coco.position.x + 200.0, FRONT_WATER), &"splash", 34)
+		StageFx.burst(actors, _avatar.position + Vector2(40, -150), &"splash", 12)
+		_ripples.ring(Vector2(_coco.position.x + 200.0, FRONT_WATER + 6.0))
+		_avatar.play(&"flinch")
+		_avatar.emote(&"sweat", 1.2))
+	tween.tween_interval(1.1)
 	tween.tween_callback(_coco.set_mood.bind(&"calm"))
 
 
@@ -301,7 +332,7 @@ func _bite_knot() -> void:
 		_coco.chomp(0.9)
 		StageFx.burst(actors, Vector2(STAND_X + 380.0, FRONT_WATER), &"splash", 22)
 		cinema(false)
-		light(Color.WHITE, 0.6)
+		light(journey_light(), 0.6)
 		frame(Shot.ACTION, 0.4))
 	tween.tween_interval(0.7)
 	tween.tween_callback(func() -> void:

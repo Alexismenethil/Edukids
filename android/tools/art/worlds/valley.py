@@ -345,6 +345,57 @@ def props() -> None:
     s.ichu(60, 68, 58)
     doc.save(str(OUT / "prop_ichu.svg"))
     _arch()
+    _cantuta_bush()
+
+
+## Flores de la mata de cantuta: (x, y de donde cuelga, inclinación, tamaño, color). La boca de cada
+## campana queda a 2.4·tamaño de su punto de unión, en la dirección inclinada; el picaflor de la
+## portada visita esas bocas.
+CANTUTAS = [(36, 126, 0.48, 12, "#E8336D"), (58, 96, 0.3, 13, "#D7263D"), (90, 78, 0.1, 12, "#E8336D"),
+            (128, 78, -0.12, 13, "#F2A93B"), (160, 94, -0.3, 12, "#D7263D"), (184, 122, -0.46, 12, "#E8336D"),
+            (108, 108, 0.04, 12, "#D7263D")]
+
+
+def _cantuta_bush() -> None:
+    """Mata de cantuta, la flor del Perú, con sus campanas colgantes (portada)."""
+    rng = np.random.default_rng(41)
+    doc = Doc(220, 196, top=0, comment="Mata de cantuta con campanas fucsias, rojas y doradas.")
+    s = Shapes(doc, rng)
+    b = Builder()
+    circles = [(36, 156, 28), (62, 122, 30), (98, 102, 34), (138, 104, 33), (172, 126, 29), (190, 160, 24),
+               (110, 152, 46), (66, 166, 30), (152, 164, 32), (24, 176, 18)]
+    s._puffs(b, circles, LEAF, highlights=3)
+    b.emit(doc)
+    mouths = []
+    for x, y, tilt, size, color in CANTUTAS:
+        mouths.append(_hanging_cantuta(doc, x, y, tilt, size, color))
+    doc.save(str(OUT / "prop_cantuta.svg"))
+    print("Bocas de la cantuta:", [(round(mx, 1), round(my, 1)) for mx, my in mouths])
+
+
+def _hanging_cantuta(doc: Doc, x: float, y: float, tilt: float, size: float, color: str) -> tuple:
+    """Campana tubular que cuelga de la rama: cáliz verde, trompeta que se abre y estambres."""
+    c, sn = math.cos(tilt), math.sin(tilt)
+
+    def at(px: float, py: float) -> tuple:
+        return (x + px * c - py * sn, y + px * sn + py * c)
+
+    s = size
+    deep = {"#E8336D": "#A3164A", "#D7263D": "#8E1430", "#F2A93B": "#B5651D"}.get(color, "#8E1430")
+    light = {"#E8336D": "#FF8FB0", "#D7263D": "#FF7A82", "#F2A93B": "#FFD98A"}.get(color, "#FFB0C0")
+    tube = [at(-0.2 * s, 0.3 * s), at(0.2 * s, 0.3 * s), at(0.34 * s, 1.5 * s), at(0.62 * s, 2.3 * s),
+            at(0.3 * s, 2.2 * s), at(0.0, 2.42 * s), at(-0.3 * s, 2.2 * s), at(-0.62 * s, 2.3 * s), at(-0.34 * s, 1.5 * s)]
+    doc.path(smooth_closed(tube), color)
+    doc.path(smooth_open([at(-0.06 * s, 0.5 * s), at(-0.14 * s, 1.4 * s), at(-0.32 * s, 2.06 * s)]), "none")
+    doc.stroke(smooth_open([at(-0.05 * s, 0.55 * s), at(-0.13 * s, 1.35 * s), at(-0.3 * s, 2.0 * s)]), light, max(1.2, s * 0.13))
+    mouth = at(0.0, 2.3 * s)
+    doc.path(ellipse_path(mouth[0], mouth[1], 0.42 * s, 0.11 * s, tilt), deep)
+    for dx in (-0.12, 0.0, 0.12):
+        tip = at(dx * s, 2.62 * s)
+        doc.stroke(f"M{fmt(mouth[0] + dx * s * 0.5)},{fmt(mouth[1])} L{fmt(tip[0])},{fmt(tip[1])}", "#FFE9A8", max(0.8, s * 0.07))
+        doc.path(circle_path(tip[0], tip[1], max(0.9, s * 0.08)), "#FFD23F")
+    doc.path(smooth_closed([at(-0.26 * s, 0.0), at(0.26 * s, 0.0), at(0.18 * s, 0.42 * s), at(-0.18 * s, 0.42 * s)]), "#3C7F3A")
+    return mouth
 
 
 def _arch() -> None:

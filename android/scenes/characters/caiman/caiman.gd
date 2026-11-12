@@ -242,6 +242,7 @@ func chomp(chew_seconds: float = 1.3) -> Tween:
 			_held.queue_free()
 		_held = null
 		set_mood(&"happy")
+		Sounds.play(&"chomp", randf_range(0.95, 1.08), -3.0)
 		_chewing = chew_seconds)
 	_gesture.tween_property(self, "squash", Vector2.ONE, 0.35).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	return _gesture

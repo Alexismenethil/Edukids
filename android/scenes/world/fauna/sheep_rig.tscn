@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/worlds/fauna/fauna_sheep_atlas.png" id="1_atlas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_bf"]
+atlas = ExtResource("1_atlas")
+region = Rect2(298, 8, 24, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_ff"]
+atlas = ExtResource("1_atlas")
+region = Rect2(330, 8, 24, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_bn"]
+atlas = ExtResource("1_atlas")
+region = Rect2(362, 8, 26, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg_fn"]
+atlas = ExtResource("1_atlas")
+region = Rect2(396, 8, 26, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_body"]
+atlas = ExtResource("1_atlas")
+region = Rect2(8, 8, 182, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tail"]
+atlas = ExtResource("1_atlas")
+region = Rect2(430, 8, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_head"]
+atlas = ExtResource("1_atlas")
+region = Rect2(198, 8, 92, 83)
+
+[node name="SheepRig" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="LegBF" type="Sprite2D" parent="."]
+position = Vector2(-40.0, -72.0)
+texture = SubResource("AtlasTexture_leg_bf")
+centered = false
+offset = Vector2(-15.0, -2.0)
+
+[node name="LegFF" type="Sprite2D" parent="."]
+position = Vector2(40.0, -72.0)
+texture = SubResource("AtlasTexture_leg_ff")
+centered = false
+offset = Vector2(-9.0, -2.0)
+
+[node name="LegBN" type="Sprite2D" parent="."]
+position = Vector2(-52.0, -72.0)
+texture = SubResource("AtlasTexture_leg_bn")
+centered = false
+offset = Vector2(-17.0, -2.0)
+
+[node name="LegFN" type="Sprite2D" parent="."]
+position = Vector2(52.0, -72.0)
+texture = SubResource("AtlasTexture_leg_fn")
+centered = false
+offset = Vector2(-9.0, -2.0)
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0.0, -64.0)
+texture = SubResource("AtlasTexture_body")
+centered = false
+offset = Vector2(-96.0, -108.0)
+
+[node name="Tail" type="Sprite2D" parent="Body"]
+position = Vector2(-72.0, -40.0)
+texture = SubResource("AtlasTexture_tail")
+centered = false
+offset = Vector2(-26.0, -22.0)
+
+[node name="Head" type="Sprite2D" parent="Body"]
+position = Vector2(60.0, -36.0)
+texture = SubResource("AtlasTexture_head")
+centered = false
+offset = Vector2(-26.0, -48.0)

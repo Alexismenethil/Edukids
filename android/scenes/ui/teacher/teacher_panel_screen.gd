@@ -1,13 +1,18 @@
 class_name TeacherPanelScreen
 extends Control
-## Modo docente (RF-04, RF-17 y RN-06): estudiantes por sección y pestañas de lo que viene.
-## Se cierra solo tras unos minutos sin uso.
+## Modo docente (RF-04, RF-17, RN-06, RF-09 y RF-19): estudiantes por sección, paquetes con su
+## habilitación e importación, y pestañas de lo que viene. Se cierra solo tras unos minutos sin uso.
 
 signal exit_requested
 
 const ICONS := {"students": "students", "packages": "packages", "enable": "toggle", "reports": "reports", "settings": "settings"}
 
 var _presenter: TeacherPanelPresenter
+var _packages_presenter: PackagesPresenter
+var _nav_group := ButtonGroup.new()
+var _students_main: Control
+var _packages_main: Control
+var _packages_view: PackagesView
 var _view_model: TeacherPanelViewModel
 var _section_id := ""
 var _section_group := ButtonGroup.new()
@@ -20,8 +25,9 @@ var _idle := 0.0
 var _dialog: StudentDialog
 
 
-func setup(presenter: TeacherPanelPresenter) -> void:
+func setup(presenter: TeacherPanelPresenter, packages: PackagesPresenter = null) -> void:
 	_presenter = presenter
+	_packages_presenter = packages
 
 
 func _ready() -> void:
@@ -32,7 +38,18 @@ func _ready() -> void:
 	paper.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(paper)
 	add_child(_build_sidebar())
-	add_child(_build_main())
+	_students_main = _build_main()
+	add_child(_students_main)
+	if _packages_presenter:
+		_packages_main = Ui.margin(32, 26, 32, 20)
+		_packages_main.set_anchors_preset(Control.PRESET_FULL_RECT)
+		_packages_main.offset_left = 262
+		_packages_main.visible = false
+		_packages_view = PackagesView.new()
+		_packages_view.setup(_packages_presenter, _view_model.sections)
+		_packages_view.notice.connect(func(text: String) -> void: _toast.show_message(text, 4.0))
+		_packages_main.add_child(_packages_view)
+		add_child(_packages_main)
 	add_child(_toast)
 	if not _view_model.sections.is_empty():
 		_show_section(_view_model.sections[0].id)
@@ -48,6 +65,21 @@ func _process(delta: float) -> void:
 	if _idle >= _view_model.auto_lock_seconds:
 		_idle = 0.0
 		exit_requested.emit()
+
+
+## Muestra una pestaña: «students» o «packages».
+func open_tab(tab_id: String) -> void:
+	_students_main.visible = tab_id == "students"
+	if _packages_main:
+		_packages_main.visible = tab_id == "packages"
+	for button in _nav_group.get_buttons():
+		button.set_pressed_no_signal(button.get_meta("tab", "") == tab_id)
+
+
+## Para el modo demostración: abre la pestaña de paquetes.
+func open_packages() -> PackagesView:
+	open_tab("packages")
+	return _packages_view
 
 
 ## Para el modo demostración: abre el formulario de un estudiante nuevo.
@@ -81,9 +113,15 @@ func _build_sidebar() -> Control:
 		var nav := Ui.button(tab["label"], ICONS.get(tab["id"], "students"), &"NavButton")
 		nav.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		nav.custom_minimum_size.y = 64
-		if tab["enabled"]:
+		if tab["enabled"] and (tab["id"] != "packages" or _packages_presenter):
 			nav.toggle_mode = true
+			nav.button_group = _nav_group
+			nav.set_meta("tab", tab["id"])
 			nav.set_pressed_no_signal(tab["id"] == "students")
+			var tab_id: String = tab["id"]
+			nav.toggled.connect(func(on: bool) -> void:
+				if on:
+					open_tab(tab_id))
 		else:
 			# Lo que llega en otros sprints se ve tenue y avisa cuándo estará listo.
 			nav.modulate.a = 0.62

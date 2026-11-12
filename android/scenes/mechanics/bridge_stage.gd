@@ -21,6 +21,7 @@ const ROPE_DARK := Color("#6E4C2A")
 const ROPE_LIGHT := Color("#E2BE7E")
 
 var _avatar: AvatarCharacter
+var _cheers := 0
 ## Tramos puestos: índice → {"kind": &"wood" | &"gold" | &"rope", "t": 0..1 de su caída, "fall"?}.
 var _planks := {}
 var _wobble := 0.0
@@ -194,8 +195,11 @@ func react(feedback: FeedbackViewModel) -> float:
 			_wobble = 6.0
 			shake(3.5, 0.18)
 			punch(0.03)
+			Sounds.play(&"plank", randf_range(0.94, 1.08), -4.0)
 			if feedback.correct:
-				_avatar.play(&"clap")
+				# El festejo cambia cada vez: aplaude, baila o salta de alegría.
+				_cheers += 1
+				_avatar.play([&"clap", &"dance", &"cheer"][_cheers % 3])
 			StageFx.burst(_plane, at, &"dust", 12)
 			if kind == &"rope":
 				StageFx.float_text(_plane, "¡Quwi te amarra una soga!", at + Vector2(0, -110), Color("#FFF3B0"), 28)
@@ -316,7 +320,7 @@ func _fall(comes_back: bool) -> void:
 	tween.tween_callback(func() -> void:
 		_avatar_slot = -1
 		cinema(false)
-		light(Color.WHITE, 0.6)
+		light(journey_light(), 0.6)
 		_avatar.settle()
 		_avatar.set_expression(&"neutral")
 		condor.flap = 1.2

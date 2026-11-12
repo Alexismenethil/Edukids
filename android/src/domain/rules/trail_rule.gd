@@ -1,8 +1,8 @@
 class_name TrailRule
 extends RefCounted
 ## Orden de los niveles de un módulo (RN-18): los niveles de práctica se abren uno tras otro y
-## el desafío final se abre al completar todos los de práctica. El docente podrá abrir el
-## desafío antes desde el modo docente (Sprint 7).
+## el desafío final se abre al completar todos los de práctica, o antes si el docente lo abrió
+## para la sección (RF-09).
 
 const LOCKED := &"locked"
 const OPEN := &"open"
@@ -10,8 +10,9 @@ const DONE := &"done"
 
 
 ## Estado de cada nivel del módulo: id del nivel → LOCKED, OPEN o DONE.
-## `completed` tiene los ids de los niveles que el estudiante ya completó al menos una vez.
-static func states(entries: Array[LevelEntry], completed: Dictionary) -> Dictionary:
+## `completed` tiene los ids de los niveles que el estudiante ya completó al menos una vez y
+## `final_open` dice si el docente abrió el desafío final antes de tiempo.
+static func states(entries: Array[LevelEntry], completed: Dictionary, final_open: bool = false) -> Dictionary:
 	var result := {}
 	var practice_done := true
 	var previous_done := true
@@ -32,7 +33,7 @@ static func states(entries: Array[LevelEntry], completed: Dictionary) -> Diction
 			if completed.has(entry.id):
 				result[entry.id] = DONE
 			else:
-				result[entry.id] = OPEN if practice_done else LOCKED
+				result[entry.id] = OPEN if practice_done or final_open else LOCKED
 	return result
 
 

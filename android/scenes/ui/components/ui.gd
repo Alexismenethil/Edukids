@@ -27,6 +27,7 @@ static func button(text: String, icon_name: String = "", variation: StringName =
 	result.focus_mode = Control.FOCUS_NONE
 	if not icon_name.is_empty():
 		result.icon = icon(icon_name)
+	result.pressed.connect(Sounds.play.bind(&"tap", 1.0, -4.0))
 	return result
 
 

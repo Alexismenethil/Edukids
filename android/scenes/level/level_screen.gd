@@ -52,6 +52,8 @@ var _card_tween: Tween
 var _margin := Vector4(204.0, 106.0, 28.0, 24.0)
 var _staged := false
 var _ending := false
+## Preguntas respondidas en esta visita al nivel (la primera reacción se ve a pantalla completa).
+var _answered := 0
 
 
 func setup(presenter: LevelPresenter) -> void:
@@ -411,6 +413,10 @@ func _on_check() -> void:
 	_activity.show_result(feedback.parts)
 	_quwi.set_mood(feedback.mood)
 	if feedback.correct:
+		Sounds.play(&"streak" if feedback.streak > 0 and feedback.streak % 3 == 0 else &"correct")
+	else:
+		Sounds.play(&"wrong")
+	if feedback.correct:
 		_quwi.hop(34.0)
 		_quwi.squeak()
 		_quwi.emote(&"sparkle", 1.2)
@@ -434,7 +440,19 @@ func _on_check() -> void:
 
 ## La respuesta se ve en grande: la tarjeta baja, la cámara abre a toda la pantalla, la mecánica
 ## reacciona (salto, tropiezo, mordisco) y la tarjeta vuelve con la explicación.
+## Reacción de la escena. Para que el nivel no se alargue ni se repita, solo los momentos grandes
+## se ven a pantalla completa: la primera respuesta, una vida perdida y cada racha de tres. En el
+## resto la tarjeta se queda y la escena reacciona en su franja mientras llega la explicación.
 func _play_reaction(feedback: FeedbackViewModel) -> void:
+	_answered += 1
+	var big := feedback.life_lost or feedback.game_over or _answered == 1 \
+		or (feedback.correct and feedback.streak > 0 and feedback.streak % 3 == 0)
+	if not big:
+		var quick := _stage.react(feedback)
+		get_tree().create_timer(minf(quick, 0.75)).timeout.connect(func() -> void:
+			if not _ending:
+				_present_feedback(feedback))
+		return
 	var tween := create_tween()
 	tween.tween_interval(0.5)
 	tween.tween_callback(func() -> void:
@@ -463,6 +481,7 @@ func _present_feedback(feedback: FeedbackViewModel) -> void:
 func _slide_card(up: bool, delay: float = 0.0) -> void:
 	if _card_tween:
 		_card_tween.kill()
+	Sounds.play(&"card", 1.0 if up else 0.85, -6.0)
 	_card_tween = create_tween()
 	if delay > 0.0:
 		_card_tween.tween_interval(delay)
@@ -495,6 +514,7 @@ func _on_hint() -> void:
 	if dialogue == null:
 		return
 	_pulse_hint(false)
+	Sounds.play(&"hint")
 	_hint.modulate = Color(1, 1, 1, 0.6)
 	_say(dialogue, &"think")
 
@@ -545,6 +565,7 @@ func _fade_card(alpha: float) -> void:
 
 func _show_results(result: LevelResultViewModel) -> void:
 	_sfx.play(KNOTS_RETURN, 1.0, -6.0)
+	Sounds.play(&"win")
 	var results := LevelResults.new(result)
 	results.replay_requested.connect(func() -> void: replay_requested.emit())
 	results.continue_requested.connect(func() -> void: finished.emit())
@@ -561,6 +582,7 @@ func _show_results(result: LevelResultViewModel) -> void:
 
 
 func _show_game_over(result: LevelResultViewModel) -> void:
+	Sounds.play(&"lose")
 	var panel := GameOverPanel.new(result)
 	panel.replay_requested.connect(func() -> void: replay_requested.emit())
 	panel.continue_requested.connect(func() -> void: finished.emit())

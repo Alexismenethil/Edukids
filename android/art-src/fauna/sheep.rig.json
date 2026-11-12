@@ -1,0 +1,17 @@
+{
+  "name": "SheepRig",
+  "master": "res://art-src/fauna/sheep.svg",
+  "scale": 2.0,
+  "origin": [54, 106],
+  "atlas": "res://assets/art/worlds/fauna/fauna_sheep_atlas.png",
+  "scene": "res://scenes/world/fauna/sheep_rig.tscn",
+  "nodes": [
+    {"name": "LegBF", "parent": "", "part": "leg_bf", "pivot": [34, 70]},
+    {"name": "LegFF", "parent": "", "part": "leg_ff", "pivot": [74, 70]},
+    {"name": "LegBN", "parent": "", "part": "leg_bn", "pivot": [28, 70]},
+    {"name": "LegFN", "parent": "", "part": "leg_fn", "pivot": [80, 70]},
+    {"name": "Body", "parent": "", "part": "body", "pivot": [54, 74]},
+    {"name": "Tail", "parent": "Body", "part": "tail", "pivot": [18, 54]},
+    {"name": "Head", "parent": "Body", "part": "head", "pivot": [84, 56]}
+  ]
+}

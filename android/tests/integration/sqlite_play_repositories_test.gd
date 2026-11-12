@@ -153,3 +153,25 @@ func test_game_overs_and_final_grades_are_kept() -> void:
 	assert_str(attempts[1].kind).is_equal(Attempt.FINAL)
 	assert_dict(_attempts.best_stars("stu-1")).is_equal({level.key(): 0})
 	assert_array(_attempts.list_attempts("nadie")).is_empty()
+
+
+func test_the_teacher_access_per_section_is_saved_and_updated() -> void:
+	_register()
+	var access := SqlitePackageAccessRepository.new(_db)
+	assert_dict(access.access_of("sec-a")).is_empty()
+	assert_bool(access.save_access("mod-math-6-00", "sec-a", true, false).is_ok()).is_true()
+	assert_dict(access.access_of("sec-a")).is_equal({"mod-math-6-00": {"enabled": true, "final_open": false}})
+	assert_bool(access.save_access("mod-math-6-00", "sec-a", true, true).is_ok()).is_true()
+	assert_bool(access.access_of("sec-a")["mod-math-6-00"]["final_open"]).is_true()
+	assert_bool(access.save_access("no-existe", "sec-a", true, false).is_ok()).is_false()
+
+
+func test_an_installed_package_keeps_its_size_and_checksum() -> void:
+	var package: ContentPackage = ContentPackage.parse(SampleItems.manifest()).value
+	package.location = "user://packages/mod-math-6-00"
+	var levels: Array[Level] = [SampleItems.level([SampleItems.true_false("q1")])]
+	assert_bool(_packages.save_package(package, levels, 2048, "a".repeat(64)).is_ok()).is_true()
+	var rows: Array = _db.query("SELECT size_bytes, sha256, install_path FROM package WHERE id = ?;", ["mod-math-6-00"]).value
+	assert_int(int(rows[0]["size_bytes"])).is_equal(2048)
+	assert_str(str(rows[0]["sha256"])).is_equal("a".repeat(64))
+	assert_str(str(rows[0]["install_path"])).is_equal("user://packages/mod-math-6-00")

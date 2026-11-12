@@ -9,3 +9,7 @@ extends RefCounted
 
 ## Lee y valida un nivel. Devuelve un Result con el Level.
 @abstract func load_level(package_id: String, level_id: String) -> Result
+
+
+## Vuelve a leer las carpetas (después de instalar un paquete).
+@abstract func refresh() -> void

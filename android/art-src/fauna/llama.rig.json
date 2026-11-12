@@ -1,0 +1,20 @@
+{
+  "name": "LlamaRig",
+  "master": "res://art-src/fauna/llama.svg",
+  "scale": 2.0,
+  "origin": [68, 182],
+  "atlas": "res://assets/art/worlds/fauna/fauna_llama_atlas.png",
+  "scene": "res://scenes/world/fauna/llama_rig.tscn",
+  "nodes": [
+    {"name": "LegBF", "parent": "", "part": "leg_bf", "pivot": [42, 110]},
+    {"name": "LegFF", "parent": "", "part": "leg_ff", "pivot": [92, 110]},
+    {"name": "LegBN", "parent": "", "part": "leg_bn", "pivot": [34, 112]},
+    {"name": "LegFN", "parent": "", "part": "leg_fn", "pivot": [100, 112]},
+    {"name": "Body", "parent": "", "part": "body", "pivot": [68, 120]},
+    {"name": "Tail", "parent": "Body", "part": "tail", "pivot": [28, 88]},
+    {"name": "Blanket", "parent": "Body", "part": "blanket", "pivot": [70, 84]},
+    {"name": "Neck", "parent": "Body", "part": "neck", "pivot": [104, 98]},
+    {"name": "Head", "parent": "Body/Neck", "part": "head", "pivot": [118, 42]},
+    {"name": "Tassels", "parent": "Body/Neck/Head", "part": "tassels", "pivot": [120, 24]}
+  ]
+}

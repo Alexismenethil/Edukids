@@ -49,9 +49,20 @@ func start() -> void:
 	pass
 
 
-## Llega una pregunta nueva.
+## Llega una pregunta nueva. La luz acompaña el avance: el nivel empieza de día y termina dorado.
 func question_shown(step: StepViewModel) -> void:
 	progress = step.progress
+	light(journey_light(), 1.6)
+
+
+## Luz del mundo según cuánto falta: blanca al empezar y cálida al acercarse el final.
+func journey_light() -> Color:
+	var answered := 0
+	for state in progress:
+		if state != &"" and state != &"pending" and state != &"current":
+			answered += 1
+	var advance := clampf(float(answered) / maxf(1.0, progress.size()), 0.0, 1.0)
+	return Color.WHITE.lerp(Color(1.0, 0.93, 0.83), advance * advance)
 
 
 ## Reacciona a la respuesta (acierto, error, vida perdida). Devuelve cuántos segundos dura la

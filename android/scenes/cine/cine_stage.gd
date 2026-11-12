@@ -228,6 +228,7 @@ func _on_puppet_cue(cue_name: StringName, puppet: Puppet, footsteps: bool) -> vo
 	var parent := puppet.get_parent()
 	match cue_name:
 		&"land":
+			Sounds.play(&"land", randf_range(0.92, 1.08), -10.0)
 			ToonFx.puff(parent, puppet.position + Vector2(0, -4), 6, 13.0)
 		&"stomp":
 			ToonFx.puff(parent, puppet.position + Vector2(40.0 * puppet.facing, -4), 4, 10.0)
