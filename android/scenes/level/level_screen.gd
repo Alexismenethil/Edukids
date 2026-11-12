@@ -10,6 +10,11 @@ signal exit_requested
 signal finished
 signal replay_requested
 
+## Cuerda del quipu recuperada en un desafío final (vacío si no hubo): el navegador muestra el
+## corto de la entrega al salir.
+var cord_text := ""
+var cord_color := Color("#E8833A")
+
 const QUWI := preload("res://scenes/characters/quwi/quwi.tscn")
 const BUBBLE := preload("res://scenes/ui/components/speech_bubble.tscn")
 const KNOTS_RETURN := preload("res://assets/audio/sfx/sfx_knots_return.ogg")
@@ -28,7 +33,7 @@ var _content: Control
 var _check: Button
 var _hint: Button
 var _quipu: QuipuProgress
-var _quwi: QuwiCharacter
+var _quwi: GuideCharacter
 var _bubble: SpeechBubble
 var _feedback: FeedbackPanel
 var _confetti: CPUParticles2D
@@ -248,7 +253,10 @@ func _build_card() -> void:
 
 
 func _build_guide() -> void:
-	_quwi = QUWI.instantiate()
+	# El guía del capítulo: Quwi en la Sierra, Tunki en la Selva y Humbi en la Costa.
+	_quwi = Cast.create(_intro.guide) as GuideCharacter
+	if _quwi == null:
+		_quwi = QUWI.instantiate()
 	_quwi.scale = Vector2(QUWI_SCALE, QUWI_SCALE)
 	_quwi.interactive = true
 	add_child(_quwi)
@@ -357,7 +365,7 @@ func _show_step(step: StepViewModel) -> void:
 	_quwi.set_mood(&"joy")
 	if not step.offer_text.is_empty():
 		var offer := DialogueViewModel.new()
-		offer.lines.append(DialogueLineViewModel.new(PlayMessages.GUIDE, step.offer_text, &"comfort"))
+		offer.lines.append(DialogueLineViewModel.new(_intro.guide_name, step.offer_text, &"comfort"))
 		offer.close_label = "¡Bueno!"
 		offer.skip_label = ""
 		get_tree().create_timer(0.6).timeout.connect(func() -> void:
@@ -380,7 +388,7 @@ func _on_check() -> void:
 	if not feedback.accepted:
 		ActivityStyle.shake(_check)
 		var notice := DialogueViewModel.new()
-		notice.lines.append(DialogueLineViewModel.new(PlayMessages.GUIDE, feedback.notice, &"think"))
+		notice.lines.append(DialogueLineViewModel.new(_intro.guide_name, feedback.notice, &"think"))
 		notice.close_label = "¡Bueno!"
 		notice.skip_label = ""
 		_say(notice, &"think")
@@ -561,6 +569,9 @@ func _show_game_over(result: LevelResultViewModel) -> void:
 
 
 func _show_final(result: LevelResultViewModel) -> void:
+	# La cuerda vuelve al quipu cuando el desafío se supera (AD, A o B).
+	cord_text = result.cord_label if result.grade != "C" else ""
+	cord_color = result.area.color if result.area else Color("#E8833A")
 	_sfx.play(KNOTS_RETURN, 1.0, -6.0)
 	var panel := FinalResults.new(result)
 	panel.replay_requested.connect(func() -> void: replay_requested.emit())

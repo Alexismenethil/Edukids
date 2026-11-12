@@ -6,6 +6,8 @@ extends Control
 
 signal stop_requested(stop_id: String)
 signal edit_avatar_requested
+## Quiere volver a ver el prólogo.
+signal story_requested
 signal exit_requested
 
 const AVATAR := preload("res://scenes/characters/avatar/avatar_character.tscn")
@@ -134,6 +136,10 @@ func _build_header() -> void:
 	stars.add_child(row)
 	stars.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	bar.add_child(stars)
+	var story := Ui.compact(Ui.button(_model.story_label, "", &"SoftButton"), 22)
+	story.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	story.pressed.connect(func() -> void: story_requested.emit())
+	bar.add_child(story)
 	var edit := Ui.compact(Ui.button(_model.edit_label, "edit", &"SoftButton"), 22)
 	edit.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	edit.pressed.connect(func() -> void: edit_avatar_requested.emit())

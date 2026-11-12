@@ -288,28 +288,40 @@ func _fall(comes_back: bool) -> void:
 		_avatar.visible = false)
 	if not comes_back:
 		return
-	var condor := Sprite2D.new()
-	condor.texture = CONDOR
+	# Kuntur, el cóndor, baja en picada, lo agarra con las garras y lo lleva de vuelta.
+	var condor := Cast.create(&"condor") as CondorCharacter
 	condor.scale = Vector2.ONE * 0.62
 	condor.position = Vector2(start.x + 700.0, DECK - 420.0)
+	condor.curious = false
 	_plane.add_child(condor)
+	condor.flap = 1.4
+	condor.set_expression(&"determined")
+	condor.look_toward(Vector2(-0.8, 0.6))
+	var grip := Vector2(0, 174.0)
 	tween.tween_interval(0.25)
-	tween.tween_property(condor, "position", Vector2(start.x, water - 70.0), 0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(condor, "position", Vector2(start.x, water - 52.0), 0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_callback(func() -> void:
 		StageFx.burst(_plane, Vector2(start.x, water), &"splash", 20)
+		condor.play(&"grab")
+		condor.flap = 2.0
+		condor.look_toward(Vector2(-1.0, -0.3))
 		_avatar.rotation = 0.0
 		_avatar.visible = true
+		_avatar.set_expression(&"wow")
 		_avatar.position = Vector2(start.x, water + 40.0))
 	var carry := func(point: Vector2) -> void:
-		condor.position = point
-		condor.scale.y = 0.62 * (1.0 + 0.18 * sin(_time * 12.0))
-		_avatar.position = point + Vector2(0, 196.0)
+		condor.position = point + Vector2(0, 18.0)
+		_avatar.position = condor.position + grip
 	tween.tween_method(carry, Vector2(start.x, water - 70.0), Vector2(LEFT - 70.0, DECK - 230.0), 1.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_callback(func() -> void:
 		_avatar_slot = -1
 		cinema(false)
 		light(Color.WHITE, 0.6)
 		_avatar.settle()
+		_avatar.set_expression(&"neutral")
+		condor.flap = 1.2
+		condor.set_expression(&"neutral")
+		condor.play(&"screech")
 		StageFx.burst(_plane, Vector2(LEFT - 70.0, DECK), &"dust", 12))
 	tween.tween_property(_avatar, "position", Vector2(LEFT - 70.0, DECK), 0.28).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	tween.parallel().tween_property(condor, "position", Vector2(LEFT - 900.0, DECK - 520.0), 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)

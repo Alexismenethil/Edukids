@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 310" width="300" height="310">
+  <!-- Tunki, el gallito de las rocas, guía de la Selva. Cresta naranja en abanico que le cubre el pico, alas negras con plumas grises. El rig está en tunki.rig.json. -->
+  <defs>
+    <clipPath id="clip_tunki_body"><path d="M150,140 C202,140 232,176 234,220 C236,266 200,292 150,292 C100,292 64,266 66,220 C68,176 98,140 150,140 Z"/></clipPath>
+    <clipPath id="clip_tunki_head"><path d="M150,32 C200,32 238,66 238,110 C238,154 200,186 150,186 C100,186 62,154 62,110 C62,66 100,32 150,32 Z"/></clipPath>
+    <clipPath id="clip_tunki_crest"><path d="M150,4 C190,4 210,34 206,66 C203,90 184,110 150,122 C116,110 97,90 94,66 C90,34 110,4 150,4 Z"/></clipPath>
+  </defs>
+
+  <g id="part_foot_l">
+    <path d="M92,294 C92,282 102,276 114,276 C126,276 136,282 136,294 C128,290 122,290 118,296 C114,290 110,290 106,296 C102,290 98,290 92,294 Z" fill="#F7B32B" stroke="#A8651A" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+  <g id="part_foot_r">
+    <path d="M208,294 C208,282 198,276 186,276 C174,276 164,282 164,294 C172,290 178,290 182,296 C186,290 190,290 194,296 C198,290 202,290 208,294 Z" fill="#F2A51D" stroke="#A8651A" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+  <g id="part_tail">
+    <path d="M120,258 L102,302 L132,290 L150,306 L168,290 L198,302 L180,258 Z" fill="#2B2B33" stroke="#15151A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M134,270 L130,292 M150,270 L150,296 M166,270 L170,292" stroke="#3D3D49" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="part_body">
+    <path d="M150,140 C202,140 232,176 234,220 C236,266 200,292 150,292 C100,292 64,266 66,220 C68,176 98,140 150,140 Z" fill="#F2622A"/>
+    <g clip-path="url(#clip_tunki_body)">
+      <ellipse cx="244" cy="232" rx="54" ry="84" fill="#D9481C" opacity="0.6"/>
+      <ellipse cx="150" cy="238" rx="46" ry="42" fill="#FF8A4A"/>
+      <path d="M132,226 q6,6 12,0 M156,226 q6,6 12,0 M144,244 q6,6 12,0 M132,262 q6,6 12,0 M156,262 q6,6 12,0" stroke="#FFB07A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+    <path d="M150,140 C202,140 232,176 234,220 C236,266 200,292 150,292 C100,292 64,266 66,220 C68,176 98,140 150,140 Z" fill="none" stroke="#9C3414" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  <g id="part_arm_l">
+    <path d="M86,184 C62,196 48,228 54,258 C58,272 74,278 86,266 C98,248 102,214 98,190 Z" fill="#2B2B33" stroke="#15151A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M70,226 C66,242 70,258 80,264 C88,250 92,236 90,220 Z" fill="#D5D9E2" stroke="#9A9EAC" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M70,204 C64,214 62,224 62,234" stroke="#3D3D49" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_arm_r">
+    <path d="M214,184 C238,196 252,228 246,258 C242,272 226,278 214,266 C202,248 198,214 202,190 Z" fill="#2B2B33" stroke="#15151A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M230,226 C234,242 230,258 220,264 C212,250 208,236 210,220 Z" fill="#C4C8D2" stroke="#9A9EAC" stroke-width="2.6" stroke-linejoin="round"/>
+  </g>
+  <g id="part_head">
+    <path d="M150,32 C200,32 238,66 238,110 C238,154 200,186 150,186 C100,186 62,154 62,110 C62,66 100,32 150,32 Z" fill="#F2622A"/>
+    <g clip-path="url(#clip_tunki_head)">
+      <ellipse cx="244" cy="120" rx="46" ry="80" fill="#D9481C" opacity="0.6"/>
+      <ellipse cx="96" cy="70" rx="30" ry="20" fill="#FF8A4A" opacity="0.7" transform="rotate(-28 96 70)"/>
+    </g>
+    <path d="M150,32 C200,32 238,66 238,110 C238,154 200,186 150,186 C100,186 62,154 62,110 C62,66 100,32 150,32 Z" fill="none" stroke="#9C3414" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="84" cy="136" rx="13" ry="8" fill="#FFD23F" opacity="0.5"/>
+    <ellipse cx="216" cy="136" rx="13" ry="8" fill="#FFD23F" opacity="0.5"/>
+  </g>
+  <g id="part_crest">
+    <path d="M150,4 C190,4 210,34 206,66 C203,90 184,110 150,122 C116,110 97,90 94,66 C90,34 110,4 150,4 Z" fill="#FF7A2E" stroke="#9C3414" stroke-width="4" stroke-linejoin="round"/>
+    <g clip-path="url(#clip_tunki_crest)">
+      <path d="M176,0 C206,20 214,60 206,96 L176,124 Z" fill="#D9481C" opacity="0.55"/>
+      <path d="M150,14 C182,14 198,38 195,64 C192,84 176,100 150,110" fill="none" stroke="#B83A12" stroke-width="5" stroke-linecap="round"/>
+      <path d="M150,14 C118,14 102,38 105,64 C108,84 124,100 150,110" fill="none" stroke="#B83A12" stroke-width="5" stroke-linecap="round"/>
+      <path d="M118,34 C126,24 138,20 148,20" fill="none" stroke="#FFC08A" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  </g>
+  <g id="part_brow_l">
+    <path d="M88,82 Q102,73 118,80" stroke="#7A2A10" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_brow_r">
+    <path d="M182,80 Q198,73 212,82" stroke="#7A2A10" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_open">
+    <ellipse cx="104" cy="108" rx="15" ry="18" fill="#2B1A12" stroke="#FFF4E4" stroke-width="2.4"/>
+    <circle cx="98.5" cy="100.5" r="5.6" fill="#FFFFFF"/>
+    <circle cx="109.5" cy="115.5" r="2.6" fill="#FFFFFF" opacity="0.9"/>
+    <ellipse cx="196" cy="108" rx="15" ry="18" fill="#2B1A12" stroke="#FFF4E4" stroke-width="2.4"/>
+    <circle cx="190.5" cy="100.5" r="5.6" fill="#FFFFFF"/>
+    <circle cx="201.5" cy="115.5" r="2.6" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+  <g id="part_eyes_closed">
+    <path d="M89,110 Q104,119 119,110" stroke="#5A1E0A" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M181,110 Q196,119 211,110" stroke="#5A1E0A" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_happy">
+    <path d="M89,114 Q104,96 119,114" stroke="#5A1E0A" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M181,114 Q196,96 211,114" stroke="#5A1E0A" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_squeeze">
+    <path d="M91,96 L117,108 L91,120" stroke="#5A1E0A" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M209,96 L183,108 L209,120" stroke="#5A1E0A" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="part_mouth_smile">
+    <path d="M136,128 Q150,118 164,128 Q150,146 136,128 Z" fill="#F7B32B" stroke="#A8651A" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M140,129 Q150,134 160,129" stroke="#A8651A" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_mouth_open">
+    <path d="M134,128 Q150,116 166,128 Q150,134 134,128 Z" fill="#F7B32B" stroke="#A8651A" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M136,132 Q150,160 164,132 Q150,138 136,132 Z" fill="#8E2A1E" stroke="#A8651A" stroke-width="3.4" stroke-linejoin="round"/>
+    <ellipse cx="150" cy="144" rx="6" ry="4" fill="#E8797A"/>
+  </g>
+  <g id="part_mouth_o">
+    <path d="M136,126 Q150,116 164,126 Q150,132 136,126 Z" fill="#F7B32B" stroke="#A8651A" stroke-width="3.4" stroke-linejoin="round"/>
+    <ellipse cx="150" cy="140" rx="8" ry="9" fill="#8E2A1E" stroke="#A8651A" stroke-width="3.4"/>
+  </g>
+</svg>

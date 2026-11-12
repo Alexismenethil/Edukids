@@ -114,6 +114,7 @@ func _setup() -> void:
 	_head.move_child(_cavity, _jaw.get_index())
 
 	shadow_scale = 0.0
+	grounded = false
 	hit_rect = Rect2(-250.0, -160.0, 480.0, 190.0)
 	body_center = Vector2(0.0, -60.0)
 	emote_anchor = Vector2(-150.0, -190.0)

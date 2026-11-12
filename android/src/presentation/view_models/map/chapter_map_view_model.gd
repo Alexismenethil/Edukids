@@ -9,6 +9,7 @@ var stars_label := ""
 var guide_line := ""
 var look: AvatarLookViewModel
 var edit_label := ""
+var story_label := ""
 var exit_label := ""
 var stops: Array[StopPinViewModel] = []
 ## Parada donde está el avatar.

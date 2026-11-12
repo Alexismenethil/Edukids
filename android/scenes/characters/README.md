@@ -17,6 +17,10 @@ Cada cuadro la pose se arma **sumando capas** sobre la pose de reposo del rig: r
 
 ## Crear un personaje nuevo
 
+El elenco actual: el avatar, los guías Quwi (Sierra), Tunki (Selva) y Humbi (Costa), Atoq, Coco, Mama Sisa y Kuntur (el cóndor).
+
+Los **guías** heredan de `GuideCharacter` (`guide/guide_character.gd`), que ya trae lo que hace un guía: `set_mood`, hablar, saludar, celebrar, entrar saltando, la voz y las reacciones al toque. Un guía nuevo solo necesita un rig con `Torso`, `Torso/Head`, `Torso/ArmL` y `Torso/ArmR`, llamar a `_guide_setup(^"Torso/Head")` y sumarse a `Cast.GUIDES`.
+
 ### 1. Dibujar el SVG por piezas
 
 En `art-src/characters/<nombre>.svg`, cada pieza que se mueve va en un grupo de primer nivel `<g id="part_<pieza>">`. Convenciones que el motor reconoce solo:
@@ -30,7 +34,13 @@ Estilo: caricatura vectorial limpia, colores planos, una sombra y una luz por ob
 
 ### 2. Describir el rig
 
-En `art-src/characters/<nombre>.rig.json` se listan los nodos con su padre y su **pivote** (en coordenadas del SVG). Las variantes de ojos van como hijos de un nodo `Eyes` con nombre `Eyes<Variante>`; las bocas, de un nodo `Mouth`:
+El primer borrador se genera solo: mide cada pieza del SVG, propone los nodos, sus padres y sus pivotes, y deja el esqueleto del script del personaje.
+
+```bash
+godot --headless --path . -s res://tools/art/scaffold_rig.gd -- res://art-src/characters/<nombre>.svg
+```
+
+Después se afinan a mano los pivotes. En `art-src/characters/<nombre>.rig.json` se listan los nodos con su padre y su **pivote** (en coordenadas del SVG). Las variantes de ojos van como hijos de un nodo `Eyes` con nombre `Eyes<Variante>`; las bocas, de un nodo `Mouth`:
 
 ```json
 {"name": "Eyes", "parent": "Body/Head", "pivot": [280, 100]},
@@ -97,15 +107,17 @@ func _setup() -> void:
 
 Con eso ya respira, parpadea, mira el dedo, mueve la oreja y la cola, y entiende `play(&"spit")`, `play(&"flip")`, `express(&"wow", 1.0)`, `emote(&"heart")`, `hop()` y `talk(true)`.
 
-### 5. Probarlo en el laboratorio
+### 5. Sumarlo al elenco y probarlo en el laboratorio
 
-Agrega el personaje a `CAST` en `lab/character_lab.gd` y ábrelo (solo en compilaciones de depuración):
+Agrega el personaje a `ROSTER` en `cast.gd` (así lo pueden pedir los cortos y las escenas con `Cast.create(&"llama")`) y a `CAST` en `lab/character_lab.gd`, y ábrelo (solo en compilaciones de depuración):
 
 ```bash
 godot --path . -- --lab
 ```
 
 El laboratorio muestra un botón por cada gesto, cara y emote, y deja correr, hablar, voltear y tocar al personaje. Con `--demo-lab` recorre a todos solo (útil para grabar).
+
+Un personaje que vuela o nada pone `grounded = false` en su `_setup()` (no levanta polvo ni se aplasta al «caer»). Las pruebas (`tests/unit/scenes/cine_test.gd`) revisan que cada clip mueva huesos que existen y pida caras que el personaje tiene.
 
 ## Referencia rápida
 

@@ -130,7 +130,7 @@ static func crumbs(parent: Node, at: Vector2, amount: int = 10, color: Color = G
 
 
 ## Papel picado con los colores del tejido: cae desde arriba a todo lo ancho.
-static func confetti(parent: Node, width: float, amount: int = 70, top: float = -30.0) -> void:
+static func confetti(parent: Node, width: float, amount: int = 70, top: float = -30.0) -> ToonBurst:
 	var burst := _burst(parent, Vector2.ZERO)
 	burst.z_index = 8
 	for i in amount:
@@ -138,3 +138,4 @@ static func confetti(parent: Node, width: float, amount: int = 70, top: float = 
 			"vel": Vector2(randf_range(-50.0, 50.0), randf_range(140.0, 260.0)), "gravity": 70.0, "drag": 0.5,
 			"life": randf_range(2.6, 3.8), "size": randf_range(7.0, 12.0), "color": TEXTILE[i % TEXTILE.size()],
 			"spin": randf_range(-4.0, 4.0), "turn": randf() * TAU, "delay": randf() * 1.1, "fade": 0.85})
+	return burst

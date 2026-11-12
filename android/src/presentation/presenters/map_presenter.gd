@@ -25,6 +25,7 @@ func chapter() -> ChapterMapViewModel:
 	view_model.guide_line = MapMessages.MAP_GUIDE
 	view_model.look = AvatarPalette.look_for(profile.avatar if profile else {})
 	view_model.edit_label = MapMessages.EDIT
+	view_model.story_label = MapMessages.STORY
 	view_model.exit_label = MapMessages.EXIT
 	var map := _get_map.execute(_session.student_id, _session.chapter)
 	view_model.stars_label = str(map.stars)

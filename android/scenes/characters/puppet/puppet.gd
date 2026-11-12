@@ -43,6 +43,8 @@ const EMOTE := preload("res://scenes/characters/puppet/puppet_emote.gd")
 @export var interactive := false
 ## Sigue con la mirada el dedo que toca la pantalla.
 @export var curious := true
+## Pisa el suelo: al caer se aplasta y levanta polvo. Falso para los que vuelan o nadan.
+@export var grounded := true
 
 ## Estiramiento y aplastamiento, desde los pies.
 var squash := Vector2.ONE
@@ -345,6 +347,15 @@ func has_clip(clip_name: StringName) -> bool:
 	return _clips.has(clip_name) or PuppetMoves.get_clip(clip_name) != null
 
 
+## Un clip propio del personaje por su nombre (null si no lo tiene).
+func own_clip(clip_name: StringName) -> PuppetClip:
+	return _clips.get(clip_name)
+
+
+func has_bone(bone_name: StringName) -> bool:
+	return _bones.has(bone_name)
+
+
 ## Clips propios del personaje, en el orden en que se declararon.
 func own_clips() -> Array[StringName]:
 	var list: Array[StringName] = []
@@ -550,7 +561,7 @@ func _pose_cycles(delta: float) -> void:
 		cycle["phase"] += delta * TAU / float(cycle["stride"]) * clampf(speed, rate.x, rate.y)
 		var phase: float = cycle["phase"]
 		# Cada medio ciclo un pie toca el suelo.
-		if weight > 0.6 and floorf(phase / PI) != floorf(before / PI) and height() < 14.0:
+		if grounded and weight > 0.6 and floorf(phase / PI) != floorf(before / PI) and height() < 14.0:
 			_on_cue(&"step")
 		var strength := weight * clampf(speed, gain.x, gain.y)
 		moving.x += float(cycle["travel"]) * speed * weight * facing * absf(scale.x)
@@ -716,7 +727,7 @@ func _update_jelly(delta: float) -> void:
 		return
 	var total := height()
 	var speed := (total - _last_height) / delta
-	if _last_height > 1.0 and total <= 1.0 and _height_speed < -60.0:
+	if grounded and _last_height > 1.0 and total <= 1.0 and _height_speed < -60.0:
 		_jelly_speed += minf(-_height_speed * 0.0036, 3.2)
 		_on_cue(&"land")
 	_height_speed = speed

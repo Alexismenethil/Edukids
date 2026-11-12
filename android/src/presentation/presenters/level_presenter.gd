@@ -41,6 +41,9 @@ func open() -> LevelIntroViewModel:
 	view_model.exit_cancel = PlayMessages.EXIT_CANCEL
 	var profile := _get_profile.execute(_session.student_id) if _get_profile else null
 	view_model.look = AvatarPalette.look_for(profile.avatar if profile else {})
+	view_model.region = _session.chapter
+	view_model.guide = RegionStyle.guide_of(_session.chapter)
+	view_model.guide_name = RegionStyle.guide_name(_session.chapter)
 	var started := _start.execute(_session.student_id, _session.level_package, _session.level_id)
 	if not started.is_ok():
 		view_model.error = PlayMessages.LEVEL_UNAVAILABLE
@@ -270,10 +273,10 @@ func _step(response: StepResponse) -> StepViewModel:
 	return view_model
 
 
-static func _dialogue(texts: Array[String], mood: StringName, close_label: String, skip_label: String) -> DialogueViewModel:
+func _dialogue(texts: Array[String], mood: StringName, close_label: String, skip_label: String) -> DialogueViewModel:
 	var dialogue := DialogueViewModel.new()
 	for text in texts:
-		dialogue.lines.append(DialogueLineViewModel.new(PlayMessages.GUIDE, text, mood))
+		dialogue.lines.append(DialogueLineViewModel.new(RegionStyle.guide_name(_session.chapter), text, mood))
 	dialogue.next_label = PlayMessages.NEXT
 	dialogue.close_label = close_label
 	dialogue.skip_label = skip_label

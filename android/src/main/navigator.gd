@@ -18,6 +18,8 @@ func _ready() -> void:
 	_demo.start(self, LaunchArgs.all())
 	if OS.is_debug_build() and (LaunchArgs.all().has("--lab") or LaunchArgs.all().has("--demo-lab")):
 		open_lab()
+	elif OS.is_debug_build() and not _launch_short().is_empty():
+		open_short(StringName(_launch_short()), open_title, null, true)
 	elif not _demo.opens_own_screen():
 		open_title()
 	if LaunchArgs.all().has("--diagnostics"):
@@ -41,7 +43,7 @@ func open_profiles() -> void:
 	view.back_requested.connect(open_title)
 	view.logged_in.connect(func(needs_avatar: bool) -> void:
 		if needs_avatar:
-			open_avatar_editor()
+			open_avatar_editor(true)
 		else:
 			open_map())
 	_show(view)
@@ -49,10 +51,11 @@ func open_profiles() -> void:
 
 
 ## «¡Crea tu personaje!» (RF-31).
-func open_avatar_editor() -> void:
+## Al crear el personaje por primera vez, sigue el prólogo de la historia.
+func open_avatar_editor(first_time: bool = false) -> void:
 	var view := AvatarEditorScreen.new()
 	view.setup(CompositionRoot.avatar_editor_presenter())
-	view.finished.connect(open_map)
+	view.finished.connect(open_story if first_time else open_map)
 	view.back_requested.connect(open_map)
 	_show(view)
 	_demo.on_avatar_editor(view)
@@ -63,6 +66,7 @@ func open_map() -> void:
 	var view := ChapterMapScreen.new()
 	view.setup(CompositionRoot.map_presenter())
 	view.edit_avatar_requested.connect(open_avatar_editor)
+	view.story_requested.connect(open_story)
 	view.exit_requested.connect(open_title)
 	view.stop_requested.connect(open_stop)
 	_show(view)
@@ -87,7 +91,13 @@ func open_level() -> void:
 	var view := LevelScreen.new()
 	view.setup(CompositionRoot.level_presenter())
 	view.exit_requested.connect(_back_to_stop)
-	view.finished.connect(_back_to_stop)
+	view.finished.connect(func() -> void:
+		if view.cord_text.is_empty():
+			_back_to_stop()
+		else:
+			# Superó un desafío final: Mama Sisa recibe la cuerda antes de volver a la parada.
+			open_short(&"rope", _back_to_stop, CompositionRoot.map_presenter().chapter().look, _demo.opens_own_screen(),
+				{"text": view.cord_text, "color": view.cord_color.to_html(false)}))
 	view.replay_requested.connect(open_level)
 	_show(view)
 	_demo.on_level(view)
@@ -134,10 +144,40 @@ func open_teacher_panel() -> void:
 	_demo.on_teacher_panel(view)
 
 
+## El prólogo con el avatar del estudiante; después, el mapa.
+func open_story() -> void:
+	open_short(&"prologue", open_map, CompositionRoot.map_presenter().chapter().look, _demo.opens_own_screen())
+
+
+## Un corto de cine; al terminar (o al saltarlo) sigue con `then`.
+func open_short(short_id: StringName, then: Callable, look: AvatarLookViewModel = null, auto: bool = false,
+		params: Dictionary = {}) -> void:
+	var script := Shorts.create(short_id)
+	if script == null:
+		then.call()
+		return
+	script.params = params
+	var view := ShortPlayer.new()
+	view.auto_advance = auto
+	view.finished.connect(then, CONNECT_ONE_SHOT)
+	view.ready.connect(func() -> void: view.play(script, look if look else AvatarPalette.look_for(
+		{"body": "girl", "skin": 2, "hair_color": 0, "top_color": 0, "bottom_color": 2, "hair_style": 3})), CONNECT_ONE_SHOT)
+	_show(view)
+
+
+## Corto pedido al arrancar: `--short=prologue` (solo en compilaciones de depuración).
+func _launch_short() -> String:
+	for arg in LaunchArgs.all():
+		if arg.begins_with("--short="):
+			return arg.get_slice("=", 1)
+	return ""
+
+
 ## Laboratorio de personajes (solo en compilaciones de depuración, con `--lab`).
 func open_lab() -> void:
 	var view := CharacterLab.new()
 	view.back_requested.connect(open_title)
+	view.short_requested.connect(func(short_id: StringName) -> void: open_short(short_id, open_lab))
 	view.auto_tour = LaunchArgs.all().has("--demo-lab")
 	_show(view)
 

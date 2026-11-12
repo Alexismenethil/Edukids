@@ -183,6 +183,11 @@ func demo_login() -> bool:
 	for summary in ListStudents.new(_students, _clock).execute(str(room.sections[0]["id"])):
 		if not summary.avatar.is_empty():
 			_session.student_id = summary.id
+			# Demostración: `--demo-chapter=selva` (o costa) abre los niveles con el mundo y el guía
+			# de ese capítulo.
+			for arg in LaunchArgs.all():
+				if arg.begins_with("--demo-chapter="):
+					_session.chapter = StringName(arg.get_slice("=", 1))
 			return true
 	return false
 

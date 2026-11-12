@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" width="560" height="320">
+  <!-- Kuntur, el cóndor andino que rescata al avatar. Fuente vectorial por piezas; el rig está en
+       condor.rig.json. Alas negras con el parche blanco, collar de plumón, cabeza rosada con
+       cresta y pico de marfil. -->
+  <defs>
+    <clipPath id="clip_condor_body"><path d="M280,112 C322,112 346,148 346,192 C346,230 320,254 280,254 C240,254 214,230 214,192 C214,148 238,112 280,112 Z"/></clipPath>
+    <clipPath id="clip_condor_head"><path d="M280,38 C304,38 322,56 322,80 C322,102 304,118 280,118 C256,118 238,102 238,80 C238,56 256,38 280,38 Z"/></clipPath>
+  </defs>
+
+  <g id="part_tail">
+    <path d="M250,226 L230,288 L256,278 L268,296 L280,280 L292,296 L304,278 L330,288 L310,226 Z" fill="#2B2B33" stroke="#15151A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M262,240 L258,272 M280,240 L280,274 M298,240 L302,272" stroke="#3D3D49" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="part_wing_l">
+    <path d="M238,130 C200,110 150,98 100,102 C70,104 44,114 26,130 L42,137 L22,149 L42,154 L24,168 L46,171 L32,187 L56,185 L50,201 L74,193 C112,198 162,197 202,188 C220,184 234,176 242,164 Z" fill="#2B2B33" stroke="#15151A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M96,128 L84,186 M128,124 L120,192 M160,126 L156,194 M192,134 L190,190" stroke="#3D3D49" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M226,140 C192,126 152,119 112,123 C92,125 76,131 66,140 C104,147 150,151 198,152 C212,152 224,148 226,140 Z" fill="#F4F4F8" stroke="#B4B4C2" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M110,134 L108,146 M140,132 L139,147 M170,134 L170,149 M198,138 L199,150" stroke="#C9C9D6" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  <g id="part_wing_r">
+    <path d="M322,130 C360,110 410,98 460,102 C490,104 516,114 534,130 L518,137 L538,149 L518,154 L536,168 L514,171 L528,187 L504,185 L510,201 L486,193 C448,198 398,197 358,188 C340,184 326,176 318,164 Z" fill="#2B2B33" stroke="#15151A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M464,128 L476,186 M432,124 L440,192 M400,126 L404,194 M368,134 L370,190" stroke="#3D3D49" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M334,140 C368,126 408,119 448,123 C468,125 484,131 494,140 C456,147 410,151 362,152 C348,152 336,148 334,140 Z" fill="#F4F4F8" stroke="#B4B4C2" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M450,134 L452,146 M420,132 L421,147 M390,134 L390,149 M362,138 L361,150" stroke="#C9C9D6" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  <g id="part_foot_l">
+    <path d="M240,244 L240,262 C234,266 232,274 236,280 C240,276 242,272 246,270 C246,276 248,282 252,284 C256,282 258,276 258,270 C262,272 264,276 268,280 C272,274 270,266 264,262 L264,244 Z" fill="#D2BEB4" stroke="#6E5A52" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+  <g id="part_foot_r">
+    <path d="M320,244 L320,262 C326,266 328,274 324,280 C320,276 318,272 314,270 C314,276 312,282 308,284 C304,282 302,276 302,270 C298,272 296,276 292,280 C288,274 290,266 296,262 L296,244 Z" fill="#C2ADA3" stroke="#6E5A52" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+  <g id="part_body">
+    <path d="M280,112 C322,112 346,148 346,192 C346,230 320,254 280,254 C240,254 214,230 214,192 C214,148 238,112 280,112 Z" fill="#2B2B33"/>
+    <g clip-path="url(#clip_condor_body)">
+      <ellipse cx="280" cy="210" rx="38" ry="40" fill="#3D3D49"/>
+      <path d="M322,120 C350,150 352,220 322,256 L352,256 L352,110 Z" fill="#1E1E25" opacity="0.7"/>
+      <path d="M262,196 q6,6 12,0 M286,196 q6,6 12,0 M274,214 q6,6 12,0 M262,232 q6,6 12,0 M286,232 q6,6 12,0" stroke="#55556333" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+    <path d="M280,112 C322,112 346,148 346,192 C346,230 320,254 280,254 C240,254 214,230 214,192 C214,148 238,112 280,112 Z" fill="none" stroke="#15151A" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  <g id="part_ruff">
+    <path d="M230,132 C222,120 232,106 246,110 C248,98 264,94 272,104 C276,98 284,98 288,104 C296,94 312,98 314,110 C328,106 338,120 330,132 C340,142 330,156 316,152 C310,162 294,162 288,154 C284,160 276,160 272,154 C266,162 250,162 244,152 C230,156 220,142 230,132 Z" fill="#F7F7FA" stroke="#B4B4C2" stroke-width="3.6" stroke-linejoin="round"/>
+    <path d="M250,128 q6,6 12,0 M274,134 q6,6 12,0 M298,128 q6,6 12,0" stroke="#D5D5E0" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_head">
+    <path d="M260,50 C256,34 270,26 280,36 C290,26 304,34 300,50 Z" fill="#C4726E" stroke="#8E5550" stroke-width="3.6" stroke-linejoin="round"/>
+    <path d="M280,38 C304,38 322,56 322,80 C322,102 304,118 280,118 C256,118 238,102 238,80 C238,56 256,38 280,38 Z" fill="#E4B0A8"/>
+    <g clip-path="url(#clip_condor_head)">
+      <ellipse cx="322" cy="86" rx="22" ry="40" fill="#CF958E" opacity="0.7"/>
+    </g>
+    <path d="M280,38 C304,38 322,56 322,80 C322,102 304,118 280,118 C256,118 238,102 238,80 C238,56 256,38 280,38 Z" fill="none" stroke="#8E5550" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M262,86 C262,76 298,76 298,86 C298,102 288,116 280,120 C272,116 262,102 262,86 Z" fill="#F4E6BC" stroke="#A48A52" stroke-width="3.6" stroke-linejoin="round"/>
+    <path d="M272,106 C275,113 278,118 280,120 C282,118 285,113 288,106 C283,109 277,109 272,106 Z" fill="#C9A85E"/>
+    <circle cx="273" cy="90" r="1.8" fill="#A48A52"/><circle cx="287" cy="90" r="1.8" fill="#A48A52"/>
+    <ellipse cx="250" cy="92" rx="8" ry="5" fill="#E8785F" opacity="0.5"/>
+    <ellipse cx="310" cy="92" rx="8" ry="5" fill="#E8785F" opacity="0.5"/>
+  </g>
+  <g id="part_eyes_open">
+    <circle cx="262" cy="70" r="11" fill="#FFFDF4" stroke="#5A3A36" stroke-width="3"/>
+    <circle cx="264" cy="71" r="6.5" fill="#2A1A14"/>
+    <circle cx="266.5" cy="68" r="2.4" fill="#FFFFFF"/>
+    <circle cx="298" cy="70" r="11" fill="#FFFDF4" stroke="#5A3A36" stroke-width="3"/>
+    <circle cx="296" cy="71" r="6.5" fill="#2A1A14"/>
+    <circle cx="298.5" cy="68" r="2.4" fill="#FFFFFF"/>
+    <path d="M250,58 C256,52 266,52 272,57 M288,57 C294,52 304,52 310,58" stroke="#8E5550" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_closed">
+    <path d="M252,71 Q262,79 272,71 M288,71 Q298,79 308,71" stroke="#2A1A14" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_happy">
+    <path d="M252,74 Q262,61 272,74 M288,74 Q298,61 308,74" stroke="#2A1A14" stroke-width="4.4" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_angry">
+    <circle cx="262" cy="71" r="10" fill="#FFFDF4" stroke="#5A3A36" stroke-width="3"/>
+    <circle cx="265" cy="72" r="6" fill="#2A1A14"/>
+    <circle cx="298" cy="71" r="10" fill="#FFFDF4" stroke="#5A3A36" stroke-width="3"/>
+    <circle cx="295" cy="72" r="6" fill="#2A1A14"/>
+    <path d="M248,56 L274,66 M312,56 L286,66" stroke="#8E5550" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

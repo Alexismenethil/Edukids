@@ -80,7 +80,10 @@ Cada parada tiene un personaje local que presenta el lugar. Los nombres son prov
 | Quwi | Reposo vivo, hablar, saludar, celebrar, pensar, consolar, olfatear, cosquillas y asomarse; las orejas y la chalina rebotan solas |
 | Atoq | Galope con la cola al viento, reír, lanzarse, tropezar y quedar mareado, gruñir con pisotón, aullar, olfatear y acechar |
 | Coco | Flotar, seguir la fruta con los ojos brillantes, abrir la boca, masticar, morder el aire, relamerse, bostezar, dar un coletazo y dormir entre zetas |
-| Mama Sisa | Reposo, hablar y entregar la cuerda |
+| Mama Sisa | Reposo, hablar, saludar, mostrar el quipu, asustarse, entregar, aplaudir y reflexionar; trenzas, pollera y sombrero con rebote |
+| Tunki | Lo común de los guías, más el baile del gallito, aletear y presumir con la cresta |
+| Humbi | Lo común de los guías, más caminar balanceándose, deslizarse de panza, aletear y acomodarse el gorrito |
+| Kuntur (cóndor) | Batir las alas, planear, agarrar con las garras, graznar y sacudir las plumas |
 
 ## Motor de títeres
 

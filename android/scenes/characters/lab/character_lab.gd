@@ -5,18 +5,22 @@ extends Control
 ## Aquí se revisa un personaje nuevo antes de ponerlo en una escena del juego.
 
 signal back_requested
+## Quiere ver un corto del catálogo.
+signal short_requested(short_id: StringName)
 
-const QUWI := preload("res://scenes/characters/quwi/quwi.tscn")
-const AVATAR := preload("res://scenes/characters/avatar/avatar_character.tscn")
 const EMOTES: Array[StringName] = [&"heart", &"alert", &"question", &"idea", &"note", &"zzz", &"sweat", &"anger",
 	&"dizzy", &"sparkle"]
 const PANEL_WIDTH := 470.0
 const CAST := [
-	{"id": &"quwi", "name": "Quwi", "scale": 1.45},
-	{"id": &"girl", "name": "Niña", "scale": 1.12},
-	{"id": &"boy", "name": "Niño", "scale": 1.12},
-	{"id": &"atoq", "name": "Atoq", "scale": 1.5},
-	{"id": &"coco", "name": "Coco", "scale": 1.25},
+	{"id": &"quwi", "name": "Quwi"},
+	{"id": &"tunki", "name": "Tunki"},
+	{"id": &"humbi", "name": "Humbi"},
+	{"id": &"girl", "name": "Niña"},
+	{"id": &"boy", "name": "Niño"},
+	{"id": &"sisa", "name": "Mama Sisa"},
+	{"id": &"atoq", "name": "Atoq"},
+	{"id": &"coco", "name": "Coco"},
+	{"id": &"condor", "name": "Kuntur"},
 ]
 const GIRL := {"body": "girl", "skin": 2, "hair_color": 0, "top_color": 0, "bottom_color": 2, "hair_style": 3}
 const GIRL_TAIL := {"body": "girl", "skin": 3, "hair_color": 1, "top_color": 5, "bottom_color": 6, "hair_style": 4}
@@ -113,6 +117,10 @@ func _build_panel() -> void:
 		_girl_tail = not _girl_tail
 		if CAST[_current]["id"] == &"girl":
 			_show(_current))
+	body.add_child(Ui.label("Cortos", &"FieldLabel"))
+	var shorts := _flow(body)
+	for short_id in Shorts.ids():
+		_add_button(shorts, String(short_id), func() -> void: short_requested.emit(short_id))
 	var hint := Ui.label("Tócalo, acarícialo o mueve el dedo por la pantalla: te sigue con la mirada.", &"Hint",
 		HORIZONTAL_ALIGNMENT_LEFT, true, PANEL_WIDTH - 60.0)
 	body.add_child(hint)
@@ -139,19 +147,14 @@ func _show(index: int) -> void:
 	if _puppet:
 		_puppet.queue_free()
 	var entry: Dictionary = CAST[index]
-	match entry["id"]:
-		&"quwi":
-			_puppet = QUWI.instantiate()
-		&"girl", &"boy":
-			var avatar: AvatarCharacter = AVATAR.instantiate()
-			var traits: Dictionary = BOY if entry["id"] == &"boy" else (GIRL_TAIL if _girl_tail else GIRL)
-			avatar.apply(AvatarPalette.look_for(traits))
-			_puppet = avatar
-		&"atoq":
-			_puppet = AtoqCharacter.new()
-		_:
-			_puppet = CaimanCharacter.new()
-	_puppet.scale = Vector2.ONE * float(entry["scale"])
+	var id: StringName = entry["id"]
+	if id == &"girl" or id == &"boy":
+		var traits: Dictionary = BOY if id == &"boy" else (GIRL_TAIL if _girl_tail else GIRL)
+		_puppet = Cast.create(&"avatar", AvatarPalette.look_for(traits))
+		_puppet.scale = Vector2.ONE * Cast.size_of(&"avatar", true)
+	else:
+		_puppet = Cast.create(id)
+		_puppet.scale = Vector2.ONE * Cast.size_of(id, true)
 	_puppet.interactive = true
 	_stage.add_child(_puppet)
 	_title.text = "Laboratorio · %s" % entry["name"]
@@ -179,6 +182,8 @@ func _place() -> void:
 	var floor_y := view.y * 0.5 + 262.0
 	if CAST[_current]["id"] == &"coco":
 		floor_y -= 20.0
+	elif CAST[_current]["id"] == &"condor":
+		floor_y -= 150.0
 	_puppet.position = Vector2((view.x - PANEL_WIDTH - 20.0) * 0.5, floor_y)
 	_puppet.settle()
 
@@ -190,6 +195,10 @@ func _set_run(value: float) -> void:
 		(_puppet as AtoqCharacter).speed = value
 	elif _puppet is CaimanCharacter:
 		(_puppet as CaimanCharacter).swim = value / 2.2
+	elif _puppet is CondorCharacter:
+		(_puppet as CondorCharacter).flap = maxf(0.3, value)
+	elif _puppet is SisaCharacter or _puppet is HumbiCharacter:
+		_puppet.set_cycle(&"walk", value)
 	else:
 		_puppet.travel = Vector2(value * 160.0, 0.0)
 

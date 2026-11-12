@@ -23,6 +23,11 @@ var lives := 0
 var lives_max := 0
 var danger := 0
 var danger_max := 0
+## Capítulo del nivel (sierra, selva o costa): decide el mundo de la escena y quién lo guía.
+var region: StringName = &"sierra"
+## Guía del capítulo: su identificador en el elenco y su nombre visible.
+var guide: StringName = &"quwi"
+var guide_name := "Quwi"
 ## Aspecto del personaje del estudiante, para la escena de la mecánica.
 var look: AvatarLookViewModel
 var exit_detail := ""

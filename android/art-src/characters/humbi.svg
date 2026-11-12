@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 310" width="300" height="310">
+  <!-- Humbi, el pingüino de Humboldt, guía de la Costa. Lomo negro, panza blanca con su banda en el pecho, la franja blanca que le rodea la cara y su gorrito de pescador. El rig está en humbi.rig.json. -->
+  <defs>
+    <clipPath id="clip_humbi_body"><path d="M150,140 C202,140 232,176 234,220 C236,266 200,292 150,292 C100,292 64,266 66,220 C68,176 98,140 150,140 Z"/></clipPath>
+    <clipPath id="clip_humbi_head"><path d="M150,32 C200,32 238,66 238,110 C238,154 200,186 150,186 C100,186 62,154 62,110 C62,66 100,32 150,32 Z"/></clipPath>
+  </defs>
+
+  <g id="part_foot_l">
+    <path d="M92,294 C92,282 102,276 114,276 C126,276 136,282 136,294 C128,290 122,290 118,296 C114,290 110,290 106,296 C102,290 98,290 92,294 Z" fill="#E0907A" stroke="#8A4A3C" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+  <g id="part_foot_r">
+    <path d="M208,294 C208,282 198,276 186,276 C174,276 164,282 164,294 C172,290 178,290 182,296 C186,290 190,290 194,296 C198,290 202,290 208,294 Z" fill="#D4826C" stroke="#8A4A3C" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+  <g id="part_body">
+    <path d="M150,140 C202,140 232,176 234,220 C236,266 200,292 150,292 C100,292 64,266 66,220 C68,176 98,140 150,140 Z" fill="#2E3340"/>
+    <g clip-path="url(#clip_humbi_body)">
+      <path d="M150,150 C192,150 212,186 212,226 C212,268 186,296 150,296 C114,296 88,268 88,226 C88,186 108,150 150,150 Z" fill="#FFFDF6"/>
+      <path d="M96,214 C104,186 196,186 204,214" fill="none" stroke="#2E3340" stroke-width="10" stroke-linecap="round"/>
+      <path d="M96,214 C92,236 94,258 104,276 M204,214 C208,236 206,258 196,276" fill="none" stroke="#2E3340" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="132" cy="234" r="3.2" fill="#2E3340"/><circle cx="166" cy="244" r="3.2" fill="#2E3340"/><circle cx="146" cy="262" r="3.2" fill="#2E3340"/><circle cx="176" cy="268" r="2.8" fill="#2E3340"/><circle cx="124" cy="268" r="2.8" fill="#2E3340"/>
+      <ellipse cx="252" cy="232" rx="50" ry="84" fill="#1E222C" opacity="0.5"/>
+    </g>
+    <path d="M150,140 C202,140 232,176 234,220 C236,266 200,292 150,292 C100,292 64,266 66,220 C68,176 98,140 150,140 Z" fill="none" stroke="#161A22" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  <g id="part_arm_l">
+    <path d="M84,180 C60,192 44,226 48,258 C50,272 64,274 72,264 C88,242 96,210 98,188 Z" fill="#2E3340" stroke="#161A22" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M70,206 C62,220 58,236 58,250" stroke="#444B5C" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_arm_r">
+    <path d="M216,180 C240,192 256,226 252,258 C250,272 236,274 228,264 C212,242 204,210 202,188 Z" fill="#2E3340" stroke="#161A22" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  <g id="part_head">
+    <path d="M150,32 C200,32 238,66 238,110 C238,154 200,186 150,186 C100,186 62,154 62,110 C62,66 100,32 150,32 Z" fill="#2E3340"/>
+    <g clip-path="url(#clip_humbi_head)">
+      <path d="M98,58 C66,76 58,122 78,154 C94,176 122,188 150,188 C178,188 206,176 222,154 C242,122 234,76 202,58 C226,90 226,128 208,148 C194,162 172,168 150,168 C128,168 106,162 92,148 C74,128 74,90 98,58 Z" fill="#FFFDF6"/>
+      <ellipse cx="150" cy="122" rx="30" ry="15" fill="#F4A7A2"/>
+      <ellipse cx="96" cy="66" rx="26" ry="15" fill="#444B5C" opacity="0.8" transform="rotate(-30 96 66)"/>
+    </g>
+    <path d="M150,32 C200,32 238,66 238,110 C238,154 200,186 150,186 C100,186 62,154 62,110 C62,66 100,32 150,32 Z" fill="none" stroke="#161A22" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="92" cy="130" rx="11" ry="7" fill="#F48FA0" opacity="0.55"/>
+    <ellipse cx="208" cy="130" rx="11" ry="7" fill="#F48FA0" opacity="0.55"/>
+  </g>
+  <g id="part_hat">
+    <ellipse cx="150" cy="52" rx="80" ry="15" fill="#F2C14E" stroke="#A8801E" stroke-width="4"/>
+    <path d="M106,50 C104,18 196,18 194,50 Z" fill="#F7D36B" stroke="#A8801E" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M107,40 C124,48 176,48 193,40 L194,50 C176,58 124,58 106,50 Z" fill="#1FA2A6" stroke="#12696C" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M122,30 C130,24 140,22 150,22" stroke="#FFF0B8" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_brow_l">
+    <path d="M94,74 Q108,66 124,72" stroke="#C9CDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_brow_r">
+    <path d="M176,72 Q192,66 206,74" stroke="#C9CDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_open">
+    <ellipse cx="110" cy="100" rx="15" ry="18" fill="#2B1A12" stroke="#FFF4E4" stroke-width="2.4"/>
+    <circle cx="104.5" cy="92.5" r="5.6" fill="#FFFFFF"/>
+    <circle cx="115.5" cy="107.5" r="2.6" fill="#FFFFFF" opacity="0.9"/>
+    <ellipse cx="190" cy="100" rx="15" ry="18" fill="#2B1A12" stroke="#FFF4E4" stroke-width="2.4"/>
+    <circle cx="184.5" cy="92.5" r="5.6" fill="#FFFFFF"/>
+    <circle cx="195.5" cy="107.5" r="2.6" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+  <g id="part_eyes_closed">
+    <path d="M95,102 Q110,111 125,102" stroke="#E8EAF0" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M175,102 Q190,111 205,102" stroke="#E8EAF0" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_happy">
+    <path d="M95,106 Q110,88 125,106" stroke="#E8EAF0" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M175,106 Q190,88 205,106" stroke="#E8EAF0" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_eyes_squeeze">
+    <path d="M97,88 L123,100 L97,112" stroke="#E8EAF0" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M203,88 L177,100 L203,112" stroke="#E8EAF0" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="part_mouth_smile">
+    <path d="M130,122 Q150,108 170,122 Q150,150 130,122 Z" fill="#4A4E5C" stroke="#1E222C" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M136,124 Q150,132 164,124" stroke="#1E222C" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path d="M142,116 Q150,112 158,116" stroke="#8E94A6" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="part_mouth_open">
+    <path d="M128,122 Q150,106 172,122 Q150,130 128,122 Z" fill="#4A4E5C" stroke="#1E222C" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M132,128 Q150,164 168,128 Q150,136 132,128 Z" fill="#8E2A36" stroke="#1E222C" stroke-width="3.4" stroke-linejoin="round"/>
+    <ellipse cx="150" cy="144" rx="7" ry="4.5" fill="#E8797A"/>
+  </g>
+  <g id="part_mouth_o">
+    <path d="M130,120 Q150,106 170,120 Q150,128 130,120 Z" fill="#4A4E5C" stroke="#1E222C" stroke-width="3.4" stroke-linejoin="round"/>
+    <ellipse cx="150" cy="138" rx="9" ry="10" fill="#8E2A36" stroke="#1E222C" stroke-width="3.4"/>
+  </g>
+</svg>

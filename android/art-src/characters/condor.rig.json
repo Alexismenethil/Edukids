@@ -1,0 +1,24 @@
+{
+  "name": "CondorRig",
+  "master": "res://art-src/characters/condor.svg",
+  "scale": 2.0,
+  "origin": [280, 284],
+  "atlas": "res://assets/art/characters/condor/char_kuntur_atlas.png",
+  "scene": "res://scenes/characters/condor/condor_rig.tscn",
+  "nodes": [
+    {"name": "Tail", "parent": "", "part": "tail", "pivot": [280, 232]},
+    {"name": "WingL", "parent": "", "part": "wing_l", "pivot": [236, 152]},
+    {"name": "WingR", "parent": "", "part": "wing_r", "pivot": [324, 152]},
+    {"name": "FootL", "parent": "", "part": "foot_l", "pivot": [252, 246]},
+    {"name": "FootR", "parent": "", "part": "foot_r", "pivot": [308, 246]},
+    {"name": "BodyArt", "parent": "", "part": "body", "pivot": [280, 190]},
+    {"name": "Ruff", "parent": "", "part": "ruff", "pivot": [280, 130]},
+    {"name": "Head", "parent": "", "pivot": [280, 112]},
+    {"name": "HeadArt", "parent": "Head", "part": "head", "pivot": [280, 112]},
+    {"name": "Eyes", "parent": "Head", "pivot": [280, 70]},
+    {"name": "EyesOpen", "parent": "Head/Eyes", "part": "eyes_open", "pivot": [280, 70]},
+    {"name": "EyesClosed", "parent": "Head/Eyes", "part": "eyes_closed", "pivot": [280, 70], "visible": false},
+    {"name": "EyesHappy", "parent": "Head/Eyes", "part": "eyes_happy", "pivot": [280, 70], "visible": false},
+    {"name": "EyesAngry", "parent": "Head/Eyes", "part": "eyes_angry", "pivot": [280, 70], "visible": false}
+  ]
+}

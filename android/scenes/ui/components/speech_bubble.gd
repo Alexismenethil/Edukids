@@ -14,6 +14,9 @@ const OUTLINE := Color("#5A2E16")
 
 ## Con true, el globo crece hacia la derecha de la punta (guía a la izquierda de la pantalla).
 @export var flipped := false
+## Con true, el globo queda arriba de la punta (sobre la cabeza de quien habla) y la colita baja
+## hacia ella; así no tapa a los personajes de al lado.
+@export var above := false
 
 @onready var _panel: PanelContainer = $Panel
 @onready var _text: Label = $Panel/Box/Text
@@ -112,6 +115,14 @@ func _reveal(count: int) -> void:
 func _layout() -> void:
 	var size_now := _panel.get_combined_minimum_size()
 	_panel.size = size_now
+	if above:
+		var left := -74.0 if flipped else -size_now.x + 74.0
+		_panel.position = Vector2(left, -size_now.y - 34.0)
+		_panel.pivot_offset = Vector2(-left, size_now.y + 34.0)
+		_name_tag.position = _panel.position + Vector2(28.0, -24.0)
+		_tail_a = Vector2(-18.0, -39.0)
+		_tail_b = Vector2(20.0, -39.0)
+		return
 	if flipped:
 		_panel.position = Vector2(46.0, -size_now.y * 0.6)
 		_panel.pivot_offset = Vector2(0.0, size_now.y * 0.6)

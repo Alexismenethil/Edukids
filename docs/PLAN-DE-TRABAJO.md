@@ -101,8 +101,13 @@ El proyecto avanza por sprints, cada uno con un entregable que se puede verifica
 | Laboratorio de personajes (`--lab`) y guía para crear un personaje | Hecho |
 | Dirección de cine en las mecánicas: pausa de impacto, golpe de zoom, destello, barras de cine, luz fría o dorada y cámara que respira | Hecho |
 | Efectos vectoriales (`ToonFx`): polvo, estrellas, brillitos, golpes, anillos, salpicaduras, hojas, corazones y papel picado | Hecho |
-| Pruebas: 293 y verificación de dependencias | Hecho |
-| Mama Sisa entregando la cuerda, insignias, cartas del álbum y accesorios | Pendiente (arte) y prioridad P2 |
+| Cine: escenario base con cámara y dirección (`CineStage`), mundos listos con día, atardecer y noche (`WorldSets`), reproductor de cortos escritos como lista de pasos (`ShortPlayer`), revisor de guiones y elenco central (`Cast`) | Hecho |
+| Personajes nuevos: Mama Sisa, Kuntur (el cóndor que rescata al avatar en el puente) y los guías Tunki (Selva) y Humbi (Costa), con una base común para los guías | Hecho |
+| Cortos: prólogo (fiesta en Huamanga), la cuerda que vuelve al quipu al superar un desafío final, y las llegadas a la Selva y a la Costa | Hecho; las llegadas se enlazan cuando existan los mapas de esos capítulos |
+| Mundos de la Selva y de la Costa con las medidas del valle; la persecución y la pantalla del nivel eligen el mundo y el guía según el capítulo | Hecho; faltan los mapas y los contenidos de los capítulos 2 y 3 |
+| Herramientas: generador del primer borrador del rig desde el SVG, laboratorio con cortos, guías para crear personajes y cortos | Hecho |
+| Pruebas: 308 y verificación de dependencias | Hecho |
+| Insignias, cartas del álbum y accesorios | Pendiente (arte) y prioridad P2 |
 | Medición del rendimiento en la tablet real | Pendiente |
 
 ## Épicas

@@ -1,7 +1,7 @@
 class_name ChaseStage
 extends MechanicStage
-## Persecución: el avatar corre por el Qhapaq Ñan y Atoq lo persigue. El valle pasa sin fin
-## (cerros nevados, lomas con chacras, molles y retamas). Cada acierto hace que el avatar acelere y
+## Persecución: el avatar corre y Atoq lo persigue. El mundo de su región pasa sin fin: el valle
+## del Qhapaq Ñan en la Sierra, la selva del Apurímac o la costa (WorldSets). Cada acierto hace que el avatar acelere y
 ## salte una piedra con un giro; cada error, que tropiece y Atoq se acerque riendo. Si el medidor
 ## llega a 0, Atoq se lanza, lo alcanza y se lleva un nudo. Al final, el avatar cruza el arco tejido.
 
@@ -34,29 +34,10 @@ var _obstacles: Array[Dictionary] = []
 func _build_world() -> void:
 	ground_y = 652.0
 	focus_x = 640.0
-	world.add_sky(PackedColorArray([Color("#4FAEEA"), Color("#9AD6F2"), Color("#FFF0D6"), Color("#FFD9AE")]),
-		PackedFloat32Array([0.0, 0.45, 0.78, 1.0]), -260.0, 600.0, Vector2(0.8, 395.0), 44.0)
-	var clouds: Array[Texture2D] = []
-	for i in 4:
-		clouds.append(load(WORLD + "cloud_%d.svg" % i))
-	world.add_clouds(clouds, [
-		{"x": 0.0, "y": 150.0, "texture": 0, "speed": 7.0},
-		{"x": 760.0, "y": 95.0, "texture": 1, "speed": 10.0, "scale": 0.9},
-		{"x": 1350.0, "y": 210.0, "texture": 2, "speed": 6.0},
-		{"x": 2100.0, "y": 130.0, "texture": 3, "speed": 12.0},
-		{"x": 2700.0, "y": 240.0, "texture": 1, "speed": 8.0, "scale": 0.75, "alpha": 0.9},
-	])
-	var birds := BirdFlock.new()
-	birds.world = world
-	world.add_child(birds)
-	world.add_layer(load(WORLD + "valley_far.svg"), 0.1, 250.0, 1.0)
-	world.add_rays(Vector2(0.8, 395.0), 0.13)
-	world.add_layer(load(WORLD + "valley_mid.svg"), 0.3, 410.0, 1.25)
-	world.add_fog(560.0, 640.0, 0.45, Color(1.0, 0.97, 0.9, 0.5))
-	world.add_layer(load(WORLD + "valley_near.svg"), 0.6, 300.0, 1.5)
-	world.add_layer(load(WORLD + "valley_ground.svg"), 1.0, 596.0, 2.0)
-	_track = world.add_plane(1.0)
-	actors = world.add_stage()
+	# El mundo de la región del nivel: el valle en la Sierra, la selva o la costa.
+	var place := WorldSets.build(world, WorldSets.REGION_WORLDS.get(region, &"valley"))
+	_track = place["track"]
+	actors = place["stage"]
 	_lines = _SpeedLines.new()
 	actors.add_child(_lines)
 	_avatar = _make_avatar(AVATAR_SCALE)
@@ -71,12 +52,6 @@ func _build_world() -> void:
 	_atoq.look_toward(Vector2(1.0, -0.3))
 	watch(_avatar, true)
 	watch(_atoq)
-	var front := world.add_layer(load(WORLD + "valley_front.svg"), 1.35, 650.0, 1.5)
-	world.sway(front, 5.0, 1.4)
-	world.add_fill(814.0, 4000.0, Color("#2F7740"))
-	world.add_child(AmbientField.new().setup(world, AmbientField.Kind.MOTES, 26, 0.9, Vector2(300, 700)))
-	world.add_child(AmbientField.new().setup(world, AmbientField.Kind.PETALS, 7, 1.1, Vector2(220, 760),
-		PackedColorArray([Color("#FF8FB3"), Color("#FFD23F"), Color("#FFFFFF")])))
 	_gap_target = _gap_for(danger)
 
 

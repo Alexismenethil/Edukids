@@ -43,7 +43,9 @@ Para grabar videos o probar los recorridos sin tocar la pantalla. Solo funciona 
 | `--demo-classic` | Tarjetas con Quwi y Atoq que se asoma por el costado |
 | `--demo-gameover` | Responde todo mal hasta perder las tres vidas |
 | `--demo-final` | Desafío final: portada, respuestas guardadas y calificación con la revisión |
-| `--lab` | Laboratorio de personajes: cada títere con sus gestos, caras y emotes, para tocarlo y probarlo |
+| `--lab` | Laboratorio de personajes: cada títere con sus gestos, caras y emotes, para tocarlo y probarlo; también abre los cortos |
+| `--short=prologue` | Reproduce un corto del catálogo (`prologue`, `rope`, `selva`, `costa`); los diálogos avanzan solos |
+| `--demo-chapter=selva` | Con un modo de nivel, lo abre con el mundo y el guía de ese capítulo (`selva` o `costa`) |
 | `--demo-lab` | El laboratorio se recorre solo: todos los personajes con sus gestos, la carrera y un toque |
 
 Los modos de nivel se usan con `--demo-data` y juegan el primer nivel que tenga esa mecánica; con `--demo-area=language` o `--demo-area=science` se elige el área. En la base de demostración se completan solos los niveles anteriores del módulo, para que el elegido esté abierto.
@@ -85,7 +87,7 @@ bash tests/architecture/check_dependencies.sh
 | `tests/unit/domain` | Medidor de peligro (RN-13), vidas y game over (RN-14), estrellas (RN-11), escala AD/A/B/C (RN-12), orden de los niveles (RN-18), escenas narrativas, PIN, avatar, evaluadores de cada tipo de ítem, respuestas escritas y numéricas, la sesión del nivel y el desafío final |
 | `tests/unit/application` | Casos de uso con repositorios falsos: aula, mapa del capítulo, niveles cerrados, respuestas, pistas, game over, desafío final con intentos y continuar un nivel |
 | `tests/unit/presentation` | Presentadores y modelos de vista: mapa, parada, nivel, vidas, game over y calificación |
-| `tests/unit/scenes` | Motor de títeres: curvas, clips, reproducción, resortes y la biblioteca de gestos |
+| `tests/unit/scenes` | Motor de títeres (curvas, clips, reproducción, resortes y gestos) y revisión de datos: elenco, clips y caras de cada personaje, mundos de cada región y guiones de los cortos |
 | `tests/integration` | JSON, paquetes incluidos y sus senderos, SQLite (aula, intentos, respuestas, game over, calificaciones y la migración 002), hash del PIN, reloj, aleatoriedad e identificadores |
 | `tests/architecture` | Regla de dependencias entre capas (RNF-15, CA-20) |
 
@@ -116,6 +118,17 @@ carrera, clips, cara, mirada y resortes), así que respiran, parpadean, siguen e
 cabeza, y el pelo, las orejas, las colas y la chalina rebotan solos. Tienen expresiones con nombre, emotes
 sobre la cabeza, gestos de biblioteca y reaccionan cuando los tocan o los acarician. Un personaje nuevo se
 declara con datos y se prueba en el laboratorio (`--lab`).
+
+**Regiones.** Cada capítulo tiene su mundo que corre sin fin y su guía (`WorldSets.REGION_WORLDS`,
+`Cast.GUIDES` y `RegionStyle`): el valle con Quwi en la Sierra, la selva del Apurímac con Tunki y la costa con
+Humbi. La persecución y la pantalla del nivel los eligen solos según el capítulo del nivel. Los tres mundos
+tienen día, atardecer y noche.
+
+**Cortos.** Las escenas de la historia se escriben como una lista de pasos y las reproduce `ShortPlayer`
+(guía en [`scenes/cine/README.md`](scenes/cine/README.md)): el prólogo se ve al crear el personaje y desde el
+botón «Historia» del mapa; al superar un desafío final, Mama Sisa recibe la cuerda; y cada región tiene su
+corto de llegada. El elenco (`scenes/characters/cast.gd`) suma a Mama Sisa, Kuntur (el cóndor que rescata al
+avatar en el puente), Tunki y Humbi.
 
 **Dirección de cine.** `MechanicStage` da a cada mecánica una pausa de impacto (`hit_stop`), un golpe de zoom
 (`punch`), un destello suave (`flash`), barras de cine para los momentos grandes (`cinema`) y cambios de luz

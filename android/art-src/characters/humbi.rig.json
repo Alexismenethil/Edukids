@@ -1,0 +1,30 @@
+{
+  "name": "HumbiRig",
+  "master": "res://art-src/characters/humbi.svg",
+  "scale": 2.0,
+  "origin": [150, 292],
+  "atlas": "res://assets/art/characters/humbi/char_humbi_atlas.png",
+  "scene": "res://scenes/characters/humbi/humbi_rig.tscn",
+  "nodes": [
+    {"name": "FootL", "parent": "", "part": "foot_l", "pivot": [114, 287]},
+    {"name": "FootR", "parent": "", "part": "foot_r", "pivot": [186, 287]},
+    {"name": "Torso", "parent": "", "pivot": [150, 292]},
+    {"name": "BodyArt", "parent": "Torso", "part": "body", "pivot": [150, 292]},
+    {"name": "ArmL", "parent": "Torso", "part": "arm_l", "pivot": [90, 186]},
+    {"name": "ArmR", "parent": "Torso", "part": "arm_r", "pivot": [210, 186]},
+    {"name": "Head", "parent": "Torso", "pivot": [150, 186]},
+    {"name": "HeadArt", "parent": "Torso/Head", "part": "head", "pivot": [150, 108]},
+    {"name": "BrowL", "parent": "Torso/Head", "part": "brow_l", "pivot": [109, 72]},
+    {"name": "BrowR", "parent": "Torso/Head", "part": "brow_r", "pivot": [191, 72]},
+    {"name": "Eyes", "parent": "Torso/Head", "pivot": [150, 100]},
+    {"name": "EyesOpen", "parent": "Torso/Head/Eyes", "part": "eyes_open", "pivot": [150, 100]},
+    {"name": "EyesClosed", "parent": "Torso/Head/Eyes", "part": "eyes_closed", "pivot": [150, 100], "visible": false},
+    {"name": "EyesHappy", "parent": "Torso/Head/Eyes", "part": "eyes_happy", "pivot": [150, 100], "visible": false},
+    {"name": "EyesSqueeze", "parent": "Torso/Head/Eyes", "part": "eyes_squeeze", "pivot": [150, 100], "visible": false},
+    {"name": "Mouth", "parent": "Torso/Head", "pivot": [150, 128]},
+    {"name": "MouthSmile", "parent": "Torso/Head/Mouth", "part": "mouth_smile", "pivot": [150, 128]},
+    {"name": "MouthOpen", "parent": "Torso/Head/Mouth", "part": "mouth_open", "pivot": [150, 128], "visible": false},
+    {"name": "MouthO", "parent": "Torso/Head/Mouth", "part": "mouth_o", "pivot": [150, 128], "visible": false},
+    {"name": "Hat", "parent": "Torso/Head", "part": "hat", "pivot": [150, 52]}
+  ]
+}
